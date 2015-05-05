@@ -1,0 +1,8 @@
+#
+# OS and IDE cruft
+#
+.DS_Store
+xcuserdata
+*.pbxuser
+*.xccheckout
+*.xcuserstate
