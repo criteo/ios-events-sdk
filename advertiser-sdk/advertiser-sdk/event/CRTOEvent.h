@@ -17,11 +17,11 @@
 
 - (instancetype) setBoolExtraData:(BOOL)value ForKey:(NSString*)key;
 - (instancetype) setDateExtraData:(NSDate*)value ForKey:(NSString*)key;
-- (instancetype) setIntExtraData:(int64_t)value ForKey:(NSString*)key;
+- (instancetype) setIntegerExtraData:(NSInteger)value ForKey:(NSString*)key;
 - (instancetype) setStringExtraData:(NSString*)value ForKey:(NSString*)key;
 
 - (BOOL) boolExtraDataForKey:(NSString*)key;
-- (int64_t) intExtraDataForKey:(NSString*)key;
+- (NSInteger) integerExtraDataForKey:(NSString*)key;
 - (NSDate*) dateExtraDataForKey:(NSString*)key;
 - (NSString*) stringExtraDataForKey:(NSString*)key;
 

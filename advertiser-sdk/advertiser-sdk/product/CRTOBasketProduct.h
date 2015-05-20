@@ -11,9 +11,9 @@
 
 @property (nonatomic,strong,readonly) NSString* productId;
 @property (nonatomic,readonly) float price;
-@property (nonatomic,readonly) int64_t quantity;
+@property (nonatomic,readonly) NSInteger quantity;
 
 - (instancetype) init;
-- (instancetype) initWithProductId:(NSString*)productId price:(float)price quantity:(int64_t)quantity;
+- (instancetype) initWithProductId:(NSString*)productId price:(float)price quantity:(NSInteger)quantity;
 
 @end

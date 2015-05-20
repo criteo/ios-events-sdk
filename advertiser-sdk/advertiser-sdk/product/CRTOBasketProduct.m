@@ -16,7 +16,7 @@
     return [self initWithProductId:nil price:0.0f quantity:0];
 }
 
-- (instancetype) initWithProductId:(NSString*)productId price:(float)price quantity:(int64_t)quantity
+- (instancetype) initWithProductId:(NSString*)productId price:(float)price quantity:(NSInteger)quantity
 {
     self = [super init];
     if ( self ) {

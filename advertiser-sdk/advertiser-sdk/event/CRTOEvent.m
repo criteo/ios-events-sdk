@@ -157,7 +157,7 @@
     return self;
 }
 
-- (instancetype) setIntExtraData:(int64_t)value ForKey:(NSString*)key
+- (instancetype) setIntegerExtraData:(NSInteger)value ForKey:(NSString*)key
 {
     [self addExtraData:@(value) forKey:key];
 
@@ -184,11 +184,11 @@
     return [value boolValue];
 }
 
-- (int64_t) intExtraDataForKey:(NSString*)key
+- (NSInteger) integerExtraDataForKey:(NSString*)key
 {
     NSNumber* value = [self getExtraDataForKey:key];
 
-    return [value longLongValue];
+    return [value integerValue];
 }
 
 - (NSDate*) dateExtraDataForKey:(NSString*)key
