@@ -7,6 +7,9 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ *  The @c CRTOEvent class and related classes provide an API for submitting events from your native iOS application to Criteo.
+ */
 @interface CRTOEvent : NSObject
 
 @property (nonatomic,strong,readonly) NSDate* startDate;
