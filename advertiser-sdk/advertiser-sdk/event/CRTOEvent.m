@@ -7,6 +7,7 @@
 
 #import "CRTOEvent.h"
 #import "CRTOEvent+Internal.h"
+#import "CRTOExtraData.h"
 
 @implementation CRTOEvent
 {
@@ -74,18 +75,20 @@
     return [NSDictionary dictionaryWithDictionary:extraData];
 }
 
-- (void) addExtraData:(id)value forKey:(NSString*)key;
+- (void) addExtraData:(id)value forKey:(NSString*)key withType:(CRTOExtraDataType)type
 {
     BOOL isKeyValid = [self validateKeyParameter:key];
 
     if ( isKeyValid ) {
         NSString* keyCopy = [NSString stringWithString:key];
 
-        extraData[keyCopy] = value;
+        CRTOExtraData* data = [CRTOExtraData extraDataWithKey:keyCopy value:value type:type];
+
+        extraData[keyCopy] = data;
     }
 }
 
-- (id) getExtraDataForKey:(NSString*)key
+- (CRTOExtraData*) getExtraDataForKey:(NSString*)key
 {
     BOOL isKeyValid = [self validateKeyParameter:key];
 
@@ -99,10 +102,10 @@
 - (BOOL) validateDateParamater:(id)value
 {
     NSParameterAssert( value );
-    NSAssert( [value isMemberOfClass:[NSDate class]], @"Parameter 'value' must be an instance of NSDate." );
+    NSAssert( [value isKindOfClass:[NSDate class]], @"Parameter 'value' must be an instance of NSDate." );
 
     return ( value != nil &&
-            [value isMemberOfClass:[NSDate class]] );
+            [value isKindOfClass:[NSDate class]] );
 }
 
 - (BOOL) validateKeyParameter:(NSString*)key
@@ -137,13 +140,6 @@
     return [NSString stringWithFormat:@"CTEvent (%p)", self];
 }
 
-- (instancetype) setBoolExtraData:(BOOL)value ForKey:(NSString*)key
-{
-    [self addExtraData:@(value) forKey:key];
-
-    return self;
-}
-
 - (instancetype) setDateExtraData:(NSDate*)value ForKey:(NSString*)key
 {
     BOOL isDateValid = [self validateDateParamater:value];
@@ -151,15 +147,22 @@
     if ( isDateValid ) {
         NSDate* dateCopy = [[NSDate alloc] initWithTimeIntervalSince1970:value.timeIntervalSince1970];
 
-        [self addExtraData:dateCopy forKey:key];
+        [self addExtraData:dateCopy forKey:key withType:CRTOExtraDataTypeDate];
     }
+
+    return self;
+}
+
+- (instancetype) setFloatExtraData:(float)value ForKey:(NSString*)key
+{
+    [self addExtraData:@(value) forKey:key withType:CRTOExtraDataTypeFloat];
 
     return self;
 }
 
 - (instancetype) setIntegerExtraData:(NSInteger)value ForKey:(NSString*)key
 {
-    [self addExtraData:@(value) forKey:key];
+    [self addExtraData:@(value) forKey:key withType:CRTOExtraDataTypeInteger];
 
     return self;
 }
@@ -171,43 +174,55 @@
     if ( isStringValid ) {
         NSString* stringCopy = [NSString stringWithString:value];
 
-        [self addExtraData:stringCopy forKey:key];
+        [self addExtraData:stringCopy forKey:key withType:CRTOExtraDataTypeText];
     }
 
     return self;
 }
 
-- (BOOL) boolExtraDataForKey:(NSString*)key
-{
-    NSNumber* value = [self getExtraDataForKey:key];
-
-    return [value boolValue];
-}
-
-- (NSInteger) integerExtraDataForKey:(NSString*)key
-{
-    NSNumber* value = [self getExtraDataForKey:key];
-
-    return [value integerValue];
-}
-
 - (NSDate*) dateExtraDataForKey:(NSString*)key
 {
-    id value = [self getExtraDataForKey:key];
+    CRTOExtraData* data = [self getExtraDataForKey:key];
 
-    if ( [value isKindOfClass:[NSDate class]] ) {
-        return value;
+    if ( data.type == CRTOExtraDataTypeDate ) {
+        return data.value;
     }
 
     return nil;
 }
 
+- (float) floatExtraDataForKey:(NSString*)key
+{
+    CRTOExtraData* data = [self getExtraDataForKey:key];
+
+    if ( data.type == CRTOExtraDataTypeFloat ) {
+        NSNumber* value = data.value;
+
+        return value.floatValue;
+    }
+
+    return 0.0f;
+}
+
+- (NSInteger) integerExtraDataForKey:(NSString*)key
+{
+    CRTOExtraData* data = [self getExtraDataForKey:key];
+
+    if ( data.type == CRTOExtraDataTypeInteger ) {
+        NSNumber* value = data.value;
+
+        return value.integerValue;
+    }
+
+    return 0;
+}
+
 - (NSString*) stringExtraDataForKey:(NSString*)key
 {
-    id value = [self getExtraDataForKey:key];
+    CRTOExtraData* data = [self getExtraDataForKey:key];
 
-    if ( [value isKindOfClass:[NSString class]] ) {
-        return value;
+    if ( data.type == CRTOExtraDataTypeText ) {
+        return data.value;
     }
 
     return nil;

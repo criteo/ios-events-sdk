@@ -18,14 +18,14 @@
 - (instancetype) init;
 - (instancetype) initWithStartDate:(NSDate*)start endDate:(NSDate*)end;
 
-- (instancetype) setBoolExtraData:(BOOL)value ForKey:(NSString*)key;
 - (instancetype) setDateExtraData:(NSDate*)value ForKey:(NSString*)key;
+- (instancetype) setFloatExtraData:(float)value ForKey:(NSString*)key;
 - (instancetype) setIntegerExtraData:(NSInteger)value ForKey:(NSString*)key;
 - (instancetype) setStringExtraData:(NSString*)value ForKey:(NSString*)key;
 
-- (BOOL) boolExtraDataForKey:(NSString*)key;
-- (NSInteger) integerExtraDataForKey:(NSString*)key;
 - (NSDate*) dateExtraDataForKey:(NSString*)key;
+- (float) floatExtraDataForKey:(NSString*)key;
+- (NSInteger) integerExtraDataForKey:(NSString*)key;
 - (NSString*) stringExtraDataForKey:(NSString*)key;
 
 @end

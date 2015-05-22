@@ -17,6 +17,9 @@
 		251004971AF9216D00701F7F /* CRTODataEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 251004951AF9216D00701F7F /* CRTODataEvent.h */; };
 		251004981AF9216D00701F7F /* CRTODataEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 251004961AF9216D00701F7F /* CRTODataEvent.m */; };
 		251004991AF9216D00701F7F /* CRTODataEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 251004961AF9216D00701F7F /* CRTODataEvent.m */; };
+		252D17941B0E5FF000DB6D91 /* CRTOExtraData.h in Headers */ = {isa = PBXBuildFile; fileRef = 252D17921B0E5FF000DB6D91 /* CRTOExtraData.h */; };
+		252D17951B0E5FF000DB6D91 /* CRTOExtraData.m in Sources */ = {isa = PBXBuildFile; fileRef = 252D17931B0E5FF000DB6D91 /* CRTOExtraData.m */; };
+		252D17961B0E5FF000DB6D91 /* CRTOExtraData.m in Sources */ = {isa = PBXBuildFile; fileRef = 252D17931B0E5FF000DB6D91 /* CRTOExtraData.m */; };
 		255A94ED1B0CCB31009F5C06 /* CRTODeviceInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 255A94EB1B0CCB31009F5C06 /* CRTODeviceInfo.h */; };
 		255A94EE1B0CCB31009F5C06 /* CRTODeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A94EC1B0CCB31009F5C06 /* CRTODeviceInfo.m */; };
 		255A94EF1B0CCB31009F5C06 /* CRTODeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A94EC1B0CCB31009F5C06 /* CRTODeviceInfo.m */; };
@@ -70,6 +73,9 @@
 		259AA6281AF8A5CB006743A5 /* CRTOBasketViewEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 259AA6251AF8A5CB006743A5 /* CRTOBasketViewEvent.m */; };
 		25CF74001B0DFEE1001A023A /* CRTODeviceInfoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25CF73FF1B0DFEE1001A023A /* CRTODeviceInfoTests.m */; };
 		25CF74021B0E00FD001A023A /* CRTOSDKInfoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25CF74011B0E00FD001A023A /* CRTOSDKInfoTests.m */; };
+		25CF740F1B0E19E4001A023A /* CRTOJSONConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 25CF740D1B0E19E4001A023A /* CRTOJSONConstants.h */; };
+		25CF74101B0E19E4001A023A /* CRTOJSONConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 25CF740E1B0E19E4001A023A /* CRTOJSONConstants.m */; };
+		25CF74111B0E19E4001A023A /* CRTOJSONConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 25CF740E1B0E19E4001A023A /* CRTOJSONConstants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +104,8 @@
 		2506B7571B0DDF050091D5F8 /* CRTOAppInfoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOAppInfoTests.m; sourceTree = "<group>"; };
 		251004951AF9216D00701F7F /* CRTODataEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTODataEvent.h; sourceTree = "<group>"; };
 		251004961AF9216D00701F7F /* CRTODataEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTODataEvent.m; sourceTree = "<group>"; };
+		252D17921B0E5FF000DB6D91 /* CRTOExtraData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTOExtraData.h; sourceTree = "<group>"; };
+		252D17931B0E5FF000DB6D91 /* CRTOExtraData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOExtraData.m; sourceTree = "<group>"; };
 		255A94EB1B0CCB31009F5C06 /* CRTODeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTODeviceInfo.h; sourceTree = "<group>"; };
 		255A94EC1B0CCB31009F5C06 /* CRTODeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTODeviceInfo.m; sourceTree = "<group>"; };
 		255A94F01B0CE5AE009F5C06 /* CRTOAppInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTOAppInfo.h; sourceTree = "<group>"; };
@@ -131,6 +139,8 @@
 		259AA6251AF8A5CB006743A5 /* CRTOBasketViewEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOBasketViewEvent.m; sourceTree = "<group>"; };
 		25CF73FF1B0DFEE1001A023A /* CRTODeviceInfoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTODeviceInfoTests.m; sourceTree = "<group>"; };
 		25CF74011B0E00FD001A023A /* CRTOSDKInfoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOSDKInfoTests.m; sourceTree = "<group>"; };
+		25CF740D1B0E19E4001A023A /* CRTOJSONConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTOJSONConstants.h; sourceTree = "<group>"; };
+		25CF740E1B0E19E4001A023A /* CRTOJSONConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOJSONConstants.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +175,8 @@
 		2505607C1AF91550006804AA /* serializer */ = {
 			isa = PBXGroup;
 			children = (
+				25CF740D1B0E19E4001A023A /* CRTOJSONConstants.h */,
+				25CF740E1B0E19E4001A023A /* CRTOJSONConstants.m */,
 				2505607D1AF9156F006804AA /* CRTOJSONEventSerializer.h */,
 				2505607E1AF9156F006804AA /* CRTOJSONEventSerializer.m */,
 			);
@@ -258,6 +270,8 @@
 				258CDC271AF76EA5009E678E /* CRTOEvent.h */,
 				250240731B06512100002E27 /* CRTOEvent+Internal.h */,
 				258CDC281AF76EA5009E678E /* CRTOEvent.m */,
+				252D17921B0E5FF000DB6D91 /* CRTOExtraData.h */,
+				252D17931B0E5FF000DB6D91 /* CRTOExtraData.m */,
 				259AA5FB1AF7C8F9006743A5 /* CRTOAppLaunchEvent.h */,
 				2502407A1B065EEF00002E27 /* CRTOAppLaunchEvent+Internal.h */,
 				259AA5FC1AF7C8F9006743A5 /* CRTOAppLaunchEvent.m */,
@@ -301,6 +315,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25CF740F1B0E19E4001A023A /* CRTOJSONConstants.h in Headers */,
 				259AA61C1AF7E06A006743A5 /* CRTOProduct.h in Headers */,
 				250560791AF8F96D006804AA /* CRTOEventService.h in Headers */,
 				259AA6021AF7CBB5006743A5 /* CRTOHomeViewEvent.h in Headers */,
@@ -313,6 +328,7 @@
 				255A94F71B0CE88E009F5C06 /* CRTOSDKInfo.h in Headers */,
 				258CDC291AF76EA5009E678E /* CRTOEvent.h in Headers */,
 				259AA6071AF7DEED006743A5 /* CRTOProductListViewEvent.h in Headers */,
+				252D17941B0E5FF000DB6D91 /* CRTOExtraData.h in Headers */,
 				255A94ED1B0CCB31009F5C06 /* CRTODeviceInfo.h in Headers */,
 				259AA6111AF7DF48006743A5 /* CRTOTransactionConfirmationEvent.h in Headers */,
 				251004971AF9216D00701F7F /* CRTODataEvent.h in Headers */,
@@ -438,9 +454,11 @@
 				2505607A1AF8F96D006804AA /* CRTOEventService.m in Sources */,
 				259AA5FE1AF7C8F9006743A5 /* CRTOAppLaunchEvent.m in Sources */,
 				258CDC2A1AF76EA5009E678E /* CRTOEvent.m in Sources */,
+				252D17951B0E5FF000DB6D91 /* CRTOExtraData.m in Sources */,
 				250560801AF9156F006804AA /* CRTOJSONEventSerializer.m in Sources */,
 				259AA61D1AF7E06A006743A5 /* CRTOProduct.m in Sources */,
 				255A94F81B0CE88E009F5C06 /* CRTOSDKInfo.m in Sources */,
+				25CF74101B0E19E4001A023A /* CRTOJSONConstants.m in Sources */,
 				259AA6031AF7CBB5006743A5 /* CRTOHomeViewEvent.m in Sources */,
 				251004981AF9216D00701F7F /* CRTODataEvent.m in Sources */,
 			);
@@ -454,6 +472,7 @@
 				258CDC1D1AF757D0009E678E /* advertiser_sdkTests.m in Sources */,
 				25CF74021B0E00FD001A023A /* CRTOSDKInfoTests.m in Sources */,
 				259AA6131AF7DF48006743A5 /* CRTOTransactionConfirmationEvent.m in Sources */,
+				252D17961B0E5FF000DB6D91 /* CRTOExtraData.m in Sources */,
 				25CF74001B0DFEE1001A023A /* CRTODeviceInfoTests.m in Sources */,
 				259AA61E1AF7E06A006743A5 /* CRTOProduct.m in Sources */,
 				255A94F41B0CE5AE009F5C06 /* CRTOAppInfo.m in Sources */,
@@ -467,6 +486,7 @@
 				2506B7581B0DDF050091D5F8 /* CRTOAppInfoTests.m in Sources */,
 				255A94EF1B0CCB31009F5C06 /* CRTODeviceInfo.m in Sources */,
 				259AA6091AF7DEED006743A5 /* CRTOProductListViewEvent.m in Sources */,
+				25CF74111B0E19E4001A023A /* CRTOJSONConstants.m in Sources */,
 				255A94F91B0CE88E009F5C06 /* CRTOSDKInfo.m in Sources */,
 				258CDC2B1AF76EA5009E678E /* CRTOEvent.m in Sources */,
 			);
