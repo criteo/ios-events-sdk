@@ -30,6 +30,7 @@
 #import "CRTODeviceInfo.h"
 #import "CRTOSDKInfo.h"
 
+static NSString* jsonProtocolVersion = nil;
 static NSDateFormatter* iso8601DateFormatter = nil;
 
 @interface CRTOJSONEventSerializer ()
@@ -45,6 +46,7 @@ static NSDateFormatter* iso8601DateFormatter = nil;
 
 + (NSString*) serializeAppLaunchEvent:(CRTOAppLaunchEvent*)event;
 + (NSString*) serializeBasketViewEvent:(CRTOBasketViewEvent*)event;
++ (NSString*) serializeDataEvent:(CRTODataEvent*)event;
 + (NSString*) serializeHomeViewEvent:(CRTOHomeViewEvent*)event;
 + (NSString*) serializeProductListViewEvent:(CRTOProductListViewEvent*)event;
 + (NSString*) serializeProductViewEvent:(CRTOProductViewEvent*)event;
@@ -60,6 +62,8 @@ static NSDateFormatter* iso8601DateFormatter = nil;
 {
     if ( self == [CRTOJSONEventSerializer class] )
     {
+        jsonProtocolVersion = kCRTOJSONProtocolVersionValue1_0_0;
+
         iso8601DateFormatter = [[NSDateFormatter alloc] init];
         iso8601DateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
         iso8601DateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
@@ -79,6 +83,10 @@ static NSDateFormatter* iso8601DateFormatter = nil;
 
     if ( [event isMemberOfClass:[CRTOBasketViewEvent class]] ) {
         return [CRTOJSONEventSerializer serializeBasketViewEvent:(CRTOBasketViewEvent*)event];
+    }
+
+    if ( [event isMemberOfClass:[CRTODataEvent class]] ) {
+        return [CRTOJSONEventSerializer serializeDataEvent:(CRTODataEvent*)event];
     }
 
     if ( [event isMemberOfClass:[CRTOHomeViewEvent class]] ) {
@@ -204,12 +212,16 @@ static NSDateFormatter* iso8601DateFormatter = nil;
         return kCRTOJSONEventTypeViewBasketKey;
     }
 
+    if ( [event isMemberOfClass:[CRTODataEvent class]] ) {
+        return kCRTOJSONEventTypeSetDataKey;
+    }
+
     if ( [event isMemberOfClass:[CRTOHomeViewEvent class]] ) {
         return kCRTOJSONEventTypeViewHomeKey;
     }
 
     if ( [event isMemberOfClass:[CRTOProductListViewEvent class]] ) {
-        return kCRTOJSONEventTypeViewListKey;
+        return kCRTOJSONEventTypeViewListingKey;
     }
 
     if ( [event isMemberOfClass:[CRTOProductViewEvent class]] ) {
@@ -238,14 +250,13 @@ static NSDateFormatter* iso8601DateFormatter = nil;
     NSDictionary* device  = [CRTOJSONEventSerializer deviceInfoDictionary];
     NSDictionary* app     = [CRTOJSONEventSerializer appInfoDictionary];
     NSDictionary* idDict  = [CRTOJSONEventSerializer idDictionary];
-    NSString* sdkVersion  = [CRTOSDKInfo sharedSDKInfo].sdkVersion;
 
     NSDictionary* request = @{ kCRTOJSONPropertyNameAccountKey     : account,
                                kCRTOJSONPropertyNameIdKey          : idDict,
                                kCRTOJSONPropertyNameDevice_InfoKey : device,
                                kCRTOJSONPropertyNameApp_InfoKey    : app,
                                kCRTOJSONPropertyNameEventsKey      : events,
-                               kCRTOJSONPropertyNameVersionKey     : sdkVersion };
+                               kCRTOJSONPropertyNameVersionKey     : jsonProtocolVersion };
 
     return request;
 }
@@ -303,42 +314,145 @@ static NSDateFormatter* iso8601DateFormatter = nil;
 
 + (NSString*) serializeBasketViewEvent:(CRTOBasketViewEvent*)event
 {
-    // TODO: serialize this type of event
-    @throw [NSException exceptionWithName:@"NotImplementedException"
-                                   reason:@"It's not implemented"
-                                 userInfo:nil];
+    NSMutableDictionary* eventDictionary = [CRTOJSONEventSerializer eventDictionaryForBaseEvent:event];
+
+    // Add View Basket specific keys
+
+    // Currency
+    if ( event.currency != nil ) {
+        eventDictionary[kCRTOJSONPropertyNameCurrencyKey] = event.currency;
+    }
+
+    // Product Array
+    NSMutableArray* productArray = [NSMutableArray new];
+
+    for ( CRTOBasketProduct* product in event.basketProducts ) {
+        NSDictionary* productDictionary = @{ kCRTOJSONProductPropertyIdKey       : product.productId,
+                                             kCRTOJSONProductPropertyPriceKey    : @(product.price),
+                                             kCRTOJSONProductPropertyQuantityKey : @(product.quantity) };
+
+        [productArray addObject:productDictionary];
+    }
+
+    eventDictionary[kCRTOJSONPropertyNameProductKey] = productArray;
+
+    NSDictionary* request = [CRTOJSONEventSerializer requestDictionaryWithEventDictionaries:@[ eventDictionary ]];
+
+    NSString* json = [CRTOJSONEventSerializer serializeRequestDictionaryToJSON:request];
+
+    return json;
+}
+
++ (NSString*) serializeDataEvent:(CRTODataEvent*)event
+{
+    NSMutableDictionary* eventDictionary = [CRTOJSONEventSerializer eventDictionaryForBaseEvent:event];
+
+    NSDictionary* request = [CRTOJSONEventSerializer requestDictionaryWithEventDictionaries:@[ eventDictionary ]];
+
+    NSString* json = [CRTOJSONEventSerializer serializeRequestDictionaryToJSON:request];
+
+    return json;
 }
 
 + (NSString*) serializeHomeViewEvent:(CRTOHomeViewEvent*)event
 {
-    // TODO: serialize this type of event
-    @throw [NSException exceptionWithName:@"NotImplementedException"
-                                   reason:@"It's not implemented"
-                                 userInfo:nil];
+    NSMutableDictionary* eventDictionary = [CRTOJSONEventSerializer eventDictionaryForBaseEvent:event];
+
+    NSDictionary* request = [CRTOJSONEventSerializer requestDictionaryWithEventDictionaries:@[ eventDictionary ]];
+
+    NSString* json = [CRTOJSONEventSerializer serializeRequestDictionaryToJSON:request];
+
+    return json;
 }
 
 + (NSString*) serializeProductListViewEvent:(CRTOProductListViewEvent*)event
 {
-    // TODO: serialize this type of event
-    @throw [NSException exceptionWithName:@"NotImplementedException"
-                                   reason:@"It's not implemented"
-                                 userInfo:nil];
+    NSMutableDictionary* eventDictionary = [CRTOJSONEventSerializer eventDictionaryForBaseEvent:event];
+
+    // Add View Listing specific keys
+
+    // Currency
+    if ( event.currency != nil ) {
+        eventDictionary[kCRTOJSONPropertyNameCurrencyKey] = event.currency;
+    }
+
+    // Product Array
+    NSMutableArray* productArray = [NSMutableArray new];
+
+    for ( CRTOProduct* product in event.products ) {
+        NSDictionary* productDictionary = @{ kCRTOJSONProductPropertyIdKey    : product.productId,
+                                             kCRTOJSONProductPropertyPriceKey : @(product.price) };
+
+        [productArray addObject:productDictionary];
+    }
+
+    eventDictionary[kCRTOJSONPropertyNameProductKey] = productArray;
+
+    NSDictionary* request = [CRTOJSONEventSerializer requestDictionaryWithEventDictionaries:@[ eventDictionary ]];
+
+    NSString* json = [CRTOJSONEventSerializer serializeRequestDictionaryToJSON:request];
+
+    return json;
 }
 
 + (NSString*) serializeProductViewEvent:(CRTOProductViewEvent*)event
 {
-    // TODO: serialize this type of event
-    @throw [NSException exceptionWithName:@"NotImplementedException"
-                                   reason:@"It's not implemented"
-                                 userInfo:nil];
+    NSMutableDictionary* eventDictionary = [CRTOJSONEventSerializer eventDictionaryForBaseEvent:event];
+
+    // Add View Item specific keys
+
+    // Currency
+    if ( event.currency != nil ) {
+        eventDictionary[kCRTOJSONPropertyNameCurrencyKey] = event.currency;
+    }
+
+    // One single, lonely product
+    if ( event.product ) {
+        eventDictionary[kCRTOJSONPropertyNameProductKey] = @{ kCRTOJSONProductPropertyIdKey : event.product.productId,
+                                                              kCRTOJSONProductPropertyPriceKey : @(event.product.price) };
+    }
+
+    NSDictionary* request = [CRTOJSONEventSerializer requestDictionaryWithEventDictionaries:@[ eventDictionary ]];
+
+    NSString* json = [CRTOJSONEventSerializer serializeRequestDictionaryToJSON:request];
+
+    return json;
 }
 
 + (NSString*) serializeTransactionConfirmationEvent:(CRTOTransactionConfirmationEvent*)event
 {
-    // TODO: serialize this type of event
-    @throw [NSException exceptionWithName:@"NotImplementedException"
-                                   reason:@"It's not implemented"
-                                 userInfo:nil];
+    NSMutableDictionary* eventDictionary = [CRTOJSONEventSerializer eventDictionaryForBaseEvent:event];
+
+    // Add Track Transaction specific keys
+
+    // Currency
+    if ( event.currency != nil ) {
+        eventDictionary[kCRTOJSONPropertyNameCurrencyKey] = event.currency;
+    }
+
+    // Transaction UID
+    if ( event.transactionId ) {
+        eventDictionary[kCRTOJSONPropertyNameIdKey] = event.transactionId;
+    }
+
+    // Product Array
+    NSMutableArray* productArray = [NSMutableArray new];
+
+    for ( CRTOBasketProduct* product in event.basketProducts ) {
+        NSDictionary* productDictionary = @{ kCRTOJSONProductPropertyIdKey       : product.productId,
+                                             kCRTOJSONProductPropertyPriceKey    : @(product.price),
+                                             kCRTOJSONProductPropertyQuantityKey : @(product.quantity) };
+
+        [productArray addObject:productDictionary];
+    }
+
+    eventDictionary[kCRTOJSONPropertyNameProductKey] = productArray;
+
+    NSDictionary* request = [CRTOJSONEventSerializer requestDictionaryWithEventDictionaries:@[ eventDictionary ]];
+
+    NSString* json = [CRTOJSONEventSerializer serializeRequestDictionaryToJSON:request];
+
+    return json;
 }
 
 @end

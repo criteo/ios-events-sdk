@@ -138,6 +138,8 @@ FOUNDATION_EXPORT NSString* const kCRTOJSONExtraDataTypeFloatValue;
 FOUNDATION_EXPORT NSString* const kCRTOJSONExtraDataTypeIntegerValue;
 FOUNDATION_EXPORT NSString* const kCRTOJSONExtraDataTypeTextValue;
 
+FOUNDATION_EXPORT NSString* const kCRTOJSONProtocolVersionValue1_0_0;
+
 
 @interface CRTOJSONConstants : NSObject
 

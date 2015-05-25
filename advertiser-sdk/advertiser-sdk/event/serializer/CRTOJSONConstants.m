@@ -139,6 +139,8 @@ NSString* const kCRTOJSONExtraDataTypeFloatValue   = @"float";
 NSString* const kCRTOJSONExtraDataTypeIntegerValue = @"integer";
 NSString* const kCRTOJSONExtraDataTypeTextValue    = @"text";
 
+NSString* const kCRTOJSONProtocolVersionValue1_0_0 = @"sdk_1.0.0";
+
 static NSSet* reservedKeysSet;
 
 @implementation CRTOJSONConstants

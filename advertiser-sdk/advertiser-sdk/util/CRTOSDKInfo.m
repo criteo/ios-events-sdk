@@ -7,6 +7,11 @@
 
 #import "CRTOSDKInfo.h"
 
+#define CRTOSDKVersionString_1_0_0   (@"1.0.0")
+//#define CRTOSDKVersionString_1_0_0   (@"YourSDK.VersionString.Here")
+
+#define CRTOSDKVersionString_Current CRTOSDKVersionString_1_0_0
+
 @interface CRTOSDKInfo ()
 
 - (void) setupSDKInfo;
@@ -44,7 +49,7 @@
 
 - (void) setupSDKInfo
 {
-    _sdkVersion = [NSString stringWithUTF8String:"sdk_1.0.0"];
+    _sdkVersion = CRTOSDKVersionString_Current;
 }
 
 @end
