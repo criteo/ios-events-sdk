@@ -14,10 +14,9 @@
 #define DEVICE_OSNAME (@"iPhone OS")
 #define DEVICE_PLATFORM (@"ios")
 
+static NSString* deviceIdentifier = nil;
+
 @interface CRTODeviceInfo ()
-{
-    NSString* _deviceIdentifier;
-}
 
 - (void) setupDeviceInfo;
 
@@ -54,8 +53,8 @@
 
 - (NSString*) deviceIdentifier
 {
-    if ( _deviceIdentifier != nil ) {
-        return _deviceIdentifier;
+    if ( deviceIdentifier != nil ) {
+        return deviceIdentifier;
     }
 
     NSUUID* advertisingIdentifer = [ASIdentifierManager sharedManager].advertisingIdentifier;
@@ -63,10 +62,10 @@
 
     if ( advertisingIdentifer != nil ) {
         dispatch_once(&onceToken, ^{
-            _deviceIdentifier = advertisingIdentifer.UUIDString;
+            deviceIdentifier = advertisingIdentifer.UUIDString;
         });
 
-        return _deviceIdentifier;
+        return deviceIdentifier;
     }
 
     return @"";
@@ -76,7 +75,6 @@
 
 - (void) setupDeviceInfo
 {
-    _deviceIdentifier   = nil;
     _deviceManufacturer = DEVICE_MANUFACTURER;
     _deviceModel        = @"";
     _osName             = DEVICE_OSNAME;
