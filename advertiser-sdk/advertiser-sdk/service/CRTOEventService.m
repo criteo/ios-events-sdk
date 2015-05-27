@@ -8,6 +8,7 @@
 #import "CRTOEventService.h"
 #import "CRTOEventService+Internal.h"
 #import "CRTOEvent+Internal.h"
+#import "CRTOEventQueue.h"
 #import "CRTOJSONEventSerializer.h"
 
 @implementation CRTOEventService
@@ -55,18 +56,12 @@
 
 - (NSString*) defaultCountry
 {
-    // TODO: Logic to select a default country
-    @throw [NSException exceptionWithName:@"NotImplementedException"
-                                   reason:@"It's not implemented"
-                                 userInfo:nil];
+    return @"";
 }
 
 - (NSString*) defaultLanguage
 {
-    // TODO: Logic to select a default language
-    @throw [NSException exceptionWithName:@"NotImplementedException"
-                                   reason:@"It's not implemented"
-                                 userInfo:nil];
+    return @"";
 }
 
 - (NSString*) defaultCrmId
@@ -83,10 +78,10 @@
 
     NSString* serializedEvent = [CRTOJSONEventSerializer serializeEventToJSONString:eventCopy];
 
-    NSLog(@"serialized event: %@", serializedEvent);
+    CRTOEventQueueItem* item = [[CRTOEventQueueItem alloc] initWithEvent:eventCopy
+                                                             requestBody:serializedEvent];
 
-    // Drop JSON payload into send queue
+    [[CRTOEventQueue sharedEventQueue] addQueueItem:item];
 }
-
 
 @end
