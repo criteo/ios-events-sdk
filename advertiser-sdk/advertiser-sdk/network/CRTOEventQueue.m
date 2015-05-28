@@ -14,7 +14,7 @@
 #define CRTO_EVENTQUEUE_MAX_AGE      (60.0 * 60.0)
 #define CRTO_EVENTQUEUE_MAX_DEPTH    (15)
 #define CRTO_EVENTQUEUE_SEND_TIMEOUT (60.0)
-#define CRTO_EVENTQUEUE_SEND_URL     (@"http://widget.criteo.com/")
+#define CRTO_EVENTQUEUE_SEND_URL     (@"http://widget.criteo.com/m/event/")
 
 static NSMapTable* connections = nil;
 static NSOperationQueue* delegateQueue = nil;
