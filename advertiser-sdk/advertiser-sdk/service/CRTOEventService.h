@@ -5,8 +5,7 @@
 //  Copyright (c) 2015 Criteo. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "CRTOEvent.h"
+#import <CriteoAdvertiser/CRTOEvent.h>
 
 @interface CRTOEventService : NSObject
 

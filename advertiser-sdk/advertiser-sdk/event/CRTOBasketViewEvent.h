@@ -5,7 +5,7 @@
 //  Copyright (c) 2015 Criteo. All rights reserved.
 //
 
-#import "CRTOEvent.h"
+#import <CriteoAdvertiser/CRTOEvent.h>
 
 /**
  *  @c CRTOBasketViewEvent is a concrete subclass of @c CRTOEvent used to describe a Basket View event.

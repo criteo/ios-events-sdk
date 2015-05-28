@@ -1,5 +1,5 @@
 //
-//  CRTOCatalogProduct.m
+//  CRTOProduct.m
 //  advertiser-sdk
 //
 //  Copyright (c) 2015 Criteo. All rights reserved.

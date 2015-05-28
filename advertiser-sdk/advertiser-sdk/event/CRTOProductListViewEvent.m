@@ -5,7 +5,7 @@
 //  Copyright (c) 2015 Criteo. All rights reserved.
 //
 
-#import "CRTOProductListViewEvent.h"
+#import <CriteoAdvertiser/CRTOProductListViewEvent.h>
 #import "CRTOProductListViewEvent+Internal.h"
 #import "CRTOEvent+Internal.h"
 

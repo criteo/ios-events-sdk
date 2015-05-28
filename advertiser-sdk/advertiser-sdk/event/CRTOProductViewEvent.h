@@ -5,8 +5,8 @@
 //  Copyright (c) 2015 Criteo. All rights reserved.
 //
 
-#import "CRTOEvent.h"
-#import "CRTOProduct.h"
+#import <CriteoAdvertiser/CRTOEvent.h>
+#import <CriteoAdvertiser/CRTOProduct.h>
 
 @interface CRTOProductViewEvent : CRTOEvent <NSCopying>
 
