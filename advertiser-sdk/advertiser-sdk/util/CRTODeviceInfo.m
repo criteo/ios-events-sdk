@@ -71,6 +71,13 @@ static NSString* deviceIdentifier = nil;
     return @"";
 }
 
+- (BOOL) isEventGatheringEnabled
+{
+    BOOL eventsEnabled = [ASIdentifierManager sharedManager].advertisingTrackingEnabled;
+
+    return eventsEnabled;
+}
+
 #pragma mark - Class Extension Methods
 
 - (void) setupDeviceInfo

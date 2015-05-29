@@ -12,6 +12,7 @@
 @property (nonatomic,readonly) NSString* deviceIdentifier;
 @property (nonatomic,readonly) NSString* deviceManufacturer;
 @property (nonatomic,readonly) NSString* deviceModel;
+@property (nonatomic,readonly) BOOL isEventGatheringEnabled;
 @property (nonatomic,readonly) NSString* osName;
 @property (nonatomic,readonly) NSString* osVersion;
 @property (nonatomic,readonly) NSString* platform;

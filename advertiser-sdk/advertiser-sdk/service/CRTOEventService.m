@@ -6,6 +6,7 @@
 //
 
 #import <CriteoAdvertiser/CRTOEventService.h>
+#import "CRTODeviceInfo.h"
 #import "CRTOEventService+Internal.h"
 #import "CRTOEvent+Internal.h"
 #import "CRTOEventQueue.h"
@@ -81,7 +82,9 @@
     CRTOEventQueueItem* item = [[CRTOEventQueueItem alloc] initWithEvent:eventCopy
                                                              requestBody:serializedEvent];
 
-    [[CRTOEventQueue sharedEventQueue] addQueueItem:item];
+    if ( [CRTODeviceInfo sharedDeviceInfo].isEventGatheringEnabled ) {
+        [[CRTOEventQueue sharedEventQueue] addQueueItem:item];
+    }
 }
 
 @end
