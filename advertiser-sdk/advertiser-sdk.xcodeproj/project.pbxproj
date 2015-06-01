@@ -65,6 +65,7 @@
 		259AA6261AF8A5CB006743A5 /* CRTOBasketViewEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 259AA6241AF8A5CB006743A5 /* CRTOBasketViewEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		259AA6271AF8A5CB006743A5 /* CRTOBasketViewEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 259AA6251AF8A5CB006743A5 /* CRTOBasketViewEvent.m */; };
 		259AA6281AF8A5CB006743A5 /* CRTOBasketViewEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 259AA6251AF8A5CB006743A5 /* CRTOBasketViewEvent.m */; };
+		25A1ABAC1B1CAEA00086EA4F /* CRTOAppLaunchEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A1ABAB1B1CAEA00086EA4F /* CRTOAppLaunchEventTests.m */; };
 		25CF74001B0DFEE1001A023A /* CRTODeviceInfoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25CF73FF1B0DFEE1001A023A /* CRTODeviceInfoTests.m */; };
 		25CF74021B0E00FD001A023A /* CRTOSDKInfoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25CF74011B0E00FD001A023A /* CRTOSDKInfoTests.m */; };
 		25CF740F1B0E19E4001A023A /* CRTOJSONConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 25CF740D1B0E19E4001A023A /* CRTOJSONConstants.h */; };
@@ -135,6 +136,7 @@
 		259AA6201AF7E081006743A5 /* CRTOBasketProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOBasketProduct.m; sourceTree = "<group>"; };
 		259AA6241AF8A5CB006743A5 /* CRTOBasketViewEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTOBasketViewEvent.h; sourceTree = "<group>"; };
 		259AA6251AF8A5CB006743A5 /* CRTOBasketViewEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOBasketViewEvent.m; sourceTree = "<group>"; };
+		25A1ABAB1B1CAEA00086EA4F /* CRTOAppLaunchEventTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOAppLaunchEventTests.m; sourceTree = "<group>"; };
 		25CF73FF1B0DFEE1001A023A /* CRTODeviceInfoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTODeviceInfoTests.m; sourceTree = "<group>"; };
 		25CF74011B0E00FD001A023A /* CRTOSDKInfoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOSDKInfoTests.m; sourceTree = "<group>"; };
 		25CF740D1B0E19E4001A023A /* CRTOJSONConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTOJSONConstants.h; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 		258CDC191AF757D0009E678E /* advertiser-sdkTests */ = {
 			isa = PBXGroup;
 			children = (
+				25A1ABAA1B1CAE830086EA4F /* event */,
 				2506B7561B0DDEC60091D5F8 /* util */,
 				258CDC1C1AF757D0009E678E /* advertiser_sdkTests.m */,
 				258CDC1A1AF757D0009E678E /* Supporting Files */,
@@ -316,6 +319,14 @@
 				259AA61B1AF7E06A006743A5 /* CRTOProduct.m */,
 			);
 			path = product;
+			sourceTree = "<group>";
+		};
+		25A1ABAA1B1CAE830086EA4F /* event */ = {
+			isa = PBXGroup;
+			children = (
+				25A1ABAB1B1CAEA00086EA4F /* CRTOAppLaunchEventTests.m */,
+			);
+			path = event;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -475,6 +486,7 @@
 				25CF74021B0E00FD001A023A /* CRTOSDKInfoTests.m in Sources */,
 				259AA6131AF7DF48006743A5 /* CRTOTransactionConfirmationEvent.m in Sources */,
 				252D17961B0E5FF000DB6D91 /* CRTOExtraData.m in Sources */,
+				25A1ABAC1B1CAEA00086EA4F /* CRTOAppLaunchEventTests.m in Sources */,
 				25CF74001B0DFEE1001A023A /* CRTODeviceInfoTests.m in Sources */,
 				259AA61E1AF7E06A006743A5 /* CRTOProduct.m in Sources */,
 				255A94F41B0CE5AE009F5C06 /* CRTOAppInfo.m in Sources */,

@@ -26,9 +26,9 @@ NSString* const kCRTOInitialLaunchKey = @"CRTOInitialLaunchKey";
     if ( self ) {
         if ( url ) {
             _deeplinkLaunchUrl = [NSString stringWithString:url];
-
-            [self detectFirstLaunch];
         }
+
+        [self detectFirstLaunch];
     }
     return self;
 }
