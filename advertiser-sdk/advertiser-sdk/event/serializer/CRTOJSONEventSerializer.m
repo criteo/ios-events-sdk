@@ -6,7 +6,13 @@
 //
 
 #import "CRTOJSONEventSerializer.h"
+
+#import "CRTOAppInfo.h"
+#import "CRTODateFormatter.h"
+#import "CRTODeviceInfo.h"
 #import "CRTOJSONConstants.h"
+#import "CRTOSDKInfo.h"
+
 #import "CRTOEvent.h"
 #import "CRTOEvent+Internal.h"
 #import "CRTOExtraData.h"
@@ -26,12 +32,8 @@
 #import "CRTOTransactionConfirmationEvent+Internal.h"
 #import "CRTOBasketProduct.h"
 #import "CRTOProduct.h"
-#import "CRTOAppInfo.h"
-#import "CRTODeviceInfo.h"
-#import "CRTOSDKInfo.h"
 
 static NSString* jsonProtocolVersion = nil;
-static NSDateFormatter* iso8601DateFormatter = nil;
 
 @interface CRTOJSONEventSerializer ()
 
@@ -63,11 +65,6 @@ static NSDateFormatter* iso8601DateFormatter = nil;
     if ( self == [CRTOJSONEventSerializer class] )
     {
         jsonProtocolVersion = kCRTOJSONProtocolVersionValue1_0_0;
-
-        iso8601DateFormatter = [[NSDateFormatter alloc] init];
-        iso8601DateFormatter.locale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
-        iso8601DateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ss'Z'";
-        iso8601DateFormatter.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
     }
 }
 
@@ -165,7 +162,7 @@ static NSDateFormatter* iso8601DateFormatter = nil;
     NSMutableDictionary* eventDictionary = [NSMutableDictionary new];
 
     eventDictionary[kCRTOJSONPropertyNameEventKey]     = [self eventValueForEvent:event];
-    eventDictionary[kCRTOJSONPropertyNameTimestampKey] = [iso8601DateFormatter stringFromDate:event.timestamp];
+    eventDictionary[kCRTOJSONPropertyNameTimestampKey] = [CRTODateFormatter iso8601StringFromDate:event.timestamp];
 
     NSDictionary* extraData = event.dictionaryWithAllExtraData;
 
@@ -177,7 +174,7 @@ static NSDateFormatter* iso8601DateFormatter = nil;
         switch ( data.type ) {
             case CRTOExtraDataTypeDate:
             {
-                NSString* dateValue = [iso8601DateFormatter stringFromDate:data.value];
+                NSString* dateValue = [CRTODateFormatter iso8601StringFromDate:data.value];
                 dataDictionary = @{ kCRTOJSONExtraDataValueKey : dateValue,
                                     kCRTOJSONExtraDataTypeKey  : kCRTOJSONExtraDataTypeDateValue };
             }
