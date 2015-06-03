@@ -35,22 +35,22 @@ static NSDateFormatter* iso8601DateFormatter = nil;
 
 @interface CRTOJSONEventSerializer ()
 
-+ (NSDictionary*) accountDictionary;
-+ (NSDictionary*) appInfoDictionary;
-+ (NSDictionary*) deviceInfoDictionary;
-+ (NSMutableDictionary*) eventDictionaryForBaseEvent:(CRTOEvent*)event;
-+ (NSString*) eventValueForEvent:(CRTOEvent*)event;
-+ (NSDictionary*) idDictionary;
-+ (NSDictionary*) requestDictionaryWithEventDictionaries:(NSArray*)events;
-+ (NSString*) serializeRequestDictionaryToJSON:(NSDictionary*)request;
+- (NSDictionary*) accountDictionary;
+- (NSDictionary*) appInfoDictionary;
+- (NSDictionary*) deviceInfoDictionary;
+- (NSMutableDictionary*) eventDictionaryForBaseEvent:(CRTOEvent*)event;
+- (NSString*) eventValueForEvent:(CRTOEvent*)event;
+- (NSDictionary*) idDictionary;
+- (NSDictionary*) requestDictionaryWithEventDictionaries:(NSArray*)events;
+- (NSString*) serializeRequestDictionaryToJSON:(NSDictionary*)request;
 
-+ (NSString*) serializeAppLaunchEvent:(CRTOAppLaunchEvent*)event;
-+ (NSString*) serializeBasketViewEvent:(CRTOBasketViewEvent*)event;
-+ (NSString*) serializeDataEvent:(CRTODataEvent*)event;
-+ (NSString*) serializeHomeViewEvent:(CRTOHomeViewEvent*)event;
-+ (NSString*) serializeProductListViewEvent:(CRTOProductListViewEvent*)event;
-+ (NSString*) serializeProductViewEvent:(CRTOProductViewEvent*)event;
-+ (NSString*) serializeTransactionConfirmationEvent:(CRTOTransactionConfirmationEvent*)event;
+- (NSString*) serializeAppLaunchEvent:(CRTOAppLaunchEvent*)event;
+- (NSString*) serializeBasketViewEvent:(CRTOBasketViewEvent*)event;
+- (NSString*) serializeDataEvent:(CRTODataEvent*)event;
+- (NSString*) serializeHomeViewEvent:(CRTOHomeViewEvent*)event;
+- (NSString*) serializeProductListViewEvent:(CRTOProductListViewEvent*)event;
+- (NSString*) serializeProductViewEvent:(CRTOProductViewEvent*)event;
+- (NSString*) serializeTransactionConfirmationEvent:(CRTOTransactionConfirmationEvent*)event;
 
 @end
 
@@ -71,57 +71,68 @@ static NSDateFormatter* iso8601DateFormatter = nil;
     }
 }
 
-#pragma mark - Public Static Methods
+#pragma mark - Public Methods
 
-+ (NSString*) serializeEventToJSONString:(CRTOEvent*)event
+- (NSString*) serializeEventToJSONString:(CRTOEvent*)event
 {
     NSParameterAssert(event);
 
     if ( [event isMemberOfClass:[CRTOAppLaunchEvent class]] ) {
-        return [CRTOJSONEventSerializer serializeAppLaunchEvent:(CRTOAppLaunchEvent*)event];
+        return [self serializeAppLaunchEvent:(CRTOAppLaunchEvent*)event];
     }
 
     if ( [event isMemberOfClass:[CRTOBasketViewEvent class]] ) {
-        return [CRTOJSONEventSerializer serializeBasketViewEvent:(CRTOBasketViewEvent*)event];
+        return [self serializeBasketViewEvent:(CRTOBasketViewEvent*)event];
     }
 
     if ( [event isMemberOfClass:[CRTODataEvent class]] ) {
-        return [CRTOJSONEventSerializer serializeDataEvent:(CRTODataEvent*)event];
+        return [self serializeDataEvent:(CRTODataEvent*)event];
     }
 
     if ( [event isMemberOfClass:[CRTOHomeViewEvent class]] ) {
-        return [CRTOJSONEventSerializer serializeHomeViewEvent:(CRTOHomeViewEvent*)event];
+        return [self serializeHomeViewEvent:(CRTOHomeViewEvent*)event];
     }
 
     if ( [event isMemberOfClass:[CRTOProductListViewEvent class]] ) {
-        return [CRTOJSONEventSerializer serializeProductListViewEvent:(CRTOProductListViewEvent*)event];
+        return [self serializeProductListViewEvent:(CRTOProductListViewEvent*)event];
     }
 
     if ( [event isMemberOfClass:[CRTOProductViewEvent class]] ) {
-        return [CRTOJSONEventSerializer serializeProductViewEvent:(CRTOProductViewEvent*)event];
+        return [self serializeProductViewEvent:(CRTOProductViewEvent*)event];
     }
 
     if ( [event isMemberOfClass:[CRTOTransactionConfirmationEvent class]] ) {
-        return [CRTOJSONEventSerializer serializeTransactionConfirmationEvent:(CRTOTransactionConfirmationEvent*)event];
+        return [self serializeTransactionConfirmationEvent:(CRTOTransactionConfirmationEvent*)event];
     }
 
     return nil;
 }
 
-#pragma mark - Static Class Extension Methods
+#pragma mark - Class Extension Methods
 
-+ (NSDictionary*) accountDictionary
+- (NSDictionary*) accountDictionary
 {
     CRTOAppInfo* appInfo = [CRTOAppInfo sharedAppInfo];
 
-    NSDictionary* account = @{ kCRTOJSONPartnerAppDataPropertyApp_NameKey      : appInfo.appId,
-                               kCRTOJSONPartnerAppDataPropertyCountry_CodeKey  : appInfo.appCountry,
-                               kCRTOJSONPartnerAppDataPropertyLanguage_CodeKey : appInfo.appLanguage };
+    NSString* country = self.countryCode;
+    NSString* language = self.languageCode;
 
-    return account;
+    NSMutableDictionary* account = [NSMutableDictionary new];
+
+    account[kCRTOJSONPartnerAppDataPropertyApp_NameKey] = appInfo.appId;
+
+    if ( country != nil ) {
+        account[kCRTOJSONPartnerAppDataPropertyCountry_CodeKey] = country;
+    }
+
+    if ( language != nil ) {
+        account[kCRTOJSONPartnerAppDataPropertyLanguage_CodeKey] = language;
+    }
+
+    return [NSDictionary dictionaryWithDictionary:account];
 }
 
-+ (NSDictionary*) appInfoDictionary
+- (NSDictionary*) appInfoDictionary
 {
     CRTOAppInfo* appInfo = [CRTOAppInfo sharedAppInfo];
     CRTOSDKInfo* sdkInfo = [CRTOSDKInfo sharedSDKInfo];
@@ -136,7 +147,7 @@ static NSDateFormatter* iso8601DateFormatter = nil;
     return app;
 }
 
-+ (NSDictionary*) deviceInfoDictionary
+- (NSDictionary*) deviceInfoDictionary
 {
     CRTODeviceInfo* deviceInfo = [CRTODeviceInfo sharedDeviceInfo];
 
@@ -149,11 +160,11 @@ static NSDateFormatter* iso8601DateFormatter = nil;
     return device;
 }
 
-+ (NSMutableDictionary*) eventDictionaryForBaseEvent:(CRTOEvent*)event
+- (NSMutableDictionary*) eventDictionaryForBaseEvent:(CRTOEvent*)event
 {
     NSMutableDictionary* eventDictionary = [NSMutableDictionary new];
 
-    eventDictionary[kCRTOJSONPropertyNameEventKey]     = [CRTOJSONEventSerializer eventValueForEvent:event];
+    eventDictionary[kCRTOJSONPropertyNameEventKey]     = [self eventValueForEvent:event];
     eventDictionary[kCRTOJSONPropertyNameTimestampKey] = [iso8601DateFormatter stringFromDate:event.timestamp];
 
     NSDictionary* extraData = event.dictionaryWithAllExtraData;
@@ -202,7 +213,7 @@ static NSDateFormatter* iso8601DateFormatter = nil;
     return eventDictionary;
 }
 
-+ (NSString*) eventValueForEvent:(CRTOEvent*)event
+- (NSString*) eventValueForEvent:(CRTOEvent*)event
 {
     if ( [event isMemberOfClass:[CRTOAppLaunchEvent class]] ) {
         return kCRTOJSONEventTypeAppLaunchKey;
@@ -235,7 +246,7 @@ static NSDateFormatter* iso8601DateFormatter = nil;
     return @"invalidEvent";
 }
 
-+ (NSDictionary*) idDictionary
+- (NSDictionary*) idDictionary
 {
     CRTODeviceInfo* deviceInfo = [CRTODeviceInfo sharedDeviceInfo];
 
@@ -244,12 +255,12 @@ static NSDateFormatter* iso8601DateFormatter = nil;
     return idDictionary;
 }
 
-+ (NSDictionary*) requestDictionaryWithEventDictionaries:(NSArray*)events
+- (NSDictionary*) requestDictionaryWithEventDictionaries:(NSArray*)events
 {
-    NSDictionary* account = [CRTOJSONEventSerializer accountDictionary];
-    NSDictionary* device  = [CRTOJSONEventSerializer deviceInfoDictionary];
-    NSDictionary* app     = [CRTOJSONEventSerializer appInfoDictionary];
-    NSDictionary* idDict  = [CRTOJSONEventSerializer idDictionary];
+    NSDictionary* account = [self accountDictionary];
+    NSDictionary* device  = [self deviceInfoDictionary];
+    NSDictionary* app     = [self appInfoDictionary];
+    NSDictionary* idDict  = [self idDictionary];
 
     NSDictionary* request = @{ kCRTOJSONPropertyNameAccountKey     : account,
                                kCRTOJSONPropertyNameIdKey          : idDict,
@@ -261,7 +272,7 @@ static NSDateFormatter* iso8601DateFormatter = nil;
     return request;
 }
 
-+ (NSString*) serializeRequestDictionaryToJSON:(NSDictionary*)request
+- (NSString*) serializeRequestDictionaryToJSON:(NSDictionary*)request
 {
     BOOL isValid = [NSJSONSerialization isValidJSONObject:request];
 
@@ -296,25 +307,25 @@ static NSDateFormatter* iso8601DateFormatter = nil;
     return nil;
 }
 
-+ (NSString*) serializeAppLaunchEvent:(CRTOAppLaunchEvent*)event
+- (NSString*) serializeAppLaunchEvent:(CRTOAppLaunchEvent*)event
 {
-    NSMutableDictionary* eventDictionary = [CRTOJSONEventSerializer eventDictionaryForBaseEvent:event];
+    NSMutableDictionary* eventDictionary = [self eventDictionaryForBaseEvent:event];
 
     // Add App Launch specific keys
     if ( event.isFirstLaunch ) {
         eventDictionary[kCRTOJSONPropertyNameFirst_LaunchKey] = @(YES);
     }
 
-    NSDictionary* request = [CRTOJSONEventSerializer requestDictionaryWithEventDictionaries:@[ eventDictionary ]];
+    NSDictionary* request = [self requestDictionaryWithEventDictionaries:@[ eventDictionary ]];
 
-    NSString* json = [CRTOJSONEventSerializer serializeRequestDictionaryToJSON:request];
+    NSString* json = [self serializeRequestDictionaryToJSON:request];
 
     return json;
 }
 
-+ (NSString*) serializeBasketViewEvent:(CRTOBasketViewEvent*)event
+- (NSString*) serializeBasketViewEvent:(CRTOBasketViewEvent*)event
 {
-    NSMutableDictionary* eventDictionary = [CRTOJSONEventSerializer eventDictionaryForBaseEvent:event];
+    NSMutableDictionary* eventDictionary = [self eventDictionaryForBaseEvent:event];
 
     // Add View Basket specific keys
 
@@ -336,38 +347,38 @@ static NSDateFormatter* iso8601DateFormatter = nil;
 
     eventDictionary[kCRTOJSONPropertyNameProductKey] = productArray;
 
-    NSDictionary* request = [CRTOJSONEventSerializer requestDictionaryWithEventDictionaries:@[ eventDictionary ]];
+    NSDictionary* request = [self requestDictionaryWithEventDictionaries:@[ eventDictionary ]];
 
-    NSString* json = [CRTOJSONEventSerializer serializeRequestDictionaryToJSON:request];
-
-    return json;
-}
-
-+ (NSString*) serializeDataEvent:(CRTODataEvent*)event
-{
-    NSMutableDictionary* eventDictionary = [CRTOJSONEventSerializer eventDictionaryForBaseEvent:event];
-
-    NSDictionary* request = [CRTOJSONEventSerializer requestDictionaryWithEventDictionaries:@[ eventDictionary ]];
-
-    NSString* json = [CRTOJSONEventSerializer serializeRequestDictionaryToJSON:request];
+    NSString* json = [self serializeRequestDictionaryToJSON:request];
 
     return json;
 }
 
-+ (NSString*) serializeHomeViewEvent:(CRTOHomeViewEvent*)event
+- (NSString*) serializeDataEvent:(CRTODataEvent*)event
 {
-    NSMutableDictionary* eventDictionary = [CRTOJSONEventSerializer eventDictionaryForBaseEvent:event];
+    NSMutableDictionary* eventDictionary = [self eventDictionaryForBaseEvent:event];
 
-    NSDictionary* request = [CRTOJSONEventSerializer requestDictionaryWithEventDictionaries:@[ eventDictionary ]];
+    NSDictionary* request = [self requestDictionaryWithEventDictionaries:@[ eventDictionary ]];
 
-    NSString* json = [CRTOJSONEventSerializer serializeRequestDictionaryToJSON:request];
+    NSString* json = [self serializeRequestDictionaryToJSON:request];
 
     return json;
 }
 
-+ (NSString*) serializeProductListViewEvent:(CRTOProductListViewEvent*)event
+- (NSString*) serializeHomeViewEvent:(CRTOHomeViewEvent*)event
 {
-    NSMutableDictionary* eventDictionary = [CRTOJSONEventSerializer eventDictionaryForBaseEvent:event];
+    NSMutableDictionary* eventDictionary = [self eventDictionaryForBaseEvent:event];
+
+    NSDictionary* request = [self requestDictionaryWithEventDictionaries:@[ eventDictionary ]];
+
+    NSString* json = [self serializeRequestDictionaryToJSON:request];
+
+    return json;
+}
+
+- (NSString*) serializeProductListViewEvent:(CRTOProductListViewEvent*)event
+{
+    NSMutableDictionary* eventDictionary = [self eventDictionaryForBaseEvent:event];
 
     // Add View Listing specific keys
 
@@ -388,16 +399,16 @@ static NSDateFormatter* iso8601DateFormatter = nil;
 
     eventDictionary[kCRTOJSONPropertyNameProductKey] = productArray;
 
-    NSDictionary* request = [CRTOJSONEventSerializer requestDictionaryWithEventDictionaries:@[ eventDictionary ]];
+    NSDictionary* request = [self requestDictionaryWithEventDictionaries:@[ eventDictionary ]];
 
-    NSString* json = [CRTOJSONEventSerializer serializeRequestDictionaryToJSON:request];
+    NSString* json = [self serializeRequestDictionaryToJSON:request];
 
     return json;
 }
 
-+ (NSString*) serializeProductViewEvent:(CRTOProductViewEvent*)event
+- (NSString*) serializeProductViewEvent:(CRTOProductViewEvent*)event
 {
-    NSMutableDictionary* eventDictionary = [CRTOJSONEventSerializer eventDictionaryForBaseEvent:event];
+    NSMutableDictionary* eventDictionary = [self eventDictionaryForBaseEvent:event];
 
     // Add View Item specific keys
 
@@ -412,16 +423,16 @@ static NSDateFormatter* iso8601DateFormatter = nil;
                                                               kCRTOJSONProductPropertyPriceKey : @(event.product.price) };
     }
 
-    NSDictionary* request = [CRTOJSONEventSerializer requestDictionaryWithEventDictionaries:@[ eventDictionary ]];
+    NSDictionary* request = [self requestDictionaryWithEventDictionaries:@[ eventDictionary ]];
 
-    NSString* json = [CRTOJSONEventSerializer serializeRequestDictionaryToJSON:request];
+    NSString* json = [self serializeRequestDictionaryToJSON:request];
 
     return json;
 }
 
-+ (NSString*) serializeTransactionConfirmationEvent:(CRTOTransactionConfirmationEvent*)event
+- (NSString*) serializeTransactionConfirmationEvent:(CRTOTransactionConfirmationEvent*)event
 {
-    NSMutableDictionary* eventDictionary = [CRTOJSONEventSerializer eventDictionaryForBaseEvent:event];
+    NSMutableDictionary* eventDictionary = [self eventDictionaryForBaseEvent:event];
 
     // Add Track Transaction specific keys
 
@@ -448,9 +459,9 @@ static NSDateFormatter* iso8601DateFormatter = nil;
 
     eventDictionary[kCRTOJSONPropertyNameProductKey] = productArray;
 
-    NSDictionary* request = [CRTOJSONEventSerializer requestDictionaryWithEventDictionaries:@[ eventDictionary ]];
+    NSDictionary* request = [self requestDictionaryWithEventDictionaries:@[ eventDictionary ]];
 
-    NSString* json = [CRTOJSONEventSerializer serializeRequestDictionaryToJSON:request];
+    NSString* json = [self serializeRequestDictionaryToJSON:request];
 
     return json;
 }

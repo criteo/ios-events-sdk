@@ -5,10 +5,11 @@
 //  Copyright (c) 2015 Criteo. All rights reserved.
 //
 
+#include "CRTOJSONEventSerializer.h"
+
 @interface CRTOEventService ()
 
-- (NSString*) defaultCountry;
-- (NSString*) defaultLanguage;
-- (NSString*) defaultCrmId;
+- (CRTOEvent*) appendEventServiceParametersToEvent:(CRTOEvent*)event;
+- (CRTOJSONEventSerializer*) createJSONSerializer;
 
 @end

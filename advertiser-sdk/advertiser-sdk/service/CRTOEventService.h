@@ -15,13 +15,13 @@
 @interface CRTOEventService : NSObject
 
 /** The two letter ISO-3166-1 country code representing the country associated with events sent via this event service. */
-@property (nonatomic,strong) NSString* country;
+@property (atomic,copy) NSString* country;
 
 /** The two letter ISO-639-1 language code representing the language associated with events sent via this event service. */
-@property (nonatomic,strong) NSString* language;
+@property (atomic,copy) NSString* language;
 
 /** The customer identifier associated with events sent via this event service. */
-@property (nonatomic,strong) NSString* crmId;
+@property (atomic,copy) NSString* crmId;
 
 /**
  *  Returns the shared event service.

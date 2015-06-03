@@ -10,6 +10,9 @@
 
 @interface CRTOJSONEventSerializer : NSObject
 
-+ (NSString*) serializeEventToJSONString:(CRTOEvent*)event;
+@property (nonatomic,strong) NSString* countryCode;
+@property (nonatomic,strong) NSString* languageCode;
+
+- (NSString*) serializeEventToJSONString:(CRTOEvent*)event;
 
 @end

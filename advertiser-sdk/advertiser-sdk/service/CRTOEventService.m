@@ -10,6 +10,7 @@
 #import "CRTOEventService+Internal.h"
 #import "CRTOEvent+Internal.h"
 #import "CRTOEventQueue.h"
+#import "CRTOJSONConstants.h"
 #import "CRTOJSONEventSerializer.h"
 
 @implementation CRTOEventService
@@ -30,14 +31,21 @@
 {
     self = [super init];
     if ( self ) {
-        _country = country ?: [self defaultCountry];
-        _language = language ?: [self defaultLanguage];
-        _crmId = crmId ?: [self defaultCrmId];
+
+        if ( country != nil ) {
+            _country = [NSString stringWithString:country];
+        }
+
+        if ( language != nil ) {
+            _language = [NSString stringWithString:language];
+        }
+
+        if ( crmId != nil ) {
+            _crmId = [NSString stringWithString:crmId];
+        }
     }
     return self;
 }
-
-#pragma mark - Properties
 
 #pragma mark - Static Methods
 
@@ -55,19 +63,27 @@
 
 #pragma mark - Class Extension Methods
 
-- (NSString*) defaultCountry
+- (CRTOEvent*) appendEventServiceParametersToEvent:(CRTOEvent*)event
 {
-    return @"";
+    NSString* crmId = self.crmId;
+
+    if ( crmId ) {
+        [event setStringExtraData:crmId
+                           ForKey:kCRTOJSONUniversalTagParametersHelperCustomer_IdKey];
+    }
+
+    return event;
 }
 
-- (NSString*) defaultLanguage
+/* Create and initialize a serializer with the _current_ state of the event service */
+- (CRTOJSONEventSerializer*) createJSONSerializer
 {
-    return @"";
-}
+    CRTOJSONEventSerializer* serializer = [CRTOJSONEventSerializer new];
 
-- (NSString*) defaultCrmId
-{
-    return nil;
+    serializer.countryCode = self.country;
+    serializer.languageCode = self.language;
+
+    return serializer;
 }
 
 #pragma mark - Public Methods
@@ -77,7 +93,11 @@
     CRTOEvent* eventCopy = [event copy];
     eventCopy.timestamp = [NSDate date];
 
-    NSString* serializedEvent = [CRTOJSONEventSerializer serializeEventToJSONString:eventCopy];
+    CRTOJSONEventSerializer* serializer = [self createJSONSerializer];
+
+    eventCopy = [self appendEventServiceParametersToEvent:eventCopy];
+
+    NSString* serializedEvent = [serializer serializeEventToJSONString:eventCopy];
 
     CRTOEventQueueItem* item = [[CRTOEventQueueItem alloc] initWithEvent:eventCopy
                                                              requestBody:serializedEvent];
