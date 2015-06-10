@@ -21,7 +21,7 @@
 @property (atomic,copy) NSString* language;
 
 /** The customer identifier associated with events sent via this event service. */
-@property (atomic,copy) NSString* crmId;
+@property (atomic,copy) NSString* customerId;
 
 /**
  *  Returns the shared event service.
@@ -50,13 +50,13 @@
 /**
  *  Initializes a newly allocated instance of @c CRTOEventService with customized country, language, and CRM identifier values.
  *
- *  @param country  Two letter ISO-3166-1 country code associated with events sent using the event service.
- *  @param language Two letter ISO-639-1 language code associated with events sent using the event service.
- *  @param crmId    The customer identifier associated with events send via this event service.
+ *  @param country    Two letter ISO-3166-1 country code associated with events sent using the event service.
+ *  @param language   Two letter ISO-639-1 language code associated with events sent using the event service.
+ *  @param customerId The customer identifier associated with events send via this event service.
  *
- *  @return A @c CRTOEventService initialized with custom @c country,@c language, and @c crmId values.
+ *  @return A @c CRTOEventService initialized with custom @c country,@c language, and @c customerId values.
  */
-- (instancetype) initWithCountry:(NSString*)country language:(NSString*)language crmId:(NSString*)crmId;
+- (instancetype) initWithCountry:(NSString*)country language:(NSString*)language customerId:(NSString*)customerId;
 
 /**
  *  Submits an event to Criteo's prediction platform.

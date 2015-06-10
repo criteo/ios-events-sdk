@@ -19,15 +19,15 @@
 
 - (instancetype) init
 {
-    return [self initWithCountry:nil language:nil crmId:nil];
+    return [self initWithCountry:nil language:nil customerId:nil];
 }
 
 - (instancetype) initWithCountry:(NSString*)country language:(NSString*)language
 {
-    return [self initWithCountry:country language:language crmId:nil];
+    return [self initWithCountry:country language:language customerId:nil];
 }
 
-- (instancetype) initWithCountry:(NSString*)country language:(NSString*)language crmId:(NSString*)crmId
+- (instancetype) initWithCountry:(NSString*)country language:(NSString*)language customerId:(NSString*)customerId
 {
     self = [super init];
     if ( self ) {
@@ -40,8 +40,8 @@
             _language = [NSString stringWithString:language];
         }
 
-        if ( crmId != nil ) {
-            _crmId = [NSString stringWithString:crmId];
+        if ( customerId != nil ) {
+            _customerId = [NSString stringWithString:customerId];
         }
     }
     return self;
@@ -65,10 +65,10 @@
 
 - (CRTOEvent*) appendEventServiceParametersToEvent:(CRTOEvent*)event
 {
-    NSString* crmId = self.crmId;
+    NSString* customerId = self.customerId;
 
-    if ( crmId ) {
-        [event setStringExtraData:crmId
+    if ( customerId ) {
+        [event setStringExtraData:customerId
                            ForKey:kCRTOJSONUniversalTagParametersHelperCustomer_IdKey];
     }
 
