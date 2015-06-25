@@ -4,4 +4,7 @@
    <FileRef
       location = "group:advertiser-sdk/advertiser-sdk.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
 </Workspace>

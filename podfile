@@ -1,0 +1,5 @@
+workspace 'advertiser-sdk'
+xcodeproj 'advertiser-sdk/advertiser-sdk'
+link_with 'advertiser-sdkTests'
+
+pod 'Nocilla'

@@ -8,6 +8,8 @@
 #import <Foundation/Foundation.h>
 #import "CRTOEventQueueItem.h"
 
+typedef void(^CRTOEventQueueItemBlock)(CRTOEventQueueItem* item);
+
 @interface CRTOEventQueue : NSObject <NSURLConnectionDataDelegate>
 
 @property (nonatomic,readonly) NSUInteger maxQueueDepth;
@@ -16,5 +18,6 @@
 + (instancetype) sharedEventQueue;
 
 - (void) addQueueItem:(CRTOEventQueueItem*)item;
+- (void) onItemSent:(CRTOEventQueueItemBlock)sentBlock;
 
 @end

@@ -22,12 +22,15 @@ static dispatch_queue_t dispatchQueue = NULL;
 static NSMutableArray* eventQueue = nil;
 static NSMutableSet* itemsInFlight = nil;
 
+static CRTOEventQueueItemBlock itemSentBlock = NULL;
+
 @interface CRTOEventQueue ()
 {
 @private
     NSURL* endpoint;
 }
 
+- (void) notifyItemSent:(CRTOEventQueueItem*)item;
 - (void) reapQueue;
 - (void) sendQueue;
 - (void) sendItem:(CRTOEventQueueItem*)item;
@@ -86,6 +89,19 @@ static NSMutableSet* itemsInFlight = nil;
 }
 
 #pragma mark - Class Extension Methods
+
+- (void) notifyItemSent:(CRTOEventQueueItem*)item
+{
+    CRTOEventQueueItemBlock block = itemSentBlock;
+
+    if ( item == nil || block == NULL ) {
+        return;
+    }
+
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        block(item);
+    });
+}
 
 - (void) reapQueue
 {
@@ -212,6 +228,8 @@ static NSMutableSet* itemsInFlight = nil;
 
         NSLog(@"Finished queue item. (if=%llu,con=%llu,qd=%llu)",
               (uint64_t)itemsInFlight.count, (uint64_t)connections.count, (uint64_t)eventQueue.count);
+
+        [self notifyItemSent:item];
     });
 }
 
@@ -230,6 +248,11 @@ static NSMutableSet* itemsInFlight = nil;
 
     [self reapQueue];
     [self sendQueue];
+}
+
+- (void) onItemSent:(CRTOEventQueueItemBlock)sentBlock
+{
+    itemSentBlock = sentBlock;
 }
 
 @end
