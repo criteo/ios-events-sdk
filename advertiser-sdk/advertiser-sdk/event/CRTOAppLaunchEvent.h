@@ -18,24 +18,10 @@ FOUNDATION_EXPORT NSString* const kCRTOInitialLaunchKey;
 @interface CRTOAppLaunchEvent : CRTOEvent <NSCopying>
 
 /**
- *  A string containing the Deeplink launch URL supplied to the @c initWithDeeplinkLaunchUrl: initializer.
- */
-@property (nonatomic,strong,readonly) NSString* deeplinkLaunchUrl;
-
-/**
- *  Initializes a newly allocated app launch event with the @c deeplinkLaunchUrl property set to @i nil.
+ *  Initializes a newly allocated app launch event.
  *
- *  @return A @c CRTOAppLaunchEvent initialized with a nil @c deeplinkLaunchUrl.
+ *  @return A @c CRTOAppLaunchEvent.
  */
 - (instancetype) init;
-
-/**
- *  Initializes a newly allocated app launch event with a deeplink launch URL.
- *
- *  @param url An instance of @c NSString containing the deeplink used to invoke the app.
- *
- *  @return A @c CRTOAppLaunchEvent containing a deeplink launch URL.
- */
-- (instancetype) initWithDeeplinkLaunchUrl:(NSString*)url;
 
 @end

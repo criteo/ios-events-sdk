@@ -51,6 +51,7 @@ FOUNDATION_EXPORT NSString* const kCRTOJSONEventTypeViewProductKey;
 FOUNDATION_EXPORT NSString* const kCRTOJSONEventTypeVpKey;
 FOUNDATION_EXPORT NSString* const kCRTOJSONEventTypeViewSearchKey;
 FOUNDATION_EXPORT NSString* const kCRTOJSONEventTypeVsKey;
+FOUNDATION_EXPORT NSString* const kCRTOJSONEventTypeAppDeeplinkKey;
 
 FOUNDATION_EXPORT NSString* const kCRTOJSONPartnerAppDataPropertyAnKey;
 FOUNDATION_EXPORT NSString* const kCRTOJSONPartnerAppDataPropertyApp_CountryKey;
@@ -110,6 +111,7 @@ FOUNDATION_EXPORT NSString* const kCRTOJSONPropertyNameIpKey;
 FOUNDATION_EXPORT NSString* const kCRTOJSONPropertyNameVKey;
 FOUNDATION_EXPORT NSString* const kCRTOJSONPropertyNameVersionKey;
 FOUNDATION_EXPORT NSString* const kCRTOJSONPropertyValueDcKey;
+FOUNDATION_EXPORT NSString* const kCRTOJSONPropertyNameDeeplink_UriKey;
 
 FOUNDATION_EXPORT NSString* const kCRTOJSONSiteTypeDesktopKey;
 FOUNDATION_EXPORT NSString* const kCRTOJSONSiteTypeIn_App_AndroidKey;

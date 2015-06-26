@@ -51,6 +51,7 @@ NSString* const kCRTOJSONEventTypeViewProductKey                = @"viewProduct"
 NSString* const kCRTOJSONEventTypeVpKey                         = @"vp"; // EventType.VIEW_PRODUCT
 NSString* const kCRTOJSONEventTypeViewSearchKey                 = @"viewSearch"; // EventType.VIEW_SEARCH
 NSString* const kCRTOJSONEventTypeVsKey                         = @"vs"; // EventType.VIEW_SEARCH
+NSString* const kCRTOJSONEventTypeAppDeeplinkKey                = @"appDeeplink";
 
 NSString* const kCRTOJSONPartnerAppDataPropertyAnKey            = @"an"; // PartnerAppDataProperty.APP_NAME
 NSString* const kCRTOJSONPartnerAppDataPropertyApp_CountryKey   = @"app_country";
@@ -109,6 +110,7 @@ NSString* const kCRTOJSONPropertyNameTvKey                      = @"tv"; // Prop
 NSString* const kCRTOJSONPropertyNameIpKey                      = @"ip"; // PropertyName.USER_IP
 NSString* const kCRTOJSONPropertyNameVKey                       = @"v"; // PropertyName.VERSION
 NSString* const kCRTOJSONPropertyNameVersionKey                 = @"version"; // PropertyName.VERSION
+NSString* const kCRTOJSONPropertyNameDeeplink_UriKey            = @"deeplink_uri";
 
 NSString* const kCRTOJSONPropertyValueDcKey                     = @"dc"; // PropertyValue.DIS_DOUBLE_CAL
 
@@ -248,6 +250,7 @@ static NSSet* reservedKeysSet;
                                    kCRTOJSONPropertyNameVKey,
                                    kCRTOJSONPropertyNameVersionKey,
                                    kCRTOJSONPropertyValueDcKey,
+                                   kCRTOJSONPropertyNameDeeplink_UriKey,
                                    kCRTOJSONSiteTypeDesktopKey,
                                    kCRTOJSONSiteTypeIn_App_AndroidKey,
                                    kCRTOJSONSiteTypeIn_App_IosKey,

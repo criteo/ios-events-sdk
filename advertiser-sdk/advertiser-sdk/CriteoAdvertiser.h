@@ -23,6 +23,7 @@ FOUNDATION_EXPORT const unsigned char advertiser_sdkVersionString[];
 #import <CriteoAdvertiser/CRTOAppLaunchEvent.h>
 #import <CriteoAdvertiser/CRTOBasketViewEvent.h>
 #import <CriteoAdvertiser/CRTODataEvent.h>
+#import <CriteoAdvertiser/CRTODeeplinkEvent.h>
 #import <CriteoAdvertiser/CRTOHomeViewEvent.h>
 #import <CriteoAdvertiser/CRTOProductListViewEvent.h>
 #import <CriteoAdvertiser/CRTOProductViewEvent.h>

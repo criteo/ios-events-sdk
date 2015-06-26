@@ -31,15 +31,6 @@
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:kCRTOInitialLaunchKey];
 }
 
-- (void) testFirstLaunchDetectedWithDeeplinkInit
-{
-    [self removeFirstLaunchSetting];
-
-    CRTOAppLaunchEvent* appLaunch = [[CRTOAppLaunchEvent alloc] initWithDeeplinkLaunchUrl:@"myApp://myApp/search?item=ASmarterDeveloper"];
-
-    XCTAssertTrue(appLaunch.isFirstLaunch, @"Failed to detect first app launch");
-}
-
 - (void) testFirstLaunchDetectedWithDefaultInit
 {
     [self removeFirstLaunchSetting];

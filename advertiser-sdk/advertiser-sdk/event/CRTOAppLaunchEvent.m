@@ -17,17 +17,8 @@ NSString* const kCRTOInitialLaunchKey = @"CRTOInitialLaunchKey";
 
 - (instancetype) init
 {
-    return [self initWithDeeplinkLaunchUrl:nil];
-}
-
-- (instancetype) initWithDeeplinkLaunchUrl:(NSString*)url
-{
     self = [super init];
     if ( self ) {
-        if ( url ) {
-            _deeplinkLaunchUrl = [NSString stringWithString:url];
-        }
-
         [self detectFirstLaunch];
     }
     return self;
@@ -46,7 +37,7 @@ NSString* const kCRTOInitialLaunchKey = @"CRTOInitialLaunchKey";
 
 - (instancetype) initWithFirstLaunchFlagOverride:(BOOL)isFirstLaunch
 {
-    self = [self initWithDeeplinkLaunchUrl:nil];
+    self = [self init];
 
     _isFirstLaunch = isFirstLaunch;
 
@@ -59,7 +50,6 @@ NSString* const kCRTOInitialLaunchKey = @"CRTOInitialLaunchKey";
 {
     BOOL valid = YES;
 
-    //valid = valid && (_deeplinkLaunchUrl == nil || _deeplinkLaunchUrl.length > 0);
     valid = valid && [super isValid];
 
     return valid;

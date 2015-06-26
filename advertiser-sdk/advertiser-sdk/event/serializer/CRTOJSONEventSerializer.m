@@ -7,11 +7,8 @@
 
 #import "CRTOJSONEventSerializer.h"
 
-#import "CRTOAppInfo.h"
 #import "CRTODateFormatter.h"
-#import "CRTODeviceInfo.h"
 #import "CRTOJSONConstants.h"
-#import "CRTOSDKInfo.h"
 
 #import "CRTOEvent.h"
 #import "CRTOEvent+Internal.h"
@@ -20,6 +17,8 @@
 #import "CRTOAppLaunchEvent+Internal.h"
 #import "CRTODataEvent.h"
 #import "CRTODataEvent+Internal.h"
+#import "CRTODeeplinkEvent.h"
+#import "CRTODeeplinkEvent+Internal.h"
 #import "CRTOBasketViewEvent.h"
 #import "CRTOBasketViewEvent+Internal.h"
 #import "CRTOHomeViewEvent.h"
@@ -49,6 +48,7 @@ static NSString* jsonProtocolVersion = nil;
 - (NSString*) serializeAppLaunchEvent:(CRTOAppLaunchEvent*)event;
 - (NSString*) serializeBasketViewEvent:(CRTOBasketViewEvent*)event;
 - (NSString*) serializeDataEvent:(CRTODataEvent*)event;
+- (NSString*) serializeDeeplinkEvent:(CRTODeeplinkEvent*)event;
 - (NSString*) serializeHomeViewEvent:(CRTOHomeViewEvent*)event;
 - (NSString*) serializeProductListViewEvent:(CRTOProductListViewEvent*)event;
 - (NSString*) serializeProductViewEvent:(CRTOProductViewEvent*)event;
@@ -57,6 +57,12 @@ static NSString* jsonProtocolVersion = nil;
 @end
 
 @implementation CRTOJSONEventSerializer
+{
+@private
+    CRTOAppInfo* appInfo;
+    CRTODeviceInfo* deviceInfo;
+    CRTOSDKInfo* sdkInfo;
+}
 
 #pragma mark - Static Initializer
 
@@ -66,6 +72,24 @@ static NSString* jsonProtocolVersion = nil;
     {
         jsonProtocolVersion = kCRTOJSONProtocolVersionValue1_0_0;
     }
+}
+
+#pragma mark - Initializers
+
+- (instancetype) init
+{
+    return [self initWithAppInfo:nil deviceInfo:nil sdkInfo:nil];
+}
+
+- (instancetype) initWithAppInfo:(CRTOAppInfo*)app deviceInfo:(CRTODeviceInfo*)device sdkInfo:(CRTOSDKInfo*)sdk
+{
+    self = [super init];
+    if ( self != nil ) {
+        appInfo    = app    ?: [CRTOAppInfo sharedAppInfo];
+        deviceInfo = device ?: [CRTODeviceInfo sharedDeviceInfo];
+        sdkInfo    = sdk    ?: [CRTOSDKInfo sharedSDKInfo];
+    }
+    return self;
 }
 
 #pragma mark - Public Methods
@@ -84,6 +108,10 @@ static NSString* jsonProtocolVersion = nil;
 
     if ( [event isMemberOfClass:[CRTODataEvent class]] ) {
         return [self serializeDataEvent:(CRTODataEvent*)event];
+    }
+
+    if ( [event isMemberOfClass:[CRTODeeplinkEvent class]] ) {
+        return [self serializeDeeplinkEvent:(CRTODeeplinkEvent*)event];
     }
 
     if ( [event isMemberOfClass:[CRTOHomeViewEvent class]] ) {
@@ -109,8 +137,6 @@ static NSString* jsonProtocolVersion = nil;
 
 - (NSDictionary*) accountDictionary
 {
-    CRTOAppInfo* appInfo = [CRTOAppInfo sharedAppInfo];
-
     NSString* country = self.countryCode;
     NSString* language = self.languageCode;
 
@@ -131,9 +157,6 @@ static NSString* jsonProtocolVersion = nil;
 
 - (NSDictionary*) appInfoDictionary
 {
-    CRTOAppInfo* appInfo = [CRTOAppInfo sharedAppInfo];
-    CRTOSDKInfo* sdkInfo = [CRTOSDKInfo sharedSDKInfo];
-
     NSDictionary* app = @{ kCRTOJSONPartnerAppDataPropertyApp_IdKey       : appInfo.appId,
                            kCRTOJSONPartnerAppDataPropertyApp_NameKey     : appInfo.appName,
                            kCRTOJSONPartnerAppDataPropertyApp_VersionKey  : appInfo.appVersion,
@@ -146,8 +169,6 @@ static NSString* jsonProtocolVersion = nil;
 
 - (NSDictionary*) deviceInfoDictionary
 {
-    CRTODeviceInfo* deviceInfo = [CRTODeviceInfo sharedDeviceInfo];
-
     NSDictionary* device = @{ kCRTOJSONDeviceInfoPlatformKey            : deviceInfo.platform,
                               kCRTOJSONDeviceInfoOs_NameKey             : deviceInfo.osName,
                               kCRTOJSONDeviceInfoOs_VersionKey          : deviceInfo.osVersion,
@@ -224,6 +245,10 @@ static NSString* jsonProtocolVersion = nil;
         return kCRTOJSONEventTypeSetDataKey;
     }
 
+    if ( [event isMemberOfClass:[CRTODeeplinkEvent class]] ) {
+        return kCRTOJSONEventTypeAppDeeplinkKey;
+    }
+
     if ( [event isMemberOfClass:[CRTOHomeViewEvent class]] ) {
         return kCRTOJSONEventTypeViewHomeKey;
     }
@@ -245,8 +270,6 @@ static NSString* jsonProtocolVersion = nil;
 
 - (NSDictionary*) idDictionary
 {
-    CRTODeviceInfo* deviceInfo = [CRTODeviceInfo sharedDeviceInfo];
-
     NSDictionary* idDictionary = @{ kCRTOJSONPropertyNameIdfaKey : deviceInfo.deviceIdentifier };
 
     return idDictionary;
@@ -354,6 +377,24 @@ static NSString* jsonProtocolVersion = nil;
 - (NSString*) serializeDataEvent:(CRTODataEvent*)event
 {
     NSMutableDictionary* eventDictionary = [self eventDictionaryForBaseEvent:event];
+
+    NSDictionary* request = [self requestDictionaryWithEventDictionaries:@[ eventDictionary ]];
+
+    NSString* json = [self serializeRequestDictionaryToJSON:request];
+
+    return json;
+}
+
+- (NSString*) serializeDeeplinkEvent:(CRTODeeplinkEvent*)event
+{
+    NSMutableDictionary* eventDictionary = [self eventDictionaryForBaseEvent:event];
+
+    // Add Deeplink specific keys
+
+    // Deeplink
+    if ( event.deeplinkLaunchUrl != nil ) {
+        eventDictionary[kCRTOJSONPropertyNameDeeplink_UriKey] = event.deeplinkLaunchUrl;
+    }
 
     NSDictionary* request = [self requestDictionaryWithEventDictionaries:@[ eventDictionary ]];
 
