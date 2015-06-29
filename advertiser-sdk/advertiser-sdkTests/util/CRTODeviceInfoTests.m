@@ -36,7 +36,10 @@
     XCTAssertNotNil(sharedInfo, @"Can't get shared device info instance");
 }
 
-- (void) testDeviceIdentifier
+/* This test breaks because in logic tests we just can't retrieve the idfa.
+   It should be enabled again once we have a test app so that we can relate thos test to the app
+   and launch them as application tests. */
+- (void) DISABLEDtestDeviceIdentifier
 {
     NSString* deviceIdentifier = deviceInfo.deviceIdentifier;
 
