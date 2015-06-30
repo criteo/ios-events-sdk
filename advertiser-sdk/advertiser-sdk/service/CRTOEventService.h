@@ -20,6 +20,13 @@
 /** The two letter ISO-639-1 language code representing the language associated with events sent via this event service. */
 @property (atomic,copy) NSString* language;
 
+/**
+ *  The cleartext customer email address associated with events sent via this event service.
+ *
+ *  @warning You should not store hashed customer emails to this property.
+ */
+@property (atomic,copy) NSString* customerEmail;
+
 /** The customer identifier associated with events sent via this event service. */
 @property (atomic,copy) NSString* customerId;
 

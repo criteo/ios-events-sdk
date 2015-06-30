@@ -14,6 +14,10 @@
 #import "CRTOJSONEventSerializer.h"
 
 @implementation CRTOEventService
+{
+@private
+    NSRegularExpression* emailRegex;
+}
 
 #pragma mark - Initializers
 
@@ -32,6 +36,15 @@
     self = [super init];
     if ( self ) {
 
+        emailRegex = [NSRegularExpression regularExpressionWithPattern:@".+\\@.+\\..+"
+                                                               options:NSRegularExpressionCaseInsensitive
+                                                                 error:nil];
+
+        [self addObserver:self
+               forKeyPath:@"customerEmail"
+                  options:NSKeyValueObservingOptionNew
+                  context:nil];
+
         if ( country != nil ) {
             _country = [NSString stringWithString:country];
         }
@@ -45,6 +58,13 @@
         }
     }
     return self;
+}
+
+#pragma mark - Deallocation
+
+- (void) dealloc
+{
+    [self removeObserver:self forKeyPath:@"customerEmail"];
 }
 
 #pragma mark - Static Methods
@@ -61,9 +81,19 @@
     return service;
 }
 
+#pragma mark - Key/Value Observing
+
+- (void) observeValueForKeyPath:(NSString*)keyPath ofObject:(id)object change:(NSDictionary*)change context:(void*)context
+{
+    if ( [keyPath isEqualToString:@"customerEmail"] ) {
+        NSString* updatedEmail = change[NSKeyValueChangeNewKey];
+        [self customerEmailChanged:updatedEmail];
+    }
+}
+
 #pragma mark - Class Extension Methods
 
-- (CRTOEvent*) appendEventServiceParametersToEvent:(CRTOEvent*)event
+- (void) appendEventServiceParametersToEvent:(CRTOEvent*)event
 {
     NSString* customerId = self.customerId;
 
@@ -71,19 +101,44 @@
         [event setStringExtraData:customerId
                            ForKey:kCRTOJSONUniversalTagParametersHelperCustomer_IdKey];
     }
-
-    return event;
 }
 
-/* Create and initialize a serializer with the _current_ state of the event service */
-- (CRTOJSONEventSerializer*) createJSONSerializer
+- (void) appendEventServiceParametersToSerializer:(CRTOJSONEventSerializer*)serializer
 {
-    CRTOJSONEventSerializer* serializer = [CRTOJSONEventSerializer new];
-
     serializer.countryCode = self.country;
     serializer.languageCode = self.language;
 
-    return serializer;
+    serializer.customerEmail = self.customerEmail;
+}
+
+- (void) customerEmailChanged:(NSString*)updatedEmail
+{
+    if ( [[NSNull null] isEqual:updatedEmail] ) {
+        return;
+    }
+
+    NSRange match = [emailRegex rangeOfFirstMatchInString:updatedEmail
+                                                  options:0
+                                                    range:NSMakeRange(0, updatedEmail.length)];
+
+    if ( NSEqualRanges(match, NSMakeRange(NSNotFound, 0)) ) {
+        NSLog(@"CRTO WARNING: Invalid customer email address \"%@\" set on event service instance %p.", updatedEmail, self);
+    }
+}
+
+- (void) sendEvent:(CRTOEvent*)event withJSONSerializer:(CRTOJSONEventSerializer*)serializer eventQueue:(CRTOEventQueue*)queue
+{
+    [self appendEventServiceParametersToEvent:event];
+    [self appendEventServiceParametersToSerializer:serializer];
+
+    NSString* serializedEvent = [serializer serializeEventToJSONString:event];
+
+    CRTOEventQueueItem* item = [[CRTOEventQueueItem alloc] initWithEvent:event
+                                                             requestBody:serializedEvent];
+
+    if ( [CRTODeviceInfo sharedDeviceInfo].isEventGatheringEnabled ) {
+        [queue addQueueItem:item];
+    }
 }
 
 #pragma mark - Public Methods
@@ -93,18 +148,10 @@
     CRTOEvent* eventCopy = [event copy];
     eventCopy.timestamp = [NSDate date];
 
-    CRTOJSONEventSerializer* serializer = [self createJSONSerializer];
+    CRTOJSONEventSerializer* serializer = [CRTOJSONEventSerializer new];
+    CRTOEventQueue* queue = [CRTOEventQueue sharedEventQueue];
 
-    eventCopy = [self appendEventServiceParametersToEvent:eventCopy];
-
-    NSString* serializedEvent = [serializer serializeEventToJSONString:eventCopy];
-
-    CRTOEventQueueItem* item = [[CRTOEventQueueItem alloc] initWithEvent:eventCopy
-                                                             requestBody:serializedEvent];
-
-    if ( [CRTODeviceInfo sharedDeviceInfo].isEventGatheringEnabled ) {
-        [[CRTOEventQueue sharedEventQueue] addQueueItem:item];
-    }
+    [self sendEvent:eventCopy withJSONSerializer:serializer eventQueue:queue];
 }
 
 @end

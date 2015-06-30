@@ -111,6 +111,7 @@ NSString* const kCRTOJSONPropertyNameIpKey                      = @"ip"; // Prop
 NSString* const kCRTOJSONPropertyNameVKey                       = @"v"; // PropertyName.VERSION
 NSString* const kCRTOJSONPropertyNameVersionKey                 = @"version"; // PropertyName.VERSION
 NSString* const kCRTOJSONPropertyNameDeeplink_UriKey            = @"deeplink_uri";
+NSString* const kCRTOJSONPropertyNameAlternate_IdsKey           = @"alternate_ids";
 
 NSString* const kCRTOJSONPropertyValueDcKey                     = @"dc"; // PropertyValue.DIS_DOUBLE_CAL
 
@@ -133,6 +134,13 @@ NSString* const kCRTOJSONUniversalTagParametersHelperSiKey            = @"si";
 NSString* const kCRTOJSONUniversalTagParametersHelperUser_SegmentKey  = @"user_segment";
 NSString* const kCRTOJSONUniversalTagParametersHelperSite_TypeKey     = @"site_type";
 NSString* const kCRTOJSONUniversalTagParametersHelperVurlKey          = @"vurl";
+
+NSString* const kCRTOJSONAlternateIdTypeKey  = @"type";
+NSString* const kCRTOJSONAlternateIdValueKey = @"value";
+NSString* const kCRTOJSONAlternateIdHashKey  = @"hash_method";
+
+NSString* const kCRTOJSONAlternateIdEmailValue = @"email";
+NSString* const kCRTOJSONAlternateIdNoneValue  = @"none";
 
 NSString* const kCRTOJSONExtraDataValueKey         = @"value";
 NSString* const kCRTOJSONExtraDataTypeKey          = @"type";
@@ -251,6 +259,7 @@ static NSSet* reservedKeysSet;
                                    kCRTOJSONPropertyNameVersionKey,
                                    kCRTOJSONPropertyValueDcKey,
                                    kCRTOJSONPropertyNameDeeplink_UriKey,
+                                   kCRTOJSONPropertyNameAlternate_IdsKey,
                                    kCRTOJSONSiteTypeDesktopKey,
                                    kCRTOJSONSiteTypeIn_App_AndroidKey,
                                    kCRTOJSONSiteTypeIn_App_IosKey,
@@ -269,6 +278,9 @@ static NSSet* reservedKeysSet;
                                    kCRTOJSONUniversalTagParametersHelperUser_SegmentKey,
                                    kCRTOJSONUniversalTagParametersHelperSite_TypeKey,
                                    kCRTOJSONUniversalTagParametersHelperVurlKey,
+                                   kCRTOJSONAlternateIdTypeKey,
+                                   kCRTOJSONAlternateIdValueKey,
+                                   kCRTOJSONAlternateIdHashKey,
                                    kCRTOJSONExtraDataValueKey,
                                    kCRTOJSONExtraDataTypeKey,
                                    kCRTOJSONExtraDataTypeDateValue,

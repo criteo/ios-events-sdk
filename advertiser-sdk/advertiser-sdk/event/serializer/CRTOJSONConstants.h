@@ -112,6 +112,7 @@ FOUNDATION_EXPORT NSString* const kCRTOJSONPropertyNameVKey;
 FOUNDATION_EXPORT NSString* const kCRTOJSONPropertyNameVersionKey;
 FOUNDATION_EXPORT NSString* const kCRTOJSONPropertyValueDcKey;
 FOUNDATION_EXPORT NSString* const kCRTOJSONPropertyNameDeeplink_UriKey;
+FOUNDATION_EXPORT NSString* const kCRTOJSONPropertyNameAlternate_IdsKey;
 
 FOUNDATION_EXPORT NSString* const kCRTOJSONSiteTypeDesktopKey;
 FOUNDATION_EXPORT NSString* const kCRTOJSONSiteTypeIn_App_AndroidKey;
@@ -132,6 +133,13 @@ FOUNDATION_EXPORT NSString* const kCRTOJSONUniversalTagParametersHelperSiKey;
 FOUNDATION_EXPORT NSString* const kCRTOJSONUniversalTagParametersHelperUser_SegmentKey;
 FOUNDATION_EXPORT NSString* const kCRTOJSONUniversalTagParametersHelperSite_TypeKey;
 FOUNDATION_EXPORT NSString* const kCRTOJSONUniversalTagParametersHelperVurlKey;
+
+FOUNDATION_EXPORT NSString* const kCRTOJSONAlternateIdTypeKey;
+FOUNDATION_EXPORT NSString* const kCRTOJSONAlternateIdValueKey;
+FOUNDATION_EXPORT NSString* const kCRTOJSONAlternateIdHashKey;
+
+FOUNDATION_EXPORT NSString* const kCRTOJSONAlternateIdEmailValue;
+FOUNDATION_EXPORT NSString* const kCRTOJSONAlternateIdNoneValue;
 
 FOUNDATION_EXPORT NSString* const kCRTOJSONExtraDataValueKey;
 FOUNDATION_EXPORT NSString* const kCRTOJSONExtraDataTypeKey;

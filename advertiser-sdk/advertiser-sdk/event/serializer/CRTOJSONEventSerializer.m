@@ -37,6 +37,7 @@ static NSString* jsonProtocolVersion = nil;
 @interface CRTOJSONEventSerializer ()
 
 - (NSDictionary*) accountDictionary;
+- (NSArray*) alternateIdsArray;
 - (NSDictionary*) appInfoDictionary;
 - (NSDictionary*) deviceInfoDictionary;
 - (NSMutableDictionary*) eventDictionaryForBaseEvent:(CRTOEvent*)event;
@@ -153,6 +154,23 @@ static NSString* jsonProtocolVersion = nil;
     }
 
     return [NSDictionary dictionaryWithDictionary:account];
+}
+
+- (NSArray*) alternateIdsArray
+{
+    NSString* customerEmail = self.customerEmail;
+
+    NSMutableArray* alternateIds = [NSMutableArray new];
+
+    if ( customerEmail.length > 0 ) {
+        NSDictionary* nonHashedId = @{ kCRTOJSONAlternateIdTypeKey  : kCRTOJSONAlternateIdEmailValue,
+                                       kCRTOJSONAlternateIdValueKey : customerEmail,
+                                       kCRTOJSONAlternateIdHashKey  : kCRTOJSONAlternateIdNoneValue };
+
+        [alternateIds addObject:nonHashedId];
+    }
+
+    return [NSArray arrayWithArray:alternateIds];
 }
 
 - (NSDictionary*) appInfoDictionary
@@ -281,15 +299,22 @@ static NSString* jsonProtocolVersion = nil;
     NSDictionary* device  = [self deviceInfoDictionary];
     NSDictionary* app     = [self appInfoDictionary];
     NSDictionary* idDict  = [self idDictionary];
+    NSArray* alternateIds = [self alternateIdsArray];
 
-    NSDictionary* request = @{ kCRTOJSONPropertyNameAccountKey     : account,
-                               kCRTOJSONPropertyNameIdKey          : idDict,
-                               kCRTOJSONPropertyNameDevice_InfoKey : device,
-                               kCRTOJSONPropertyNameApp_InfoKey    : app,
-                               kCRTOJSONPropertyNameEventsKey      : events,
-                               kCRTOJSONPropertyNameVersionKey     : jsonProtocolVersion };
+    NSMutableDictionary* request = [NSMutableDictionary new];
 
-    return request;
+    request[kCRTOJSONPropertyNameAccountKey]     = account;
+    request[kCRTOJSONPropertyNameIdKey]          = idDict;
+    request[kCRTOJSONPropertyNameDevice_InfoKey] = device;
+    request[kCRTOJSONPropertyNameApp_InfoKey]    = app;
+    request[kCRTOJSONPropertyNameEventsKey]      = events;
+    request[kCRTOJSONPropertyNameVersionKey]     = jsonProtocolVersion;
+
+    if ( alternateIds.count > 0 ) {
+        request[kCRTOJSONPropertyNameAlternate_IdsKey] = alternateIds;
+    }
+
+    return [NSDictionary dictionaryWithDictionary:request];
 }
 
 - (NSString*) serializeRequestDictionaryToJSON:(NSDictionary*)request

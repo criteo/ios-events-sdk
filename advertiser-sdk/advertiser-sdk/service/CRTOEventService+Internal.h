@@ -6,10 +6,15 @@
 //
 
 #include "CRTOJSONEventSerializer.h"
+#include "CRTOEventQueue.h"
 
 @interface CRTOEventService ()
 
-- (CRTOEvent*) appendEventServiceParametersToEvent:(CRTOEvent*)event;
-- (CRTOJSONEventSerializer*) createJSONSerializer;
+- (void) appendEventServiceParametersToEvent:(CRTOEvent*)event;
+- (void) appendEventServiceParametersToSerializer:(CRTOJSONEventSerializer*)serializer;
+
+- (void) customerEmailChanged:(NSString*)updatedEmail;
+
+- (void) sendEvent:(CRTOEvent*)event withJSONSerializer:(CRTOJSONEventSerializer*)serializer eventQueue:(CRTOEventQueue*)queue;
 
 @end
