@@ -454,7 +454,9 @@ static NSString* jsonProtocolVersion = nil;
     NSMutableArray* productArray = [NSMutableArray new];
 
     for ( CRTOProduct* product in event.products ) {
-        NSDictionary* productDictionary = @{ kCRTOJSONProductPropertyIdKey    : product.productId,
+        id productId = product.productId ?: [NSNull null];
+
+        NSDictionary* productDictionary = @{ kCRTOJSONProductPropertyIdKey    : productId,
                                              kCRTOJSONProductPropertyPriceKey : @(product.price) };
 
         [productArray addObject:productDictionary];
@@ -482,7 +484,9 @@ static NSString* jsonProtocolVersion = nil;
 
     // One single, lonely product
     if ( event.product ) {
-        eventDictionary[kCRTOJSONPropertyNameProductKey] = @{ kCRTOJSONProductPropertyIdKey : event.product.productId,
+        id productId = event.product.productId ?: [NSNull null];
+
+        eventDictionary[kCRTOJSONPropertyNameProductKey] = @{ kCRTOJSONProductPropertyIdKey : productId,
                                                               kCRTOJSONProductPropertyPriceKey : @(event.product.price) };
     }
 

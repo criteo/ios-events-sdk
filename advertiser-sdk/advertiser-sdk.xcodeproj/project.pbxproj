@@ -80,6 +80,7 @@
 		25CF740F1B0E19E4001A023A /* CRTOJSONConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 25CF740D1B0E19E4001A023A /* CRTOJSONConstants.h */; };
 		25CF74101B0E19E4001A023A /* CRTOJSONConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 25CF740E1B0E19E4001A023A /* CRTOJSONConstants.m */; };
 		25CF74111B0E19E4001A023A /* CRTOJSONConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 25CF740E1B0E19E4001A023A /* CRTOJSONConstants.m */; };
+		25FC30961B45689B00C379B7 /* CRTOProductViewEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25FC30951B45689B00C379B7 /* CRTOProductViewEventTests.m */; };
 		E83F25F050676E0956B3D182 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94DB731A744361F6E84CEFFA /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -161,6 +162,7 @@
 		25CF74011B0E00FD001A023A /* CRTOSDKInfoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOSDKInfoTests.m; sourceTree = "<group>"; };
 		25CF740D1B0E19E4001A023A /* CRTOJSONConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTOJSONConstants.h; sourceTree = "<group>"; };
 		25CF740E1B0E19E4001A023A /* CRTOJSONConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOJSONConstants.m; sourceTree = "<group>"; };
+		25FC30951B45689B00C379B7 /* CRTOProductViewEventTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOProductViewEventTests.m; sourceTree = "<group>"; };
 		94DB731A744361F6E84CEFFA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D12C1656A6A625A683C5ED96 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		F95E2679C5EF1628DBA7B40C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -385,6 +387,7 @@
 				25103EF41B1F589A009B5D24 /* serializer */,
 				25A1ABAB1B1CAEA00086EA4F /* CRTOAppLaunchEventTests.m */,
 				25A1A10A1B3D8559008841EA /* CRTODeeplinkEventTests.m */,
+				25FC30951B45689B00C379B7 /* CRTOProductViewEventTests.m */,
 			);
 			path = event;
 			sourceTree = "<group>";
@@ -618,6 +621,7 @@
 				2505607B1AF8F96D006804AA /* CRTOEventService.m in Sources */,
 				259AA6231AF7E081006743A5 /* CRTOBasketProduct.m in Sources */,
 				2506B7581B0DDF050091D5F8 /* CRTOAppInfoTests.m in Sources */,
+				25FC30961B45689B00C379B7 /* CRTOProductViewEventTests.m in Sources */,
 				255A94EF1B0CCB31009F5C06 /* CRTODeviceInfo.m in Sources */,
 				259AA6091AF7DEED006743A5 /* CRTOProductListViewEvent.m in Sources */,
 				25CF74111B0E19E4001A023A /* CRTOJSONConstants.m in Sources */,

@@ -15,8 +15,8 @@
 /** A string containing the product ID used to initialize the receiver. (read-only) */
 @property (nonatomic,strong,readonly) NSString* productId;
 
-/** A float value representing the approximate price used to initialize the receiver. (read-only) */
-@property (nonatomic,readonly) float price;
+/** A double value representing the approximate price used to initialize the receiver. (read-only) */
+@property (nonatomic,readonly) double price;
 
 /**
  *  Initializes a newly allocated instance of @c CRTOProduct with an empty product ID and zero-valued price.
@@ -29,12 +29,12 @@
  *  Initializes a newly allocated instance of @c CRTOProduct with a product ID and a price.
  *
  *  @param productId A string containing the product ID of the product. This value must match the product ID supplied to Criteo in your organization's catalog feed.
- *  @param price     The unit price of the product, represented as a single-precision floating-point value.
+ *  @param price     The unit price of the product, represented as a double-precision floating-point value.
  *
  *  @note The loss of precision associated with representing price as a floating-point value does not impact Criteo's ability to process your event data.
  *
  *  @return A @c CRTOProduct initialized with a product ID and a price.
  */
-- (instancetype) initWithProductId:(NSString*)productId price:(float)price;
+- (instancetype) initWithProductId:(NSString*)productId price:(double)price;
 
 @end

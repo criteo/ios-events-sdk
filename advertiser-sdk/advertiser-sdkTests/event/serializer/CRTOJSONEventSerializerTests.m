@@ -15,6 +15,9 @@
 #import "CRTOEvent.h"
 #import "CRTOEvent+Internal.h"
 #import "CRTOJSONEventSerializer.h"
+#import "CRTOProduct.h"
+#import "CRTOProductListViewEvent.h"
+#import "CRTOProductViewEvent.h"
 #import "CRTOSDKInfo.h"
 
 @interface CRTOJSONEventSerializerTests : XCTestCase
@@ -95,18 +98,67 @@
     [super tearDown];
 }
 
-- (void) testAlternateIdIsSerialized
+// Why do we bother returning resultObj and expectedObj via out paramaters?
+// Why don't we just run an XCTAssertEqualObjects test in this method?
+//
+// Great questions! You're very bright, aren't you?
+//
+// Xcode marks the line containing the XCTAssertEqualObjects macro as the point
+// of failure for each test. So, if you test for failure in this method, the IDE
+// won't give any useful visual information about failed tests.
+//
+// In order to keep things sane for developers running these tests in Xcode, we
+// just return the deserialization results to the caller and expect them to run
+// the test macro inside the test method.
+- (void) runSerializerForEvent:(CRTOEvent*)event
+             andExpectedResult:(NSString*)expected
+            returningResultObj:(id*)resultObj
+                andExpectedObj:(id*)expectedObj
+{
+    [self runSerializerForEvent:event
+              withCustomerEmail:nil
+              andExpectedResult:expected
+             returningResultObj:resultObj
+                 andExpectedObj:expectedObj];
+}
+
+- (void) runSerializerForEvent:(CRTOEvent*)event
+             withCustomerEmail:(NSString*)email
+             andExpectedResult:(NSString*)expected
+            returningResultObj:(id*)resultObj
+                andExpectedObj:(id*)expectedObj
 {
     CRTOJSONEventSerializer* serializer = [[CRTOJSONEventSerializer alloc] initWithAppInfo:mockAppInfo
                                                                                 deviceInfo:mockDeviceInfo
                                                                                    sdkInfo:mockSDKInfo];
+    if ( email ) {
+        serializer.customerEmail = email;
+    }
 
-    serializer.customerEmail = @"NotAReal Email";
+    NSString* result = [serializer serializeEventToJSONString:event];
 
+    NSData* resultData   = [NSData dataWithBytes:result.UTF8String length:[result lengthOfBytesUsingEncoding:NSUTF8StringEncoding]];
+    NSData* expectedData = [NSData dataWithBytes:expected.UTF8String length:[expected lengthOfBytesUsingEncoding:NSUTF8StringEncoding]];
+
+    NSError* resultError = nil;
+    *resultObj = [NSJSONSerialization JSONObjectWithData:resultData options:0 error:&resultError];
+
+    if ( resultError ) {
+        NSLog(@"Error deserializing result JSON: %@", resultError);
+    }
+
+    NSError* expectedError = nil;
+    *expectedObj = [NSJSONSerialization JSONObjectWithData:expectedData options:0 error:&expectedError];
+
+    if ( expectedError ) {
+        NSLog(@"Error deserializing expected JSON: %@", expectedError);
+    }
+}
+
+- (void) testAlternateIdIsSerialized
+{
     CRTODeeplinkEvent* deeplinkEvent = [[CRTODeeplinkEvent alloc] initWithDeeplinkLaunchUrl:@"foo bar"];
     deeplinkEvent.timestamp = timestamp;
-
-    NSString* result = [serializer serializeEventToJSONString:deeplinkEvent];
 
     NSString* expected = @"{"
                           "  \"account\" : {"
@@ -147,25 +199,22 @@
                           "  ]"
                           "}";
 
-    NSData* resultData   = [NSData dataWithBytes:result.UTF8String length:result.length];
-    NSData* expectedData = [NSData dataWithBytes:expected.UTF8String length:expected.length];
+    id resultObj = nil;
+    id expectedObj = nil;
 
-    id resultObj = [NSJSONSerialization JSONObjectWithData:resultData options:0 error:nil];
-    id expectedObj = [NSJSONSerialization JSONObjectWithData:expectedData options:0 error:nil];
+    [self runSerializerForEvent:deeplinkEvent
+              withCustomerEmail:@"NotAReal Email"
+              andExpectedResult:expected
+             returningResultObj:&resultObj
+                 andExpectedObj:&expectedObj];
 
     XCTAssertEqualObjects(resultObj, expectedObj);
 }
 
 - (void) testAlternateIdMissingIsNotSerialized
 {
-    CRTOJSONEventSerializer* serializer = [[CRTOJSONEventSerializer alloc] initWithAppInfo:mockAppInfo
-                                                                                deviceInfo:mockDeviceInfo
-                                                                                   sdkInfo:mockSDKInfo];
-
     CRTODeeplinkEvent* deeplinkEvent = [[CRTODeeplinkEvent alloc] initWithDeeplinkLaunchUrl:@"foo bar"];
     deeplinkEvent.timestamp = timestamp;
-
-    NSString* result = [serializer serializeEventToJSONString:deeplinkEvent];
 
     NSString* expected = @"{"
                           "  \"account\" : {"
@@ -199,64 +248,434 @@
                           "  \"version\" : \"sdk_1.0.0\""
                           "}";
 
-    NSData* resultData   = [NSData dataWithBytes:result.UTF8String length:result.length];
-    NSData* expectedData = [NSData dataWithBytes:expected.UTF8String length:expected.length];
+    id resultObj = nil;
+    id expectedObj = nil;
 
-    id resultObj = [NSJSONSerialization JSONObjectWithData:resultData options:0 error:nil];
-    id expectedObj = [NSJSONSerialization JSONObjectWithData:expectedData options:0 error:nil];
+    [self runSerializerForEvent:deeplinkEvent
+              andExpectedResult:expected
+             returningResultObj:&resultObj
+                 andExpectedObj:&expectedObj];
 
     XCTAssertEqualObjects(resultObj, expectedObj);
 }
 
 - (void) testDeeplinkEventSerialization
 {
-    CRTOJSONEventSerializer* serializer = [[CRTOJSONEventSerializer alloc] initWithAppInfo:mockAppInfo
-                                                                                deviceInfo:mockDeviceInfo
-                                                                                   sdkInfo:mockSDKInfo];
-
     CRTODeeplinkEvent* deeplinkEvent = [[CRTODeeplinkEvent alloc] initWithDeeplinkLaunchUrl:@"foo bar"];
     deeplinkEvent.timestamp = timestamp;
 
-    NSString* result = [serializer serializeEventToJSONString:deeplinkEvent];
+    NSString* expected = @"{"
+                          "  \"account\" : {"
+                          "    \"app_name\" : \"com.criteo.sdktestapp\""
+                          "  },"
+                          "  \"events\" : ["
+                          "    {"
+                          "      \"event\" : \"appDeeplink\","
+                          "      \"deeplink_uri\" : \"foo bar\","
+                          "      \"timestamp\" : \"2015-06-26T14:57:25Z\""
+                          "    }"
+                          "  ],"
+                          "  \"id\" : {"
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "  },"
+                          "  \"device_info\" : {"
+                          "    \"os_name\" : \"iPhone OS\","
+                          "    \"device_model\" : \"iPhone3,2\","
+                          "    \"device_manufacturer\" : \"apple\","
+                          "    \"os_version\" : \"4.9.1\","
+                          "    \"platform\" : \"ios\""
+                          "  },"
+                          "  \"app_info\" : {"
+                          "    \"app_version\" : \"43.0.2357.61\","
+                          "    \"app_name\" : \"Criteo Test App\","
+                          "    \"sdk_version\" : \"1.0.0\","
+                          "    \"app_language\" : \"en\","
+                          "    \"app_id\" : \"com.criteo.sdktestapp\","
+                          "    \"app_country\" : \"US\""
+                          "  },"
+                          "  \"version\" : \"sdk_1.0.0\""
+                          "}";
 
-    NSString* expected =
-@"{ \
-  \"app_info\" : { \
-    \"app_version\" : \"43.0.2357.61\", \
-    \"app_name\" : \"Criteo Test App\", \
-    \"sdk_version\" : \"1.0.0\", \
-    \"app_language\" : \"en\", \
-    \"app_id\" : \"com.criteo.sdktestapp\", \
-    \"app_country\" : \"US\" \
-  }, \
-  \"account\" : { \
-    \"app_name\" : \"com.criteo.sdktestapp\" \
-  }, \
-  \"id\" : { \
-    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\" \
-  }, \
-  \"version\" : \"sdk_1.0.0\", \
-  \"device_info\" : { \
-    \"os_name\" : \"iPhone OS\", \
-    \"device_model\" : \"iPhone3,2\", \
-    \"device_manufacturer\" : \"apple\", \
-    \"os_version\" : \"4.9.1\", \
-    \"platform\" : \"ios\" \
-  }, \
-  \"events\" : [ \
-    { \
-      \"event\" : \"appDeeplink\", \
-      \"deeplink_uri\" : \"foo bar\", \
-      \"timestamp\" : \"2015-06-26T14:57:25Z\" \
-    } \
-  ] \
-}";
+    id resultObj = nil;
+    id expectedObj = nil;
 
-    NSData* resultData   = [NSData dataWithBytes:result.UTF8String length:result.length];
-    NSData* expectedData = [NSData dataWithBytes:expected.UTF8String length:expected.length];
+    [self runSerializerForEvent:deeplinkEvent
+              andExpectedResult:expected
+             returningResultObj:&resultObj
+                 andExpectedObj:&expectedObj];
 
-    id resultObj = [NSJSONSerialization JSONObjectWithData:resultData options:0 error:nil];
-    id expectedObj = [NSJSONSerialization JSONObjectWithData:expectedData options:0 error:nil];
+    XCTAssertEqualObjects(resultObj, expectedObj);
+}
+
+- (void) testProductViewEventSerialization
+{
+    CRTOProduct* product = [[CRTOProduct alloc] initWithProductId:@"PRODUCT11223344" price:999.85];
+
+    CRTOProductViewEvent* productViewEvent = [[CRTOProductViewEvent alloc] initWithProduct:product];
+    productViewEvent.timestamp = timestamp;
+
+    NSString* expected = @"{"
+                          "  \"account\" : {"
+                          "    \"app_name\" : \"com.criteo.sdktestapp\""
+                          "  },"
+                          "  \"events\" : ["
+                          "    {"
+                          "      \"event\" : \"viewProduct\","
+                          "      \"product\" : { \"id\" : \"PRODUCT11223344\", \"price\" : 999.85 },"
+                          "      \"timestamp\" : \"2015-06-26T14:57:25Z\""
+                          "    }"
+                          "  ],"
+                          "  \"id\" : {"
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "  },"
+                          "  \"device_info\" : {"
+                          "    \"os_name\" : \"iPhone OS\","
+                          "    \"device_model\" : \"iPhone3,2\","
+                          "    \"device_manufacturer\" : \"apple\","
+                          "    \"os_version\" : \"4.9.1\","
+                          "    \"platform\" : \"ios\""
+                          "  },"
+                          "  \"app_info\" : {"
+                          "    \"app_version\" : \"43.0.2357.61\","
+                          "    \"app_name\" : \"Criteo Test App\","
+                          "    \"sdk_version\" : \"1.0.0\","
+                          "    \"app_language\" : \"en\","
+                          "    \"app_id\" : \"com.criteo.sdktestapp\","
+                          "    \"app_country\" : \"US\""
+                          "  },"
+                          "  \"version\" : \"sdk_1.0.0\","
+                          "  \"alternate_ids\" : ["
+                          "    {"
+                          "      \"type\" : \"email\","
+                          "      \"value\" : \"NotAReal Email\","
+                          "      \"hash_method\" : \"none\""
+                          "    }"
+                          "  ]"
+                          "}";
+
+    id resultObj = nil;
+    id expectedObj = nil;
+
+    [self runSerializerForEvent:productViewEvent
+              withCustomerEmail:@"NotAReal Email"
+              andExpectedResult:expected
+             returningResultObj:&resultObj
+                 andExpectedObj:&expectedObj];
+
+    XCTAssertEqualObjects(resultObj, expectedObj);
+}
+
+- (void) testProductViewEventSerializationWithNilProduct
+{
+    CRTOProductViewEvent* productViewEvent = [[CRTOProductViewEvent alloc] initWithProduct:nil];
+    productViewEvent.timestamp = timestamp;
+
+    NSString* expected = @"{"
+                          "  \"account\" : {"
+                          "    \"app_name\" : \"com.criteo.sdktestapp\""
+                          "  },"
+                          "  \"events\" : ["
+                          "    {"
+                          "      \"event\" : \"viewProduct\","
+                          "      \"timestamp\" : \"2015-06-26T14:57:25Z\""
+                          "    }"
+                          "  ],"
+                          "  \"id\" : {"
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "  },"
+                          "  \"device_info\" : {"
+                          "    \"os_name\" : \"iPhone OS\","
+                          "    \"device_model\" : \"iPhone3,2\","
+                          "    \"device_manufacturer\" : \"apple\","
+                          "    \"os_version\" : \"4.9.1\","
+                          "    \"platform\" : \"ios\""
+                          "  },"
+                          "  \"app_info\" : {"
+                          "    \"app_version\" : \"43.0.2357.61\","
+                          "    \"app_name\" : \"Criteo Test App\","
+                          "    \"sdk_version\" : \"1.0.0\","
+                          "    \"app_language\" : \"en\","
+                          "    \"app_id\" : \"com.criteo.sdktestapp\","
+                          "    \"app_country\" : \"US\""
+                          "  },"
+                          "  \"version\" : \"sdk_1.0.0\","
+                          "  \"alternate_ids\" : ["
+                          "    {"
+                          "      \"type\" : \"email\","
+                          "      \"value\" : \"NotAReal Email\","
+                          "      \"hash_method\" : \"none\""
+                          "    }"
+                          "  ]"
+                          "}";
+
+    id resultObj = nil;
+    id expectedObj = nil;
+
+    [self runSerializerForEvent:productViewEvent
+              withCustomerEmail:@"NotAReal Email"
+              andExpectedResult:expected
+             returningResultObj:&resultObj
+                 andExpectedObj:&expectedObj];
+
+    XCTAssertEqualObjects(resultObj, expectedObj);
+}
+
+- (void) testProductViewEventSerializationWithNilProductId
+{
+    CRTOProduct* product = [[CRTOProduct alloc] initWithProductId:nil price:10];
+
+    CRTOProductViewEvent* productViewEvent = [[CRTOProductViewEvent alloc] initWithProduct:product];
+    productViewEvent.timestamp = timestamp;
+
+    NSString* expected = @"{"
+                          "  \"account\" : {"
+                          "    \"app_name\" : \"com.criteo.sdktestapp\""
+                          "  },"
+                          "  \"events\" : ["
+                          "    {"
+                          "      \"event\" : \"viewProduct\","
+                          "      \"product\" : { \"id\" : null, \"price\" : 10 },"
+                          "      \"timestamp\" : \"2015-06-26T14:57:25Z\""
+                          "    }"
+                          "  ],"
+                          "  \"id\" : {"
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "  },"
+                          "  \"device_info\" : {"
+                          "    \"os_name\" : \"iPhone OS\","
+                          "    \"device_model\" : \"iPhone3,2\","
+                          "    \"device_manufacturer\" : \"apple\","
+                          "    \"os_version\" : \"4.9.1\","
+                          "    \"platform\" : \"ios\""
+                          "  },"
+                          "  \"app_info\" : {"
+                          "    \"app_version\" : \"43.0.2357.61\","
+                          "    \"app_name\" : \"Criteo Test App\","
+                          "    \"sdk_version\" : \"1.0.0\","
+                          "    \"app_language\" : \"en\","
+                          "    \"app_id\" : \"com.criteo.sdktestapp\","
+                          "    \"app_country\" : \"US\""
+                          "  },"
+                          "  \"version\" : \"sdk_1.0.0\","
+                          "  \"alternate_ids\" : ["
+                          "    {"
+                          "      \"type\" : \"email\","
+                          "      \"value\" : \"NotAReal Email\","
+                          "      \"hash_method\" : \"none\""
+                          "    }"
+                          "  ]"
+                          "}";
+
+    id resultObj = nil;
+    id expectedObj = nil;
+
+    [self runSerializerForEvent:productViewEvent
+              withCustomerEmail:@"NotAReal Email"
+              andExpectedResult:expected
+             returningResultObj:&resultObj
+                 andExpectedObj:&expectedObj];
+
+    XCTAssertEqualObjects(resultObj, expectedObj);
+}
+
+- (void) testProductListViewEventSerialization
+{
+    CRTOProduct* product  = [[CRTOProduct alloc] initWithProductId:@"PRODUCT11223344" price:999.85];
+    CRTOProduct* product2 = [[CRTOProduct alloc] initWithProductId:@"PRODUCT56789101" price:10];
+    CRTOProduct* product3 = [[CRTOProduct alloc] initWithProductId:@"나는 유리를 먹을 수 있어요. 그래도 아프지 않아요" price:0.1];
+
+    CRTOProductListViewEvent* productViewEvent = [[CRTOProductListViewEvent alloc] initWithProducts:@[ product, product2, product3 ]];
+    productViewEvent.timestamp = timestamp;
+
+    NSString* expected = @"{"
+                          "  \"account\" : {"
+                          "    \"app_name\" : \"com.criteo.sdktestapp\""
+                          "  },"
+                          "  \"events\" : ["
+                          "    {"
+                          "      \"event\" : \"viewListing\","
+                          "      \"product\" : ["
+                          "        {"
+                          "          \"id\" : \"PRODUCT11223344\","
+                          "          \"price\" : 999.85"
+                          "        },"
+                          "        {"
+                          "          \"id\" : \"PRODUCT56789101\","
+                          "          \"price\" : 10"
+                          "        },"
+                          "        {"
+                          "          \"id\" : \"나는 유리를 먹을 수 있어요. 그래도 아프지 않아요\","
+                          "          \"price\" : 0.1"
+                          "        }"
+                          "      ],"
+                          "      \"timestamp\" : \"2015-06-26T14:57:25Z\""
+                          "    }"
+                          "  ],"
+                          "  \"id\" : {"
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "  },"
+                          "  \"device_info\" : {"
+                          "    \"os_name\" : \"iPhone OS\","
+                          "    \"device_model\" : \"iPhone3,2\","
+                          "    \"device_manufacturer\" : \"apple\","
+                          "    \"os_version\" : \"4.9.1\","
+                          "    \"platform\" : \"ios\""
+                          "  },"
+                          "  \"app_info\" : {"
+                          "    \"app_version\" : \"43.0.2357.61\","
+                          "    \"app_name\" : \"Criteo Test App\","
+                          "    \"sdk_version\" : \"1.0.0\","
+                          "    \"app_language\" : \"en\","
+                          "    \"app_id\" : \"com.criteo.sdktestapp\","
+                          "    \"app_country\" : \"US\""
+                          "  },"
+                          "  \"version\" : \"sdk_1.0.0\","
+                          "  \"alternate_ids\" : ["
+                          "    {"
+                          "      \"type\" : \"email\","
+                          "      \"value\" : \"NotAReal Email\","
+                          "      \"hash_method\" : \"none\""
+                          "    }"
+                          "  ]"
+                          "}";
+
+    id resultObj = nil;
+    id expectedObj = nil;
+
+    [self runSerializerForEvent:productViewEvent
+              withCustomerEmail:@"NotAReal Email"
+              andExpectedResult:expected
+             returningResultObj:&resultObj
+                 andExpectedObj:&expectedObj];
+
+    XCTAssertEqualObjects(resultObj, expectedObj);
+}
+
+- (void) testProductListViewEventSerializationWithNilProducts
+{
+    CRTOProductListViewEvent* productViewEvent = [[CRTOProductListViewEvent alloc] initWithProducts:nil];
+    productViewEvent.timestamp = timestamp;
+
+    NSString* expected = @"{"
+                          "  \"account\" : {"
+                          "    \"app_name\" : \"com.criteo.sdktestapp\""
+                          "  },"
+                          "  \"events\" : ["
+                          "    {"
+                          "      \"event\" : \"viewListing\","
+                          "      \"product\" : [ ],"
+                          "      \"timestamp\" : \"2015-06-26T14:57:25Z\""
+                          "    }"
+                          "  ],"
+                          "  \"id\" : {"
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "  },"
+                          "  \"device_info\" : {"
+                          "    \"os_name\" : \"iPhone OS\","
+                          "    \"device_model\" : \"iPhone3,2\","
+                          "    \"device_manufacturer\" : \"apple\","
+                          "    \"os_version\" : \"4.9.1\","
+                          "    \"platform\" : \"ios\""
+                          "  },"
+                          "  \"app_info\" : {"
+                          "    \"app_version\" : \"43.0.2357.61\","
+                          "    \"app_name\" : \"Criteo Test App\","
+                          "    \"sdk_version\" : \"1.0.0\","
+                          "    \"app_language\" : \"en\","
+                          "    \"app_id\" : \"com.criteo.sdktestapp\","
+                          "    \"app_country\" : \"US\""
+                          "  },"
+                          "  \"version\" : \"sdk_1.0.0\","
+                          "  \"alternate_ids\" : ["
+                          "    {"
+                          "      \"type\" : \"email\","
+                          "      \"value\" : \"NotAReal Email\","
+                          "      \"hash_method\" : \"none\""
+                          "    }"
+                          "  ]"
+                          "}";
+
+    id resultObj = nil;
+    id expectedObj = nil;
+
+    [self runSerializerForEvent:productViewEvent
+              withCustomerEmail:@"NotAReal Email"
+              andExpectedResult:expected
+             returningResultObj:&resultObj
+                 andExpectedObj:&expectedObj];
+
+    XCTAssertEqualObjects(resultObj, expectedObj);
+}
+
+- (void) testProductListViewEventSerializationWithNilProductId
+{
+    CRTOProduct* product  = [[CRTOProduct alloc] initWithProductId:@"PRODUCT11223344" price:999.85];
+    CRTOProduct* product2 = [[CRTOProduct alloc] initWithProductId:nil price:10];
+    CRTOProduct* product3 = [[CRTOProduct alloc] initWithProductId:@"나는 유리를 먹을 수 있어요. 그래도 아프지 않아요" price:0.1];
+
+    CRTOProductListViewEvent* productViewEvent = [[CRTOProductListViewEvent alloc] initWithProducts:@[ product, product2, product3 ]];
+    productViewEvent.timestamp = timestamp;
+
+    NSString* expected = @"{"
+                          "  \"account\" : {"
+                          "    \"app_name\" : \"com.criteo.sdktestapp\""
+                          "  },"
+                          "  \"events\" : ["
+                          "    {"
+                          "      \"event\" : \"viewListing\","
+                          "      \"product\" : ["
+                          "        {"
+                          "          \"id\" : \"PRODUCT11223344\","
+                          "          \"price\" : 999.85"
+                          "        },"
+                          "        {"
+                          "          \"id\" : null,"
+                          "          \"price\" : 10"
+                          "        },"
+                          "        {"
+                          "          \"id\" : \"나는 유리를 먹을 수 있어요. 그래도 아프지 않아요\","
+                          "          \"price\" : 0.1"
+                          "        }"
+                          "      ],"
+                          "      \"timestamp\" : \"2015-06-26T14:57:25Z\""
+                          "    }"
+                          "  ],"
+                          "  \"id\" : {"
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "  },"
+                          "  \"device_info\" : {"
+                          "    \"os_name\" : \"iPhone OS\","
+                          "    \"device_model\" : \"iPhone3,2\","
+                          "    \"device_manufacturer\" : \"apple\","
+                          "    \"os_version\" : \"4.9.1\","
+                          "    \"platform\" : \"ios\""
+                          "  },"
+                          "  \"app_info\" : {"
+                          "    \"app_version\" : \"43.0.2357.61\","
+                          "    \"app_name\" : \"Criteo Test App\","
+                          "    \"sdk_version\" : \"1.0.0\","
+                          "    \"app_language\" : \"en\","
+                          "    \"app_id\" : \"com.criteo.sdktestapp\","
+                          "    \"app_country\" : \"US\""
+                          "  },"
+                          "  \"version\" : \"sdk_1.0.0\","
+                          "  \"alternate_ids\" : ["
+                          "    {"
+                          "      \"type\" : \"email\","
+                          "      \"value\" : \"NotAReal Email\","
+                          "      \"hash_method\" : \"none\""
+                          "    }"
+                          "  ]"
+                          "}";
+
+    id resultObj = nil;
+    id expectedObj = nil;
+
+    [self runSerializerForEvent:productViewEvent
+              withCustomerEmail:@"NotAReal Email"
+              andExpectedResult:expected
+             returningResultObj:&resultObj
+                 andExpectedObj:&expectedObj];
 
     XCTAssertEqualObjects(resultObj, expectedObj);
 }
