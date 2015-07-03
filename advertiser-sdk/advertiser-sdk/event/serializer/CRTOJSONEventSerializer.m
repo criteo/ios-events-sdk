@@ -519,7 +519,9 @@ static NSString* jsonProtocolVersion = nil;
     NSMutableArray* productArray = [NSMutableArray new];
 
     for ( CRTOBasketProduct* product in event.basketProducts ) {
-        NSDictionary* productDictionary = @{ kCRTOJSONProductPropertyIdKey       : product.productId,
+        id productId = product.productId ?: [NSNull null];
+
+        NSDictionary* productDictionary = @{ kCRTOJSONProductPropertyIdKey       : productId,
                                              kCRTOJSONProductPropertyPriceKey    : @(product.price),
                                              kCRTOJSONProductPropertyQuantityKey : @(product.quantity) };
 
