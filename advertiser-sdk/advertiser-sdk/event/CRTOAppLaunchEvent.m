@@ -35,6 +35,15 @@ NSString* const kCRTOInitialLaunchKey = @"CRTOInitialLaunchKey";
 
 #pragma mark - Class Extension Initializers
 
+- (instancetype) initWithEvent:(CRTOAppLaunchEvent*)event
+{
+    self = [super initWithEvent:event];
+    if ( self ) {
+        _isFirstLaunch = event.isFirstLaunch;
+    }
+    return self;
+}
+
 - (instancetype) initWithFirstLaunchFlagOverride:(BOOL)isFirstLaunch
 {
     self = [self init];

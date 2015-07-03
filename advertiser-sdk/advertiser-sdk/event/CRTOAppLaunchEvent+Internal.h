@@ -10,6 +10,7 @@
 @property (nonatomic,readonly) BOOL isFirstLaunch;
 @property (nonatomic,readonly) BOOL isValid;
 
+- (instancetype) initWithEvent:(CRTOAppLaunchEvent*)event;
 - (instancetype) initWithFirstLaunchFlagOverride:(BOOL)isFirstLaunch;
 
 - (void) detectFirstLaunch;

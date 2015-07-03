@@ -40,4 +40,17 @@
     XCTAssertTrue(appLaunch.isFirstLaunch, @"Failed to detect first app launch");
 }
 
+- (void) testFirstLaunchFlagPreservedOnCopy
+{
+    [self removeFirstLaunchSetting];
+
+    CRTOAppLaunchEvent* appLaunch = [CRTOAppLaunchEvent new];
+
+    XCTAssertTrue(appLaunch.isFirstLaunch, @"Failed to detect first app launch");
+
+    CRTOAppLaunchEvent* appLaunchCopy = [appLaunch copy];
+
+    XCTAssertTrue(appLaunchCopy.isFirstLaunch, @"First launch flag was not preserved during copy");
+}
+
 @end
