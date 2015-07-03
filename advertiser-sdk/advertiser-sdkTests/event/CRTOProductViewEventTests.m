@@ -17,14 +17,28 @@
 @end
 
 @implementation CRTOProductViewEventTests
-
-- (void)setUp {
-    [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+{
+    NSString* productId;
+    double price;
+    NSString* currency;
+    NSDate* startDate;
+    NSDate* endDate;
 }
 
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+- (void)setUp
+{
+    [super setUp];
+
+    productId = @"foo";
+    price     = 999.85;
+    currency  = @"EUR";
+    startDate = [NSDate dateWithTimeIntervalSince1970:1000000000];
+    endDate   = [NSDate dateWithTimeIntervalSince1970:1000086401];
+}
+
+- (void)tearDown
+{
+
     [super tearDown];
 }
 
@@ -40,9 +54,6 @@
 
 - (void) testInitWithProduct
 {
-    NSString* productId = @"foo";
-    double price = 999.85;
-
     CRTOProduct* product = [[CRTOProduct alloc] initWithProductId:productId price:price];
 
     CRTOProductViewEvent* event = [[CRTOProductViewEvent alloc] initWithProduct:product];
@@ -59,10 +70,6 @@
 
 - (void) testInitWithProductCurrency
 {
-    NSString* productId = @"foo";
-    double price = 999.85;
-    NSString* currency = @"EUR";
-
     CRTOProduct* product = [[CRTOProduct alloc] initWithProductId:productId price:price];
 
     CRTOProductViewEvent* event = [[CRTOProductViewEvent alloc] initWithProduct:product currency:currency];
@@ -79,12 +86,6 @@
 
 - (void) testInitWithProductCurrencyDates
 {
-    NSString* productId = @"foo";
-    double price = 999.85;
-    NSString* currency = @"EUR";
-    NSDate* startDate = [NSDate dateWithTimeIntervalSince1970:1000000000];
-    NSDate* endDate = [NSDate dateWithTimeIntervalSince1970:1000086401];
-
     CRTOProduct* product = [[CRTOProduct alloc] initWithProductId:productId price:price];
 
     CRTOProductViewEvent* event = [[CRTOProductViewEvent alloc] initWithProduct:product
@@ -103,6 +104,24 @@
 
     XCTAssertEqualObjects(event.startDate, startDate);
     XCTAssertEqualObjects(event.endDate, endDate);
+}
+
+- (void) testProductViewEventCopy
+{
+    CRTOProduct* product = [[CRTOProduct alloc] initWithProductId:productId price:price];
+
+    CRTOProductViewEvent* event = [[CRTOProductViewEvent alloc] initWithProduct:product
+                                                                       currency:currency
+                                                                      startDate:startDate
+                                                                        endDate:endDate];
+
+    CRTOProductViewEvent* eventCopy = [event copy];
+
+    XCTAssertEqualObjects(event.product.productId, eventCopy.product.productId);
+    XCTAssertEqual(event.product.price, eventCopy.product.price);
+    XCTAssertEqualObjects(event.currency, eventCopy.currency);
+    XCTAssertEqualObjects(event.startDate, eventCopy.startDate);
+    XCTAssertEqualObjects(event.endDate, eventCopy.endDate);
 }
 
 @end
