@@ -14,6 +14,7 @@
 #import "CRTOAppLaunchEvent+Internal.h"
 #import "CRTOBasketProduct.h"
 #import "CRTOBasketViewEvent.h"
+#import "CRTODataEvent.h"
 #import "CRTODeepLinkEvent.h"
 #import "CRTODeviceInfo.h"
 #import "CRTOEvent.h"
@@ -637,6 +638,117 @@
 
     [self runSerializerForEvent:basketViewEvent
               withCustomerEmail:@"NotAReal Email"
+              andExpectedResult:expected
+             returningResultObj:&resultObj
+                 andExpectedObj:&expectedObj];
+
+    XCTAssertEqualObjects(resultObj, expectedObj);
+}
+
+- (void) testDataEventSerialization
+{
+    CRTODataEvent* dataEvent = [[CRTODataEvent alloc] init];
+    dataEvent.timestamp = timestamp;
+
+    NSDate* extraDate = [NSDate dateWithTimeIntervalSince1970:1000000000];
+    [dataEvent setDateExtraData:extraDate ForKey:@"my_date_extra_data"];
+
+    float extraFloat = 0.1f;
+    [dataEvent setFloatExtraData:extraFloat ForKey:@"FLOATDATA"];
+
+    NSInteger extraInteger = -2000000000;
+    [dataEvent setIntegerExtraData:extraInteger ForKey:@"The biggest number there is"];
+
+    NSString* extraString = @"some Sample string";
+    [dataEvent setStringExtraData:extraString ForKey:@"myStringData"];
+
+    NSDate* extraDate2 = [NSDate dateWithTimeIntervalSince1970:1000000001];
+    [dataEvent setDateExtraData:extraDate2 ForKey:@"my_date_extra_data2"];
+
+    float extraFloat2 = 0.2f;
+    [dataEvent setFloatExtraData:extraFloat2 ForKey:@"FLOATDATA2"];
+
+    NSInteger extraInteger2 = 2000000000;
+    [dataEvent setIntegerExtraData:extraInteger2 ForKey:@"The biggest number there is2"];
+
+    NSString* extraString2 = @"some Sample string2";
+    [dataEvent setStringExtraData:extraString2 ForKey:@"myStringData2"];
+
+    NSString* expected = @"{"
+                          "  \"account\" : {"
+                          "    \"app_name\" : \"com.criteo.sdktestapp\""
+                          "  },"
+                          "  \"events\" : ["
+                          "    {"
+                          "      \"event\" : \"setData\","
+                          "      \"my_date_extra_data\" : {"
+                          "         \"value\" : \"2001-09-09T01:46:40Z\","
+                          "         \"type\" : \"date\""
+                          "      },"
+                          "      \"FLOATDATA\" : {"
+                          "         \"value\" : 0.1,"
+                          "         \"type\" : \"float\""
+                          "      },"
+                          "      \"The biggest number there is\" : {"
+                          "         \"value\" : -2000000000,"
+                          "         \"type\" : \"integer\""
+                          "      },"
+                          "      \"myStringData\" : {"
+                          "         \"value\" : \"some Sample string\","
+                          "         \"type\" : \"text\""
+                          "      },"
+                          "      \"my_date_extra_data2\" : {"
+                          "         \"value\" : \"2001-09-09T01:46:41Z\","
+                          "         \"type\" : \"date\""
+                          "      },"
+                          "      \"FLOATDATA2\" : {"
+                          "         \"value\" : 0.2,"
+                          "         \"type\" : \"float\""
+                          "      },"
+                          "      \"The biggest number there is2\" : {"
+                          "         \"value\" : 2000000000,"
+                          "         \"type\" : \"integer\""
+                          "      },"
+                          "      \"myStringData2\" : {"
+                          "         \"value\" : \"some Sample string2\","
+                          "         \"type\" : \"text\""
+                          "      },"
+                          "      \"timestamp\" : \"2015-06-26T14:57:25Z\""
+                          "    }"
+                          "  ],"
+                          "  \"id\" : {"
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "  },"
+                          "  \"device_info\" : {"
+                          "    \"os_name\" : \"iPhone OS\","
+                          "    \"device_model\" : \"iPhone3,2\","
+                          "    \"device_manufacturer\" : \"apple\","
+                          "    \"os_version\" : \"4.9.1\","
+                          "    \"platform\" : \"ios\""
+                          "  },"
+                          "  \"app_info\" : {"
+                          "    \"app_version\" : \"43.0.2357.61\","
+                          "    \"app_name\" : \"Criteo Test App\","
+                          "    \"sdk_version\" : \"1.0.0\","
+                          "    \"app_language\" : \"en\","
+                          "    \"app_id\" : \"com.criteo.sdktestapp\","
+                          "    \"app_country\" : \"US\""
+                          "  },"
+                          "  \"version\" : \"sdk_1.0.0\","
+                          "  \"alternate_ids\" : ["
+                          "    {"
+                          "      \"type\" : \"email\","
+                          "      \"value\" : \"test@foobar.com\","
+                          "      \"hash_method\" : \"none\""
+                          "    }"
+                          "  ]"
+                          "}";
+
+    id resultObj = nil;
+    id expectedObj = nil;
+
+    [self runSerializerForEvent:dataEvent
+              withCustomerEmail:@"test@foobar.com"
               andExpectedResult:expected
              returningResultObj:&resultObj
                  andExpectedObj:&expectedObj];
