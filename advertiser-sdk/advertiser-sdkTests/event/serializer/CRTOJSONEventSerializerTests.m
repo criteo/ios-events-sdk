@@ -19,6 +19,7 @@
 #import "CRTODeviceInfo.h"
 #import "CRTOEvent.h"
 #import "CRTOEvent+Internal.h"
+#import "CRTOHomeViewEvent.h"
 #import "CRTOJSONEventSerializer.h"
 #import "CRTOProduct.h"
 #import "CRTOProductListViewEvent.h"
@@ -844,6 +845,53 @@
     id expectedObj = nil;
 
     [self runSerializerForEvent:deeplinkEvent
+              andExpectedResult:expected
+             returningResultObj:&resultObj
+                 andExpectedObj:&expectedObj];
+
+    XCTAssertEqualObjects(resultObj, expectedObj);
+}
+
+- (void) testHomeViewEventSerialization
+{
+    CRTOHomeViewEvent* homeEvent = [[CRTOHomeViewEvent alloc] init];
+    homeEvent.timestamp = timestamp;
+
+    NSString* expected = @"{"
+                          "  \"account\" : {"
+                          "    \"app_name\" : \"com.criteo.sdktestapp\""
+                          "  },"
+                          "  \"events\" : ["
+                          "    {"
+                          "      \"event\" : \"viewHome\","
+                          "      \"timestamp\" : \"2015-06-26T14:57:25Z\""
+                          "    }"
+                          "  ],"
+                          "  \"id\" : {"
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "  },"
+                          "  \"device_info\" : {"
+                          "    \"os_name\" : \"iPhone OS\","
+                          "    \"device_model\" : \"iPhone3,2\","
+                          "    \"device_manufacturer\" : \"apple\","
+                          "    \"os_version\" : \"4.9.1\","
+                          "    \"platform\" : \"ios\""
+                          "  },"
+                          "  \"app_info\" : {"
+                          "    \"app_version\" : \"43.0.2357.61\","
+                          "    \"app_name\" : \"Criteo Test App\","
+                          "    \"sdk_version\" : \"1.0.0\","
+                          "    \"app_language\" : \"en\","
+                          "    \"app_id\" : \"com.criteo.sdktestapp\","
+                          "    \"app_country\" : \"US\""
+                          "  },"
+                          "  \"version\" : \"sdk_1.0.0\""
+                          "}";
+
+    id resultObj = nil;
+    id expectedObj = nil;
+
+    [self runSerializerForEvent:homeEvent
               andExpectedResult:expected
              returningResultObj:&resultObj
                  andExpectedObj:&expectedObj];
