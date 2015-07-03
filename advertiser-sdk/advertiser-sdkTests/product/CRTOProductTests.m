@@ -8,32 +8,65 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
+#import "CRTOProduct.h"
+
 @interface CRTOProductTests : XCTestCase
 
 @end
 
 @implementation CRTOProductTests
-
-- (void)setUp {
-    [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+{
+    NSMutableString* productId;
+    double price;
 }
 
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+- (void)setUp
+{
+    [super setUp];
+
+    productId = [NSMutableString stringWithString:@"Some Product Id111222333"];
+    price = 999.85;
+}
+
+- (void)tearDown
+{
+
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    XCTAssert(YES, @"Pass");
+- (void) testProductInit
+{
+    CRTOProduct* product = [[CRTOProduct alloc] init];
+
+    XCTAssertNotNil(product);
+
+    XCTAssertNil(product.productId);
+    XCTAssertEqual(product.price, 0.0);
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+- (void) testProductInitProductIdPrice
+{
+    CRTOProduct* product = [[CRTOProduct alloc] initWithProductId:productId price:price];
+
+    XCTAssertNotNil(product);
+
+    XCTAssertNotEqual(product.productId, productId);
+    XCTAssertEqualObjects(product.productId, productId);
+
+    XCTAssertEqual(product.price, price);
+}
+
+- (void) testProductCopy
+{
+    CRTOProduct* product = [[CRTOProduct alloc] initWithProductId:productId price:price];
+
+    CRTOProduct* product2 = [product copy];
+
+    XCTAssertNotNil(product2);
+
+    XCTAssertEqualObjects(product2.productId, product.productId);
+
+    XCTAssertEqual(product2.price, product.price);
 }
 
 @end
