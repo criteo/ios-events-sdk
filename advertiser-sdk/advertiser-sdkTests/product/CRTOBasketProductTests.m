@@ -8,32 +8,72 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
+#import "CRTOBasketProduct.h"
+
 @interface CRTOBasketProductTests : XCTestCase
 
 @end
 
 @implementation CRTOBasketProductTests
-
-- (void)setUp {
-    [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+{
+    NSMutableString* productId;
+    double price;
+    NSInteger quantity;
 }
 
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+- (void)setUp
+{
+    [super setUp];
+
+    productId = [NSMutableString stringWithString:@"111000999898 Test Product Identifier"];
+    price = 0.1;
+    quantity = 1000000;
+}
+
+- (void)tearDown
+{
+
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    XCTAssert(YES, @"Pass");
+- (void) testInit
+{
+    CRTOBasketProduct* basketProduct = [[CRTOBasketProduct alloc] init];
+
+    XCTAssertNotNil(basketProduct);
+
+    XCTAssertNil(basketProduct.productId);
+    XCTAssertEqual(basketProduct.price, 0.0);
+    XCTAssertEqual(basketProduct.quantity, 0);
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+- (void) testInitProductIdPriceQuantity
+{
+    CRTOBasketProduct* basketProduct = [[CRTOBasketProduct alloc] initWithProductId:productId price:price quantity:quantity];
+
+    XCTAssertNotNil(basketProduct);
+
+    XCTAssertNotEqual(basketProduct.productId, productId);
+    XCTAssertEqualObjects(basketProduct.productId, productId);
+
+    XCTAssertEqual(basketProduct.price, price);
+
+    XCTAssertEqual(basketProduct.quantity, quantity);
+}
+
+- (void) testBasketProductCopy
+{
+    CRTOBasketProduct* basketProduct = [[CRTOBasketProduct alloc] initWithProductId:productId price:price quantity:quantity];
+
+    CRTOBasketProduct* basketProduct2 = [basketProduct copy];
+
+    XCTAssertNotNil(basketProduct2);
+
+    XCTAssertEqualObjects(basketProduct2.productId, basketProduct.productId);
+
+    XCTAssertEqual(basketProduct2.price, basketProduct.price);
+
+    XCTAssertEqual(basketProduct2.quantity, basketProduct.quantity);
 }
 
 @end
