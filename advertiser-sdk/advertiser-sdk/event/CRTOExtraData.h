@@ -8,13 +8,14 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSUInteger, CRTOExtraDataType) {
+    CRTOExtraDataTypeInvalid = 0,
+
     CRTOExtraDataTypeDate,
     CRTOExtraDataTypeFloat,
     CRTOExtraDataTypeInteger,
     CRTOExtraDataTypeText,
   //CRTOExtraDataTypeYourNewTypeHere,
 
-    CRTOExtraDataTypeInvalid
 };
 
 @interface CRTOExtraData : NSObject
