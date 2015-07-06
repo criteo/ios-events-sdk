@@ -8,32 +8,40 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
+#import "CRTOHomeViewEvent.h"
+
 @interface CRTOHomeViewEventTests : XCTestCase
 
 @end
 
 @implementation CRTOHomeViewEventTests
 
-- (void)setUp {
+- (void)setUp
+{
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
+
 }
 
-- (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+- (void)tearDown
+{
+
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    XCTAssert(YES, @"Pass");
+- (void) testInit
+{
+    CRTOHomeViewEvent* event = [[CRTOHomeViewEvent alloc] init];
+
+    XCTAssertNotNil(event);
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+- (void) testHomeViewEventCopy
+{
+    CRTOHomeViewEvent* event = [[CRTOHomeViewEvent alloc] init];
+
+    CRTOHomeViewEvent* eventCopy = [event copy];
+
+    XCTAssertNotEqual(event, eventCopy);
 }
 
 @end
