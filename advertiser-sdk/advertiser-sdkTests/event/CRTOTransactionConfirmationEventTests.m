@@ -98,6 +98,34 @@
     XCTAssertNil(event.transactionId);
 }
 
+- (void) testInitWithNilBasketProducts
+{
+    CRTOTransactionConfirmationEvent* event = [[CRTOTransactionConfirmationEvent alloc] initWithBasketProducts:nil];
+
+    XCTAssertNotNil(event);
+
+    XCTAssertNil(event.currency);
+    XCTAssertNil(event.basketProducts);
+    XCTAssertNil(event.transactionId);
+}
+
+- (void) testInitWithNonBasketProducts
+{
+    NSMutableArray* not_entirely_producs = [NSMutableArray arrayWithArray:@[ [[CRTOBasketProduct alloc] initWithProductId:productId1 price:price1 quantity:quantity1],
+                                                                             [NSNull null],
+                                                                             @"thing 2" ]];
+
+    CRTOTransactionConfirmationEvent* event = [[CRTOTransactionConfirmationEvent alloc] initWithBasketProducts:not_entirely_producs];
+
+    XCTAssertNotNil(event);
+
+    XCTAssertNil(event.currency);
+
+    XCTAssertNotNil(event.basketProducts);
+    XCTAssertEqual(event.basketProducts.count, 1);
+    XCTAssert([event.basketProducts containsObject:not_entirely_producs[0]]);
+}
+
 - (void) testInitWithBasketProductsTransactionId
 {
     NSMutableArray* products_init = [NSMutableArray arrayWithArray:@[ [[CRTOBasketProduct alloc] initWithProductId:productId1 price:price1 quantity:quantity1],
@@ -186,6 +214,20 @@
     XCTAssertEqualObjects(event.transactionId, transactionId);
     XCTAssertEqualObjects(event.startDate, eventCopy.startDate);
     XCTAssertEqualObjects(event.endDate, eventCopy.endDate);
+}
+
+- (void) testSetBasketProductsWithNonBasketProducts
+{
+    NSMutableArray* not_entirely_producs = [NSMutableArray arrayWithArray:@[ [[CRTOBasketProduct alloc] initWithProductId:productId1 price:price1 quantity:quantity1],
+                                                                             [NSNull null],
+                                                                             @"thing 2" ]];
+
+    CRTOTransactionConfirmationEvent* event = [[CRTOTransactionConfirmationEvent alloc] init];
+    event.basketProducts = not_entirely_producs;
+
+    XCTAssertNotNil(event.basketProducts);
+    XCTAssertEqual(event.basketProducts.count, 1);
+    XCTAssert([event.basketProducts containsObject:not_entirely_producs[0]]);
 }
 
 @end

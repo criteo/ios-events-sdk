@@ -11,4 +11,6 @@
 
 - (instancetype) initWithEvent:(CRTOTransactionConfirmationEvent*)event;
 
+- (NSArray*) arrayOfBasketProductsFromArray:(NSArray*)array;
+
 @end
