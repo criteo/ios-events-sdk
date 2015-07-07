@@ -647,6 +647,62 @@
     XCTAssertEqualObjects(resultObj, expectedObj);
 }
 
+- (void) testBasketViewEventSerializationWithNonProducts
+{
+    CRTOBasketViewEvent* basketViewEvent = [[CRTOBasketViewEvent alloc] initWithBasketProducts: @[ [NSNull null], @(5000), @"foo not a product" ] ];
+    basketViewEvent.timestamp = timestamp;
+
+    NSString* expected = @"{"
+                          "  \"account\" : {"
+                          "    \"app_name\" : \"com.criteo.sdktestapp\""
+                          "  },"
+                          "  \"events\" : ["
+                          "    {"
+                          "      \"event\" : \"viewBasket\","
+                          "      \"product\" : [ ],"
+                          "      \"timestamp\" : \"2015-06-26T14:57:25Z\""
+                          "    }"
+                          "  ],"
+                          "  \"id\" : {"
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "  },"
+                          "  \"device_info\" : {"
+                          "    \"os_name\" : \"iPhone OS\","
+                          "    \"device_model\" : \"iPhone3,2\","
+                          "    \"device_manufacturer\" : \"apple\","
+                          "    \"os_version\" : \"4.9.1\","
+                          "    \"platform\" : \"ios\""
+                          "  },"
+                          "  \"app_info\" : {"
+                          "    \"app_version\" : \"43.0.2357.61\","
+                          "    \"app_name\" : \"Criteo Test App\","
+                          "    \"sdk_version\" : \"1.0.0\","
+                          "    \"app_language\" : \"en\","
+                          "    \"app_id\" : \"com.criteo.sdktestapp\","
+                          "    \"app_country\" : \"US\""
+                          "  },"
+                          "  \"version\" : \"sdk_1.0.0\","
+                          "  \"alternate_ids\" : ["
+                          "    {"
+                          "      \"type\" : \"email\","
+                          "      \"value\" : \"NotAReal Email\","
+                          "      \"hash_method\" : \"none\""
+                          "    }"
+                          "  ]"
+                          "}";
+
+    id resultObj = nil;
+    id expectedObj = nil;
+
+    [self runSerializerForEvent:basketViewEvent
+              withCustomerEmail:@"NotAReal Email"
+              andExpectedResult:expected
+             returningResultObj:&resultObj
+                 andExpectedObj:&expectedObj];
+
+    XCTAssertEqualObjects(resultObj, expectedObj);
+}
+
 - (void) testDataEventSerialization
 {
     CRTODataEvent* dataEvent = [[CRTODataEvent alloc] init];

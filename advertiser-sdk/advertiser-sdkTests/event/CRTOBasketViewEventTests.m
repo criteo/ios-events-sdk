@@ -90,6 +90,34 @@
     XCTAssertEqualObjects(event.basketProducts, products_init);
 }
 
+- (void) testInitWithNilBasketProducts
+{
+    CRTOBasketViewEvent* event = [[CRTOBasketViewEvent alloc] initWithBasketProducts:nil];
+
+    XCTAssertNotNil(event);
+
+    XCTAssertNil(event.currency);
+
+    XCTAssertNil(event.basketProducts);
+}
+
+- (void) testInitWithNonBasketProducts
+{
+    NSMutableArray* not_entirely_producs = [NSMutableArray arrayWithArray:@[ [[CRTOBasketProduct alloc] initWithProductId:productId1 price:price1 quantity:quantity1],
+                                                                             [NSNull null],
+                                                                             @"thing 2" ]];
+
+    CRTOBasketViewEvent* event = [[CRTOBasketViewEvent alloc] initWithBasketProducts:not_entirely_producs];
+
+    XCTAssertNotNil(event);
+
+    XCTAssertNil(event.currency);
+
+    XCTAssertNotNil(event.basketProducts);
+    XCTAssertEqual(event.basketProducts.count, 1);
+    XCTAssert([event.basketProducts containsObject:not_entirely_producs[0]]);
+}
+
 - (void) testInitWithBasketProductsCurrency
 {
     NSMutableArray* products_init = [NSMutableArray arrayWithArray:@[ [[CRTOBasketProduct alloc] initWithProductId:productId1 price:price1 quantity:quantity1],
@@ -149,6 +177,20 @@
     XCTAssertEqualObjects(event.currency, eventCopy.currency);
     XCTAssertEqualObjects(event.startDate, eventCopy.startDate);
     XCTAssertEqualObjects(event.endDate, eventCopy.endDate);
+}
+
+- (void) testSetBasketProductsWithNonBasketProducts
+{
+    NSMutableArray* not_entirely_producs = [NSMutableArray arrayWithArray:@[ [[CRTOBasketProduct alloc] initWithProductId:productId1 price:price1 quantity:quantity1],
+                                                                             [NSNull null],
+                                                                             @"thing 2" ]];
+
+    CRTOBasketViewEvent* event = [[CRTOBasketViewEvent alloc] init];
+    event.basketProducts = not_entirely_producs;
+
+    XCTAssertNotNil(event.basketProducts);
+    XCTAssertEqual(event.basketProducts.count, 1);
+    XCTAssert([event.basketProducts containsObject:not_entirely_producs[0]]);
 }
 
 @end

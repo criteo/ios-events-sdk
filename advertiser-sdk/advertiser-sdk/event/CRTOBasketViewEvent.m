@@ -6,10 +6,23 @@
 //
 
 #import <CriteoAdvertiser/CRTOBasketViewEvent.h>
+#import <CriteoAdvertiser/CRTOBasketProduct.h>
 #import "CRTOBasketViewEvent+Internal.h"
 #import "CRTOEvent+Internal.h"
 
 @implementation CRTOBasketViewEvent
+
+#pragma mark - Properties
+
+- (void) setBasketProducts:(NSArray*)basketProducts
+{
+    if ( basketProducts ) {
+        NSArray* basketProductsCopy = [NSArray arrayWithArray:basketProducts];
+        _basketProducts = [self arrayOfBasketProductsFromArray:basketProductsCopy];
+    } else {
+        _basketProducts = nil;
+    }
+}
 
 #pragma mark - Initializers
 
@@ -33,7 +46,7 @@
     self = [super initWithStartDate:start endDate:end];
     if ( self ) {
         if ( basketProducts ) {
-            _basketProducts = [NSArray arrayWithArray:basketProducts];
+            self.basketProducts = basketProducts;
         }
 
         if ( currency ) {
@@ -80,6 +93,19 @@
     validity = validity && [super isValid];
 
     return validity;
+}
+
+#pragma mark - Class Extension Methods
+
+- (NSArray*) arrayOfBasketProductsFromArray:(NSArray*)array
+{
+    NSIndexSet* indexes = [array indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL* stop) {
+        return [obj isKindOfClass:[CRTOBasketProduct class]];
+    }];
+
+    NSArray* result = [array objectsAtIndexes:indexes];
+
+    return result;
 }
 
 @end

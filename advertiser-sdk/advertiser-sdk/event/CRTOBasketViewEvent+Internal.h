@@ -11,4 +11,6 @@
 
 - (instancetype) initWithEvent:(CRTOBasketViewEvent*)event;
 
+- (NSArray*) arrayOfBasketProductsFromArray:(NSArray*)array;
+
 @end
