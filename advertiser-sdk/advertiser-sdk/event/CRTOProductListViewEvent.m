@@ -11,6 +11,18 @@
 
 @implementation CRTOProductListViewEvent
 
+#pragma mark - Properties
+
+- (void) setProducts:(NSArray*)products
+{
+    if ( products ) {
+        NSArray* productsCopy = [NSArray arrayWithArray:products];
+        _products = [self arrayOfProductsFromArray:productsCopy];
+    } else {
+        _products = nil;
+    }
+}
+
 #pragma mark - Initializers
 
 - (instancetype) init
@@ -33,7 +45,7 @@
     self = [super initWithStartDate:start endDate:end];
     if ( self ) {
         if ( products ) {
-            _products = [NSArray arrayWithArray:products];
+            self.products = products;
         }
 
         if ( currency ) {
@@ -80,6 +92,19 @@
     validity = validity && [super isValid];
 
     return validity;
+}
+
+#pragma mark - Class Extension Methods
+
+- (NSArray*) arrayOfProductsFromArray:(NSArray*)array
+{
+    NSIndexSet* indexes = [array indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL* stop) {
+        return [obj isKindOfClass:[CRTOProduct class]];
+    }];
+
+    NSArray* result = [array objectsAtIndexes:indexes];
+
+    return result;
 }
 
 @end

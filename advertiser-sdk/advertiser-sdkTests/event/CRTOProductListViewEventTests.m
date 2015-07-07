@@ -82,6 +82,28 @@
     XCTAssertEqualObjects(event.products, products_init);
 }
 
+- (void) testInitWithNilProducts
+{
+    CRTOProductListViewEvent* event = [[CRTOProductListViewEvent alloc] initWithProducts:nil];
+
+    XCTAssertNotNil(event);
+    XCTAssertNil(event.products);
+}
+
+- (void) testInitWithNonProducts
+{
+    NSArray* not_entirely_products = @[ [[CRTOProduct alloc] initWithProductId:productId1 price:price1],
+                                        @"Not A Product",
+                                        @"Also not a product",
+                                        [NSNull null] ];
+
+    CRTOProductListViewEvent* event = [[CRTOProductListViewEvent alloc] initWithProducts:not_entirely_products];
+
+    XCTAssertNotNil(event.products);
+    XCTAssertEqual(event.products.count, 1);
+    XCTAssert([event.products containsObject:not_entirely_products[0]]);
+}
+
 - (void) testInitWithProductsCurrency
 {
     NSMutableArray* products_init = [NSMutableArray arrayWithArray:@[ [[CRTOProduct alloc] initWithProductId:productId1 price:price1],
@@ -141,6 +163,21 @@
     XCTAssertEqualObjects(event.currency, eventCopy.currency);
     XCTAssertEqualObjects(event.startDate, eventCopy.startDate);
     XCTAssertEqualObjects(event.endDate, eventCopy.endDate);
+}
+
+- (void) testSetProductsWithNonProducts
+{
+    NSArray* not_entirely_products = @[ [[CRTOProduct alloc] initWithProductId:productId1 price:price1],
+                                        @"Not A Product",
+                                        @"Also not a product",
+                                        [NSNull null] ];
+
+    CRTOProductListViewEvent* event = [[CRTOProductListViewEvent alloc] init];
+    event.products = not_entirely_products;
+
+    XCTAssertNotNil(event.products);
+    XCTAssertEqual(event.products.count, 1);
+    XCTAssert([event.products containsObject:not_entirely_products[0]]);
 }
 
 @end

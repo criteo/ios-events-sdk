@@ -11,4 +11,6 @@
 
 - (instancetype) initWithEvent:(CRTOProductListViewEvent*)event;
 
+- (NSArray*) arrayOfProductsFromArray:(NSArray*)array;
+
 @end
