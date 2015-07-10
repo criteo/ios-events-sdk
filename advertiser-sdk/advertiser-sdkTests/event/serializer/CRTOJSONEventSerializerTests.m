@@ -63,29 +63,12 @@
     andReturn(@"43.0.2357.61");
 
     // CRTODeviceInfo Mock
-    mockDeviceInfo = OCMClassMock([CRTODeviceInfo class]);
-
-    OCMStub([mockDeviceInfo deviceIdentifier]).
-    andReturn(@"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6");
-
-    OCMStub([mockDeviceInfo deviceManufacturer]).
-    andReturn(@"apple");
-
-    OCMStub([mockDeviceInfo deviceModel]).
-    andReturn(@"iPhone3,2");
-
-    OCMStub([mockDeviceInfo isEventGatheringEnabled]).
-    andReturn(NO);
-
-    OCMStub([mockDeviceInfo osName]).
-    andReturn(@"iPhone OS");
-
-    OCMStub([mockDeviceInfo osVersion]).
-    andReturn(@"4.9.1");
-
-    OCMStub([mockDeviceInfo platform]).
-    andReturn(@"ios");
-
+    mockDeviceInfo = [self mockDeviceInfoWithDeviceId:@"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6"
+                                   deviceManufacturer:@"apple"
+                                          deviceModel:@"iPhone3,2"
+                           advertisingTrackingEnabled:YES
+                                               osName:@"iPhone OS"
+                                            osVersion:@"4.9.1" platform:@"ios"];
     // CRTOSDKInfo Mock
     mockSDKInfo = OCMClassMock([CRTOSDKInfo class]);
 
@@ -103,6 +86,39 @@
     mockSDKInfo    = nil;
 
     [super tearDown];
+}
+
+- (CRTODeviceInfo*) mockDeviceInfoWithDeviceId:(NSString*)deviceId
+                            deviceManufacturer:(NSString*)manufacturer
+                                   deviceModel:(NSString*)model
+                         advertisingTrackingEnabled:(BOOL)advertisingTrackingEnabled
+                                        osName:(NSString*)osName
+                                     osVersion:(NSString*)osVersion
+                                      platform:(NSString*)platform
+{
+    CRTODeviceInfo* deviceInfo = OCMClassMock([CRTODeviceInfo class]);
+    OCMStub([deviceInfo deviceIdentifier]).
+    andReturn(deviceId);
+
+    OCMStub([deviceInfo deviceManufacturer]).
+    andReturn(manufacturer);
+
+    OCMStub([deviceInfo deviceModel]).
+    andReturn(model);
+
+    OCMStub([deviceInfo advertisingTrackingEnabled]).
+    andReturn(advertisingTrackingEnabled);
+
+    OCMStub([deviceInfo osName]).
+    andReturn(osName);
+
+    OCMStub([deviceInfo osVersion]).
+    andReturn(osVersion);
+
+    OCMStub([deviceInfo platform]).
+    andReturn(platform);
+
+    return deviceInfo;
 }
 
 // Why do we bother returning resultObj and expectedObj via out paramaters?
@@ -123,6 +139,27 @@
                 andExpectedObj:(id*)expectedObj
 {
     [self runSerializerForEvent:event
+                        appInfo:mockAppInfo
+                     deviceInfo:mockDeviceInfo
+                        sdkInfo:mockSDKInfo
+              withCustomerEmail:nil
+              andExpectedResult:expected
+             returningResultObj:resultObj
+                 andExpectedObj:expectedObj];
+}
+
+- (void) runSerializerForEvent:(CRTOEvent*)event
+                       appInfo:(CRTOAppInfo*)appInfo
+                    deviceInfo:(CRTODeviceInfo*)deviceInfo
+                       sdkInfo:(CRTOSDKInfo*)sdkInfo
+             andExpectedResult:(NSString*)expected
+            returningResultObj:(id*)resultObj
+                andExpectedObj:(id*)expectedObj
+{
+    [self runSerializerForEvent:event
+                        appInfo:appInfo
+                     deviceInfo:deviceInfo
+                        sdkInfo:sdkInfo
               withCustomerEmail:nil
               andExpectedResult:expected
              returningResultObj:resultObj
@@ -135,9 +172,28 @@
             returningResultObj:(id*)resultObj
                 andExpectedObj:(id*)expectedObj
 {
-    CRTOJSONEventSerializer* serializer = [[CRTOJSONEventSerializer alloc] initWithAppInfo:mockAppInfo
-                                                                                deviceInfo:mockDeviceInfo
-                                                                                   sdkInfo:mockSDKInfo];
+    [self runSerializerForEvent:event
+                        appInfo:mockAppInfo
+                     deviceInfo:mockDeviceInfo
+                        sdkInfo:mockSDKInfo
+              withCustomerEmail:email
+              andExpectedResult:expected
+             returningResultObj:resultObj
+                 andExpectedObj:expectedObj];
+}
+
+- (void) runSerializerForEvent:(CRTOEvent*)event
+                       appInfo:(CRTOAppInfo*)appInfo
+                    deviceInfo:(CRTODeviceInfo*)deviceInfo
+                       sdkInfo:(CRTOSDKInfo*)sdkInfo
+             withCustomerEmail:(NSString*)email
+             andExpectedResult:(NSString*)expected
+            returningResultObj:(id*)resultObj
+                andExpectedObj:(id*)expectedObj
+{
+    CRTOJSONEventSerializer* serializer = [[CRTOJSONEventSerializer alloc] initWithAppInfo:appInfo
+                                                                                deviceInfo:deviceInfo
+                                                                                   sdkInfo:sdkInfo];
     if ( email ) {
         serializer.customerEmail = email;
     }
@@ -179,7 +235,8 @@
                           "    }"
                           "  ],"
                           "  \"id\" : {"
-                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
+                          "    \"limit_ad_tracking\" : false"
                           "  },"
                           "  \"device_info\" : {"
                           "    \"os_name\" : \"iPhone OS\","
@@ -235,7 +292,8 @@
                           "    }"
                           "  ],"
                           "  \"id\" : {"
-                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
+                          "    \"limit_ad_tracking\" : false"
                           "  },"
                           "  \"device_info\" : {"
                           "    \"os_name\" : \"iPhone OS\","
@@ -282,7 +340,8 @@
                           "    }"
                           "  ],"
                           "  \"id\" : {"
-                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
+                          "    \"limit_ad_tracking\" : false"
                           "  },"
                           "  \"device_info\" : {"
                           "    \"os_name\" : \"iPhone OS\","
@@ -358,7 +417,8 @@
                           "    }"
                           "  ],"
                           "  \"id\" : {"
-                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
+                          "    \"limit_ad_tracking\" : false"
                           "  },"
                           "  \"device_info\" : {"
                           "    \"os_name\" : \"iPhone OS\","
@@ -406,7 +466,8 @@
                           "    }"
                           "  ],"
                           "  \"id\" : {"
-                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
+                          "    \"limit_ad_tracking\" : false"
                           "  },"
                           "  \"device_info\" : {"
                           "    \"os_name\" : \"iPhone OS\","
@@ -476,7 +537,8 @@
                           "    }"
                           "  ],"
                           "  \"id\" : {"
-                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
+                          "    \"limit_ad_tracking\" : false"
                           "  },"
                           "  \"device_info\" : {"
                           "    \"os_name\" : \"iPhone OS\","
@@ -532,7 +594,8 @@
                           "    }"
                           "  ],"
                           "  \"id\" : {"
-                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
+                          "    \"limit_ad_tracking\" : false"
                           "  },"
                           "  \"device_info\" : {"
                           "    \"os_name\" : \"iPhone OS\","
@@ -608,7 +671,8 @@
                           "    }"
                           "  ],"
                           "  \"id\" : {"
-                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
+                          "    \"limit_ad_tracking\" : false"
                           "  },"
                           "  \"device_info\" : {"
                           "    \"os_name\" : \"iPhone OS\","
@@ -664,7 +728,8 @@
                           "    }"
                           "  ],"
                           "  \"id\" : {"
-                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
+                          "    \"limit_ad_tracking\" : false"
                           "  },"
                           "  \"device_info\" : {"
                           "    \"os_name\" : \"iPhone OS\","
@@ -775,7 +840,8 @@
                           "    }"
                           "  ],"
                           "  \"id\" : {"
-                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
+                          "    \"limit_ad_tracking\" : false"
                           "  },"
                           "  \"device_info\" : {"
                           "    \"os_name\" : \"iPhone OS\","
@@ -831,7 +897,8 @@
                           "    }"
                           "  ],"
                           "  \"id\" : {"
-                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
+                          "    \"limit_ad_tracking\" : false"
                           "  },"
                           "  \"device_info\" : {"
                           "    \"os_name\" : \"iPhone OS\","
@@ -878,7 +945,8 @@
                           "    }"
                           "  ],"
                           "  \"id\" : {"
-                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
+                          "    \"limit_ad_tracking\" : false"
                           "  },"
                           "  \"device_info\" : {"
                           "    \"os_name\" : \"iPhone OS\","
@@ -925,7 +993,8 @@
                           "    }"
                           "  ],"
                           "  \"id\" : {"
-                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
+                          "    \"limit_ad_tracking\" : false"
                           "  },"
                           "  \"device_info\" : {"
                           "    \"os_name\" : \"iPhone OS\","
@@ -956,6 +1025,65 @@
     XCTAssertEqualObjects(resultObj, expectedObj);
 }
 
+- (void) testLATHomeViewEventSerialization
+{
+    CRTOHomeViewEvent* homeEvent = [[CRTOHomeViewEvent alloc] init];
+    homeEvent.timestamp = timestamp;
+
+    CRTODeviceInfo* mockDeviceInfo_local = [self mockDeviceInfoWithDeviceId:@"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6"
+                                                         deviceManufacturer:@"apple"
+                                                                deviceModel:@"iPhone3,2"
+                                                 advertisingTrackingEnabled:NO
+                                                                     osName:@"iPhone OS"
+                                                                  osVersion:@"4.9.1"
+                                                                   platform:@"ios"];
+
+    NSString* expected = @"{"
+    "  \"account\" : {"
+    "    \"app_name\" : \"com.criteo.sdktestapp\""
+    "  },"
+    "  \"events\" : ["
+    "    {"
+    "      \"event\" : \"viewHome\","
+    "      \"timestamp\" : \"2015-06-26T14:57:25Z\""
+    "    }"
+    "  ],"
+    "  \"id\" : {"
+    "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
+    "    \"limit_ad_tracking\" : true"
+    "  },"
+    "  \"device_info\" : {"
+    "    \"os_name\" : \"iPhone OS\","
+    "    \"device_model\" : \"iPhone3,2\","
+    "    \"device_manufacturer\" : \"apple\","
+    "    \"os_version\" : \"4.9.1\","
+    "    \"platform\" : \"ios\""
+    "  },"
+    "  \"app_info\" : {"
+    "    \"app_version\" : \"43.0.2357.61\","
+    "    \"app_name\" : \"Criteo Test App\","
+    "    \"sdk_version\" : \"1.0.0\","
+    "    \"app_language\" : \"en\","
+    "    \"app_id\" : \"com.criteo.sdktestapp\","
+    "    \"app_country\" : \"US\""
+    "  },"
+    "  \"version\" : \"sdk_1.0.0\""
+    "}";
+
+    id resultObj = nil;
+    id expectedObj = nil;
+
+    [self runSerializerForEvent:homeEvent
+                        appInfo:mockAppInfo
+                     deviceInfo:mockDeviceInfo_local
+                        sdkInfo:mockSDKInfo
+              andExpectedResult:expected
+             returningResultObj:&resultObj
+                 andExpectedObj:&expectedObj];
+
+    XCTAssertEqualObjects(resultObj, expectedObj);
+}
+
 - (void) testProductViewEventSerialization
 {
     CRTOProduct* product = [[CRTOProduct alloc] initWithProductId:@"PRODUCT11223344" price:999.85];
@@ -975,7 +1103,8 @@
                           "    }"
                           "  ],"
                           "  \"id\" : {"
-                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
+                          "    \"limit_ad_tracking\" : false"
                           "  },"
                           "  \"device_info\" : {"
                           "    \"os_name\" : \"iPhone OS\","
@@ -1030,7 +1159,8 @@
                           "    }"
                           "  ],"
                           "  \"id\" : {"
-                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
+                          "    \"limit_ad_tracking\" : false"
                           "  },"
                           "  \"device_info\" : {"
                           "    \"os_name\" : \"iPhone OS\","
@@ -1088,7 +1218,8 @@
                           "    }"
                           "  ],"
                           "  \"id\" : {"
-                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
+                          "    \"limit_ad_tracking\" : false"
                           "  },"
                           "  \"device_info\" : {"
                           "    \"os_name\" : \"iPhone OS\","
@@ -1161,7 +1292,8 @@
                           "    }"
                           "  ],"
                           "  \"id\" : {"
-                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
+                          "    \"limit_ad_tracking\" : false"
                           "  },"
                           "  \"device_info\" : {"
                           "    \"os_name\" : \"iPhone OS\","
@@ -1217,7 +1349,8 @@
                           "    }"
                           "  ],"
                           "  \"id\" : {"
-                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
+                          "    \"limit_ad_tracking\" : false"
                           "  },"
                           "  \"device_info\" : {"
                           "    \"os_name\" : \"iPhone OS\","
@@ -1290,7 +1423,8 @@
                           "    }"
                           "  ],"
                           "  \"id\" : {"
-                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
+                          "    \"limit_ad_tracking\" : false"
                           "  },"
                           "  \"device_info\" : {"
                           "    \"os_name\" : \"iPhone OS\","
@@ -1346,7 +1480,8 @@
                           "    }"
                           "  ],"
                           "  \"id\" : {"
-                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
+                          "    \"limit_ad_tracking\" : false"
                           "  },"
                           "  \"device_info\" : {"
                           "    \"os_name\" : \"iPhone OS\","
@@ -1426,7 +1561,8 @@
                           "    }"
                           "  ],"
                           "  \"id\" : {"
-                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
+                          "    \"limit_ad_tracking\" : false"
                           "  },"
                           "  \"device_info\" : {"
                           "    \"os_name\" : \"iPhone OS\","
@@ -1486,7 +1622,8 @@
                           "    }"
                           "  ],"
                           "  \"id\" : {"
-                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
+                          "    \"limit_ad_tracking\" : false"
                           "  },"
                           "  \"device_info\" : {"
                           "    \"os_name\" : \"iPhone OS\","
@@ -1566,7 +1703,8 @@
                           "    }"
                           "  ],"
                           "  \"id\" : {"
-                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
+                          "    \"limit_ad_tracking\" : false"
                           "  },"
                           "  \"device_info\" : {"
                           "    \"os_name\" : \"iPhone OS\","
@@ -1626,7 +1764,8 @@
                           "    }"
                           "  ],"
                           "  \"id\" : {"
-                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\""
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
+                          "    \"limit_ad_tracking\" : false"
                           "  },"
                           "  \"device_info\" : {"
                           "    \"os_name\" : \"iPhone OS\","

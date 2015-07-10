@@ -71,7 +71,7 @@ static NSString* deviceIdentifier = nil;
     return @"";
 }
 
-- (BOOL) isEventGatheringEnabled
+- (BOOL) advertisingTrackingEnabled
 {
     BOOL eventsEnabled = [ASIdentifierManager sharedManager].advertisingTrackingEnabled;
 

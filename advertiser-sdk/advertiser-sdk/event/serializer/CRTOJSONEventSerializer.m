@@ -288,7 +288,10 @@ static NSString* jsonProtocolVersion = nil;
 
 - (NSDictionary*) idDictionary
 {
-    NSDictionary* idDictionary = @{ kCRTOJSONPropertyNameIdfaKey : deviceInfo.deviceIdentifier };
+    NSDictionary* idDictionary = @{
+                                   kCRTOJSONPropertyNameIdfaKey : deviceInfo.deviceIdentifier,
+                                   kCRTOJSONPropertyNameLimitAdTrackingKey : @(!deviceInfo.advertisingTrackingEnabled)
+                                   };
 
     return idDictionary;
 }

@@ -94,6 +94,7 @@ NSString* const kCRTOJSONPropertyNameEventKey                   = @"event"; // P
 NSString* const kCRTOJSONPropertyNameEventsKey                  = @"events"; // PropertyName.EVENTS
 NSString* const kCRTOJSONPropertyNameFirst_LaunchKey            = @"first_launch";
 NSString* const kCRTOJSONPropertyNameIdfaKey                    = @"idfa"; // PropertyName.IDFA
+NSString* const kCRTOJSONPropertyNameLimitAdTrackingKey         = @"limit_ad_tracking"; // PropertyName.LIMIT_AD_TRACKING
 NSString* const kCRTOJSONPropertyNameIdKey                      = @"id"; // PropertyName.ID
 NSString* const kCRTOJSONPropertyNameKeywordsKey                = @"keywords"; // PropertyName.KEYWORDS
 NSString* const kCRTOJSONPropertyNameKwKey                      = @"kw"; // PropertyName.KEYWORDS
@@ -241,6 +242,7 @@ static NSSet* reservedKeysSet;
                                    kCRTOJSONPropertyNameEventsKey,
                                    kCRTOJSONPropertyNameFirst_LaunchKey,
                                    kCRTOJSONPropertyNameIdfaKey,
+                                   kCRTOJSONPropertyNameLimitAdTrackingKey,
                                    kCRTOJSONPropertyNameIdKey,
                                    kCRTOJSONPropertyNameKeywordsKey,
                                    kCRTOJSONPropertyNameKwKey,

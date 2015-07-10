@@ -94,6 +94,7 @@ FOUNDATION_EXPORT NSString* const kCRTOJSONPropertyNameEventKey;
 FOUNDATION_EXPORT NSString* const kCRTOJSONPropertyNameEventsKey;
 FOUNDATION_EXPORT NSString* const kCRTOJSONPropertyNameFirst_LaunchKey;
 FOUNDATION_EXPORT NSString* const kCRTOJSONPropertyNameIdfaKey;
+FOUNDATION_EXPORT NSString* const kCRTOJSONPropertyNameLimitAdTrackingKey;
 FOUNDATION_EXPORT NSString* const kCRTOJSONPropertyNameIdKey;
 FOUNDATION_EXPORT NSString* const kCRTOJSONPropertyNameKeywordsKey;
 FOUNDATION_EXPORT NSString* const kCRTOJSONPropertyNameKwKey;

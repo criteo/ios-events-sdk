@@ -135,10 +135,7 @@
 
     CRTOEventQueueItem* item = [[CRTOEventQueueItem alloc] initWithEvent:event
                                                              requestBody:serializedEvent];
-
-    if ( [CRTODeviceInfo sharedDeviceInfo].isEventGatheringEnabled ) {
-        [queue addQueueItem:item];
-    }
+    [queue addQueueItem:item];
 }
 
 #pragma mark - Public Methods
