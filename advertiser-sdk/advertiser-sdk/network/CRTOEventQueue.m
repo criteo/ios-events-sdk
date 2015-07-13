@@ -11,10 +11,11 @@
 #define CRTO_EVENTQUEUE_DELEGATEQUEUE_NAME (@"com.criteo.event.transmit.delegates")
 #define CRTO_EVENTQUEUE_DISPATCHQUEUE_NAME ("com.criteo.event.transmit")
 
-#define CRTO_EVENTQUEUE_MAX_AGE      (60.0 * 60.0)
-#define CRTO_EVENTQUEUE_MAX_DEPTH    (15)
-#define CRTO_EVENTQUEUE_SEND_TIMEOUT (60.0)
-#define CRTO_EVENTQUEUE_SEND_URL     (@"http://widget.criteo.com/m/event/")
+#define CRTO_EVENTQUEUE_MAX_AGE       (60.0 * 60.0)
+#define CRTO_EVENTQUEUE_MAX_DEPTH     (15)
+#define CRTO_EVENTQUEUE_MAX_REDIRECTS (4)
+#define CRTO_EVENTQUEUE_SEND_TIMEOUT  (60.0)
+#define CRTO_EVENTQUEUE_SEND_URL      (@"http://widget.criteo.com/m/event/")
 
 static NSMapTable* connections = nil;
 static NSOperationQueue* delegateQueue = nil;
@@ -22,6 +23,7 @@ static dispatch_queue_t dispatchQueue = NULL;
 static NSMutableArray* eventQueue = nil;
 static NSMutableSet* itemsInFlight = nil;
 
+static CRTOEventQueueItemBlock itemErroredBlock = NULL;
 static CRTOEventQueueItemBlock itemSentBlock = NULL;
 
 @interface CRTOEventQueue ()
@@ -30,6 +32,7 @@ static CRTOEventQueueItemBlock itemSentBlock = NULL;
     NSURL* endpoint;
 }
 
+- (void) notifyItemErrored:(CRTOEventQueueItem*)item;
 - (void) notifyItemSent:(CRTOEventQueueItem*)item;
 - (void) reapQueue;
 - (void) sendQueue;
@@ -89,6 +92,19 @@ static CRTOEventQueueItemBlock itemSentBlock = NULL;
 }
 
 #pragma mark - Class Extension Methods
+
+- (void) notifyItemErrored:(CRTOEventQueueItem*)item
+{
+    CRTOEventQueueItemBlock block = itemErroredBlock;
+
+    if ( item == nil || block == NULL ) {
+        return;
+    }
+
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
+        block(item);
+    });
+}
 
 - (void) notifyItemSent:(CRTOEventQueueItem*)item
 {
@@ -173,6 +189,38 @@ static CRTOEventQueueItemBlock itemSentBlock = NULL;
              willSendRequest:(NSURLRequest*)request
             redirectResponse:(NSURLResponse*)response
 {
+    if ( response == nil ) {
+        return request;
+    }
+
+    if ( [response isKindOfClass:[NSHTTPURLResponse class]] ) {
+        NSHTTPURLResponse* httpResp = (NSHTTPURLResponse*)response;
+
+        __block BOOL maxRedirects;
+
+        dispatch_sync(dispatchQueue, ^{
+            CRTOEventQueueItem* item = [connections objectForKey:connection];
+            maxRedirects = (item.redirectCount >= CRTO_EVENTQUEUE_MAX_REDIRECTS);
+        });
+
+        if ( maxRedirects ) {
+            return nil;
+        }
+
+        if ( httpResp.statusCode >= 300 && httpResp.statusCode < 400 ) {
+            NSMutableURLRequest* newRequest = [connection.originalRequest mutableCopy];
+
+            newRequest.URL = request.URL;
+
+            dispatch_async(dispatchQueue, ^{
+                CRTOEventQueueItem* item = [connections objectForKey:connection];
+                item.redirectCount++;
+            });
+
+            return newRequest;
+        }
+    }
+
     return request;
 }
 
@@ -210,6 +258,8 @@ static CRTOEventQueueItemBlock itemSentBlock = NULL;
         [connections removeObjectForKey:connection];
 
         NSLog(@"Errored queue item.");
+
+        [self notifyItemErrored:item];
     });
 }
 
@@ -248,6 +298,11 @@ static CRTOEventQueueItemBlock itemSentBlock = NULL;
 
     [self reapQueue];
     [self sendQueue];
+}
+
+- (void) onItemError:(CRTOEventQueueItemBlock)errorBlock
+{
+    itemErroredBlock = errorBlock;
 }
 
 - (void) onItemSent:(CRTOEventQueueItemBlock)sentBlock

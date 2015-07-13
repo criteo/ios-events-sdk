@@ -18,6 +18,7 @@ typedef void(^CRTOEventQueueItemBlock)(CRTOEventQueueItem* item);
 + (instancetype) sharedEventQueue;
 
 - (void) addQueueItem:(CRTOEventQueueItem*)item;
+- (void) onItemError:(CRTOEventQueueItemBlock)errorBlock;
 - (void) onItemSent:(CRTOEventQueueItemBlock)sentBlock;
 
 @end

@@ -37,6 +37,7 @@
 
 - (void) tearDown
 {
+    [queue onItemError:NULL];
     [queue onItemSent:NULL];
 
     [[LSNocilla sharedInstance] stop];
@@ -78,6 +79,69 @@
     CRTOEventQueueItem* item = [[CRTOEventQueueItem alloc] initWithEvent:homeEvent requestBody:eventBody];
 
     [queue addQueueItem:item];
+
+    [self waitForExpectationsWithTimeout:2.0 handler:nil];
+}
+
+- (void) testRedirectFollowing
+{
+    NSString* eventBody = @"{ 'some' : 'sample', 'JSON' : 2 }";
+
+    stubRequest(@"POST", @"http://widget.criteo.com/m/event/").
+    withBody(eventBody).
+    andReturn(307).
+    withHeader(@"Location", @"http://someOtherWidget.criteo.com/m/event/");
+
+    stubRequest(@"POST", @"http://someOtherWidget.criteo.com/m/event/").
+    withBody(eventBody).
+    andReturn(200);
+
+    XCTestExpectation* eventTransmitted = [self expectationWithDescription:@"Redirected Home View Event SENT"];
+
+    CRTOHomeViewEvent* homeEvent = [[CRTOHomeViewEvent alloc] init];
+    homeEvent.timestamp = [NSDate date];
+
+    CRTOEventQueueItem* local_item = [[CRTOEventQueueItem alloc] initWithEvent:homeEvent requestBody:eventBody];
+
+    [queue onItemSent:^(CRTOEventQueueItem* sent_item) {
+        if ( local_item == sent_item ) {
+            [eventTransmitted fulfill];
+        }
+    }];
+
+    [queue addQueueItem:local_item];
+
+    [self waitForExpectationsWithTimeout:2.0 handler:nil];
+}
+
+- (void) testRedirectFollowingStops
+{
+    NSString* eventBody = @"{ 'some' : 'sample', 'JSON' : 2 }";
+
+    stubRequest(@"POST", @"http://widget.criteo.com/m/event/").
+    withBody(eventBody).
+    andReturn(307).
+    withHeader(@"Location", @"http://someOtherWidget.criteo.com/m/event/");
+
+    stubRequest(@"POST", @"http://someOtherWidget.criteo.com/m/event/").
+    withBody(eventBody).
+    andReturn(307).
+    withHeader(@"Location", @"http://widget.criteo.com/m/event/");
+
+    XCTestExpectation* eventFails = [self expectationWithDescription:@"Redirect Loop Fails Item"];
+
+    CRTOHomeViewEvent* homeEvent = [[CRTOHomeViewEvent alloc] init];
+    homeEvent.timestamp = [NSDate date];
+
+    CRTOEventQueueItem* local_item = [[CRTOEventQueueItem alloc] initWithEvent:homeEvent requestBody:eventBody];
+
+    [queue onItemError:^(CRTOEventQueueItem* failed_item) {
+        if ( local_item == failed_item ) {
+            [eventFails fulfill];
+        }
+    }];
+
+    [queue addQueueItem:local_item];
 
     [self waitForExpectationsWithTimeout:2.0 handler:nil];
 }

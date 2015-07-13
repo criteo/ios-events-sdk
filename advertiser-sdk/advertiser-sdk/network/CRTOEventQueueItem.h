@@ -12,6 +12,7 @@
 
 @property (nonatomic,readonly) NSTimeInterval age;
 @property (nonatomic,readonly) CRTOEvent* event;
+@property (nonatomic)          NSUInteger redirectCount;
 @property (nonatomic,readonly) NSData* requestBody;
 @property (nonatomic,readonly) NSMutableData* responseData;
 
