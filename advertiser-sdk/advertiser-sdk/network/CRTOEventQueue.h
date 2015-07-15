@@ -12,13 +12,16 @@ typedef void(^CRTOEventQueueItemBlock)(CRTOEventQueueItem* item);
 
 @interface CRTOEventQueue : NSObject <NSURLConnectionDataDelegate>
 
-@property (nonatomic,readonly) NSUInteger maxQueueDepth;
-@property (nonatomic,readonly) NSTimeInterval maxQueueItemAge;
+@property (nonatomic,readonly) NSUInteger currentQueueDepth;
+@property (atomic) NSUInteger maxQueueDepth;
+@property (atomic) NSTimeInterval maxQueueItemAge;
 
 + (instancetype) sharedEventQueue;
 
 - (void) addQueueItem:(CRTOEventQueueItem*)item;
+- (BOOL) containsItem:(CRTOEventQueueItem*)item;
 - (void) onItemError:(CRTOEventQueueItemBlock)errorBlock;
 - (void) onItemSent:(CRTOEventQueueItemBlock)sentBlock;
+- (void) removeAllItems;
 
 @end

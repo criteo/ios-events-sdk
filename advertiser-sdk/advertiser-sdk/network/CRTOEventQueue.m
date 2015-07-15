@@ -91,6 +91,19 @@ static CRTOEventQueueItemBlock itemSentBlock = NULL;
     return sharedEventQueue;
 }
 
+#pragma mark - Properties
+
+- (NSUInteger) currentQueueDepth
+{
+    __block NSUInteger queueDepth;
+
+    dispatch_sync(dispatchQueue, ^{
+        queueDepth = eventQueue.count;
+    });
+
+    return queueDepth;
+}
+
 #pragma mark - Class Extension Methods
 
 - (void) notifyItemErrored:(CRTOEventQueueItem*)item
@@ -129,8 +142,10 @@ static CRTOEventQueueItemBlock itemSentBlock = NULL;
 
         [eventQueue removeObjectsAtIndexes:expired];
 
-        if ( eventQueue.count > self.maxQueueDepth ) {
-            NSRange overflowRange = NSMakeRange(0, eventQueue.count - self.maxQueueDepth);
+        NSUInteger maxQueueDepth = self.maxQueueDepth;
+
+        if ( eventQueue.count > maxQueueDepth ) {
+            NSRange overflowRange = NSMakeRange(0, eventQueue.count - maxQueueDepth);
 
             [eventQueue removeObjectsInRange:overflowRange];
         }
@@ -300,6 +315,21 @@ static CRTOEventQueueItemBlock itemSentBlock = NULL;
     [self sendQueue];
 }
 
+- (BOOL) containsItem:(CRTOEventQueueItem*)item
+{
+    if ( item == nil ) {
+        return NO;
+    }
+
+    __block BOOL containsItem;
+
+    dispatch_sync(dispatchQueue, ^{
+        containsItem = [eventQueue containsObject:item];
+    });
+
+    return containsItem;
+}
+
 - (void) onItemError:(CRTOEventQueueItemBlock)errorBlock
 {
     itemErroredBlock = errorBlock;
@@ -308,6 +338,19 @@ static CRTOEventQueueItemBlock itemSentBlock = NULL;
 - (void) onItemSent:(CRTOEventQueueItemBlock)sentBlock
 {
     itemSentBlock = sentBlock;
+}
+
+- (void) removeAllItems
+{
+    dispatch_sync(dispatchQueue, ^{
+        for ( NSURLConnection* connection in connections ) {
+            [connection cancel];
+        }
+
+        [eventQueue removeAllObjects];
+        [connections removeAllObjects];
+        [itemsInFlight removeAllObjects];
+    });
 }
 
 @end
