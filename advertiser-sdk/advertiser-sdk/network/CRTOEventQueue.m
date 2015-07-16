@@ -7,15 +7,10 @@
 
 #import "CRTOEventQueue.h"
 #import "CRTOJSONEventSerializer.h"
+#import "CRTONetworkDefines.h"
 
 #define CRTO_EVENTQUEUE_DELEGATEQUEUE_NAME (@"com.criteo.event.transmit.delegates")
 #define CRTO_EVENTQUEUE_DISPATCHQUEUE_NAME ("com.criteo.event.transmit")
-
-#define CRTO_EVENTQUEUE_MAX_AGE       (60.0 * 60.0)
-#define CRTO_EVENTQUEUE_MAX_DEPTH     (15)
-#define CRTO_EVENTQUEUE_MAX_REDIRECTS (4)
-#define CRTO_EVENTQUEUE_SEND_TIMEOUT  (60.0)
-#define CRTO_EVENTQUEUE_SEND_URL      (@"http://widget.criteo.com/m/event/")
 
 static NSMapTable* connections = nil;
 static NSOperationQueue* delegateQueue = nil;

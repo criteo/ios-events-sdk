@@ -14,6 +14,9 @@
 #import "CRTOEventQueue.h"
 #import "CRTOHomeViewEvent.h"
 #import "CRTOJSONEventSerializer.h"
+#import "CRTONetworkDefines.h"
+
+#define FAKE_REDIRECT_LOCATION (@"https://someOtherWidget.criteo.com/m/event/")
 
 @interface CRTOEventQueueTests : XCTestCase
 
@@ -56,7 +59,7 @@
 
 - (void) testAddQueueItemCallsNetwork
 {
-    stubRequest(@"POST", @"http://widget.criteo.com/m/event/").
+    stubRequest(@"POST", CRTO_EVENTQUEUE_SEND_URL).
     withBody(eventBody).
     andReturn(200);
 
@@ -78,12 +81,12 @@
 
 - (void) testRedirectFollowing
 {
-    stubRequest(@"POST", @"http://widget.criteo.com/m/event/").
+    stubRequest(@"POST", CRTO_EVENTQUEUE_SEND_URL).
     withBody(eventBody).
     andReturn(307).
-    withHeader(@"Location", @"http://someOtherWidget.criteo.com/m/event/");
+    withHeader(@"Location", FAKE_REDIRECT_LOCATION);
 
-    stubRequest(@"POST", @"http://someOtherWidget.criteo.com/m/event/").
+    stubRequest(@"POST", FAKE_REDIRECT_LOCATION).
     withBody(eventBody).
     andReturn(200);
 
@@ -107,15 +110,15 @@
 
 - (void) testRedirectFollowingStops
 {
-    stubRequest(@"POST", @"http://widget.criteo.com/m/event/").
+    stubRequest(@"POST", CRTO_EVENTQUEUE_SEND_URL).
     withBody(eventBody).
     andReturn(307).
-    withHeader(@"Location", @"http://someOtherWidget.criteo.com/m/event/");
+    withHeader(@"Location", FAKE_REDIRECT_LOCATION);
 
-    stubRequest(@"POST", @"http://someOtherWidget.criteo.com/m/event/").
+    stubRequest(@"POST", FAKE_REDIRECT_LOCATION).
     withBody(eventBody).
     andReturn(307).
-    withHeader(@"Location", @"http://widget.criteo.com/m/event/");
+    withHeader(@"Location", CRTO_EVENTQUEUE_SEND_URL);
 
     XCTestExpectation* eventFails = [self expectationWithDescription:@"Redirect Loop Fails Item"];
 
@@ -149,15 +152,15 @@
 
     // In order to build up a queue for testing, put requests into an infinite redirect loop.
     // Requests fail after 4 redirects, but they remain enqueued.
-    stubRequest(@"POST", @"http://widget.criteo.com/m/event/").
+    stubRequest(@"POST", CRTO_EVENTQUEUE_SEND_URL).
     withBody(eventBody).
     andReturn(307).
-    withHeader(@"Location", @"http://someOtherWidget.criteo.com/m/event/");
+    withHeader(@"Location", FAKE_REDIRECT_LOCATION);
 
-    stubRequest(@"POST", @"http://someOtherWidget.criteo.com/m/event/").
+    stubRequest(@"POST", FAKE_REDIRECT_LOCATION).
     withBody(eventBody).
     andReturn(307).
-    withHeader(@"Location", @"http://widget.criteo.com/m/event/");
+    withHeader(@"Location", CRTO_EVENTQUEUE_SEND_URL);
 
     NSMutableArray* events = [NSMutableArray new];
 
@@ -197,15 +200,15 @@
 
     // In order to build up a queue for testing, put requests into an infinite redirect loop.
     // Requests fail after 4 redirects, but they remain enqueued.
-    stubRequest(@"POST", @"http://widget.criteo.com/m/event/").
+    stubRequest(@"POST", CRTO_EVENTQUEUE_SEND_URL).
     withBody(eventBody).
     andReturn(307).
-    withHeader(@"Location", @"http://someOtherWidget.criteo.com/m/event/");
+    withHeader(@"Location", FAKE_REDIRECT_LOCATION);
 
-    stubRequest(@"POST", @"http://someOtherWidget.criteo.com/m/event/").
+    stubRequest(@"POST", FAKE_REDIRECT_LOCATION).
     withBody(eventBody).
     andReturn(307).
-    withHeader(@"Location", @"http://widget.criteo.com/m/event/");
+    withHeader(@"Location", CRTO_EVENTQUEUE_SEND_URL);
 
     NSMutableArray* expiredEvents = [NSMutableArray new];
 

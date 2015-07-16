@@ -142,6 +142,7 @@
 		255A94F61B0CE88E009F5C06 /* CRTOSDKInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOSDKInfo.m; sourceTree = "<group>"; };
 		255B925A1B0A040200F46E8F /* CRTOEventService+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CRTOEventService+Internal.h"; sourceTree = "<group>"; };
 		255D0C2F1B171C98001634BE /* CriteoAdvertiser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CriteoAdvertiser.h; sourceTree = "<group>"; };
+		25786D731B57C9A900731ADE /* CRTONetworkDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CRTONetworkDefines.h; sourceTree = "<group>"; };
 		258CDC0A1AF757D0009E678E /* CriteoAdvertiser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CriteoAdvertiser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		258CDC0E1AF757D0009E678E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		258CDC151AF757D0009E678E /* advertiser-sdkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "advertiser-sdkTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -260,6 +261,7 @@
 				253BA7251B13803300113FBF /* CRTOEventQueue.m */,
 				253BA7291B13804100113FBF /* CRTOEventQueueItem.h */,
 				253BA72A1B13804100113FBF /* CRTOEventQueueItem.m */,
+				25786D731B57C9A900731ADE /* CRTONetworkDefines.h */,
 			);
 			path = network;
 			sourceTree = "<group>";
