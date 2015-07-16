@@ -79,6 +79,11 @@
     [self waitForExpectationsWithTimeout:2.0 handler:nil];
 }
 
+- (void) testEventQueueSendURLIsSecure
+{
+    XCTAssertTrue([CRTO_EVENTQUEUE_SEND_URL.lowercaseString hasPrefix:@"https"]);
+}
+
 - (void) testRedirectFollowing
 {
     stubRequest(@"POST", CRTO_EVENTQUEUE_SEND_URL).
