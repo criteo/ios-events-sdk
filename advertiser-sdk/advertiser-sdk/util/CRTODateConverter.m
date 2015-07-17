@@ -32,8 +32,6 @@
 
 + (NSDateComponents*) convertUTCDateToYMDComponents:(NSDate*)date
 {
-    NSParameterAssert(date);
-
     if ( date == nil ) {
         return nil;
     }
@@ -46,8 +44,6 @@
 
 + (NSDateComponents*) convertUTCDateToYMDHMSComponents:(NSDate*)date
 {
-    NSParameterAssert(date);
-
     if ( date == nil ) {
         return nil;
     }
@@ -61,8 +57,6 @@
 
 + (NSDate*) convertYMDComponentsToUTCDate:(NSDateComponents*)components
 {
-    NSParameterAssert(components);
-
     if ( components == nil ) {
         return nil;
     }
@@ -83,8 +77,6 @@
 
 + (NSDate*) convertYMDHMSComponentsToUTCDate:(NSDateComponents*)components
 {
-    NSParameterAssert(components);
-
     if ( components == nil ) {
         return nil;
     }

@@ -74,15 +74,10 @@
     XCTAssertEqual(components.yearForWeekOfYear, NSDateComponentUndefined);
 }
 
-- (void) testNilDateAssertsOrReturnsNil
+- (void) testNilDateReturnsNil
 {
-#ifdef DEBUG
-    XCTAssertThrows([CRTODateConverter convertUTCDateToYMDComponents:nil]);
-    XCTAssertThrows([CRTODateConverter convertUTCDateToYMDHMSComponents:nil]);
-#else
     XCTAssertNil([CRTODateConverter convertUTCDateToYMDComponents:nil]);
     XCTAssertNil([CRTODateConverter convertUTCDateToYMDHMSComponents:nil]);
-#endif
 }
 
 - (void) testYMDComponentsConvertsToDate
@@ -127,15 +122,10 @@
     XCTAssertEqualObjects(resultDate, expectedDate);
 }
 
-- (void) testNilComponentsAssertsOrReturnsNil
+- (void) testNilComponentsReturnsNil
 {
-#ifdef DEBUG
-    XCTAssertThrows([CRTODateConverter convertYMDComponentsToUTCDate:nil]);
-    XCTAssertThrows([CRTODateConverter convertYMDHMSComponentsToUTCDate:nil]);
-#else
     XCTAssertNil([CRTODateConverter convertYMDComponentsToUTCDate:nil]);
     XCTAssertNil([CRTODateConverter convertYMDHMSComponentsToUTCDate:nil]);
-#endif
 }
 
 @end
