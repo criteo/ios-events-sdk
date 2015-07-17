@@ -55,6 +55,6 @@
  *
  *  @return A @c CRTOProductViewEvent initialized with a product, a currency, a start date, and an end date.
  */
-- (instancetype) initWithProduct:(CRTOProduct*)product currency:(NSString*)currency startDate:(NSDate*)start endDate:(NSDate*)end;
+- (instancetype) initWithProduct:(CRTOProduct*)product currency:(NSString*)currency startDate:(NSDateComponents*)start endDate:(NSDateComponents*)end;
 
 @end

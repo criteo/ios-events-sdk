@@ -49,18 +49,25 @@
 
 - (void) testDateExtraData
 {
-    NSDate* someDate = [NSDate dateWithTimeIntervalSince1970:1000000000];
+    NSDateComponents* someComponents = [NSDateComponents new];
 
-    [dataEvent setDateExtraData:someDate ForKey:dateKey];
+    someComponents.year   = 2001;
+    someComponents.month  = 9;
+    someComponents.day    = 9;
+    someComponents.hour   = 1;
+    someComponents.minute = 46;
+    someComponents.second = 40;
 
-    NSDate* resultDate = [dataEvent dateExtraDataForKey:@"A_Date_Key"];
+    [dataEvent setDateExtraData:someComponents ForKey:dateKey];
 
-    XCTAssertEqualObjects(someDate, resultDate);
+    NSDateComponents* resultComponents = [dataEvent dateExtraDataForKey:@"A_Date_Key"];
+
+    XCTAssertEqualObjects(someComponents, resultComponents);
 }
 
 - (void) testDateExtraDataNoValue
 {
-    NSDate* resultDate = [dataEvent dateExtraDataForKey:@"BadKey"];
+    NSDateComponents* resultDate = [dataEvent dateExtraDataForKey:@"BadKey"];
 
     XCTAssertNil(resultDate);
 }

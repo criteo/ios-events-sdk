@@ -41,7 +41,7 @@
     return [self initWithBasketProducts:basketProducts currency:currency startDate:nil endDate:nil];
 }
 
-- (instancetype) initWithBasketProducts:(NSArray*)basketProducts currency:(NSString*)currency startDate:(NSDate*)start endDate:(NSDate*)end
+- (instancetype) initWithBasketProducts:(NSArray*)basketProducts currency:(NSString*)currency startDate:(NSDateComponents*)start endDate:(NSDateComponents*)end
 {
     self = [super initWithStartDate:start endDate:end];
     if ( self ) {

@@ -30,8 +30,9 @@
     NSInteger quantity3;
 
     NSString* currency;
-    NSDate* startDate;
-    NSDate* endDate;
+
+    NSDateComponents* startDate;
+    NSDateComponents* endDate;
 }
 
 - (void)setUp
@@ -52,8 +53,15 @@
 
     currency  = @"CAN";
 
-    startDate = [NSDate dateWithTimeIntervalSince1970:1000000000];
-    endDate   = [NSDate dateWithTimeIntervalSince1970:1000086401];
+    startDate = [NSDateComponents new];
+    startDate.year  = 2001;
+    startDate.month = 9;
+    startDate.day   = 9;
+
+    endDate = [NSDateComponents new];
+    endDate.year  = 2001;
+    endDate.month = 9;
+    endDate.day   = 10;
 }
 
 - (void)tearDown

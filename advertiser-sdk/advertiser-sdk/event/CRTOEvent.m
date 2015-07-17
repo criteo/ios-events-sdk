@@ -7,7 +7,10 @@
 
 #import <CriteoAdvertiser/CRTOEvent.h>
 #import "CRTOEvent+Internal.h"
+
+#import "CRTODateConverter.h"
 #import "CRTOExtraData.h"
+#import "CRTOJSONConstants.h"
 
 @implementation CRTOEvent
 {
@@ -21,21 +24,16 @@
     return [self initWithStartDate:nil endDate:nil];
 }
 
-- (instancetype) initWithStartDate:(NSDate*)start endDate:(NSDate*)end
+- (instancetype) initWithStartDate:(NSDateComponents*)start endDate:(NSDateComponents*)end
 {
     NSAssert( ![self isMemberOfClass:[CRTOEvent class]], @"You must use a concrete subclass of CRTOEvent." );
 
     self = [super init];
     if ( self ) {
-        if ( start ) {
-            _startDate = [NSDate dateWithTimeIntervalSince1970:start.timeIntervalSince1970];
-        }
-
-        if ( end ) {
-            _endDate = [NSDate dateWithTimeIntervalSince1970:end.timeIntervalSince1970];
-        }
-
         extraData = [NSMutableDictionary new];
+
+        self.startDate = start;
+        self.endDate = end;
     }
     return self;
 }
@@ -56,14 +54,55 @@
 
 #pragma mark - Properties
 
+- (NSDateComponents*) endDate
+{
+    CRTOExtraData* endDateED = [self getExtraDataForKey:kCRTOJSONPropertyNameCheckout_DateKey];
+
+    if ( endDateED.type == CRTOExtraDataTypeDate ) {
+        NSDateComponents* endComponents = [CRTODateConverter convertUTCDateToYMDComponents:endDateED.value];
+
+        return endComponents;
+    }
+
+    return nil;
+}
+
+- (void) setEndDate:(NSDateComponents*)endComponents
+{
+    NSDate* endDate = [CRTODateConverter convertYMDComponentsToUTCDate:endComponents];
+
+    if ( endDate != nil ) {
+        [self addExtraData:endDate forKey:kCRTOJSONPropertyNameCheckout_DateKey withType:CRTOExtraDataTypeDate];
+    }
+}
+
+- (NSDateComponents*) startDate
+{
+    CRTOExtraData* startDateED = [self getExtraDataForKey:kCRTOJSONPropertyNameCheckin_DateKey];
+
+    if ( startDateED.type == CRTOExtraDataTypeDate ) {
+        NSDateComponents* startComponents = [CRTODateConverter convertUTCDateToYMDComponents:startDateED.value];
+
+        return startComponents;
+    }
+
+    return nil;
+}
+
+- (void) setStartDate:(NSDateComponents*)startComponents
+{
+    NSDate* startDate = [CRTODateConverter convertYMDComponentsToUTCDate:startComponents];
+
+    if ( startDate != nil ) {
+        [self addExtraData:startDate forKey:kCRTOJSONPropertyNameCheckin_DateKey withType:CRTOExtraDataTypeDate];
+    }
+}
+
 #pragma mark - Class Extension Properties
 
 - (BOOL) isValid
 {
     BOOL validity = YES;
-
-    validity = validity && ((_startDate == nil && _endDate == nil) || (_startDate != nil && _endDate != nil));
-    //validity = validity && /* All keys in extraData are valid */
 
     return validity;
 }
@@ -99,13 +138,13 @@
     return nil;
 }
 
-- (BOOL) validateDateParamater:(id)value
+- (BOOL) validateDateComponentsParamater:(id)value
 {
     NSParameterAssert( value );
-    NSAssert( [value isKindOfClass:[NSDate class]], @"Parameter 'value' must be an instance of NSDate." );
+    NSAssert( [value isKindOfClass:[NSDateComponents class]], @"Parameter 'value' must be an instance of NSDateComponents." );
 
     return ( value != nil &&
-            [value isKindOfClass:[NSDate class]] );
+            [value isKindOfClass:[NSDateComponents class]] );
 }
 
 - (BOOL) validateKeyParameter:(NSString*)key
@@ -140,14 +179,14 @@
     return [NSString stringWithFormat:@"CTEvent (%p)", self];
 }
 
-- (instancetype) setDateExtraData:(NSDate*)value ForKey:(NSString*)key
+- (instancetype) setDateExtraData:(NSDateComponents*)value ForKey:(NSString*)key
 {
-    BOOL isDateValid = [self validateDateParamater:value];
+    BOOL isDateValid = [self validateDateComponentsParamater:value];
 
-    if ( isDateValid ) {
-        NSDate* dateCopy = [[NSDate alloc] initWithTimeIntervalSince1970:value.timeIntervalSince1970];
+    NSDate* convertedDate = [CRTODateConverter convertYMDHMSComponentsToUTCDate:value];
 
-        [self addExtraData:dateCopy forKey:key withType:CRTOExtraDataTypeDate];
+    if ( isDateValid && convertedDate != nil ) {
+        [self addExtraData:convertedDate forKey:key withType:CRTOExtraDataTypeDate];
     }
 
     return self;
@@ -180,12 +219,14 @@
     return self;
 }
 
-- (NSDate*) dateExtraDataForKey:(NSString*)key
+- (NSDateComponents*) dateExtraDataForKey:(NSString*)key
 {
     CRTOExtraData* data = [self getExtraDataForKey:key];
 
     if ( data.type == CRTOExtraDataTypeDate ) {
-        return data.value;
+        NSDateComponents* components = [CRTODateConverter convertUTCDateToYMDHMSComponents:data.value];
+
+        return components;
     }
 
     return nil;

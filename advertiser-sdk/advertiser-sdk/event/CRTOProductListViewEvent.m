@@ -40,7 +40,7 @@
     return [self initWithProducts:products currency:currency startDate:nil endDate:nil];
 }
 
-- (instancetype) initWithProducts:(NSArray*)products currency:(NSString*)currency startDate:(NSDate*)start endDate:(NSDate*)end
+- (instancetype) initWithProducts:(NSArray*)products currency:(NSString*)currency startDate:(NSDateComponents*)start endDate:(NSDateComponents*)end
 {
     self = [super initWithStartDate:start endDate:end];
     if ( self ) {

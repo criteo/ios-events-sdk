@@ -21,6 +21,6 @@
 
 - (BOOL) validateKeyParameter:(NSString*)key;
 - (BOOL) validateStringParameter:(id)value;
-- (BOOL) validateDateParamater:(id)value;
+- (BOOL) validateDateComponentsParamater:(id)value;
 
 @end

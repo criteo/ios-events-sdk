@@ -37,6 +37,8 @@
     CRTODeviceInfo* mockDeviceInfo;
     CRTOSDKInfo* mockSDKInfo;
 
+    NSDateComponents* extraDate;
+    NSDateComponents* extraDate2;
     NSDate* timestamp;
 }
 
@@ -74,6 +76,26 @@
 
     OCMStub([mockSDKInfo sdkVersion]).
     andReturn(@"1.0.0");
+
+    // A test extradata timestamp
+    extraDate = [NSDateComponents new];
+
+    extraDate.year   = 2001;
+    extraDate.month  = 9;
+    extraDate.day    = 9;
+    extraDate.hour   = 1;
+    extraDate.minute = 46;
+    extraDate.second = 40;
+
+    // A second test extradata timestamp
+    extraDate2 = [NSDateComponents new];
+
+    extraDate2.year   = 2001;
+    extraDate2.month  = 9;
+    extraDate2.day    = 9;
+    extraDate2.hour   = 1;
+    extraDate2.minute = 46;
+    extraDate2.second = 41;
 
     // A single point in time
     timestamp = [NSDate dateWithTimeIntervalSince1970:1435330645];
@@ -377,7 +399,6 @@
     CRTOAppLaunchEvent* appLaunch = [[CRTOAppLaunchEvent alloc] init];
     appLaunch.timestamp = timestamp;
 
-    NSDate* extraDate = [NSDate dateWithTimeIntervalSince1970:1000000000];
     [appLaunch setDateExtraData:extraDate ForKey:@"my_date_extra_data"];
 
     float extraFloat = 0.1f;
@@ -773,7 +794,6 @@
     CRTODataEvent* dataEvent = [[CRTODataEvent alloc] init];
     dataEvent.timestamp = timestamp;
 
-    NSDate* extraDate = [NSDate dateWithTimeIntervalSince1970:1000000000];
     [dataEvent setDateExtraData:extraDate ForKey:@"my_date_extra_data"];
 
     float extraFloat = 0.1f;
@@ -785,7 +805,6 @@
     NSString* extraString = @"some Sample string";
     [dataEvent setStringExtraData:extraString ForKey:@"myStringData"];
 
-    NSDate* extraDate2 = [NSDate dateWithTimeIntervalSince1970:1000000001];
     [dataEvent setDateExtraData:extraDate2 ForKey:@"my_date_extra_data2"];
 
     float extraFloat2 = 0.2f;

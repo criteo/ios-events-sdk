@@ -54,6 +54,6 @@
  *
  *  @return A @c CRTOBasketViewEvent initialized with an array of @c CRTOBasketProduct, a currency, a start date, and an end date.
  */
-- (instancetype) initWithBasketProducts:(NSArray*)basketProducts currency:(NSString*)currency startDate:(NSDate*)start endDate:(NSDate*)end;
+- (instancetype) initWithBasketProducts:(NSArray*)basketProducts currency:(NSString*)currency startDate:(NSDateComponents*)start endDate:(NSDateComponents*)end;
 
 @end

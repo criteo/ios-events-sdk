@@ -51,8 +51,8 @@
 - (instancetype) initWithBasketProducts:(NSArray*)basketProducts
                           transactionId:(NSString*)transactionId
                                currency:(NSString*)currency
-                              startDate:(NSDate*)start
-                                endDate:(NSDate*)end
+                              startDate:(NSDateComponents*)start
+                                endDate:(NSDateComponents*)end
 {
     self = [super initWithStartDate:start endDate:end];
     if ( self ) {

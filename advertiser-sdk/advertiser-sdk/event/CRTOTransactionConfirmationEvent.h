@@ -66,15 +66,15 @@
  *  @param basketProducts An array of @c CRTOBasketProduct that will be copied into the event.
  *  @param transactionId  The unique identifier for this transaction.
  *  @param currency       Three letter ISO-4217 currency code representing the currency of this event.
- *  @param start          Optional start date parameter. Pass nil if there is no start date associated with this list.
- *  @param end            Optional end date parameter. Pass nil if there is no end date associated with this list.
+ *  @param start          Optional start date parameter. Pass nil if there is no start date associated with this transaction.
+ *  @param end            Optional end date parameter. Pass nil if there is no end date associated with this transaction.
  *
  *  @return A @c CRTOTransactionConfirmationEvent initialized with an array of @c CRTOBasketProduct, a transaction identifier, a currency, a start date, and an end date.
  */
 - (instancetype) initWithBasketProducts:(NSArray*)basketProducts
                           transactionId:(NSString*)transactionId
                                currency:(NSString*)currency
-                              startDate:(NSDate*)start
-                                endDate:(NSDate*)end;
+                              startDate:(NSDateComponents*)start
+                                endDate:(NSDateComponents*)end;
 
 @end
