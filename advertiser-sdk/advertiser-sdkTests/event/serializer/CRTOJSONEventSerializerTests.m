@@ -39,6 +39,7 @@
 
     NSDateComponents* extraDate;
     NSDateComponents* extraDate2;
+    NSDateComponents* extraDate3;
     NSDate* timestamp;
 }
 
@@ -96,6 +97,16 @@
     extraDate2.hour   = 1;
     extraDate2.minute = 46;
     extraDate2.second = 41;
+
+    // A third test extradata timestamp
+    extraDate3 = [NSDateComponents new];
+
+    extraDate3.year   = 2001;
+    extraDate3.month  = 10;
+    extraDate3.day    = 1;
+    extraDate3.hour   = 12;
+    extraDate3.minute = 13;
+    extraDate3.second = 14;
 
     // A single point in time
     timestamp = [NSDate dateWithTimeIntervalSince1970:1435330645];
@@ -555,6 +566,95 @@
                           "        }"
                           "      ],"
                           "      \"timestamp\" : \"2015-06-26T14:57:25Z\""
+                          "    }"
+                          "  ],"
+                          "  \"id\" : {"
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
+                          "    \"limit_ad_tracking\" : false"
+                          "  },"
+                          "  \"device_info\" : {"
+                          "    \"os_name\" : \"iPhone OS\","
+                          "    \"device_model\" : \"iPhone3,2\","
+                          "    \"device_manufacturer\" : \"apple\","
+                          "    \"os_version\" : \"4.9.1\","
+                          "    \"platform\" : \"ios\""
+                          "  },"
+                          "  \"app_info\" : {"
+                          "    \"app_version\" : \"43.0.2357.61\","
+                          "    \"app_name\" : \"Criteo Test App\","
+                          "    \"sdk_version\" : \"1.0.0\","
+                          "    \"app_language\" : \"en\","
+                          "    \"app_id\" : \"com.criteo.sdktestapp\","
+                          "    \"app_country\" : \"US\""
+                          "  },"
+                          "  \"version\" : \"sdk_1.0.0\","
+                          "  \"alternate_ids\" : ["
+                          "    {"
+                          "      \"type\" : \"email\","
+                          "      \"value\" : \"NotAReal Email\","
+                          "      \"hash_method\" : \"none\""
+                          "    }"
+                          "  ]"
+                          "}";
+
+    id resultObj = nil;
+    id expectedObj = nil;
+
+    [self runSerializerForEvent:basketViewEvent
+              withCustomerEmail:@"NotAReal Email"
+              andExpectedResult:expected
+             returningResultObj:&resultObj
+                 andExpectedObj:&expectedObj];
+
+    XCTAssertEqualObjects(resultObj, expectedObj);
+}
+
+- (void) testBasketViewEventSerializationWithDates
+{
+    CRTOBasketProduct* product  = [[CRTOBasketProduct alloc] initWithProductId:@"PRODUCT11223344" price:999.85 quantity:1];
+    CRTOBasketProduct* product2 = [[CRTOBasketProduct alloc] initWithProductId:@"PRODUCT56789101" price:10 quantity:100];
+    CRTOBasketProduct* product3 = [[CRTOBasketProduct alloc] initWithProductId:@"나는 유리를 먹을 수 있어요. 그래도 아프지 않아요" price:0.1 quantity:-2500];
+
+    CRTOBasketViewEvent* basketViewEvent = [[CRTOBasketViewEvent alloc] initWithBasketProducts:@[ product, product2, product3 ]
+                                                                                      currency:@"USD"
+                                                                                     startDate:extraDate
+                                                                                       endDate:extraDate3];
+    basketViewEvent.timestamp = timestamp;
+
+    NSString* expected = @"{"
+                          "  \"account\" : {"
+                          "    \"app_name\" : \"com.criteo.sdktestapp\""
+                          "  },"
+                          "  \"events\" : ["
+                          "    {"
+                          "      \"event\" : \"viewBasket\","
+                          "      \"currency\" : \"USD\","
+                          "      \"product\" : ["
+                          "        {"
+                          "          \"id\" : \"PRODUCT11223344\","
+                          "          \"price\" : 999.85,"
+                          "          \"quantity\" : 1"
+                          "        },"
+                          "        {"
+                          "          \"id\" : \"PRODUCT56789101\","
+                          "          \"price\" : 10,"
+                          "          \"quantity\" : 100"
+                          "        },"
+                          "        {"
+                          "          \"id\" : \"나는 유리를 먹을 수 있어요. 그래도 아프지 않아요\","
+                          "          \"price\" : 0.1,"
+                          "          \"quantity\" : -2500"
+                          "        }"
+                          "      ],"
+                          "      \"timestamp\" : \"2015-06-26T14:57:25Z\","
+                          "      \"checkin_date\" : {"
+                          "        \"value\" : \"2001-09-09T00:00:00Z\","
+                          "        \"type\" : \"date\""
+                          "      },"
+                          "      \"checkout_date\" : {"
+                          "        \"value\" : \"2001-10-01T00:00:00Z\","
+                          "        \"type\" : \"date\""
+                          "      }"
                           "    }"
                           "  ],"
                           "  \"id\" : {"
@@ -1162,6 +1262,75 @@
     XCTAssertEqualObjects(resultObj, expectedObj);
 }
 
+- (void) testProductViewEventSerializationWithDates
+{
+    CRTOProduct* product = [[CRTOProduct alloc] initWithProductId:@"PRODUCT11223344" price:999.85];
+
+    CRTOProductViewEvent* productViewEvent = [[CRTOProductViewEvent alloc] initWithProduct:product];
+    productViewEvent.startDate = extraDate;
+    productViewEvent.endDate   = extraDate3;
+    productViewEvent.timestamp = timestamp;
+
+    NSString* expected = @"{"
+                          "  \"account\" : {"
+                          "    \"app_name\" : \"com.criteo.sdktestapp\""
+                          "  },"
+                          "  \"events\" : ["
+                          "    {"
+                          "      \"event\" : \"viewProduct\","
+                          "      \"product\" : { \"id\" : \"PRODUCT11223344\", \"price\" : 999.85 },"
+                          "      \"checkin_date\" : {"
+                          "        \"value\" : \"2001-09-09T00:00:00Z\","
+                          "        \"type\" : \"date\""
+                          "      },"
+                          "      \"checkout_date\" : {"
+                          "        \"value\" : \"2001-10-01T00:00:00Z\","
+                          "        \"type\" : \"date\""
+                          "      },"
+                          "      \"timestamp\" : \"2015-06-26T14:57:25Z\""
+                          "    }"
+                          "  ],"
+                          "  \"id\" : {"
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
+                          "    \"limit_ad_tracking\" : false"
+                          "  },"
+                          "  \"device_info\" : {"
+                          "    \"os_name\" : \"iPhone OS\","
+                          "    \"device_model\" : \"iPhone3,2\","
+                          "    \"device_manufacturer\" : \"apple\","
+                          "    \"os_version\" : \"4.9.1\","
+                          "    \"platform\" : \"ios\""
+                          "  },"
+                          "  \"app_info\" : {"
+                          "    \"app_version\" : \"43.0.2357.61\","
+                          "    \"app_name\" : \"Criteo Test App\","
+                          "    \"sdk_version\" : \"1.0.0\","
+                          "    \"app_language\" : \"en\","
+                          "    \"app_id\" : \"com.criteo.sdktestapp\","
+                          "    \"app_country\" : \"US\""
+                          "  },"
+                          "  \"version\" : \"sdk_1.0.0\","
+                          "  \"alternate_ids\" : ["
+                          "    {"
+                          "      \"type\" : \"email\","
+                          "      \"value\" : \"NotAReal Email\","
+                          "      \"hash_method\" : \"none\""
+                          "    }"
+                          "  ]"
+                          "}";
+
+    id resultObj = nil;
+    id expectedObj = nil;
+
+    [self runSerializerForEvent:productViewEvent
+              withCustomerEmail:@"NotAReal Email"
+              andExpectedResult:expected
+             returningResultObj:&resultObj
+                 andExpectedObj:&expectedObj];
+
+    XCTAssertEqualObjects(resultObj, expectedObj);
+}
+
 - (void) testProductViewEventSerializationWithNilProduct
 {
     CRTOProductViewEvent* productViewEvent = [[CRTOProductViewEvent alloc] initWithProduct:nil];
@@ -1308,6 +1477,91 @@
                           "        }"
                           "      ],"
                           "      \"timestamp\" : \"2015-06-26T14:57:25Z\""
+                          "    }"
+                          "  ],"
+                          "  \"id\" : {"
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
+                          "    \"limit_ad_tracking\" : false"
+                          "  },"
+                          "  \"device_info\" : {"
+                          "    \"os_name\" : \"iPhone OS\","
+                          "    \"device_model\" : \"iPhone3,2\","
+                          "    \"device_manufacturer\" : \"apple\","
+                          "    \"os_version\" : \"4.9.1\","
+                          "    \"platform\" : \"ios\""
+                          "  },"
+                          "  \"app_info\" : {"
+                          "    \"app_version\" : \"43.0.2357.61\","
+                          "    \"app_name\" : \"Criteo Test App\","
+                          "    \"sdk_version\" : \"1.0.0\","
+                          "    \"app_language\" : \"en\","
+                          "    \"app_id\" : \"com.criteo.sdktestapp\","
+                          "    \"app_country\" : \"US\""
+                          "  },"
+                          "  \"version\" : \"sdk_1.0.0\","
+                          "  \"alternate_ids\" : ["
+                          "    {"
+                          "      \"type\" : \"email\","
+                          "      \"value\" : \"NotAReal Email\","
+                          "      \"hash_method\" : \"none\""
+                          "    }"
+                          "  ]"
+                          "}";
+
+    id resultObj = nil;
+    id expectedObj = nil;
+
+    [self runSerializerForEvent:productViewEvent
+              withCustomerEmail:@"NotAReal Email"
+              andExpectedResult:expected
+             returningResultObj:&resultObj
+                 andExpectedObj:&expectedObj];
+
+    XCTAssertEqualObjects(resultObj, expectedObj);
+}
+
+- (void) testProductListViewEventSerializationWithDates
+{
+    CRTOProduct* product  = [[CRTOProduct alloc] initWithProductId:@"PRODUCT11223344" price:999.85];
+    CRTOProduct* product2 = [[CRTOProduct alloc] initWithProductId:@"PRODUCT56789101" price:10];
+    CRTOProduct* product3 = [[CRTOProduct alloc] initWithProductId:@"나는 유리를 먹을 수 있어요. 그래도 아프지 않아요" price:0.1];
+
+    CRTOProductListViewEvent* productViewEvent = [[CRTOProductListViewEvent alloc] initWithProducts:@[ product, product2, product3 ]];
+    productViewEvent.startDate = extraDate;
+    productViewEvent.endDate   = extraDate3;
+
+    productViewEvent.timestamp = timestamp;
+
+    NSString* expected = @"{"
+                          "  \"account\" : {"
+                          "    \"app_name\" : \"com.criteo.sdktestapp\""
+                          "  },"
+                          "  \"events\" : ["
+                          "    {"
+                          "      \"event\" : \"viewListing\","
+                          "      \"product\" : ["
+                          "        {"
+                          "          \"id\" : \"PRODUCT11223344\","
+                          "          \"price\" : 999.85"
+                          "        },"
+                          "        {"
+                          "          \"id\" : \"PRODUCT56789101\","
+                          "          \"price\" : 10"
+                          "        },"
+                          "        {"
+                          "          \"id\" : \"나는 유리를 먹을 수 있어요. 그래도 아프지 않아요\","
+                          "          \"price\" : 0.1"
+                          "        }"
+                          "      ],"
+                          "      \"timestamp\" : \"2015-06-26T14:57:25Z\","
+                          "      \"checkin_date\" : {"
+                          "        \"value\" : \"2001-09-09T00:00:00Z\","
+                          "        \"type\" : \"date\""
+                          "      },"
+                          "      \"checkout_date\" : {"
+                          "        \"value\" : \"2001-10-01T00:00:00Z\","
+                          "        \"type\" : \"date\""
+                          "      }"
                           "    }"
                           "  ],"
                           "  \"id\" : {"
@@ -1576,6 +1830,97 @@
                           "          \"quantity\" : -2500"
                           "        }"
                           "      ],"
+                          "      \"timestamp\" : \"2015-06-26T14:57:25Z\""
+                          "    }"
+                          "  ],"
+                          "  \"id\" : {"
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
+                          "    \"limit_ad_tracking\" : false"
+                          "  },"
+                          "  \"device_info\" : {"
+                          "    \"os_name\" : \"iPhone OS\","
+                          "    \"device_model\" : \"iPhone3,2\","
+                          "    \"device_manufacturer\" : \"apple\","
+                          "    \"os_version\" : \"4.9.1\","
+                          "    \"platform\" : \"ios\""
+                          "  },"
+                          "  \"app_info\" : {"
+                          "    \"app_version\" : \"43.0.2357.61\","
+                          "    \"app_name\" : \"Criteo Test App\","
+                          "    \"sdk_version\" : \"1.0.0\","
+                          "    \"app_language\" : \"en\","
+                          "    \"app_id\" : \"com.criteo.sdktestapp\","
+                          "    \"app_country\" : \"US\""
+                          "  },"
+                          "  \"version\" : \"sdk_1.0.0\","
+                          "  \"alternate_ids\" : ["
+                          "    {"
+                          "      \"type\" : \"email\","
+                          "      \"value\" : \"NotAReal Email\","
+                          "      \"hash_method\" : \"none\""
+                          "    }"
+                          "  ]"
+                          "}";
+
+    id resultObj = nil;
+    id expectedObj = nil;
+
+    [self runSerializerForEvent:confirmEvent
+              withCustomerEmail:@"NotAReal Email"
+              andExpectedResult:expected
+             returningResultObj:&resultObj
+                 andExpectedObj:&expectedObj];
+
+    XCTAssertEqualObjects(resultObj, expectedObj);
+}
+
+- (void) testTransactionConfirmationEventSerializationWithDates
+{
+    CRTOBasketProduct* product  = [[CRTOBasketProduct alloc] initWithProductId:@"PRODUCT11223344" price:999.85 quantity:1];
+    CRTOBasketProduct* product2 = [[CRTOBasketProduct alloc] initWithProductId:@"PRODUCT56789101" price:10 quantity:100];
+    CRTOBasketProduct* product3 = [[CRTOBasketProduct alloc] initWithProductId:@"나는 유리를 먹을 수 있어요. 그래도 아프지 않아요" price:0.1 quantity:-2500];
+
+    CRTOTransactionConfirmationEvent* confirmEvent = [[CRTOTransactionConfirmationEvent alloc] initWithBasketProducts:@[ product, product2, product3 ]
+                                                                                                        transactionId:@"8c085e9a-ae34-424b-bcfb-a702084ee2c3"
+                                                                                                             currency:@"USD"
+                                                                                                            startDate:extraDate
+                                                                                                              endDate:extraDate3];
+    confirmEvent.timestamp = timestamp;
+
+    NSString* expected = @"{"
+                          "  \"account\" : {"
+                          "    \"app_name\" : \"com.criteo.sdktestapp\""
+                          "  },"
+                          "  \"events\" : ["
+                          "    {"
+                          "      \"event\" : \"trackTransaction\","
+                          "      \"currency\" : \"USD\","
+                          "      \"id\" : \"8c085e9a-ae34-424b-bcfb-a702084ee2c3\","
+                          "      \"product\" : ["
+                          "        {"
+                          "          \"id\" : \"PRODUCT11223344\","
+                          "          \"price\" : 999.85,"
+                          "          \"quantity\" : 1"
+                          "        },"
+                          "        {"
+                          "          \"id\" : \"PRODUCT56789101\","
+                          "          \"price\" : 10,"
+                          "          \"quantity\" : 100"
+                          "        },"
+                          "        {"
+                          "          \"id\" : \"나는 유리를 먹을 수 있어요. 그래도 아프지 않아요\","
+                          "          \"price\" : 0.1,"
+                          "          \"quantity\" : -2500"
+                          "        }"
+                          "      ],"
+                          "      \"checkin_date\" : {"
+                          "        \"value\" : \"2001-09-09T00:00:00Z\","
+                          "        \"type\" : \"date\""
+                          "      },"
+                          "      \"checkout_date\" : {"
+                          "        \"value\" : \"2001-10-01T00:00:00Z\","
+                          "        \"type\" : \"date\""
+                          "      },"
                           "      \"timestamp\" : \"2015-06-26T14:57:25Z\""
                           "    }"
                           "  ],"
