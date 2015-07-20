@@ -1,6 +1,6 @@
 workspace 'advertiser-sdk'
 xcodeproj 'advertiser-sdk/advertiser-sdk'
-link_with 'advertiser-sdkTests'
+link_with 'advertiser-sdkTests-dynamic', 'advertiser-sdkTests-static'
 
 pod 'Nocilla'
 pod 'OCMock'

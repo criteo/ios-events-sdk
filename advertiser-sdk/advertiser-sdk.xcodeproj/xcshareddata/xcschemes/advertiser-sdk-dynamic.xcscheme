@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "258CDC091AF757D0009E678E"
                BuildableName = "CriteoAdvertiser.framework"
-               BlueprintName = "advertiser-sdk"
+               BlueprintName = "advertiser-sdk-dynamic"
                ReferencedContainer = "container:advertiser-sdk.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,8 +29,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "258CDC141AF757D0009E678E"
-               BuildableName = "advertiser-sdkTests.xctest"
-               BlueprintName = "advertiser-sdkTests"
+               BuildableName = "advertiser-sdkTests-dynamic.xctest"
+               BlueprintName = "advertiser-sdkTests-dynamic"
                ReferencedContainer = "container:advertiser-sdk.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,8 +47,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "258CDC141AF757D0009E678E"
-               BuildableName = "advertiser-sdkTests.xctest"
-               BlueprintName = "advertiser-sdkTests"
+               BuildableName = "advertiser-sdkTests-dynamic.xctest"
+               BlueprintName = "advertiser-sdkTests-dynamic"
                ReferencedContainer = "container:advertiser-sdk.xcodeproj">
             </BuildableReference>
             <DeviceAppData
@@ -61,7 +61,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "258CDC091AF757D0009E678E"
             BuildableName = "CriteoAdvertiser.framework"
-            BlueprintName = "advertiser-sdk"
+            BlueprintName = "advertiser-sdk-dynamic"
             ReferencedContainer = "container:advertiser-sdk.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -80,7 +80,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "258CDC091AF757D0009E678E"
             BuildableName = "CriteoAdvertiser.framework"
-            BlueprintName = "advertiser-sdk"
+            BlueprintName = "advertiser-sdk-dynamic"
             ReferencedContainer = "container:advertiser-sdk.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -98,7 +98,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "258CDC091AF757D0009E678E"
             BuildableName = "CriteoAdvertiser.framework"
-            BlueprintName = "advertiser-sdk"
+            BlueprintName = "advertiser-sdk-dynamic"
             ReferencedContainer = "container:advertiser-sdk.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

@@ -41,6 +41,72 @@
 		25760CB11B5907890008FD12 /* CRTODateConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = 25760CAF1B5907890008FD12 /* CRTODateConverter.h */; };
 		25760CB21B5907890008FD12 /* CRTODateConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 25760CB01B5907890008FD12 /* CRTODateConverter.m */; };
 		25760CB41B592EA70008FD12 /* CRTODateConverterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25760CB31B592EA70008FD12 /* CRTODateConverterTests.m */; };
+		25783F6A1B5D5AFE004F940C /* CRTODeeplinkEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A1A1061B3D7954008841EA /* CRTODeeplinkEvent.m */; };
+		25783F6B1B5D5AFE004F940C /* CRTOProductListViewEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 259AA6061AF7DEED006743A5 /* CRTOProductListViewEvent.m */; };
+		25783F6C1B5D5AFE004F940C /* CRTOEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 258CDC281AF76EA5009E678E /* CRTOEvent.m */; };
+		25783F6D1B5D5AFE004F940C /* CRTOAppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A94F11B0CE5AE009F5C06 /* CRTOAppInfo.m */; };
+		25783F6E1B5D5AFE004F940C /* CRTOBasketProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 259AA6201AF7E081006743A5 /* CRTOBasketProduct.m */; };
+		25783F6F1B5D5AFE004F940C /* CRTODateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 25103EF11B1F5256009B5D24 /* CRTODateFormatter.m */; };
+		25783F701B5D5AFE004F940C /* CRTOEventQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 253BA7251B13803300113FBF /* CRTOEventQueue.m */; };
+		25783F711B5D5AFE004F940C /* CRTODataEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 251004961AF9216D00701F7F /* CRTODataEvent.m */; };
+		25783F721B5D5AFE004F940C /* CRTOBasketViewEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 259AA6251AF8A5CB006743A5 /* CRTOBasketViewEvent.m */; };
+		25783F731B5D5AFE004F940C /* CRTODeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A94EC1B0CCB31009F5C06 /* CRTODeviceInfo.m */; };
+		25783F741B5D5AFE004F940C /* CRTOEventQueueItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 253BA72A1B13804100113FBF /* CRTOEventQueueItem.m */; };
+		25783F751B5D5AFE004F940C /* CRTOTransactionConfirmationEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 259AA6101AF7DF48006743A5 /* CRTOTransactionConfirmationEvent.m */; };
+		25783F761B5D5AFE004F940C /* CRTOProductViewEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 259AA60B1AF7DF11006743A5 /* CRTOProductViewEvent.m */; };
+		25783F771B5D5AFE004F940C /* CRTOEventService.m in Sources */ = {isa = PBXBuildFile; fileRef = 250560781AF8F96D006804AA /* CRTOEventService.m */; };
+		25783F781B5D5AFE004F940C /* CRTOAppLaunchEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 259AA5FC1AF7C8F9006743A5 /* CRTOAppLaunchEvent.m */; };
+		25783F791B5D5AFE004F940C /* CRTOExtraData.m in Sources */ = {isa = PBXBuildFile; fileRef = 252D17931B0E5FF000DB6D91 /* CRTOExtraData.m */; };
+		25783F7A1B5D5AFE004F940C /* CRTODateConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 25760CB01B5907890008FD12 /* CRTODateConverter.m */; };
+		25783F7B1B5D5AFE004F940C /* CRTOJSONEventSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2505607E1AF9156F006804AA /* CRTOJSONEventSerializer.m */; };
+		25783F7C1B5D5AFE004F940C /* CRTOProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 259AA61B1AF7E06A006743A5 /* CRTOProduct.m */; };
+		25783F7D1B5D5AFE004F940C /* CRTOSDKInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A94F61B0CE88E009F5C06 /* CRTOSDKInfo.m */; };
+		25783F7E1B5D5AFE004F940C /* CRTOJSONConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 25CF740E1B0E19E4001A023A /* CRTOJSONConstants.m */; };
+		25783F7F1B5D5AFE004F940C /* CRTOHomeViewEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 259AA6011AF7CBB5006743A5 /* CRTOHomeViewEvent.m */; };
+		25783F821B5D5AFE004F940C /* CriteoAdvertiser.h in Headers */ = {isa = PBXBuildFile; fileRef = 255D0C2F1B171C98001634BE /* CriteoAdvertiser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		25783F831B5D5AFE004F940C /* CRTOProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = 259AA61A1AF7E06A006743A5 /* CRTOProduct.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		25783F841B5D5AFE004F940C /* CRTOBasketProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = 259AA61F1AF7E081006743A5 /* CRTOBasketProduct.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		25783F851B5D5AFE004F940C /* CRTOEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 258CDC271AF76EA5009E678E /* CRTOEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		25783F861B5D5AFE004F940C /* CRTODateConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = 25760CAF1B5907890008FD12 /* CRTODateConverter.h */; };
+		25783F871B5D5AFE004F940C /* CRTOAppLaunchEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 259AA5FB1AF7C8F9006743A5 /* CRTOAppLaunchEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		25783F881B5D5AFE004F940C /* CRTOEventQueueItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 253BA7291B13804100113FBF /* CRTOEventQueueItem.h */; };
+		25783F891B5D5AFE004F940C /* CRTOBasketViewEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 259AA6241AF8A5CB006743A5 /* CRTOBasketViewEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		25783F8A1B5D5AFE004F940C /* CRTODataEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 251004951AF9216D00701F7F /* CRTODataEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		25783F8B1B5D5AFE004F940C /* CRTOHomeViewEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 259AA6001AF7CBB5006743A5 /* CRTOHomeViewEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		25783F8C1B5D5AFE004F940C /* CRTOProductListViewEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 259AA6051AF7DEED006743A5 /* CRTOProductListViewEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		25783F8D1B5D5AFE004F940C /* CRTOProductViewEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 259AA60A1AF7DF11006743A5 /* CRTOProductViewEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		25783F8E1B5D5AFE004F940C /* CRTODeeplinkEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 25A1A1051B3D7954008841EA /* CRTODeeplinkEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		25783F8F1B5D5AFE004F940C /* CRTODateFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 25103EF01B1F5256009B5D24 /* CRTODateFormatter.h */; };
+		25783F901B5D5AFE004F940C /* CRTOTransactionConfirmationEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 259AA60F1AF7DF48006743A5 /* CRTOTransactionConfirmationEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		25783F911B5D5AFE004F940C /* CRTOEventService.h in Headers */ = {isa = PBXBuildFile; fileRef = 250560771AF8F96D006804AA /* CRTOEventService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		25783F921B5D5AFE004F940C /* CRTOJSONConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 25CF740D1B0E19E4001A023A /* CRTOJSONConstants.h */; };
+		25783F931B5D5AFE004F940C /* CRTOAppInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 255A94F01B0CE5AE009F5C06 /* CRTOAppInfo.h */; };
+		25783F941B5D5AFE004F940C /* CRTOEventQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 253BA7241B13803300113FBF /* CRTOEventQueue.h */; };
+		25783F951B5D5AFE004F940C /* CRTOJSONEventSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2505607D1AF9156F006804AA /* CRTOJSONEventSerializer.h */; };
+		25783F961B5D5AFE004F940C /* CRTOSDKInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 255A94F51B0CE88E009F5C06 /* CRTOSDKInfo.h */; };
+		25783F971B5D5AFE004F940C /* CRTOExtraData.h in Headers */ = {isa = PBXBuildFile; fileRef = 252D17921B0E5FF000DB6D91 /* CRTOExtraData.h */; };
+		25783F981B5D5AFE004F940C /* CRTODeviceInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 255A94EB1B0CCB31009F5C06 /* CRTODeviceInfo.h */; };
+		25783FA41B5D5B62004F940C /* CRTOTransactionConfirmationEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 250E7F9E1B46D3AE0027659C /* CRTOTransactionConfirmationEventTests.m */; };
+		25783FA51B5D5B62004F940C /* CRTOSDKInfoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25CF74011B0E00FD001A023A /* CRTOSDKInfoTests.m */; };
+		25783FA61B5D5B62004F940C /* CRTODateFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25103EF51B1F58B6009B5D24 /* CRTODateFormatterTests.m */; };
+		25783FA71B5D5B62004F940C /* CRTOEventServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 259202221B3C4D9E00BC8125 /* CRTOEventServiceTests.m */; };
+		25783FA81B5D5B62004F940C /* CRTOAppLaunchEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A1ABAB1B1CAEA00086EA4F /* CRTOAppLaunchEventTests.m */; };
+		25783FA91B5D5B62004F940C /* CRTODeviceInfoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25CF73FF1B0DFEE1001A023A /* CRTODeviceInfoTests.m */; };
+		25783FAA1B5D5B62004F940C /* CRTOEventQueueTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2592021F1B3AF1D800BC8125 /* CRTOEventQueueTests.m */; };
+		25783FAB1B5D5B62004F940C /* CRTOEventQueueItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 250E7FA01B46D3CF0027659C /* CRTOEventQueueItemTests.m */; };
+		25783FAC1B5D5B62004F940C /* CRTOBasketProductTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 250E7F921B46D2F10027659C /* CRTOBasketProductTests.m */; };
+		25783FAD1B5D5B62004F940C /* CRTOJSONEventSerializerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A1A10C1B3D9225008841EA /* CRTOJSONEventSerializerTests.m */; };
+		25783FAE1B5D5B62004F940C /* CRTOProductListViewEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 250E7F9C1B46D3790027659C /* CRTOProductListViewEventTests.m */; };
+		25783FAF1B5D5B62004F940C /* CRTOAppInfoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2506B7571B0DDF050091D5F8 /* CRTOAppInfoTests.m */; };
+		25783FB01B5D5B62004F940C /* CRTOProductViewEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25FC30951B45689B00C379B7 /* CRTOProductViewEventTests.m */; };
+		25783FB11B5D5B62004F940C /* CRTOProductTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 250E7F941B46D2FF0027659C /* CRTOProductTests.m */; };
+		25783FB21B5D5B62004F940C /* CRTODataEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 250E7F981B46D33E0027659C /* CRTODataEventTests.m */; };
+		25783FB31B5D5B62004F940C /* CRTOHomeViewEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 250E7F9A1B46D3620027659C /* CRTOHomeViewEventTests.m */; };
+		25783FB41B5D5B62004F940C /* CRTODateConverterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25760CB31B592EA70008FD12 /* CRTODateConverterTests.m */; };
+		25783FB51B5D5B62004F940C /* CRTODeeplinkEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A1A10A1B3D8559008841EA /* CRTODeeplinkEventTests.m */; };
+		25783FB61B5D5B62004F940C /* CRTOBasketViewEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 250E7F961B46D3210027659C /* CRTOBasketViewEventTests.m */; };
+		25783FB81B5D5B62004F940C /* CriteoAdvertiser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 258CDC0A1AF757D0009E678E /* CriteoAdvertiser.framework */; };
+		25783FB91B5D5B62004F940C /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 94DB731A744361F6E84CEFFA /* libPods.a */; };
 		258CDC161AF757D0009E678E /* CriteoAdvertiser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 258CDC0A1AF757D0009E678E /* CriteoAdvertiser.framework */; };
 		258CDC291AF76EA5009E678E /* CRTOEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 258CDC271AF76EA5009E678E /* CRTOEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		258CDC2A1AF76EA5009E678E /* CRTOEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 258CDC281AF76EA5009E678E /* CRTOEvent.m */; };
@@ -76,12 +142,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		258CDC171AF757D0009E678E /* PBXContainerItemProxy */ = {
+		25783F661B5D5A6B004F940C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 258CDC011AF757D0009E678E /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 258CDC091AF757D0009E678E;
-			remoteInfo = "advertiser-sdk";
+			remoteInfo = "advertiser-sdk-dynamic";
+		};
+		25783FC11B5D5BC5004F940C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 258CDC011AF757D0009E678E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 25783F681B5D5AFE004F940C;
+			remoteInfo = "advertiser-sdk-static";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -129,10 +202,12 @@
 		25760CAF1B5907890008FD12 /* CRTODateConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTODateConverter.h; sourceTree = "<group>"; };
 		25760CB01B5907890008FD12 /* CRTODateConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTODateConverter.m; sourceTree = "<group>"; };
 		25760CB31B592EA70008FD12 /* CRTODateConverterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTODateConverterTests.m; sourceTree = "<group>"; };
+		25783F9D1B5D5AFE004F940C /* CriteoAdvertiser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CriteoAdvertiser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		25783FBF1B5D5B62004F940C /* advertiser-sdkTests-static.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "advertiser-sdkTests-static.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		25786D731B57C9A900731ADE /* CRTONetworkDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CRTONetworkDefines.h; sourceTree = "<group>"; };
 		258CDC0A1AF757D0009E678E /* CriteoAdvertiser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CriteoAdvertiser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		258CDC0E1AF757D0009E678E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		258CDC151AF757D0009E678E /* advertiser-sdkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "advertiser-sdkTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		258CDC151AF757D0009E678E /* advertiser-sdkTests-dynamic.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "advertiser-sdkTests-dynamic.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		258CDC1B1AF757D0009E678E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		258CDC271AF76EA5009E678E /* CRTOEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTOEvent.h; sourceTree = "<group>"; };
 		258CDC281AF76EA5009E678E /* CRTOEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOEvent.m; sourceTree = "<group>"; };
@@ -171,6 +246,22 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		25783F801B5D5AFE004F940C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25783FB71B5D5B62004F940C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25783FB81B5D5B62004F940C /* CriteoAdvertiser.framework in Frameworks */,
+				25783FB91B5D5B62004F940C /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		258CDC061AF757D0009E678E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -284,7 +375,9 @@
 			isa = PBXGroup;
 			children = (
 				258CDC0A1AF757D0009E678E /* CriteoAdvertiser.framework */,
-				258CDC151AF757D0009E678E /* advertiser-sdkTests.xctest */,
+				258CDC151AF757D0009E678E /* advertiser-sdkTests-dynamic.xctest */,
+				25783F9D1B5D5AFE004F940C /* CriteoAdvertiser.framework */,
+				25783FBF1B5D5B62004F940C /* advertiser-sdkTests-static.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -433,6 +526,36 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		25783F811B5D5AFE004F940C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25783F821B5D5AFE004F940C /* CriteoAdvertiser.h in Headers */,
+				25783F831B5D5AFE004F940C /* CRTOProduct.h in Headers */,
+				25783F841B5D5AFE004F940C /* CRTOBasketProduct.h in Headers */,
+				25783F851B5D5AFE004F940C /* CRTOEvent.h in Headers */,
+				25783F861B5D5AFE004F940C /* CRTODateConverter.h in Headers */,
+				25783F871B5D5AFE004F940C /* CRTOAppLaunchEvent.h in Headers */,
+				25783F881B5D5AFE004F940C /* CRTOEventQueueItem.h in Headers */,
+				25783F891B5D5AFE004F940C /* CRTOBasketViewEvent.h in Headers */,
+				25783F8A1B5D5AFE004F940C /* CRTODataEvent.h in Headers */,
+				25783F8B1B5D5AFE004F940C /* CRTOHomeViewEvent.h in Headers */,
+				25783F8C1B5D5AFE004F940C /* CRTOProductListViewEvent.h in Headers */,
+				25783F8D1B5D5AFE004F940C /* CRTOProductViewEvent.h in Headers */,
+				25783F8E1B5D5AFE004F940C /* CRTODeeplinkEvent.h in Headers */,
+				25783F8F1B5D5AFE004F940C /* CRTODateFormatter.h in Headers */,
+				25783F901B5D5AFE004F940C /* CRTOTransactionConfirmationEvent.h in Headers */,
+				25783F911B5D5AFE004F940C /* CRTOEventService.h in Headers */,
+				25783F921B5D5AFE004F940C /* CRTOJSONConstants.h in Headers */,
+				25783F931B5D5AFE004F940C /* CRTOAppInfo.h in Headers */,
+				25783F941B5D5AFE004F940C /* CRTOEventQueue.h in Headers */,
+				25783F951B5D5AFE004F940C /* CRTOJSONEventSerializer.h in Headers */,
+				25783F961B5D5AFE004F940C /* CRTOSDKInfo.h in Headers */,
+				25783F971B5D5AFE004F940C /* CRTOExtraData.h in Headers */,
+				25783F981B5D5AFE004F940C /* CRTODeviceInfo.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		258CDC071AF757D0009E678E /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -466,9 +589,47 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		258CDC091AF757D0009E678E /* advertiser-sdk */ = {
+		25783F681B5D5AFE004F940C /* advertiser-sdk-static */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 258CDC201AF757D0009E678E /* Build configuration list for PBXNativeTarget "advertiser-sdk" */;
+			buildConfigurationList = 25783F9A1B5D5AFE004F940C /* Build configuration list for PBXNativeTarget "advertiser-sdk-static" */;
+			buildPhases = (
+				25783F691B5D5AFE004F940C /* Sources */,
+				25783F801B5D5AFE004F940C /* Frameworks */,
+				25783F811B5D5AFE004F940C /* Headers */,
+				25783F991B5D5AFE004F940C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "advertiser-sdk-static";
+			productName = "advertiser-sdk";
+			productReference = 25783F9D1B5D5AFE004F940C /* CriteoAdvertiser.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		25783F9F1B5D5B62004F940C /* advertiser-sdkTests-static */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 25783FBC1B5D5B62004F940C /* Build configuration list for PBXNativeTarget "advertiser-sdkTests-static" */;
+			buildPhases = (
+				25783FA21B5D5B62004F940C /* Check Pods Manifest.lock */,
+				25783FA31B5D5B62004F940C /* Sources */,
+				25783FB71B5D5B62004F940C /* Frameworks */,
+				25783FBA1B5D5B62004F940C /* Resources */,
+				25783FBB1B5D5B62004F940C /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				25783FC21B5D5BC5004F940C /* PBXTargetDependency */,
+			);
+			name = "advertiser-sdkTests-static";
+			productName = "advertiser-sdkTests";
+			productReference = 25783FBF1B5D5B62004F940C /* advertiser-sdkTests-static.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		258CDC091AF757D0009E678E /* advertiser-sdk-dynamic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 258CDC201AF757D0009E678E /* Build configuration list for PBXNativeTarget "advertiser-sdk-dynamic" */;
 			buildPhases = (
 				258CDC051AF757D0009E678E /* Sources */,
 				258CDC061AF757D0009E678E /* Frameworks */,
@@ -479,14 +640,14 @@
 			);
 			dependencies = (
 			);
-			name = "advertiser-sdk";
+			name = "advertiser-sdk-dynamic";
 			productName = "advertiser-sdk";
 			productReference = 258CDC0A1AF757D0009E678E /* CriteoAdvertiser.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		258CDC141AF757D0009E678E /* advertiser-sdkTests */ = {
+		258CDC141AF757D0009E678E /* advertiser-sdkTests-dynamic */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 258CDC231AF757D0009E678E /* Build configuration list for PBXNativeTarget "advertiser-sdkTests" */;
+			buildConfigurationList = 258CDC231AF757D0009E678E /* Build configuration list for PBXNativeTarget "advertiser-sdkTests-dynamic" */;
 			buildPhases = (
 				C02FD781F7CB4B6DC8599517 /* Check Pods Manifest.lock */,
 				258CDC111AF757D0009E678E /* Sources */,
@@ -497,11 +658,11 @@
 			buildRules = (
 			);
 			dependencies = (
-				258CDC181AF757D0009E678E /* PBXTargetDependency */,
+				25783F671B5D5A6B004F940C /* PBXTargetDependency */,
 			);
-			name = "advertiser-sdkTests";
+			name = "advertiser-sdkTests-dynamic";
 			productName = "advertiser-sdkTests";
-			productReference = 258CDC151AF757D0009E678E /* advertiser-sdkTests.xctest */;
+			productReference = 258CDC151AF757D0009E678E /* advertiser-sdkTests-dynamic.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -533,13 +694,29 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				258CDC091AF757D0009E678E /* advertiser-sdk */,
-				258CDC141AF757D0009E678E /* advertiser-sdkTests */,
+				258CDC091AF757D0009E678E /* advertiser-sdk-dynamic */,
+				258CDC141AF757D0009E678E /* advertiser-sdkTests-dynamic */,
+				25783F681B5D5AFE004F940C /* advertiser-sdk-static */,
+				25783F9F1B5D5B62004F940C /* advertiser-sdkTests-static */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		25783F991B5D5AFE004F940C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25783FBA1B5D5B62004F940C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		258CDC081AF757D0009E678E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -557,6 +734,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		25783FA21B5D5B62004F940C /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		25783FBB1B5D5B62004F940C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		C02FD781F7CB4B6DC8599517 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -590,6 +797,61 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		25783F691B5D5AFE004F940C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25783F6A1B5D5AFE004F940C /* CRTODeeplinkEvent.m in Sources */,
+				25783F6B1B5D5AFE004F940C /* CRTOProductListViewEvent.m in Sources */,
+				25783F6C1B5D5AFE004F940C /* CRTOEvent.m in Sources */,
+				25783F6D1B5D5AFE004F940C /* CRTOAppInfo.m in Sources */,
+				25783F6E1B5D5AFE004F940C /* CRTOBasketProduct.m in Sources */,
+				25783F6F1B5D5AFE004F940C /* CRTODateFormatter.m in Sources */,
+				25783F701B5D5AFE004F940C /* CRTOEventQueue.m in Sources */,
+				25783F711B5D5AFE004F940C /* CRTODataEvent.m in Sources */,
+				25783F721B5D5AFE004F940C /* CRTOBasketViewEvent.m in Sources */,
+				25783F731B5D5AFE004F940C /* CRTODeviceInfo.m in Sources */,
+				25783F741B5D5AFE004F940C /* CRTOEventQueueItem.m in Sources */,
+				25783F751B5D5AFE004F940C /* CRTOTransactionConfirmationEvent.m in Sources */,
+				25783F761B5D5AFE004F940C /* CRTOProductViewEvent.m in Sources */,
+				25783F771B5D5AFE004F940C /* CRTOEventService.m in Sources */,
+				25783F781B5D5AFE004F940C /* CRTOAppLaunchEvent.m in Sources */,
+				25783F791B5D5AFE004F940C /* CRTOExtraData.m in Sources */,
+				25783F7A1B5D5AFE004F940C /* CRTODateConverter.m in Sources */,
+				25783F7B1B5D5AFE004F940C /* CRTOJSONEventSerializer.m in Sources */,
+				25783F7C1B5D5AFE004F940C /* CRTOProduct.m in Sources */,
+				25783F7D1B5D5AFE004F940C /* CRTOSDKInfo.m in Sources */,
+				25783F7E1B5D5AFE004F940C /* CRTOJSONConstants.m in Sources */,
+				25783F7F1B5D5AFE004F940C /* CRTOHomeViewEvent.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25783FA31B5D5B62004F940C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25783FA41B5D5B62004F940C /* CRTOTransactionConfirmationEventTests.m in Sources */,
+				25783FA51B5D5B62004F940C /* CRTOSDKInfoTests.m in Sources */,
+				25783FA61B5D5B62004F940C /* CRTODateFormatterTests.m in Sources */,
+				25783FA71B5D5B62004F940C /* CRTOEventServiceTests.m in Sources */,
+				25783FA81B5D5B62004F940C /* CRTOAppLaunchEventTests.m in Sources */,
+				25783FA91B5D5B62004F940C /* CRTODeviceInfoTests.m in Sources */,
+				25783FAA1B5D5B62004F940C /* CRTOEventQueueTests.m in Sources */,
+				25783FAB1B5D5B62004F940C /* CRTOEventQueueItemTests.m in Sources */,
+				25783FAC1B5D5B62004F940C /* CRTOBasketProductTests.m in Sources */,
+				25783FAD1B5D5B62004F940C /* CRTOJSONEventSerializerTests.m in Sources */,
+				25783FAE1B5D5B62004F940C /* CRTOProductListViewEventTests.m in Sources */,
+				25783FAF1B5D5B62004F940C /* CRTOAppInfoTests.m in Sources */,
+				25783FB01B5D5B62004F940C /* CRTOProductViewEventTests.m in Sources */,
+				25783FB11B5D5B62004F940C /* CRTOProductTests.m in Sources */,
+				25783FB21B5D5B62004F940C /* CRTODataEventTests.m in Sources */,
+				25783FB31B5D5B62004F940C /* CRTOHomeViewEventTests.m in Sources */,
+				25783FB41B5D5B62004F940C /* CRTODateConverterTests.m in Sources */,
+				25783FB51B5D5B62004F940C /* CRTODeeplinkEventTests.m in Sources */,
+				25783FB61B5D5B62004F940C /* CRTOBasketViewEventTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		258CDC051AF757D0009E678E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -648,14 +910,85 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		258CDC181AF757D0009E678E /* PBXTargetDependency */ = {
+		25783F671B5D5A6B004F940C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 258CDC091AF757D0009E678E /* advertiser-sdk */;
-			targetProxy = 258CDC171AF757D0009E678E /* PBXContainerItemProxy */;
+			target = 258CDC091AF757D0009E678E /* advertiser-sdk-dynamic */;
+			targetProxy = 25783F661B5D5A6B004F940C /* PBXContainerItemProxy */;
+		};
+		25783FC21B5D5BC5004F940C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 25783F681B5D5AFE004F940C /* advertiser-sdk-static */;
+			targetProxy = 25783FC11B5D5BC5004F940C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		25783F9B1B5D5AFE004F940C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1.0123;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "advertiser-sdk/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				PRODUCT_NAME = CriteoAdvertiser;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		25783F9C1B5D5AFE004F940C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1.0123;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "advertiser-sdk/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				PRODUCT_NAME = CriteoAdvertiser;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		25783FBD1B5D5B62004F940C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D12C1656A6A625A683C5ED96 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "advertiser-sdkTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "advertiser-sdkTests-static";
+			};
+			name = Debug;
+		};
+		25783FBE1B5D5B62004F940C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F95E2679C5EF1628DBA7B40C /* Pods.release.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "advertiser-sdkTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "advertiser-sdkTests-static";
+			};
+			name = Release;
+		};
 		258CDC1E1AF757D0009E678E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -811,6 +1144,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		25783F9A1B5D5AFE004F940C /* Build configuration list for PBXNativeTarget "advertiser-sdk-static" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25783F9B1B5D5AFE004F940C /* Debug */,
+				25783F9C1B5D5AFE004F940C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		25783FBC1B5D5B62004F940C /* Build configuration list for PBXNativeTarget "advertiser-sdkTests-static" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25783FBD1B5D5B62004F940C /* Debug */,
+				25783FBE1B5D5B62004F940C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		258CDC041AF757D0009E678E /* Build configuration list for PBXProject "advertiser-sdk" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -820,7 +1171,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		258CDC201AF757D0009E678E /* Build configuration list for PBXNativeTarget "advertiser-sdk" */ = {
+		258CDC201AF757D0009E678E /* Build configuration list for PBXNativeTarget "advertiser-sdk-dynamic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				258CDC211AF757D0009E678E /* Debug */,
@@ -829,7 +1180,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		258CDC231AF757D0009E678E /* Build configuration list for PBXNativeTarget "advertiser-sdkTests" */ = {
+		258CDC231AF757D0009E678E /* Build configuration list for PBXNativeTarget "advertiser-sdkTests-dynamic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				258CDC241AF757D0009E678E /* Debug */,
