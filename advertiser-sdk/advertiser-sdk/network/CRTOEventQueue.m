@@ -192,7 +192,7 @@ static CRTOEventQueueItemBlock itemSentBlock = NULL;
 
 - (void) connection:(NSURLConnection*)connection willSendRequestForAuthenticationChallenge:(NSURLAuthenticationChallenge*)challenge
 {
-    [challenge.sender cancelAuthenticationChallenge:challenge];
+    [challenge.sender performDefaultHandlingForAuthenticationChallenge:challenge];
 }
 
 - (NSURLRequest*) connection:(NSURLConnection*)connection
