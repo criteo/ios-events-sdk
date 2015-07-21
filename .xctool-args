@@ -1,8 +1,0 @@
-[
-  "-workspace",     "advertiser-sdk.xcworkspace",
-  "-scheme",        "advertiser-sdk-dynamic",
-  "-configuration", "Debug",
-  "-sdk", "iphonesimulator",
-  "-destination", "platform=iOS Simulator,name=iPhone 6,OS=latest",
-  "test"
-]
