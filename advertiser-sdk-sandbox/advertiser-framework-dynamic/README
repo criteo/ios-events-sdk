@@ -1,0 +1,4 @@
+This directory holds the dynamically linked advertiser framework.
+
+The framework should be placed in the root of this directory, next to
+this README file, and it should be called "CriteoAdvertiser.framework".

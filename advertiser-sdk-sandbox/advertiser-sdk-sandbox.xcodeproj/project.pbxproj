@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		252D68821B6006FF00799A82 /* CriteoAdvertiser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 252D68811B6006FF00799A82 /* CriteoAdvertiser.framework */; };
+		252D68831B60070000799A82 /* CriteoAdvertiser.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 252D68811B6006FF00799A82 /* CriteoAdvertiser.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		252D68861B60071400799A82 /* CriteoAdvertiser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 252D68851B60071400799A82 /* CriteoAdvertiser.framework */; };
 		2567E5E71B5FFB60007589BB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25783EAE1B5D336F004F940C /* ViewController.m */; };
 		2567E5E81B5FFB60007589BB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 25783EAB1B5D336F004F940C /* AppDelegate.m */; };
 		2567E5E91B5FFB60007589BB /* WidgetService.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C14D6E1B5FC81600447514 /* WidgetService.m */; };
@@ -46,7 +49,23 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		252D68841B60070000799A82 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				252D68831B60070000799A82 /* CriteoAdvertiser.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		252D68811B6006FF00799A82 /* CriteoAdvertiser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CriteoAdvertiser.framework; path = "advertiser-framework-dynamic/CriteoAdvertiser.framework"; sourceTree = "<group>"; };
+		252D68851B60071400799A82 /* CriteoAdvertiser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CriteoAdvertiser.framework; path = "advertiser-framework-static/CriteoAdvertiser.framework"; sourceTree = "<group>"; };
 		2567E5F51B5FFB60007589BB /* advertiser-sdk-sandbox-static.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "advertiser-sdk-sandbox-static.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2567E6011B5FFC58007589BB /* advertiser-sdk-sandbox-staticTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "advertiser-sdk-sandbox-staticTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		25783EA31B5D336F004F940C /* advertiser-sdk-sandbox-dynamic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "advertiser-sdk-sandbox-dynamic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				252D68861B60071400799A82 /* CriteoAdvertiser.framework in Frameworks */,
 				2567E5ED1B5FFB60007589BB /* AdSupport.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -90,6 +110,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				25C14D6C1B5FC33200447514 /* AdSupport.framework in Frameworks */,
+				252D68821B6006FF00799A82 /* CriteoAdvertiser.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +127,8 @@
 		25783E9A1B5D336F004F940C = {
 			isa = PBXGroup;
 			children = (
+				252D68851B60071400799A82 /* CriteoAdvertiser.framework */,
+				252D68811B6006FF00799A82 /* CriteoAdvertiser.framework */,
 				25C14D6B1B5FC33200447514 /* AdSupport.framework */,
 				25783EA51B5D336F004F940C /* advertiser-sdk-sandbox */,
 				25783EBF1B5D336F004F940C /* advertiser-sdk-sandboxTests */,
@@ -222,6 +245,7 @@
 				25783E9F1B5D336F004F940C /* Sources */,
 				25783EA01B5D336F004F940C /* Frameworks */,
 				25783EA11B5D336F004F940C /* Resources */,
+				252D68841B60070000799A82 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -410,6 +434,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/advertiser-framework-static",
+				);
 				INFOPLIST_FILE = "advertiser-sdk-sandbox/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "advertiser-sdk-sandbox-static";
@@ -421,6 +449,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/advertiser-framework-static",
+				);
 				INFOPLIST_FILE = "advertiser-sdk-sandbox/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "advertiser-sdk-sandbox-static";
@@ -548,7 +580,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/advertiser-framework-dynamic",
+				);
 				INFOPLIST_FILE = "advertiser-sdk-sandbox/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -559,7 +596,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/advertiser-framework-dynamic",
+				);
 				INFOPLIST_FILE = "advertiser-sdk-sandbox/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -578,6 +620,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "advertiser-sdk-sandboxTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/advertiser-sdk-sandbox-dynamic.app/advertiser-sdk-sandbox-dynamic";
@@ -593,6 +636,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "advertiser-sdk-sandboxTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/advertiser-sdk-sandbox-dynamic.app/advertiser-sdk-sandbox-dynamic";
