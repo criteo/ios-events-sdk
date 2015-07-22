@@ -27,6 +27,7 @@ static CRTOEventQueueItemBlock itemSentBlock = NULL;
     NSURL* endpoint;
 }
 
+- (NSURL*) getEventQueueSendURL;
 - (void) notifyItemErrored:(CRTOEventQueueItem*)item;
 - (void) notifyItemSent:(CRTOEventQueueItem*)item;
 - (void) reapQueue;
@@ -46,7 +47,7 @@ static CRTOEventQueueItemBlock itemSentBlock = NULL;
         _maxQueueDepth   = CRTO_EVENTQUEUE_MAX_DEPTH;
         _maxQueueItemAge = CRTO_EVENTQUEUE_MAX_AGE;
 
-        endpoint = [NSURL URLWithString:CRTO_EVENTQUEUE_SEND_URL];
+        endpoint = [self getEventQueueSendURL];
     }
     return self;
 }
@@ -100,6 +101,29 @@ static CRTOEventQueueItemBlock itemSentBlock = NULL;
 }
 
 #pragma mark - Class Extension Methods
+
+- (NSURL*) getEventQueueSendURL
+{
+    NSProcessInfo* process    = [NSProcessInfo processInfo];
+    NSDictionary* environment = process.environment;
+
+    NSString* WIDGET_URL = environment[CRTO_EVENTQUEUE_WIDGET_ENV];
+
+    NSURL* sendURL = nil;
+
+    if ( WIDGET_URL.length > 0 ) {
+        sendURL = [NSURL URLWithString:WIDGET_URL];
+    }
+
+    if ( sendURL == nil ) {
+        sendURL = [NSURL URLWithString:CRTO_EVENTQUEUE_SEND_BASEURL];
+    }
+
+    sendURL = [NSURL URLWithString:CRTO_EVENTQUEUE_SEND_PATH
+                     relativeToURL:sendURL];
+
+    return sendURL;
+}
 
 - (void) notifyItemErrored:(CRTOEventQueueItem*)item
 {

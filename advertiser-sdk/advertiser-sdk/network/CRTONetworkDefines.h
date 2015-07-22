@@ -9,4 +9,6 @@
 #define CRTO_EVENTQUEUE_MAX_DEPTH     (15)
 #define CRTO_EVENTQUEUE_MAX_REDIRECTS (4)
 #define CRTO_EVENTQUEUE_SEND_TIMEOUT  (60.0)
-#define CRTO_EVENTQUEUE_SEND_URL      (@"https://widget.criteo.com/m/event/")
+#define CRTO_EVENTQUEUE_SEND_BASEURL  (@"https://widget.criteo.com")
+#define CRTO_EVENTQUEUE_SEND_PATH     (@"/m/event/")
+#define CRTO_EVENTQUEUE_WIDGET_ENV    (@"WIDGET_BASEURL")
