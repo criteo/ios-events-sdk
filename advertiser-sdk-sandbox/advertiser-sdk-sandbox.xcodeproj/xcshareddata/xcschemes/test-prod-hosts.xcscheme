@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "25783EA21B5D336F004F940C"
-               BuildableName = "advertiser-sdk-sandbox.app"
-               BlueprintName = "advertiser-sdk-sandbox"
+               BuildableName = "advertiser-sdk-sandbox-dynamic.app"
+               BlueprintName = "advertiser-sdk-sandbox-dynamic"
                ReferencedContainer = "container:advertiser-sdk-sandbox.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,8 +29,36 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "25783EBB1B5D336F004F940C"
-               BuildableName = "advertiser-sdk-sandboxTests.xctest"
-               BlueprintName = "advertiser-sdk-sandboxTests"
+               BuildableName = "advertiser-sdk-sandbox-dynamicTests.xctest"
+               BlueprintName = "advertiser-sdk-sandbox-dynamicTests"
+               ReferencedContainer = "container:advertiser-sdk-sandbox.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2567E5E51B5FFB60007589BB"
+               BuildableName = "advertiser-sdk-sandbox-static.app"
+               BlueprintName = "advertiser-sdk-sandbox-static"
+               ReferencedContainer = "container:advertiser-sdk-sandbox.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2567E5F71B5FFC58007589BB"
+               BuildableName = "advertiser-sdk-sandbox-staticTests.xctest"
+               BlueprintName = "advertiser-sdk-sandbox-staticTests"
                ReferencedContainer = "container:advertiser-sdk-sandbox.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,8 +75,18 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "25783EBB1B5D336F004F940C"
-               BuildableName = "advertiser-sdk-sandboxTests.xctest"
-               BlueprintName = "advertiser-sdk-sandboxTests"
+               BuildableName = "advertiser-sdk-sandbox-dynamicTests.xctest"
+               BlueprintName = "advertiser-sdk-sandbox-dynamicTests"
+               ReferencedContainer = "container:advertiser-sdk-sandbox.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2567E5F71B5FFC58007589BB"
+               BuildableName = "advertiser-sdk-sandbox-staticTests.xctest"
+               BlueprintName = "advertiser-sdk-sandbox-staticTests"
                ReferencedContainer = "container:advertiser-sdk-sandbox.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -57,8 +95,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "25783EA21B5D336F004F940C"
-            BuildableName = "advertiser-sdk-sandbox.app"
-            BlueprintName = "advertiser-sdk-sandbox"
+            BuildableName = "advertiser-sdk-sandbox-dynamic.app"
+            BlueprintName = "advertiser-sdk-sandbox-dynamic"
             ReferencedContainer = "container:advertiser-sdk-sandbox.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -77,8 +115,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "25783EA21B5D336F004F940C"
-            BuildableName = "advertiser-sdk-sandbox.app"
-            BlueprintName = "advertiser-sdk-sandbox"
+            BuildableName = "advertiser-sdk-sandbox-dynamic.app"
+            BlueprintName = "advertiser-sdk-sandbox-dynamic"
             ReferencedContainer = "container:advertiser-sdk-sandbox.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -108,8 +146,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "25783EA21B5D336F004F940C"
-            BuildableName = "advertiser-sdk-sandbox.app"
-            BlueprintName = "advertiser-sdk-sandbox"
+            BuildableName = "advertiser-sdk-sandbox-dynamic.app"
+            BlueprintName = "advertiser-sdk-sandbox-dynamic"
             ReferencedContainer = "container:advertiser-sdk-sandbox.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

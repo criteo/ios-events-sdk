@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2567E5E71B5FFB60007589BB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25783EAE1B5D336F004F940C /* ViewController.m */; };
+		2567E5E81B5FFB60007589BB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 25783EAB1B5D336F004F940C /* AppDelegate.m */; };
+		2567E5E91B5FFB60007589BB /* WidgetService.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C14D6E1B5FC81600447514 /* WidgetService.m */; };
+		2567E5EA1B5FFB60007589BB /* UserDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C14D691B5FC0F400447514 /* UserDataService.m */; };
+		2567E5EB1B5FFB60007589BB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 25783EA81B5D336F004F940C /* main.m */; };
+		2567E5ED1B5FFB60007589BB /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25C14D6B1B5FC33200447514 /* AdSupport.framework */; };
+		2567E5EF1B5FFB60007589BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25783EB01B5D336F004F940C /* Main.storyboard */; };
+		2567E5F01B5FFB60007589BB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25783EB51B5D336F004F940C /* LaunchScreen.xib */; };
+		2567E5F11B5FFB60007589BB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25783EB31B5D336F004F940C /* Images.xcassets */; };
+		2567E5FB1B5FFC58007589BB /* advertiser_sdk_sandboxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25783EC21B5D336F004F940C /* advertiser_sdk_sandboxTests.m */; };
 		25783EA91B5D336F004F940C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 25783EA81B5D336F004F940C /* main.m */; };
 		25783EAC1B5D336F004F940C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 25783EAB1B5D336F004F940C /* AppDelegate.m */; };
 		25783EAF1B5D336F004F940C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25783EAE1B5D336F004F940C /* ViewController.m */; };
@@ -20,6 +30,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		2567E6031B5FFC81007589BB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 25783E9B1B5D336F004F940C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2567E5E51B5FFB60007589BB;
+			remoteInfo = "advertiser-sdk-sandbox-static";
+		};
 		25783EBD1B5D336F004F940C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 25783E9B1B5D336F004F940C /* Project object */;
@@ -30,7 +47,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		25783EA31B5D336F004F940C /* advertiser-sdk-sandbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "advertiser-sdk-sandbox.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2567E5F51B5FFB60007589BB /* advertiser-sdk-sandbox-static.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "advertiser-sdk-sandbox-static.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2567E6011B5FFC58007589BB /* advertiser-sdk-sandbox-staticTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "advertiser-sdk-sandbox-staticTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		25783EA31B5D336F004F940C /* advertiser-sdk-sandbox-dynamic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "advertiser-sdk-sandbox-dynamic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		25783EA71B5D336F004F940C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25783EA81B5D336F004F940C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		25783EAA1B5D336F004F940C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -40,7 +59,7 @@
 		25783EB11B5D336F004F940C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		25783EB31B5D336F004F940C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		25783EB61B5D336F004F940C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		25783EBC1B5D336F004F940C /* advertiser-sdk-sandboxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "advertiser-sdk-sandboxTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		25783EBC1B5D336F004F940C /* advertiser-sdk-sandbox-dynamicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "advertiser-sdk-sandbox-dynamicTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		25783EC11B5D336F004F940C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25783EC21B5D336F004F940C /* advertiser_sdk_sandboxTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = advertiser_sdk_sandboxTests.m; sourceTree = "<group>"; };
 		25C14D681B5FC0F400447514 /* UserDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDataService.h; sourceTree = "<group>"; };
@@ -51,6 +70,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		2567E5EC1B5FFB60007589BB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2567E5ED1B5FFB60007589BB /* AdSupport.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2567E5FC1B5FFC58007589BB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		25783EA01B5D336F004F940C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -82,8 +116,10 @@
 		25783EA41B5D336F004F940C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				25783EA31B5D336F004F940C /* advertiser-sdk-sandbox.app */,
-				25783EBC1B5D336F004F940C /* advertiser-sdk-sandboxTests.xctest */,
+				25783EA31B5D336F004F940C /* advertiser-sdk-sandbox-dynamic.app */,
+				25783EBC1B5D336F004F940C /* advertiser-sdk-sandbox-dynamicTests.xctest */,
+				2567E5F51B5FFB60007589BB /* advertiser-sdk-sandbox-static.app */,
+				2567E6011B5FFC58007589BB /* advertiser-sdk-sandbox-staticTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -144,9 +180,44 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		25783EA21B5D336F004F940C /* advertiser-sdk-sandbox */ = {
+		2567E5E51B5FFB60007589BB /* advertiser-sdk-sandbox-static */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 25783EC61B5D336F004F940C /* Build configuration list for PBXNativeTarget "advertiser-sdk-sandbox" */;
+			buildConfigurationList = 2567E5F21B5FFB60007589BB /* Build configuration list for PBXNativeTarget "advertiser-sdk-sandbox-static" */;
+			buildPhases = (
+				2567E5E61B5FFB60007589BB /* Sources */,
+				2567E5EC1B5FFB60007589BB /* Frameworks */,
+				2567E5EE1B5FFB60007589BB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "advertiser-sdk-sandbox-static";
+			productName = "advertiser-sdk-sandbox";
+			productReference = 2567E5F51B5FFB60007589BB /* advertiser-sdk-sandbox-static.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2567E5F71B5FFC58007589BB /* advertiser-sdk-sandbox-staticTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2567E5FE1B5FFC58007589BB /* Build configuration list for PBXNativeTarget "advertiser-sdk-sandbox-staticTests" */;
+			buildPhases = (
+				2567E5FA1B5FFC58007589BB /* Sources */,
+				2567E5FC1B5FFC58007589BB /* Frameworks */,
+				2567E5FD1B5FFC58007589BB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2567E6041B5FFC81007589BB /* PBXTargetDependency */,
+			);
+			name = "advertiser-sdk-sandbox-staticTests";
+			productName = "advertiser-sdk-sandboxTests";
+			productReference = 2567E6011B5FFC58007589BB /* advertiser-sdk-sandbox-staticTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		25783EA21B5D336F004F940C /* advertiser-sdk-sandbox-dynamic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 25783EC61B5D336F004F940C /* Build configuration list for PBXNativeTarget "advertiser-sdk-sandbox-dynamic" */;
 			buildPhases = (
 				25783E9F1B5D336F004F940C /* Sources */,
 				25783EA01B5D336F004F940C /* Frameworks */,
@@ -156,14 +227,14 @@
 			);
 			dependencies = (
 			);
-			name = "advertiser-sdk-sandbox";
+			name = "advertiser-sdk-sandbox-dynamic";
 			productName = "advertiser-sdk-sandbox";
-			productReference = 25783EA31B5D336F004F940C /* advertiser-sdk-sandbox.app */;
+			productReference = 25783EA31B5D336F004F940C /* advertiser-sdk-sandbox-dynamic.app */;
 			productType = "com.apple.product-type.application";
 		};
-		25783EBB1B5D336F004F940C /* advertiser-sdk-sandboxTests */ = {
+		25783EBB1B5D336F004F940C /* advertiser-sdk-sandbox-dynamicTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 25783EC91B5D336F004F940C /* Build configuration list for PBXNativeTarget "advertiser-sdk-sandboxTests" */;
+			buildConfigurationList = 25783EC91B5D336F004F940C /* Build configuration list for PBXNativeTarget "advertiser-sdk-sandbox-dynamicTests" */;
 			buildPhases = (
 				25783EB81B5D336F004F940C /* Sources */,
 				25783EB91B5D336F004F940C /* Frameworks */,
@@ -174,9 +245,9 @@
 			dependencies = (
 				25783EBE1B5D336F004F940C /* PBXTargetDependency */,
 			);
-			name = "advertiser-sdk-sandboxTests";
+			name = "advertiser-sdk-sandbox-dynamicTests";
 			productName = "advertiser-sdk-sandboxTests";
-			productReference = 25783EBC1B5D336F004F940C /* advertiser-sdk-sandboxTests.xctest */;
+			productReference = 25783EBC1B5D336F004F940C /* advertiser-sdk-sandbox-dynamicTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -188,6 +259,9 @@
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = Criteo;
 				TargetAttributes = {
+					2567E5F71B5FFC58007589BB = {
+						TestTargetID = 2567E5E51B5FFB60007589BB;
+					};
 					25783EA21B5D336F004F940C = {
 						CreatedOnToolsVersion = 6.3.2;
 					};
@@ -210,13 +284,32 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				25783EA21B5D336F004F940C /* advertiser-sdk-sandbox */,
-				25783EBB1B5D336F004F940C /* advertiser-sdk-sandboxTests */,
+				25783EA21B5D336F004F940C /* advertiser-sdk-sandbox-dynamic */,
+				25783EBB1B5D336F004F940C /* advertiser-sdk-sandbox-dynamicTests */,
+				2567E5E51B5FFB60007589BB /* advertiser-sdk-sandbox-static */,
+				2567E5F71B5FFC58007589BB /* advertiser-sdk-sandbox-staticTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		2567E5EE1B5FFB60007589BB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2567E5EF1B5FFB60007589BB /* Main.storyboard in Resources */,
+				2567E5F01B5FFB60007589BB /* LaunchScreen.xib in Resources */,
+				2567E5F11B5FFB60007589BB /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2567E5FD1B5FFC58007589BB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		25783EA11B5D336F004F940C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -237,6 +330,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		2567E5E61B5FFB60007589BB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2567E5E71B5FFB60007589BB /* ViewController.m in Sources */,
+				2567E5E81B5FFB60007589BB /* AppDelegate.m in Sources */,
+				2567E5E91B5FFB60007589BB /* WidgetService.m in Sources */,
+				2567E5EA1B5FFB60007589BB /* UserDataService.m in Sources */,
+				2567E5EB1B5FFB60007589BB /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2567E5FA1B5FFC58007589BB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2567E5FB1B5FFC58007589BB /* advertiser_sdk_sandboxTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		25783E9F1B5D336F004F940C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -260,9 +373,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2567E6041B5FFC81007589BB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2567E5E51B5FFB60007589BB /* advertiser-sdk-sandbox-static */;
+			targetProxy = 2567E6031B5FFC81007589BB /* PBXContainerItemProxy */;
+		};
 		25783EBE1B5D336F004F940C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 25783EA21B5D336F004F940C /* advertiser-sdk-sandbox */;
+			target = 25783EA21B5D336F004F940C /* advertiser-sdk-sandbox-dynamic */;
 			targetProxy = 25783EBD1B5D336F004F940C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -287,6 +405,62 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		2567E5F31B5FFB60007589BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = "advertiser-sdk-sandbox/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "advertiser-sdk-sandbox-static";
+			};
+			name = Debug;
+		};
+		2567E5F41B5FFB60007589BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = "advertiser-sdk-sandbox/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "advertiser-sdk-sandbox-static";
+			};
+			name = Release;
+		};
+		2567E5FF1B5FFC58007589BB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "advertiser-sdk-sandboxTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "advertiser-sdk-sandbox-staticTests";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/advertiser-sdk-sandbox-static.app/advertiser-sdk-sandbox-static";
+			};
+			name = Debug;
+		};
+		2567E6001B5FFC58007589BB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "advertiser-sdk-sandboxTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "advertiser-sdk-sandbox-staticTests";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/advertiser-sdk-sandbox-static.app/advertiser-sdk-sandbox-static";
+			};
+			name = Release;
+		};
 		25783EC41B5D336F004F940C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -406,7 +580,7 @@
 				INFOPLIST_FILE = "advertiser-sdk-sandboxTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/advertiser-sdk-sandbox.app/advertiser-sdk-sandbox";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/advertiser-sdk-sandbox-dynamic.app/advertiser-sdk-sandbox-dynamic";
 			};
 			name = Debug;
 		};
@@ -421,13 +595,31 @@
 				INFOPLIST_FILE = "advertiser-sdk-sandboxTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/advertiser-sdk-sandbox.app/advertiser-sdk-sandbox";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/advertiser-sdk-sandbox-dynamic.app/advertiser-sdk-sandbox-dynamic";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		2567E5F21B5FFB60007589BB /* Build configuration list for PBXNativeTarget "advertiser-sdk-sandbox-static" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2567E5F31B5FFB60007589BB /* Debug */,
+				2567E5F41B5FFB60007589BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2567E5FE1B5FFC58007589BB /* Build configuration list for PBXNativeTarget "advertiser-sdk-sandbox-staticTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2567E5FF1B5FFC58007589BB /* Debug */,
+				2567E6001B5FFC58007589BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		25783E9E1B5D336F004F940C /* Build configuration list for PBXProject "advertiser-sdk-sandbox" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -437,7 +629,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		25783EC61B5D336F004F940C /* Build configuration list for PBXNativeTarget "advertiser-sdk-sandbox" */ = {
+		25783EC61B5D336F004F940C /* Build configuration list for PBXNativeTarget "advertiser-sdk-sandbox-dynamic" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				25783EC71B5D336F004F940C /* Debug */,
@@ -446,7 +638,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		25783EC91B5D336F004F940C /* Build configuration list for PBXNativeTarget "advertiser-sdk-sandboxTests" */ = {
+		25783EC91B5D336F004F940C /* Build configuration list for PBXNativeTarget "advertiser-sdk-sandbox-dynamicTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				25783ECA1B5D336F004F940C /* Debug */,
