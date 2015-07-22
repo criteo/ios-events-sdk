@@ -9,7 +9,7 @@
 #import "WidgetService.h"
 #import <AdSupport/AdSupport.h>
 
-#define WIDGET_PATH (@"/m/event?a=5854&ai=%@&p0=e%%3Dvh&debug=1")
+#define WIDGET_PATH (@"/m/event?a=5854&idfa=%@&p0=e%%3Dvh&debug=1")
 
 @implementation WidgetService
 
@@ -20,7 +20,7 @@
 
     NSAssert(idfa != nil, @"Nothing can run because the idfa is nil. Try again?");
 
-    return idfa.UUIDString.lowercaseString;
+    return idfa.UUIDString.uppercaseString;
 }
 
 - (NSURL*) getWidgetEventURLForIdfa:(NSString*)idfa
