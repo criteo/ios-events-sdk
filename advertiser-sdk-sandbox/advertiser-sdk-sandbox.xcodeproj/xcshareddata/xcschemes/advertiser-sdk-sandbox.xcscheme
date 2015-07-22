@@ -82,6 +82,18 @@
             ReferencedContainer = "container:advertiser-sdk-sandbox.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "WIDGET_BASEURL"
+            value = "$(WIDGET_BASEURL)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "USERDATAWS_BASEURL"
+            value = "$(USERDATAWS_BASEURL)"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

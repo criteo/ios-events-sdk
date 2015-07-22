@@ -14,6 +14,9 @@
 		25783EB41B5D336F004F940C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25783EB31B5D336F004F940C /* Images.xcassets */; };
 		25783EB71B5D336F004F940C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25783EB51B5D336F004F940C /* LaunchScreen.xib */; };
 		25783EC31B5D336F004F940C /* advertiser_sdk_sandboxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25783EC21B5D336F004F940C /* advertiser_sdk_sandboxTests.m */; };
+		25C14D6A1B5FC0F400447514 /* UserDataService.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C14D691B5FC0F400447514 /* UserDataService.m */; };
+		25C14D6C1B5FC33200447514 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25C14D6B1B5FC33200447514 /* AdSupport.framework */; };
+		25C14D6F1B5FC81600447514 /* WidgetService.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C14D6E1B5FC81600447514 /* WidgetService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,11 @@
 		25783EBC1B5D336F004F940C /* advertiser-sdk-sandboxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "advertiser-sdk-sandboxTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		25783EC11B5D336F004F940C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25783EC21B5D336F004F940C /* advertiser_sdk_sandboxTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = advertiser_sdk_sandboxTests.m; sourceTree = "<group>"; };
+		25C14D681B5FC0F400447514 /* UserDataService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDataService.h; sourceTree = "<group>"; };
+		25C14D691B5FC0F400447514 /* UserDataService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDataService.m; sourceTree = "<group>"; };
+		25C14D6B1B5FC33200447514 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		25C14D6D1B5FC81600447514 /* WidgetService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WidgetService.h; sourceTree = "<group>"; };
+		25C14D6E1B5FC81600447514 /* WidgetService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WidgetService.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25C14D6C1B5FC33200447514 /* AdSupport.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +72,7 @@
 		25783E9A1B5D336F004F940C = {
 			isa = PBXGroup;
 			children = (
+				25C14D6B1B5FC33200447514 /* AdSupport.framework */,
 				25783EA51B5D336F004F940C /* advertiser-sdk-sandbox */,
 				25783EBF1B5D336F004F940C /* advertiser-sdk-sandboxTests */,
 				25783EA41B5D336F004F940C /* Products */,
@@ -88,6 +98,7 @@
 				25783EB01B5D336F004F940C /* Main.storyboard */,
 				25783EB31B5D336F004F940C /* Images.xcassets */,
 				25783EB51B5D336F004F940C /* LaunchScreen.xib */,
+				25C14D671B5FC0C700447514 /* services */,
 				25783EA61B5D336F004F940C /* Supporting Files */,
 			);
 			path = "advertiser-sdk-sandbox";
@@ -117,6 +128,17 @@
 				25783EC11B5D336F004F940C /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		25C14D671B5FC0C700447514 /* services */ = {
+			isa = PBXGroup;
+			children = (
+				25C14D681B5FC0F400447514 /* UserDataService.h */,
+				25C14D691B5FC0F400447514 /* UserDataService.m */,
+				25C14D6D1B5FC81600447514 /* WidgetService.h */,
+				25C14D6E1B5FC81600447514 /* WidgetService.m */,
+			);
+			path = services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,6 +243,8 @@
 			files = (
 				25783EAF1B5D336F004F940C /* ViewController.m in Sources */,
 				25783EAC1B5D336F004F940C /* AppDelegate.m in Sources */,
+				25C14D6F1B5FC81600447514 /* WidgetService.m in Sources */,
+				25C14D6A1B5FC0F400447514 /* UserDataService.m in Sources */,
 				25783EA91B5D336F004F940C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
