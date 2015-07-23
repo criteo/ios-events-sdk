@@ -20,6 +20,8 @@
 		2567E5F01B5FFB60007589BB /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 25783EB51B5D336F004F940C /* LaunchScreen.xib */; };
 		2567E5F11B5FFB60007589BB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 25783EB31B5D336F004F940C /* Images.xcassets */; };
 		2567E5FB1B5FFC58007589BB /* advertiser_sdk_sandboxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25783EC21B5D336F004F940C /* advertiser_sdk_sandboxTests.m */; };
+		256CE15D1B610AE30079495A /* EventSender.m in Sources */ = {isa = PBXBuildFile; fileRef = 256CE15C1B610AE30079495A /* EventSender.m */; };
+		256CE15E1B610AE30079495A /* EventSender.m in Sources */ = {isa = PBXBuildFile; fileRef = 256CE15C1B610AE30079495A /* EventSender.m */; };
 		25783EA91B5D336F004F940C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 25783EA81B5D336F004F940C /* main.m */; };
 		25783EAC1B5D336F004F940C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 25783EAB1B5D336F004F940C /* AppDelegate.m */; };
 		25783EAF1B5D336F004F940C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25783EAE1B5D336F004F940C /* ViewController.m */; };
@@ -68,6 +70,8 @@
 		252D68851B60071400799A82 /* CriteoAdvertiser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CriteoAdvertiser.framework; path = "advertiser-framework-static/CriteoAdvertiser.framework"; sourceTree = "<group>"; };
 		2567E5F51B5FFB60007589BB /* advertiser-sdk-sandbox-static.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "advertiser-sdk-sandbox-static.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2567E6011B5FFC58007589BB /* advertiser-sdk-sandbox-staticTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "advertiser-sdk-sandbox-staticTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		256CE15B1B610AE30079495A /* EventSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventSender.h; sourceTree = "<group>"; };
+		256CE15C1B610AE30079495A /* EventSender.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventSender.m; sourceTree = "<group>"; };
 		25783EA31B5D336F004F940C /* advertiser-sdk-sandbox-dynamic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "advertiser-sdk-sandbox-dynamic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		25783EA71B5D336F004F940C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25783EA81B5D336F004F940C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -124,6 +128,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		256CE15A1B610ABE0079495A /* event */ = {
+			isa = PBXGroup;
+			children = (
+				256CE15B1B610AE30079495A /* EventSender.h */,
+				256CE15C1B610AE30079495A /* EventSender.m */,
+			);
+			path = event;
+			sourceTree = "<group>";
+		};
 		25783E9A1B5D336F004F940C = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +170,7 @@
 				25783EB01B5D336F004F940C /* Main.storyboard */,
 				25783EB31B5D336F004F940C /* Images.xcassets */,
 				25783EB51B5D336F004F940C /* LaunchScreen.xib */,
+				256CE15A1B610ABE0079495A /* event */,
 				25C14D671B5FC0C700447514 /* services */,
 				25783EA61B5D336F004F940C /* Supporting Files */,
 			);
@@ -363,6 +377,7 @@
 				2567E5E91B5FFB60007589BB /* WidgetService.m in Sources */,
 				2567E5EA1B5FFB60007589BB /* UserDataService.m in Sources */,
 				2567E5EB1B5FFB60007589BB /* main.m in Sources */,
+				256CE15E1B610AE30079495A /* EventSender.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,6 +398,7 @@
 				25C14D6F1B5FC81600447514 /* WidgetService.m in Sources */,
 				25C14D6A1B5FC0F400447514 /* UserDataService.m in Sources */,
 				25783EA91B5D336F004F940C /* main.m in Sources */,
+				256CE15D1B610AE30079495A /* EventSender.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
