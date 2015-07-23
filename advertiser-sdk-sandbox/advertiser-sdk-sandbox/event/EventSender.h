@@ -8,18 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
+@class CRTOEvent;
+
 typedef void(^CRTOEventQueueItemBlock)(id item);
 typedef void(^EventSendResult)(id item, BOOL success);
 
 @interface EventSender : NSObject
 
-- (void) sendAppLaunchEventWithCallback:(EventSendResult)testCallback;
-- (void) sendBasketViewEventWithCallback:(EventSendResult)testCallback;
-- (void) sendDataEventWithCallback:(EventSendResult)testCallback;
-- (void) sendDeeplinkEventWithCallback:(EventSendResult)testCallback;
-- (void) sendHomeViewEventWithCallback:(EventSendResult)testCallback;
-- (void) sendProductListViewEventWithCallback:(EventSendResult)testCallback;
-- (void) sendProductViewEventWithCallback:(EventSendResult)testCallback;
-- (void) sendTransactionConfirmationEventWithCallback:(EventSendResult)testCallback;
+- (CRTOEvent*) getAppLaunchEvent;
+- (CRTOEvent*) getBasketViewEvent;
+- (CRTOEvent*) getDataEvent;
+- (CRTOEvent*) getDeeplinkEvent;
+- (CRTOEvent*) getHomeViewEvent;
+- (CRTOEvent*) getProductListViewEvent;
+- (CRTOEvent*) getProductViewEvent;
+- (CRTOEvent*) getTransactionConfirmationEvent;
+
+- (void) sendEvent:(CRTOEvent*)event withCallback:(EventSendResult)testCallback;
 
 @end

@@ -68,14 +68,14 @@ void (*typed_msgSend_block)(id, SEL, CRTOEventQueueItemBlock) = (void *)objc_msg
     [[CRTOEventService sharedEventService] send:event];
 }
 
-- (void) sendAppLaunchEventWithCallback:(EventSendResult)testCallback
+- (CRTOEvent*) getAppLaunchEvent
 {
     CRTOAppLaunchEvent* appLaunch = [[CRTOAppLaunchEvent alloc] init];
 
-    [self sendEvent:appLaunch withCallback:testCallback];
+    return appLaunch;
 }
 
-- (void) sendBasketViewEventWithCallback:(EventSendResult)testCallback
+- (CRTOEvent*) getBasketViewEvent
 {
     CRTOBasketProduct* product1 = [[CRTOBasketProduct alloc] initWithProductId:@"1" price:100 quantity:1];
     CRTOBasketProduct* product2 = [[CRTOBasketProduct alloc] initWithProductId:@"2" price:100 quantity:2];
@@ -84,10 +84,10 @@ void (*typed_msgSend_block)(id, SEL, CRTOEventQueueItemBlock) = (void *)objc_msg
     CRTOBasketViewEvent* basketView = [[CRTOBasketViewEvent alloc] initWithBasketProducts:@[ product1, product2, product3 ]
                                                                                  currency:@"USD"];
 
-    [self sendEvent:basketView withCallback:testCallback];
+    return basketView;
 }
 
-- (void) sendDataEventWithCallback:(EventSendResult)testCallback
+- (CRTOEvent*) getDataEvent
 {
     CRTODataEvent* data = [[CRTODataEvent alloc] init];
 
@@ -104,24 +104,24 @@ void (*typed_msgSend_block)(id, SEL, CRTOEventQueueItemBlock) = (void *)objc_msg
     [data setIntegerExtraData:65537 ForKey:@"this_is_an_integer"];
     [data setStringExtraData:@"some_string" ForKey:@"this_has_a_string_value"];
 
-    [self sendEvent:data withCallback:testCallback];
+    return data;
 }
 
-- (void) sendDeeplinkEventWithCallback:(EventSendResult)testCallback
+- (CRTOEvent*) getDeeplinkEvent
 {
     CRTODeeplinkEvent* deeplinkEvent = [[CRTODeeplinkEvent alloc] initWithDeeplinkLaunchUrl:@"sdkTestApp:SDKTESTAPP/thing1/thing2?foo=bar&bar=foo#bottom"];
 
-    [self sendEvent:deeplinkEvent withCallback:testCallback];
+    return deeplinkEvent;
 }
 
-- (void) sendHomeViewEventWithCallback:(EventSendResult)testCallback
+- (CRTOEvent*) getHomeViewEvent
 {
     CRTOHomeViewEvent* homeView = [CRTOHomeViewEvent new];
 
-    [self sendEvent:homeView withCallback:testCallback];
+    return homeView;
 }
 
-- (void) sendProductListViewEventWithCallback:(EventSendResult)testCallback
+- (CRTOEvent*) getProductListViewEvent
 {
     CRTOProduct* product1 = [[CRTOProduct alloc] initWithProductId:@"1" price:100];
     CRTOProduct* product2 = [[CRTOProduct alloc] initWithProductId:@"2" price:100];
@@ -130,19 +130,19 @@ void (*typed_msgSend_block)(id, SEL, CRTOEventQueueItemBlock) = (void *)objc_msg
     CRTOProductListViewEvent* productListView = [[CRTOProductListViewEvent alloc] initWithProducts:@[ product1, product2, product3 ]
                                                                                           currency:@"USD"];
 
-    [self sendEvent:productListView withCallback:testCallback];
+    return productListView;
 }
 
-- (void) sendProductViewEventWithCallback:(EventSendResult)testCallback
+- (CRTOEvent*) getProductViewEvent
 {
     CRTOProduct* product1 = [[CRTOProduct alloc] initWithProductId:@"1" price:100];
 
     CRTOProductViewEvent* productView = [[CRTOProductViewEvent alloc] initWithProduct:product1 currency:@"USD"];
 
-    [self sendEvent:productView withCallback:testCallback];
+    return productView;
 }
 
-- (void) sendTransactionConfirmationEventWithCallback:(EventSendResult)testCallback
+- (CRTOEvent*) getTransactionConfirmationEvent
 {
     CRTOBasketProduct* product1 = [[CRTOBasketProduct alloc] initWithProductId:@"1" price:100 quantity:1];
     CRTOBasketProduct* product2 = [[CRTOBasketProduct alloc] initWithProductId:@"2" price:100 quantity:2];
@@ -152,7 +152,7 @@ void (*typed_msgSend_block)(id, SEL, CRTOEventQueueItemBlock) = (void *)objc_msg
                                                                                                               transactionId:@"1234567890123"
                                                                                                                    currency:@"USD"];
 
-    [self sendEvent:transactionConfirm withCallback:testCallback];
+    return transactionConfirm;
 }
 
 @end
