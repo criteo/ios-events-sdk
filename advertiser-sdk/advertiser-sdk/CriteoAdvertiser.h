@@ -10,11 +10,8 @@
 
 @import AdSupport;
 
-//! Project version number for advertiser-sdk.
-FOUNDATION_EXPORT double advertiser_sdkVersionNumber;
-
-//! Project version string for advertiser-sdk.
-FOUNDATION_EXPORT const unsigned char advertiser_sdkVersionString[];
+//! Project version number for Criteo Advertiser SDK
+FOUNDATION_EXPORT double CriteoAdvertiserVersionNumber;
 
 #import <CriteoAdvertiser/CRTOProduct.h>
 #import <CriteoAdvertiser/CRTOBasketProduct.h>
