@@ -8,8 +8,9 @@
 
 #import "WidgetService.h"
 #import <AdSupport/AdSupport.h>
+#import "LoaderDelegate.h"
 
-#define WIDGET_PATH (@"/m/event?a=5854&idfa=%@&p0=e%%3Dvh&debug=1")
+#define WIDGET_PATH (@"/m/event?a=13963&idfa=%@&p0=e%%3Dvh&debug=1")
 
 @implementation WidgetService
 
@@ -17,6 +18,12 @@
 {
     ASIdentifierManager* mgr = [ASIdentifierManager sharedManager];
     NSUUID* idfa = mgr.advertisingIdentifier;
+
+    /* HACK HACK HACK */
+    //if ( idfa == nil ) {
+        return @"FCCCFB5F-4CF1-489F-AC16-8E2FB2292EF6";
+    //}
+    /* HACK HACK HACK */
 
     NSAssert(idfa != nil, @"Nothing can run because the idfa is nil. Try again?");
 
@@ -68,6 +75,57 @@
 }
 
 - (NSString*) getCriteoId
+{
+    return [self getCriteoIdHACK];
+}
+
+- (NSString*) getCriteoIdHACK
+{
+    NSString* idfa = [self getIdfa];
+
+    NSURL* requestURL = [self getWidgetEventURLForIdfa:idfa];
+
+    dispatch_semaphore_t request_done = dispatch_semaphore_create(0);
+
+    NSURLRequest* request = [NSURLRequest requestWithURL:requestURL];
+
+    __block NSString* uid = nil;
+
+    LoaderDelegate* localDelegate = [[LoaderDelegate alloc] initWithBlock:^(LoaderDelegate* delegate) {
+
+        if ( delegate.error ) {
+            NSLog(@"Error retrieving CriteoId: %@\nRequest: %@\nResponse: %@", delegate.error, request, delegate.response);
+        }
+
+        if ( delegate.responseData ) {
+            NSLog(@"Got a response body while retrieving CriteoId: %@", delegate.responseString);
+        }
+
+        if ( delegate.response ) {
+            NSHTTPURLResponse* httpResp = (NSHTTPURLResponse*)delegate.response;
+            NSString* debugValue = httpResp.allHeaderFields[@"debug"];
+
+            if ( debugValue ) {
+                NSLog(@"Found debug header while retrieving CriteoId: %@", debugValue);
+                uid = [self readCriteoIdFromDebugHeaderValue:debugValue];
+            }
+        }
+
+        dispatch_semaphore_signal(request_done);
+    }];
+
+    NSOperationQueue* q = [[NSOperationQueue alloc] init];
+
+    NSURLConnection* cxn = [[NSURLConnection alloc] initWithRequest:request delegate:localDelegate startImmediately:NO];
+    [cxn setDelegateQueue:q];
+    [cxn start];
+
+    dispatch_semaphore_wait(request_done, DISPATCH_TIME_FOREVER);
+
+    return uid;
+}
+
+- (NSString*) getCriteoIdNORMAL
 {
     NSString* idfa = [self getIdfa];
 

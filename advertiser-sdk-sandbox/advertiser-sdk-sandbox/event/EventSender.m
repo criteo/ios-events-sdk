@@ -25,8 +25,144 @@ void (*typed_msgSend_block)(id, SEL, CRTOEventQueueItemBlock) = (void *)objc_msg
     self = [super init];
     if ( self ) {
         [self setupSharedEventQueue];
+        [self HACKswizzleAppInfo];
+        [self HACKswizzleAppName];
+        [self HACKswizzleAppVersion];
+        [self HACKswizzleDeviceIdentifier];
     }
     return self;
+}
+
+- (NSString*) HACK_swizzled_appId
+{
+    return @"com.criteo.sdktestapp";
+}
+
+- (NSString*) HACK_swizzled_deviceIdentifier
+{
+    return @"FCCCFB5F-4CF1-489F-AC16-8E2FB2292EF6";
+}
+
+- (NSString*) HACK_swizzled_appVersion
+{
+    return @"1.2.3";
+}
+
+- (NSString*) HACK_swizzled_appName
+{
+    return @"Blah App";
+}
+
+- (void) HACKswizzleDeviceIdentifier
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        Class clsCRTODeviceInfo = objc_getClass("CRTODeviceInfo");
+
+        SEL origDvcIdSelector = sel_registerName("deviceIdentifier");
+        SEL newDvcIdSelector = @selector(HACK_swizzled_deviceIdentifier);
+
+        Method originalMethod = class_getInstanceMethod(clsCRTODeviceInfo, origDvcIdSelector);
+        Method newMethod = class_getInstanceMethod([self class], newDvcIdSelector);
+
+        BOOL didAddMethod = class_addMethod(clsCRTODeviceInfo,
+                                            origDvcIdSelector,
+                                            method_getImplementation(newMethod),
+                                            method_getTypeEncoding(newMethod));
+
+        if ( didAddMethod ) {
+            class_replaceMethod(clsCRTODeviceInfo,
+                                newDvcIdSelector,
+                                method_getImplementation(originalMethod),
+                                method_getTypeEncoding(originalMethod));
+        } else {
+            method_exchangeImplementations(originalMethod, newMethod);
+        }
+    });
+}
+
+- (void) HACKswizzleAppInfo
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        Class clsCRTOAppInfo = objc_getClass("CRTOAppInfo");
+
+        SEL origAppIdSelector = sel_registerName("appId");
+        SEL newAppIdSelector = @selector(HACK_swizzled_appId);
+
+        Method originalMethod = class_getInstanceMethod(clsCRTOAppInfo, origAppIdSelector);
+        Method newMethod = class_getInstanceMethod([self class], newAppIdSelector);
+
+        BOOL didAddMethod = class_addMethod(clsCRTOAppInfo,
+                                            origAppIdSelector,
+                                            method_getImplementation(newMethod),
+                                            method_getTypeEncoding(newMethod));
+
+        if ( didAddMethod ) {
+            class_replaceMethod(clsCRTOAppInfo,
+                                newAppIdSelector,
+                                method_getImplementation(originalMethod),
+                                method_getTypeEncoding(originalMethod));
+        } else {
+            method_exchangeImplementations(originalMethod, newMethod);
+        }
+    });
+}
+
+- (void) HACKswizzleAppVersion
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        Class clsCRTOAppInfo = objc_getClass("CRTOAppInfo");
+
+        SEL origAppVersionSelector = sel_registerName("appVersion");
+        SEL newAppVersionSelector = @selector(HACK_swizzled_appVersion);
+
+        Method originalMethod = class_getInstanceMethod(clsCRTOAppInfo, origAppVersionSelector);
+        Method newMethod = class_getInstanceMethod([self class], newAppVersionSelector);
+
+        BOOL didAddMethod = class_addMethod(clsCRTOAppInfo,
+                                            origAppVersionSelector,
+                                            method_getImplementation(newMethod),
+                                            method_getTypeEncoding(newMethod));
+
+        if ( didAddMethod ) {
+            class_replaceMethod(clsCRTOAppInfo,
+                                newAppVersionSelector,
+                                method_getImplementation(originalMethod),
+                                method_getTypeEncoding(originalMethod));
+        } else {
+            method_exchangeImplementations(originalMethod, newMethod);
+        }
+    });
+}
+
+- (void) HACKswizzleAppName
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        Class clsCRTOAppInfo = objc_getClass("CRTOAppInfo");
+
+        SEL origAppNameSelector = sel_registerName("appName");
+        SEL newAppNameSelector = @selector(HACK_swizzled_appName);
+
+        Method originalMethod = class_getInstanceMethod(clsCRTOAppInfo, origAppNameSelector);
+        Method newMethod = class_getInstanceMethod([self class], newAppNameSelector);
+
+        BOOL didAddMethod = class_addMethod(clsCRTOAppInfo,
+                                            origAppNameSelector,
+                                            method_getImplementation(newMethod),
+                                            method_getTypeEncoding(newMethod));
+
+        if ( didAddMethod ) {
+            class_replaceMethod(clsCRTOAppInfo,
+                                newAppNameSelector,
+                                method_getImplementation(originalMethod),
+                                method_getTypeEncoding(originalMethod));
+        } else {
+            method_exchangeImplementations(originalMethod, newMethod);
+        }
+    });
 }
 
 - (void) setupSharedEventQueue

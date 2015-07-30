@@ -8,6 +8,7 @@
 
 #import "UserDataService.h"
 #import <AdSupport/AdSupport.h>
+#import "LoaderDelegate.h"
 
 #define USERDATA_UIC_PATH  (@"/uic/get?uidInsteadOfContext=%@")
 #define USERDATA_ACDC_PATH (@"/acdc/get?uidInsteadOfContext=%@")
@@ -42,6 +43,52 @@
 - (NSURL*) getUserDataUicURLForUid:(NSString*)uid
 {
     return [self getUserDataURLForPath:USERDATA_UIC_PATH uid:uid];
+}
+
+- (void) HACKperformRequestForURL:(NSURL*)url
+                 returningRequest:(NSURLRequest**)request
+                         response:(NSURLResponse**)response
+                            error:(NSError**)error
+                             data:(NSData**)data
+                             body:(NSString**)body
+{
+    *request  = nil;
+    *response = nil;
+    *error    = nil;
+    *data     = nil;
+    *body     = nil;
+
+    *request = [NSURLRequest requestWithURL:url];
+
+    dispatch_semaphore_t request_done = dispatch_semaphore_create(0);
+
+    LoaderDelegate* localDelegate = [[LoaderDelegate alloc] initWithBlock:^(LoaderDelegate* delegate) {
+
+        *response = delegate.response;
+        *error = delegate.error;
+        *data = [NSData dataWithData:delegate.responseData];
+        *body = delegate.responseString;
+
+        dispatch_semaphore_signal(request_done);
+    }];
+
+    NSOperationQueue* q = [[NSOperationQueue alloc] init];
+
+    NSURLConnection* cxn = [[NSURLConnection alloc] initWithRequest:*request delegate:localDelegate startImmediately:NO];
+    [cxn setDelegateQueue:q];
+    [cxn start];
+
+    dispatch_semaphore_wait(request_done, DISPATCH_TIME_FOREVER);
+
+    *data = [NSURLConnection sendSynchronousRequest:*request
+                                  returningResponse:response
+                                              error:error];
+
+    if ( *data ) {
+        *body = [[NSString alloc] initWithBytes:(*data).bytes
+                                         length:(*data).length
+                                       encoding:NSUTF8StringEncoding];
+    }
 }
 
 - (void) performRequestForURL:(NSURL*)url
@@ -80,7 +127,7 @@
     NSData* data = nil;
     NSString* body = nil;
 
-    [self performRequestForURL:requestURL
+    [self HACKperformRequestForURL:requestURL
               returningRequest:&request
                       response:&resp
                          error:&error
@@ -124,7 +171,7 @@
     NSData* data = nil;
     NSString* body = nil;
 
-    [self performRequestForURL:requestURL
+    [self HACKperformRequestForURL:requestURL
               returningRequest:&request
                       response:&resp
                          error:&error
