@@ -58,7 +58,10 @@
     *data     = nil;
     *body     = nil;
 
-    *request = [NSURLRequest requestWithURL:url];
+    NSMutableURLRequest* req = [NSMutableURLRequest requestWithURL:url];
+    [req setValue:@"userdataws.criteo.com" forHTTPHeaderField:@"Host"];
+
+    *request = req;
 
     dispatch_semaphore_t request_done = dispatch_semaphore_create(0);
 
@@ -104,7 +107,10 @@
     *data     = nil;
     *body     = nil;
 
-    *request = [NSURLRequest requestWithURL:url];
+    NSMutableURLRequest* req = [NSMutableURLRequest requestWithURL:url];
+    [req setValue:@"userdataws.criteo.com" forHTTPHeaderField:@"Host"];
+
+    *request = req;
 
     *data = [NSURLConnection sendSynchronousRequest:*request
                                   returningResponse:response

@@ -87,7 +87,8 @@
 
     dispatch_semaphore_t request_done = dispatch_semaphore_create(0);
 
-    NSURLRequest* request = [NSURLRequest requestWithURL:requestURL];
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:requestURL];
+    [request setValue:@"widget.criteo.com" forHTTPHeaderField:@"Host"];
 
     __block NSString* uid = nil;
 
@@ -131,7 +132,8 @@
 
     NSURL* requestURL = [self getWidgetEventURLForIdfa:idfa];
 
-    NSURLRequest* request = [NSURLRequest requestWithURL:requestURL];
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:requestURL];
+    [request setValue:@"widget.criteo.com" forHTTPHeaderField:@"Host"];
 
     NSURLResponse* resp = nil;
     NSError* error = nil;
