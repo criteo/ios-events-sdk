@@ -25,9 +25,13 @@ static CRTOEventQueueItemBlock itemSentBlock = NULL;
 {
 @private
     NSURL* endpoint;
+    NSString* endpointHostHeader;
 }
 
-- (NSURL*) getEventQueueSendURL;
+- (NSURL*) getDefaultWidgetURL;
+- (NSURL*) getEnvironmentWidgetURL;
+- (void) setupEventQueueEndpoint;
+
 - (void) notifyItemErrored:(CRTOEventQueueItem*)item;
 - (void) notifyItemSent:(CRTOEventQueueItem*)item;
 - (void) reapQueue;
@@ -47,7 +51,7 @@ static CRTOEventQueueItemBlock itemSentBlock = NULL;
         _maxQueueDepth   = CRTO_EVENTQUEUE_MAX_DEPTH;
         _maxQueueItemAge = CRTO_EVENTQUEUE_MAX_AGE;
 
-        endpoint = [self getEventQueueSendURL];
+        [self setupEventQueueEndpoint];
     }
     return self;
 }
@@ -102,27 +106,56 @@ static CRTOEventQueueItemBlock itemSentBlock = NULL;
 
 #pragma mark - Class Extension Methods
 
-- (NSURL*) getEventQueueSendURL
+- (NSURL*) getDefaultWidgetURL
+{
+    NSURL* widgetURL = [NSURL URLWithString:CRTO_EVENTQUEUE_SEND_BASEURL];
+
+    widgetURL = [NSURL URLWithString:CRTO_EVENTQUEUE_SEND_PATH
+                       relativeToURL:widgetURL];
+
+    return widgetURL;
+}
+
+- (NSURL*) getEnvironmentWidgetURL
 {
     NSProcessInfo* process    = [NSProcessInfo processInfo];
     NSDictionary* environment = process.environment;
 
-    NSString* WIDGET_URL = environment[CRTO_EVENTQUEUE_WIDGET_ENV];
+    NSString* WIDGET_URL_ENV = environment[CRTO_EVENTQUEUE_WIDGET_ENV];
 
-    NSURL* sendURL = nil;
+    NSURL* widgetURL = nil;
 
-    if ( WIDGET_URL.length > 0 ) {
-        sendURL = [NSURL URLWithString:WIDGET_URL];
+    if ( WIDGET_URL_ENV.length > 0 ) {
+        widgetURL = [NSURL URLWithString:WIDGET_URL_ENV];
     }
 
-    if ( sendURL == nil ) {
-        sendURL = [NSURL URLWithString:CRTO_EVENTQUEUE_SEND_BASEURL];
+    if ( widgetURL != nil ) {
+        widgetURL = [NSURL URLWithString:CRTO_EVENTQUEUE_SEND_PATH
+                           relativeToURL:widgetURL];
     }
 
-    sendURL = [NSURL URLWithString:CRTO_EVENTQUEUE_SEND_PATH
-                     relativeToURL:sendURL];
+    return widgetURL;
+}
 
-    return sendURL;
+- (void) setupEventQueueEndpoint
+{
+    NSURL* defaultURL = [self getDefaultWidgetURL];
+    NSURL* envURL = [self getEnvironmentWidgetURL];
+
+    if ( envURL != nil ) {
+        endpoint = envURL;
+        endpointHostHeader = defaultURL.host;
+    } else {
+        endpoint = defaultURL;
+        endpointHostHeader = nil;
+    }
+
+    envURL = [self getEnvironmentWidgetURL];
+
+#ifdef DEBUG
+    NSLog(@"[SDK] Requests will be sent to: %@\n  Host Header: %@",
+          endpoint.absoluteString, endpointHostHeader);
+#endif
 }
 
 - (void) notifyItemErrored:(CRTOEventQueueItem*)item
@@ -178,6 +211,11 @@ static CRTOEventQueueItemBlock itemSentBlock = NULL;
                                                         timeoutInterval:CRTO_EVENTQUEUE_SEND_TIMEOUT];
 
     req.HTTPMethod = @"POST";
+
+    if ( endpointHostHeader != nil ) {
+        [req setValue:endpointHostHeader forHTTPHeaderField:@"Host"];
+    }
+
     req.HTTPBody = item.requestBody;
 
     req.networkServiceType = NSURLNetworkServiceTypeBackground;

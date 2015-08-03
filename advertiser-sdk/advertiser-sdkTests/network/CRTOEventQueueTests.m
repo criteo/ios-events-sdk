@@ -55,6 +55,9 @@
 
     [[LSNocilla sharedInstance] stop];
 
+    // Reset the widget environment variable override
+    putenv("WIDGET_BASEURL=");
+
     [super tearDown];
 }
 
@@ -243,6 +246,40 @@
     for ( CRTOEventQueueItem* item in expiredEvents ) {
         XCTAssertFalse([queue containsItem:item]);
     }
+}
+
+- (void) testWidgetEnvironmentOverride
+{
+    putenv("WIDGET_BASEURL=http://www.criteoTestFakeNotARealDomain.com");
+
+    NSProcessInfo* process = [NSProcessInfo processInfo];
+    NSDictionary* env = process.environment;
+
+    NSString* envSendURLString = env[@"WIDGET_BASEURL"];
+    XCTAssertNotNil(envSendURLString, @"putenv() failed: Can't test widget environment variable override");
+
+    envSendURLString = [envSendURLString stringByAppendingString:@"/m/event/"];
+
+    XCTestExpectation* eventTransmitted = [self expectationWithDescription:@"Env Override SENT"];
+
+    CRTOEventQueue* localQueue = [[CRTOEventQueue alloc] init];
+
+    [localQueue onItemSent:^(CRTOEventQueueItem* item) {
+        [eventTransmitted fulfill];
+    }];
+
+    stubRequest(@"POST", envSendURLString).
+    withHeader(@"Host", @"widget.criteo.com").
+    withBody(eventBody).
+    andReturn(200);
+
+    CRTOHomeViewEvent* event = [[CRTOHomeViewEvent alloc] init];
+    event.timestamp = [NSDate date];
+
+    CRTOEventQueueItem* item = [[CRTOEventQueueItem alloc] initWithEvent:event requestBody:eventBody];
+    [localQueue addQueueItem:item];
+
+    [self waitForExpectationsWithTimeout:2.0 handler:nil];
 }
 
 @end
