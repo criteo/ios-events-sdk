@@ -13,7 +13,7 @@
 #import "UserDataService.h"
 #import "WidgetService.h"
 
-#define SPECIAL_TEST_PARTNER_ID (@"13963")
+#define SPECIAL_TEST_PARTNER_ID (@"5854")
 
 typedef void(^TestResultsCallback)(id item,
                                    BOOL transmitSuccess,

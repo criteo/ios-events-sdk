@@ -35,7 +35,7 @@ void (*typed_msgSend_block)(id, SEL, CRTOEventQueueItemBlock) = (void *)objc_msg
 
 - (NSString*) HACK_swizzled_appId
 {
-    return @"com.criteo.sdktestapp";
+    return @"com.criteo.advertiser005app";
 }
 
 - (NSString*) HACK_swizzled_deviceIdentifier

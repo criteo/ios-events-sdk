@@ -10,7 +10,7 @@
 #import <AdSupport/AdSupport.h>
 #import "LoaderDelegate.h"
 
-#define WIDGET_PATH (@"/m/event?a=13963&idfa=%@&p0=e%%3Dvh&debug=1")
+#define WIDGET_PATH (@"/m/event?a=5854&idfa=%@&p0=e%%3Dvh&debug=1")
 
 @implementation WidgetService
 
