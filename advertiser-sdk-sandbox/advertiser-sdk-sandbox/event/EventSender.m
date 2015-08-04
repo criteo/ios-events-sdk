@@ -11,6 +11,7 @@
 #import <objc/objc.h>
 #import <objc/objc-runtime.h>
 #import <CriteoAdvertiser/CriteoAdvertiser.h>
+#import "AdvertisingId.h"
 
 id (*typed_msgSend)(id, SEL) = (void *)objc_msgSend;
 void (*typed_msgSend_block)(id, SEL, CRTOEventQueueItemBlock) = (void *)objc_msgSend;
@@ -40,7 +41,7 @@ void (*typed_msgSend_block)(id, SEL, CRTOEventQueueItemBlock) = (void *)objc_msg
 
 - (NSString*) HACK_swizzled_deviceIdentifier
 {
-    return @"FCCCFB5F-4CF1-489F-AC16-8E2FB2292EF6";
+    return [AdvertisingId getRuntimeConstantId];
 }
 
 - (NSString*) HACK_swizzled_appVersion

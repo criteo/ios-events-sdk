@@ -9,21 +9,24 @@
 #import "WidgetService.h"
 #import <AdSupport/AdSupport.h>
 #import "LoaderDelegate.h"
+#import "AdvertisingId.h"
 
 #define WIDGET_PATH (@"/m/event?a=5854&idfa=%@&p0=e%%3Dvh&debug=1")
 
 @implementation WidgetService
 
+- (NSString*) HACKgetIdfa
+{
+    NSString* idfa = [AdvertisingId getRuntimeConstantId];
+    NSAssert(idfa != nil, @"Nothing can run because the HACKED idfa is nil. Try again?");
+
+    return idfa;
+}
+
 - (NSString*) getIdfa
 {
     ASIdentifierManager* mgr = [ASIdentifierManager sharedManager];
     NSUUID* idfa = mgr.advertisingIdentifier;
-
-    /* HACK HACK HACK */
-    //if ( idfa == nil ) {
-        return @"FCCCFB5F-4CF1-489F-AC16-8E2FB2292EF6";
-    //}
-    /* HACK HACK HACK */
 
     NSAssert(idfa != nil, @"Nothing can run because the idfa is nil. Try again?");
 
@@ -81,7 +84,7 @@
 
 - (NSString*) getCriteoIdHACK
 {
-    NSString* idfa = [self getIdfa];
+    NSString* idfa = [self HACKgetIdfa];
 
     NSURL* requestURL = [self getWidgetEventURLForIdfa:idfa];
 

@@ -18,6 +18,9 @@
 		25501DFC1B6A677800B08634 /* LoaderDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 25501DFB1B6A677800B08634 /* LoaderDelegate.m */; };
 		25501DFD1B6A677800B08634 /* LoaderDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 25501DFB1B6A677800B08634 /* LoaderDelegate.m */; };
 		25501DFE1B6A677800B08634 /* LoaderDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 25501DFB1B6A677800B08634 /* LoaderDelegate.m */; };
+		255EC3091B7105AD0045D647 /* AdvertisingId.m in Sources */ = {isa = PBXBuildFile; fileRef = 255EC3081B71032A0045D647 /* AdvertisingId.m */; };
+		255EC30A1B7105AE0045D647 /* AdvertisingId.m in Sources */ = {isa = PBXBuildFile; fileRef = 255EC3081B71032A0045D647 /* AdvertisingId.m */; };
+		255EC30B1B7105AF0045D647 /* AdvertisingId.m in Sources */ = {isa = PBXBuildFile; fileRef = 255EC3081B71032A0045D647 /* AdvertisingId.m */; };
 		2567E5E71B5FFB60007589BB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25783EAE1B5D336F004F940C /* ViewController.m */; };
 		2567E5E81B5FFB60007589BB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 25783EAB1B5D336F004F940C /* AppDelegate.m */; };
 		2567E5E91B5FFB60007589BB /* WidgetService.m in Sources */ = {isa = PBXBuildFile; fileRef = 25C14D6E1B5FC81600447514 /* WidgetService.m */; };
@@ -81,6 +84,8 @@
 		25501DBF1B6A536300B08634 /* advertiser_sdk_sandbox_nonApp_tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = advertiser_sdk_sandbox_nonApp_tests.m; sourceTree = "<group>"; };
 		25501DFA1B6A677800B08634 /* LoaderDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoaderDelegate.h; sourceTree = "<group>"; };
 		25501DFB1B6A677800B08634 /* LoaderDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoaderDelegate.m; sourceTree = "<group>"; };
+		255EC3071B71032A0045D647 /* AdvertisingId.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdvertisingId.h; sourceTree = "<group>"; };
+		255EC3081B71032A0045D647 /* AdvertisingId.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdvertisingId.m; sourceTree = "<group>"; };
 		2567E5F51B5FFB60007589BB /* advertiser-sdk-sandbox-static.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "advertiser-sdk-sandbox-static.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2567E6011B5FFC58007589BB /* advertiser-sdk-sandbox-staticTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "advertiser-sdk-sandbox-staticTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		256CE15B1B610AE30079495A /* EventSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventSender.h; sourceTree = "<group>"; };
@@ -166,6 +171,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		255EC3061B7103040045D647 /* idfa */ = {
+			isa = PBXGroup;
+			children = (
+				255EC3071B71032A0045D647 /* AdvertisingId.h */,
+				255EC3081B71032A0045D647 /* AdvertisingId.m */,
+			);
+			path = idfa;
+			sourceTree = "<group>";
+		};
 		256CE15A1B610ABE0079495A /* event */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +225,7 @@
 				25783EB31B5D336F004F940C /* Images.xcassets */,
 				25783EB51B5D336F004F940C /* LaunchScreen.xib */,
 				256CE15A1B610ABE0079495A /* event */,
+				255EC3061B7103040045D647 /* idfa */,
 				25C14D671B5FC0C700447514 /* services */,
 				25783EA61B5D336F004F940C /* Supporting Files */,
 			);
@@ -447,6 +462,7 @@
 				25501DC51B6A540700B08634 /* UserDataService.m in Sources */,
 				25501DC61B6A540700B08634 /* WidgetService.m in Sources */,
 				25501DC01B6A536300B08634 /* advertiser_sdk_sandbox_nonApp_tests.m in Sources */,
+				255EC30B1B7105AF0045D647 /* AdvertisingId.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +477,7 @@
 				2567E5EA1B5FFB60007589BB /* UserDataService.m in Sources */,
 				2567E5EB1B5FFB60007589BB /* main.m in Sources */,
 				256CE15E1B610AE30079495A /* EventSender.m in Sources */,
+				255EC30A1B7105AE0045D647 /* AdvertisingId.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,6 +500,7 @@
 				25C14D6A1B5FC0F400447514 /* UserDataService.m in Sources */,
 				25783EA91B5D336F004F940C /* main.m in Sources */,
 				256CE15D1B610AE30079495A /* EventSender.m in Sources */,
+				255EC3091B7105AD0045D647 /* AdvertisingId.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
