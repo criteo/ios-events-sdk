@@ -148,7 +148,7 @@ NSString* const kCRTOJSONExtraDataTypeKey          = @"type";
 NSString* const kCRTOJSONExtraDataTypeDateValue    = @"date";
 NSString* const kCRTOJSONExtraDataTypeFloatValue   = @"float";
 NSString* const kCRTOJSONExtraDataTypeIntegerValue = @"integer";
-NSString* const kCRTOJSONExtraDataTypeTextValue    = @"text";
+NSString* const kCRTOJSONExtraDataTypeTextValue    = @"string";
 
 NSString* const kCRTOJSONProtocolVersionValue1_0_0 = @"sdk_1.0.0";
 
