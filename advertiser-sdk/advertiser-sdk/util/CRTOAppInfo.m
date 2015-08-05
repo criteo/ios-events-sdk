@@ -44,7 +44,7 @@
 
 - (NSString*) appCountry
 {
-    NSLocale* currentLocale = [NSLocale currentLocale];
+    NSLocale* currentLocale = [NSLocale autoupdatingCurrentLocale];
 
     return [currentLocale objectForKey:NSLocaleCountryCode];
 }
