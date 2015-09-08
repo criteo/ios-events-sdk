@@ -12,6 +12,7 @@
 #import "CRTOEvent.h"
 #import "CRTOEvent+Internal.h"
 #import "CRTOEventQueue.h"
+#import "CRTOAppLaunchEvent.h"
 #import "CRTOHomeViewEvent.h"
 #import "CRTOJSONEventSerializer.h"
 #import "CRTONetworkDefines.h"
@@ -27,6 +28,7 @@
 {
     CRTOEventQueue* queue;
     NSString* eventBody;
+    NSString* eventBody2;
 }
 
 - (void) setUp
@@ -37,6 +39,7 @@
     queue.maxQueueItemAge = (60.0 * 60.0);
 
     eventBody = @"{ 'some' : 'sample', 'JSON' : 2 }";
+    eventBody2 = @"{ 'some' : 'sample', 'JSON' : 'That is totally different' }";
 
     [[LSNocilla sharedInstance] start];
 }
@@ -145,6 +148,77 @@
     [queue addQueueItem:local_item];
 
     [self waitForExpectationsWithTimeout:2.0 handler:nil];
+}
+
+// This test adds two items to the queue. The first item will fall into an
+// infinite redirect loop, which will be interrupted after 4 redirects,
+// effectively stalling the item in queue.
+//
+// The second item contains a stubbed body, which the network testing framework
+// *would* answer, if the queue attempts to deliver it.
+//
+// To test serial delivery, we stall out the queue with item1 and then see what
+// happens when we enqueue item2. If item2 is delivered when item1 could not have
+// been, then the queue would be violating the serial delivery constraint.
+- (void) testQueueDeliversEventsSerially
+{
+    // These are item1's network stubs.  The form an infinite redirect loop,
+    // which will be detected and interrupted after 4 redirects, effectively
+    // stalling item1 in the queue.
+    stubRequest(@"POST", EXPECTED_SEND_URL).
+    withBody(eventBody).
+    andReturn(307).
+    withHeader(@"Location", FAKE_REDIRECT_LOCATION);
+
+    stubRequest(@"POST", FAKE_REDIRECT_LOCATION).
+    withBody(eventBody).
+    andReturn(307).
+    withHeader(@"Location", EXPECTED_SEND_URL);
+
+    // This is item2's network stub; note that it has a different body, so it
+    // will only match the second request.
+    stubRequest(@"POST", EXPECTED_SEND_URL).
+    withBody(eventBody2).
+    andReturn(200);
+
+    // Build item1
+    CRTOAppLaunchEvent* appLaunch = [[CRTOAppLaunchEvent alloc] init];
+    appLaunch.timestamp = [NSDate date];
+
+    CRTOEventQueueItem* item1 = [[CRTOEventQueueItem alloc] initWithEvent:appLaunch requestBody:eventBody];
+
+    // Build item2
+    CRTOHomeViewEvent* homeEvent = [[CRTOHomeViewEvent alloc] init];
+    homeEvent.timestamp = [NSDate date];
+
+    CRTOEventQueueItem* item2 = [[CRTOEventQueueItem alloc] initWithEvent:homeEvent requestBody:eventBody2];
+
+    // Setup the item delivery callback
+    [queue onItemSent:^(CRTOEventQueueItem* item) {
+        if ( item == item1 ) {
+            XCTFail("First item should never be delivered. (See test comments).");
+        }
+
+        if ( item == item2 ) {
+            XCTFail("Items were delivered out of order. Delivery was non-serial.");
+        }
+    }];
+
+    // Stall the queue
+    [queue addQueueItem:item1];
+
+    // Wait a bit
+    [NSThread sleepForTimeInterval:1.0];
+
+    // Add the deliverable item
+    [queue addQueueItem:item2];
+
+    // Wait a bit more
+    [NSThread sleepForTimeInterval:1.0];
+
+    XCTAssertEqual(queue.currentQueueDepth, 2, "Queue should still contain 2 events.");
+    XCTAssertTrue([queue containsItem:item1]);
+    XCTAssertTrue([queue containsItem:item2]);
 }
 
 - (void) testQueueMaxDepthIsSetTo15
