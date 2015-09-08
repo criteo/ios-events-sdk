@@ -237,10 +237,16 @@ static CRTOEventQueueItemBlock itemSentBlock = NULL;
             return ![itemsInFlight containsObject:item];
         }];
 
+        // The backend currently fails to handle concurrent requests deterministically.
+        // We work around this here by checking the "in-flight" set and only sending an
+        // event when there's nothing else in flight. This effectively rate-limits event
+        // delivery to one item at a time.
         [eventQueue enumerateObjectsAtIndexes:notInFlight
                                       options:0
                                    usingBlock:^(CRTOEventQueueItem* item, NSUInteger idx, BOOL* stop) {
-                                       [self sendItem:item];
+                                       if ( itemsInFlight.count == 0 ) {
+                                           [self sendItem:item];
+                                       }
                                    }];
     });
 }
@@ -352,6 +358,8 @@ static CRTOEventQueueItemBlock itemSentBlock = NULL;
               (uint64_t)itemsInFlight.count, (uint64_t)connections.count, (uint64_t)eventQueue.count);
 
         [self notifyItemSent:item];
+
+        [self sendQueue];
     });
 }
 
