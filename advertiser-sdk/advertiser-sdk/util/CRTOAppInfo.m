@@ -14,15 +14,28 @@
 @end
 
 @implementation CRTOAppInfo
+{
+    NSLocale* locale;
+    NSBundle* bundle;
+}
 
 #pragma mark - Initializers
 
 - (instancetype) init
 {
+    return [self initWithLocale:nil andMainBundle:nil];
+}
+
+- (instancetype) initWithLocale:(NSLocale*)localeParam andMainBundle:(NSBundle*)bundleParam
+{
     self = [super init];
     if ( self ) {
         [self setupAppInfo];
+
+        locale = localeParam;
+        bundle = bundleParam;
     }
+
     return self;
 }
 
@@ -44,22 +57,27 @@
 
 - (NSString*) appCountry
 {
-    NSLocale* currentLocale = [NSLocale autoupdatingCurrentLocale];
+    NSLocale* currentLocale = locale ?: [NSLocale autoupdatingCurrentLocale];
 
-    return [currentLocale objectForKey:NSLocaleCountryCode];
+    NSString* countryCode = [currentLocale objectForKey:NSLocaleCountryCode];
+
+    return countryCode ?: @"";
 }
 
 - (NSString*) appLanguage
 {
-    NSArray* preferredLocalizations = [NSBundle mainBundle].preferredLocalizations;
+    NSBundle* mainBundle = bundle ?: [NSBundle mainBundle];
+
+    NSArray* preferredLocalizations = mainBundle.preferredLocalizations;
 
     if ( preferredLocalizations.count > 0 ) {
         return preferredLocalizations[0];
     }
 
-    NSLocale* currentLocale = [NSLocale currentLocale];
+    NSLocale* currentLocale = locale ?: [NSLocale autoupdatingCurrentLocale];
+    NSString* languageCode = [currentLocale objectForKey:NSLocaleLanguageCode];
 
-    return [currentLocale objectForKey:NSLocaleLanguageCode];
+    return languageCode ?: @"";
 }
 
 #pragma mark - Class Extension Methods

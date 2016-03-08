@@ -7,7 +7,15 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
+#import <OCMock/OCMock.h>
+
 #import "CRTOAppInfo.h"
+
+@interface CRTOAppInfo (AppInfoTestExtensions)
+
+- (instancetype) initWithLocale:(NSLocale*)localeParam andMainBundle:(NSBundle*)bundleParam;
+
+@end
 
 @interface CRTOAppInfoTests : XCTestCase
 
@@ -96,6 +104,39 @@
     // App version doesn't exist at test time
     // This has to be unit tested in a test app that integrates this library
     //XCTAssertGreaterThan(appVersion.length, 0, @"App version has length 0");
+}
+
+- (void) testAppCountryIsNotNilWhenSystemFails
+{
+    NSLocale* mockLocale = OCMClassMock([NSLocale class]);
+
+    OCMStub([mockLocale objectForKey:NSLocaleCountryCode]).
+    andReturn(nil);
+
+    CRTOAppInfo* localAppInfo = [[CRTOAppInfo alloc] initWithLocale:mockLocale andMainBundle:nil];
+
+    NSString* appCountry = localAppInfo.appCountry;
+
+    XCTAssertNotNil(appCountry, @"App country was nil");
+}
+
+- (void) testAppLanguageIsNotNilWhenSystemFails
+{
+    NSLocale* mockLocale = OCMClassMock([NSLocale class]);
+
+    OCMStub([mockLocale objectForKey:NSLocaleLanguageCode]).
+    andReturn(nil);
+
+    NSBundle* mockBundle = OCMClassMock([NSBundle class]);
+
+    OCMStub([mockBundle preferredLocalizations]).
+    andReturn([NSArray array]);
+
+    CRTOAppInfo* localAppInfo = [[CRTOAppInfo alloc] initWithLocale:mockLocale andMainBundle:mockBundle];
+
+    NSString* appLanguage = localAppInfo.appLanguage;
+
+    XCTAssertNotNil(appLanguage, @"App language was nil");
 }
 
 @end
