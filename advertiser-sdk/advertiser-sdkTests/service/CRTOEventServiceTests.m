@@ -209,4 +209,11 @@
     OCMVerify([queueMock addQueueItem:[OCMArg any]]);
 }
 
+- (void) testSendNilEvent
+{
+    CRTOEventService* service = [CRTOEventService new];
+
+    XCTAssertNoThrow([service send:nil]);
+}
+
 @end
