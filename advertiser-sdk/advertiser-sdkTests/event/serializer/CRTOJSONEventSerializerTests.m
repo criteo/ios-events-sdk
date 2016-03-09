@@ -48,22 +48,11 @@
     [super setUp];
 
     // CRTOAppInfo Mock
-    mockAppInfo = OCMClassMock([CRTOAppInfo class]);
-
-    OCMStub([mockAppInfo appCountry]).
-    andReturn(@"US");
-
-    OCMStub([mockAppInfo appId]).
-    andReturn(@"com.criteo.sdktestapp");
-
-    OCMStub([mockAppInfo appLanguage]).
-    andReturn(@"en");
-
-    OCMStub([mockAppInfo appName]).
-    andReturn(@"Criteo Test App");
-
-    OCMStub([mockAppInfo appVersion]).
-    andReturn(@"43.0.2357.61");
+    mockAppInfo = [self mockAppInfoWithAppCountry:@"US"
+                                            appId:@"com.criteo.sdktestapp"
+                                      appLanguage:@"en"
+                                          appName:@"Criteo Test App"
+                                       appVersion:@"43.0.2357.61"];
 
     // CRTODeviceInfo Mock
     mockDeviceInfo = [self mockDeviceInfoWithDeviceId:@"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6"
@@ -119,6 +108,32 @@
     mockSDKInfo    = nil;
 
     [super tearDown];
+}
+
+- (CRTOAppInfo*) mockAppInfoWithAppCountry:(NSString*)appCountry
+                                     appId:(NSString*)appId
+                               appLanguage:(NSString*)appLanguage
+                                   appName:(NSString*)appName
+                                appVersion:(NSString*)appVersion
+{
+    CRTOAppInfo* appInfo = OCMClassMock([CRTOAppInfo class]);
+
+    OCMStub([appInfo appCountry]).
+    andReturn(appCountry);
+
+    OCMStub([appInfo appId]).
+    andReturn(appId);
+
+    OCMStub([appInfo appLanguage]).
+    andReturn(appLanguage);
+
+    OCMStub([appInfo appName]).
+    andReturn(appName);
+
+    OCMStub([appInfo appVersion]).
+    andReturn(appVersion);
+
+    return appInfo;
 }
 
 - (CRTODeviceInfo*) mockDeviceInfoWithDeviceId:(NSString*)deviceId
