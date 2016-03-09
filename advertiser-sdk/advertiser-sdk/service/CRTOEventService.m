@@ -142,6 +142,10 @@
 
 - (void) send:(CRTOEvent*)event
 {
+    if ( event == nil ) {
+        return;
+    }
+
     CRTOEvent* eventCopy = [event copy];
     eventCopy.timestamp = [NSDate date];
 
