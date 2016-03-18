@@ -8,9 +8,10 @@
 #import "CRTOSDKInfo.h"
 
 #define CRTOSDKVersionString_1_0_0   (@"1.0.0")
+#define CRTOSDKVersionString_1_0_4   (@"1.0.4")
 //#define CRTOSDKVersionString_1_0_0   (@"YourSDK.VersionString.Here")
 
-#define CRTOSDKVersionString_Current CRTOSDKVersionString_1_0_0
+#define CRTOSDKVersionString_Current CRTOSDKVersionString_1_0_4
 
 @interface CRTOSDKInfo ()
 
