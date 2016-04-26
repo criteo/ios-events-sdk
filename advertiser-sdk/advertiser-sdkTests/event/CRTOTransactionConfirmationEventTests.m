@@ -10,6 +10,7 @@
 
 #import "CRTOBasketProduct.h"
 #import "CRTOTransactionConfirmationEvent.h"
+#import "CRTOJSONConstants.h"
 
 @interface CRTOTransactionConfirmationEventTests : XCTestCase
 
@@ -200,6 +201,47 @@
 
     XCTAssertEqualObjects(event.startDate, startDate);
     XCTAssertEqualObjects(event.endDate, endDate);
+}
+
+- (void) testDeduplicationNotSet
+{
+    NSMutableArray* products_init = [NSMutableArray arrayWithArray:@[ [[CRTOBasketProduct alloc] initWithProductId:productId1 price:price1 quantity:quantity1],
+                                                                      [[CRTOBasketProduct alloc] initWithProductId:productId2 price:price2 quantity:quantity2],
+                                                                      [[CRTOBasketProduct alloc] initWithProductId:productId3 price:price3 quantity:quantity3] ]];
+
+    CRTOTransactionConfirmationEvent* event = [[CRTOTransactionConfirmationEvent alloc] initWithBasketProducts:products_init];
+
+    XCTAssertNotNil(event);
+
+    XCTAssertFalse(event.deduplication);
+}
+
+- (void) testDeduplicationSetToTrue
+{
+    NSMutableArray* products_init = [NSMutableArray arrayWithArray:@[ [[CRTOBasketProduct alloc] initWithProductId:productId1 price:price1 quantity:quantity1],
+                                                                      [[CRTOBasketProduct alloc] initWithProductId:productId2 price:price2 quantity:quantity2],
+                                                                      [[CRTOBasketProduct alloc] initWithProductId:productId3 price:price3 quantity:quantity3] ]];
+
+    CRTOTransactionConfirmationEvent* event = [[CRTOTransactionConfirmationEvent alloc] initWithBasketProducts:products_init];
+
+    event.deduplication = true;
+    XCTAssertNotNil(event);
+
+    XCTAssertTrue(event.deduplication);
+}
+
+- (void) testDeduplicationSetToFalse
+{
+    NSMutableArray* products_init = [NSMutableArray arrayWithArray:@[ [[CRTOBasketProduct alloc] initWithProductId:productId1 price:price1 quantity:quantity1],
+                                                                      [[CRTOBasketProduct alloc] initWithProductId:productId2 price:price2 quantity:quantity2],
+                                                                      [[CRTOBasketProduct alloc] initWithProductId:productId3 price:price3 quantity:quantity3] ]];
+
+    CRTOTransactionConfirmationEvent* event = [[CRTOTransactionConfirmationEvent alloc] initWithBasketProducts:products_init];
+
+    event.deduplication = false;
+    XCTAssertNotNil(event);
+
+    XCTAssertFalse(event.deduplication);
 }
 
 - (void) testTransactionConfirmationEventCopy

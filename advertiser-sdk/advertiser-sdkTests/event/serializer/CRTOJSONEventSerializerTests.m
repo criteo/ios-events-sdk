@@ -1889,6 +1889,178 @@
     XCTAssertEqualObjects(resultObj, expectedObj);
 }
 
+- (void) testTransactionConfirmationEventSerializationWithDeduplicationSetToFalse
+{
+    CRTOBasketProduct* product  = [[CRTOBasketProduct alloc] initWithProductId:@"PRODUCT11223344" price:999.85 quantity:1];
+    CRTOBasketProduct* product2 = [[CRTOBasketProduct alloc] initWithProductId:@"PRODUCT56789101" price:10 quantity:100];
+    CRTOBasketProduct* product3 = [[CRTOBasketProduct alloc] initWithProductId:@"나는 유리를 먹을 수 있어요. 그래도 아프지 않아요" price:0.1 quantity:-2500];
+
+    CRTOTransactionConfirmationEvent* confirmEvent = [[CRTOTransactionConfirmationEvent alloc] initWithBasketProducts:@[ product, product2, product3 ]];
+    confirmEvent.currency = @"USD";
+    confirmEvent.deduplication = false;
+    confirmEvent.transactionId = @"8c085e9a-ae34-424b-bcfb-a702084ee2c3";
+    confirmEvent.timestamp = timestamp;
+
+    NSString* expected = @"{"
+    "  \"account\" : {"
+    "    \"app_name\" : \"com.criteo.sdktestapp\""
+    "  },"
+    "  \"events\" : ["
+    "    {"
+    "      \"event\" : \"trackTransaction\","
+    "      \"currency\" : \"USD\","
+    "      \"id\" : \"8c085e9a-ae34-424b-bcfb-a702084ee2c3\","
+    "      \"product\" : ["
+    "        {"
+    "          \"id\" : \"PRODUCT11223344\","
+    "          \"price\" : 999.85,"
+    "          \"quantity\" : 1"
+    "        },"
+    "        {"
+    "          \"id\" : \"PRODUCT56789101\","
+    "          \"price\" : 10,"
+    "          \"quantity\" : 100"
+    "        },"
+    "        {"
+    "          \"id\" : \"나는 유리를 먹을 수 있어요. 그래도 아프지 않아요\","
+    "          \"price\" : 0.1,"
+    "          \"quantity\" : -2500"
+    "        }"
+    "      ],"
+    "      \"deduplication\" : {"
+    "         \"value\" : 0,"
+    "         \"type\" : \"integer\""
+    "      },"
+    "      \"timestamp\" : \"2015-06-26T14:57:25Z\""
+    "    }"
+    "  ],"
+    "  \"id\" : {"
+    "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
+    "    \"limit_ad_tracking\" : false"
+    "  },"
+    "  \"device_info\" : {"
+    "    \"os_name\" : \"iPhone OS\","
+    "    \"device_model\" : \"iPhone3,2\","
+    "    \"device_manufacturer\" : \"apple\","
+    "    \"os_version\" : \"4.9.1\","
+    "    \"platform\" : \"ios\""
+    "  },"
+    "  \"app_info\" : {"
+    "    \"app_version\" : \"43.0.2357.61\","
+    "    \"app_name\" : \"Criteo Test App\","
+    "    \"sdk_version\" : \"1.0.0\","
+    "    \"app_language\" : \"en\","
+    "    \"app_id\" : \"com.criteo.sdktestapp\","
+    "    \"app_country\" : \"US\""
+    "  },"
+    "  \"version\" : \"sdk_1.0.0\","
+    "  \"alternate_ids\" : ["
+    "    {"
+    "      \"type\" : \"email\","
+    "      \"value\" : \"NotAReal Email\","
+    "      \"hash_method\" : \"none\""
+    "    }"
+    "  ]"
+    "}";
+
+    id resultObj = nil;
+    id expectedObj = nil;
+
+    [self runSerializerForEvent:confirmEvent
+              withCustomerEmail:@"NotAReal Email"
+              andExpectedResult:expected
+             returningResultObj:&resultObj
+                 andExpectedObj:&expectedObj];
+
+    XCTAssertEqualObjects(resultObj, expectedObj);
+}
+
+- (void) testTransactionConfirmationEventSerializationWithDeduplicationSetToTrue
+{
+    CRTOBasketProduct* product  = [[CRTOBasketProduct alloc] initWithProductId:@"PRODUCT11223344" price:999.85 quantity:1];
+    CRTOBasketProduct* product2 = [[CRTOBasketProduct alloc] initWithProductId:@"PRODUCT56789101" price:10 quantity:100];
+    CRTOBasketProduct* product3 = [[CRTOBasketProduct alloc] initWithProductId:@"나는 유리를 먹을 수 있어요. 그래도 아프지 않아요" price:0.1 quantity:-2500];
+
+    CRTOTransactionConfirmationEvent* confirmEvent = [[CRTOTransactionConfirmationEvent alloc] initWithBasketProducts:@[ product, product2, product3 ]];
+    confirmEvent.currency = @"USD";
+    confirmEvent.deduplication = true;
+    confirmEvent.transactionId = @"8c085e9a-ae34-424b-bcfb-a702084ee2c3";
+    confirmEvent.timestamp = timestamp;
+
+    NSString* expected = @"{"
+    "  \"account\" : {"
+    "    \"app_name\" : \"com.criteo.sdktestapp\""
+    "  },"
+    "  \"events\" : ["
+    "    {"
+    "      \"event\" : \"trackTransaction\","
+    "      \"currency\" : \"USD\","
+    "      \"id\" : \"8c085e9a-ae34-424b-bcfb-a702084ee2c3\","
+    "      \"product\" : ["
+    "        {"
+    "          \"id\" : \"PRODUCT11223344\","
+    "          \"price\" : 999.85,"
+    "          \"quantity\" : 1"
+    "        },"
+    "        {"
+    "          \"id\" : \"PRODUCT56789101\","
+    "          \"price\" : 10,"
+    "          \"quantity\" : 100"
+    "        },"
+    "        {"
+    "          \"id\" : \"나는 유리를 먹을 수 있어요. 그래도 아프지 않아요\","
+    "          \"price\" : 0.1,"
+    "          \"quantity\" : -2500"
+    "        }"
+    "      ],"
+    "      \"deduplication\" : {"
+    "         \"value\" : 1,"
+    "         \"type\" : \"integer\""
+    "      },"
+    "      \"timestamp\" : \"2015-06-26T14:57:25Z\""
+    "    }"
+    "  ],"
+    "  \"id\" : {"
+    "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
+    "    \"limit_ad_tracking\" : false"
+    "  },"
+    "  \"device_info\" : {"
+    "    \"os_name\" : \"iPhone OS\","
+    "    \"device_model\" : \"iPhone3,2\","
+    "    \"device_manufacturer\" : \"apple\","
+    "    \"os_version\" : \"4.9.1\","
+    "    \"platform\" : \"ios\""
+    "  },"
+    "  \"app_info\" : {"
+    "    \"app_version\" : \"43.0.2357.61\","
+    "    \"app_name\" : \"Criteo Test App\","
+    "    \"sdk_version\" : \"1.0.0\","
+    "    \"app_language\" : \"en\","
+    "    \"app_id\" : \"com.criteo.sdktestapp\","
+    "    \"app_country\" : \"US\""
+    "  },"
+    "  \"version\" : \"sdk_1.0.0\","
+    "  \"alternate_ids\" : ["
+    "    {"
+    "      \"type\" : \"email\","
+    "      \"value\" : \"NotAReal Email\","
+    "      \"hash_method\" : \"none\""
+    "    }"
+    "  ]"
+    "}";
+
+    id resultObj = nil;
+    id expectedObj = nil;
+
+    [self runSerializerForEvent:confirmEvent
+              withCustomerEmail:@"NotAReal Email"
+              andExpectedResult:expected
+             returningResultObj:&resultObj
+                 andExpectedObj:&expectedObj];
+
+    XCTAssertEqualObjects(resultObj, expectedObj);
+}
+
 - (void) testTransactionConfirmationEventSerializationWithDates
 {
     CRTOBasketProduct* product  = [[CRTOBasketProduct alloc] initWithProductId:@"PRODUCT11223344" price:999.85 quantity:1];

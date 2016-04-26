@@ -9,6 +9,7 @@
 #import <CriteoAdvertiser/CRTOBasketProduct.h>
 #import "CRTOTransactionConfirmationEvent+Internal.h"
 #import "CRTOEvent+Internal.h"
+#import "CRTOJSONConstants.h"
 
 @implementation CRTOTransactionConfirmationEvent
 
@@ -22,6 +23,26 @@
     } else {
         _basketProducts = nil;
     }
+}
+
+- (BOOL) deduplication
+{
+    CRTOExtraData* deduplication = [self getExtraDataForKey:kCRTOJSONUniversalTagParametersHelperDeduplicationKey];
+    if(deduplication == nil)
+    {
+        return false;
+    }
+    if(deduplication.type != CRTOExtraDataTypeInteger)
+    {
+        return false;
+    }
+    NSNumber* ddValue = deduplication.value;
+    return ddValue.boolValue;
+}
+
+- (void) setDeduplication:(BOOL)deduplication
+{
+    [self setIntegerExtraData:deduplication ForKey:kCRTOJSONUniversalTagParametersHelperDeduplicationKey];
 }
 
 #pragma mark - Initializers

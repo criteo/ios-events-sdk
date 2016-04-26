@@ -21,6 +21,10 @@
 /** A string containing your organization's unique identifier for this transaction. */
 @property (nonatomic,copy) NSString* transactionId;
 
+/** An optional boolean indicating whether or not the transaction is attributed to Criteo. The default value is false.
+ This property will not be sent to the backend if you do not explicitly set it. */
+@property (nonatomic) BOOL deduplication;
+
 /**
  *  Initializes a newly allocated transaction confirmation event with the @c basketProducts, @c currency, and @c transactionId properties set to nil.
  *
