@@ -14,6 +14,7 @@
 
 @interface CRTOJSONEventSerializer : NSObject
 
+@property (nonatomic,strong) NSString* accountName;
 @property (nonatomic,strong) NSString* countryCode;
 @property (nonatomic,strong) NSString* customerEmail;
 @property (nonatomic,strong) NSString* languageCode;

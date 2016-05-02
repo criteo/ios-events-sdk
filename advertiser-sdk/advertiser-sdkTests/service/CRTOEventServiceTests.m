@@ -133,6 +133,22 @@
     XCTAssertEqualObjects(language, service.language);
 }
 
+- (void) testAccountNameSetter
+{
+    NSMutableString* accountName = [NSMutableString stringWithString:@"com.account.super.my"];
+
+    CRTOEventService* service = [[CRTOEventService alloc] init];
+
+    XCTAssertNil(service.accountName);
+
+    service.accountName = accountName;
+
+    XCTAssertNotNil(service.accountName);
+
+    XCTAssertNotEqual(accountName, service.accountName);
+    XCTAssertEqualObjects(accountName, service.accountName);
+}
+
 - (void) testCustomerEmailKVO
 {
     CRTOEventService* service = [[CRTOEventService alloc] init];
@@ -196,12 +212,14 @@
     service.country = [NSMutableString stringWithString:@"US"];
     service.language = [NSMutableString stringWithString:@"en"];
     service.customerEmail = [NSMutableString stringWithString:@"foo@bar.com"];
+    service.accountName = [NSMutableString stringWithString:@"com.account.super.my"];
 
     [service sendEvent:event withJSONSerializer:serializerMock eventQueue:queueMock];
 
     OCMVerify(serializerMock.countryCode = @"US");
     OCMVerify(serializerMock.languageCode = @"en");
     OCMVerify(serializerMock.customerEmail = @"foo@bar.com");
+    OCMVerify(serializerMock.accountName = @"com.account.super.my");
 
     // [OCMArg isKindOfClass:...] causes this test to randomly fail
     // so we can only verify with [OCMArg any].  Maybe we can change this in

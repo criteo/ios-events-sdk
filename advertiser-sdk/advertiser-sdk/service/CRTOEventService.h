@@ -20,6 +20,9 @@
 /** The two letter ISO-639-1 language code representing the language associated with events sent via this event service. */
 @property (atomic,copy) NSString* language;
 
+/** The account name associated with events sent via this event service. */
+@property (atomic, copy) NSString* accountName;
+
 /**
  *  The cleartext customer email address associated with events sent via this event service.
  *

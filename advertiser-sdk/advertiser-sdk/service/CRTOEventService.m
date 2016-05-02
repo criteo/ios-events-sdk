@@ -107,7 +107,7 @@
 {
     serializer.countryCode = self.country;
     serializer.languageCode = self.language;
-
+    serializer.accountName = self.accountName;
     serializer.customerEmail = self.customerEmail;
 }
 

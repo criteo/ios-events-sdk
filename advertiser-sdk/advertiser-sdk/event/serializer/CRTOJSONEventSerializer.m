@@ -143,7 +143,12 @@ static NSString* jsonProtocolVersion = nil;
 
     NSMutableDictionary* account = [NSMutableDictionary new];
 
-    account[kCRTOJSONPartnerAppDataPropertyApp_NameKey] = appInfo.appId;
+    if(self.accountName != nil) {
+        account[kCRTOJSONPartnerAppDataPropertyApp_NameKey] = self.accountName;
+    }
+    else {
+        account[kCRTOJSONPartnerAppDataPropertyApp_NameKey] = appInfo.appId;
+    }
 
     if ( country != nil ) {
         account[kCRTOJSONPartnerAppDataPropertyCountry_CodeKey] = country;
