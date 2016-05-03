@@ -191,7 +191,9 @@
                      deviceInfo:mockDeviceInfo
                         sdkInfo:mockSDKInfo
               withCustomerEmail:nil
-                    accountName: nil
+                    accountName:nil
+                        country:nil
+                       language:nil
               andExpectedResult:expected
              returningResultObj:resultObj
                  andExpectedObj:expectedObj];
@@ -210,7 +212,9 @@
                      deviceInfo:deviceInfo
                         sdkInfo:sdkInfo
               withCustomerEmail:nil
-                    accountName: nil
+                    accountName:nil
+                        country:nil
+                       language:nil
               andExpectedResult:expected
              returningResultObj:resultObj
                  andExpectedObj:expectedObj];
@@ -227,7 +231,9 @@
                      deviceInfo:mockDeviceInfo
                         sdkInfo:mockSDKInfo
               withCustomerEmail:email
-                    accountName: nil
+                    accountName:nil
+                        country:nil
+                       language:nil
               andExpectedResult:expected
              returningResultObj:resultObj
                  andExpectedObj:expectedObj];
@@ -239,6 +245,8 @@
                        sdkInfo:(CRTOSDKInfo*)sdkInfo
              withCustomerEmail:(NSString*)email
                    accountName:(NSString*)accountName
+                       country:(NSString*)country
+                      language:(NSString*)language
              andExpectedResult:(NSString*)expected
             returningResultObj:(id*)resultObj
                 andExpectedObj:(id*)expectedObj
@@ -246,12 +254,11 @@
     CRTOJSONEventSerializer* serializer = [[CRTOJSONEventSerializer alloc] initWithAppInfo:appInfo
                                                                                 deviceInfo:deviceInfo
                                                                                    sdkInfo:sdkInfo];
-    if ( email ) {
-        serializer.customerEmail = email;
-    }
-    if ( accountName ) {
-        serializer.accountName = accountName;
-    }
+
+    serializer.customerEmail = email;
+    serializer.accountName   = accountName;
+    serializer.countryCode   = country;
+    serializer.languageCode  = language;
 
     NSString* result = [serializer serializeEventToJSONString:event];
 
@@ -271,6 +278,118 @@
     if ( expectedError ) {
         NSLog(@"Error deserializing expected JSON: %@", expectedError);
     }
+}
+
+- (void) testAccountCountrySerialization
+{
+    CRTOAppLaunchEvent* appLaunch = [[CRTOAppLaunchEvent alloc] init];
+    appLaunch.timestamp = timestamp;
+
+    NSString* expected = @"{"
+                          "  \"account\" : {"
+                          "    \"app_name\" : \"com.criteo.sdktestapp\","
+                          "    \"country_code\" : \"US\""
+                          "  },"
+                          "  \"events\" : ["
+                          "    {"
+                          "      \"event\" : \"appLaunch\","
+                          "      \"timestamp\" : \"2015-06-26T14:57:25Z\""
+                          "    }"
+                          "  ],"
+                          "  \"id\" : {"
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
+                          "    \"limit_ad_tracking\" : false"
+                          "  },"
+                          "  \"device_info\" : {"
+                          "    \"os_name\" : \"iPhone OS\","
+                          "    \"device_model\" : \"iPhone3,2\","
+                          "    \"device_manufacturer\" : \"apple\","
+                          "    \"os_version\" : \"4.9.1\","
+                          "    \"platform\" : \"ios\""
+                          "  },"
+                          "  \"app_info\" : {"
+                          "    \"app_version\" : \"43.0.2357.61\","
+                          "    \"app_name\" : \"Criteo Test App\","
+                          "    \"sdk_version\" : \"1.0.0\","
+                          "    \"app_language\" : \"en\","
+                          "    \"app_id\" : \"com.criteo.sdktestapp\","
+                          "    \"app_country\" : \"US\""
+                          "  },"
+                          "  \"version\" : \"sdk_1.0.0\""
+                          "}";
+
+    id resultObj = nil;
+    id expectedObj = nil;
+
+    [self runSerializerForEvent:appLaunch
+                        appInfo:mockAppInfo
+                     deviceInfo:mockDeviceInfo
+                        sdkInfo:mockSDKInfo
+              withCustomerEmail:nil
+                    accountName:nil
+                        country:@"US"
+                       language:nil
+              andExpectedResult:expected
+             returningResultObj:&resultObj
+                 andExpectedObj:&expectedObj];
+
+    XCTAssertEqualObjects(resultObj, expectedObj);
+}
+
+- (void) testAccountLanguageSerialization
+{
+    CRTOAppLaunchEvent* appLaunch = [[CRTOAppLaunchEvent alloc] init];
+    appLaunch.timestamp = timestamp;
+
+    NSString* expected = @"{"
+                          "  \"account\" : {"
+                          "    \"app_name\" : \"com.criteo.sdktestapp\","
+                          "    \"language_code\" : \"en\""
+                          "  },"
+                          "  \"events\" : ["
+                          "    {"
+                          "      \"event\" : \"appLaunch\","
+                          "      \"timestamp\" : \"2015-06-26T14:57:25Z\""
+                          "    }"
+                          "  ],"
+                          "  \"id\" : {"
+                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
+                          "    \"limit_ad_tracking\" : false"
+                          "  },"
+                          "  \"device_info\" : {"
+                          "    \"os_name\" : \"iPhone OS\","
+                          "    \"device_model\" : \"iPhone3,2\","
+                          "    \"device_manufacturer\" : \"apple\","
+                          "    \"os_version\" : \"4.9.1\","
+                          "    \"platform\" : \"ios\""
+                          "  },"
+                          "  \"app_info\" : {"
+                          "    \"app_version\" : \"43.0.2357.61\","
+                          "    \"app_name\" : \"Criteo Test App\","
+                          "    \"sdk_version\" : \"1.0.0\","
+                          "    \"app_language\" : \"en\","
+                          "    \"app_id\" : \"com.criteo.sdktestapp\","
+                          "    \"app_country\" : \"US\""
+                          "  },"
+                          "  \"version\" : \"sdk_1.0.0\""
+                          "}";
+
+    id resultObj = nil;
+    id expectedObj = nil;
+
+    [self runSerializerForEvent:appLaunch
+                        appInfo:mockAppInfo
+                     deviceInfo:mockDeviceInfo
+                        sdkInfo:mockSDKInfo
+              withCustomerEmail:nil
+                    accountName:nil
+                        country:nil
+                       language:@"en"
+              andExpectedResult:expected
+             returningResultObj:&resultObj
+                 andExpectedObj:&expectedObj];
+
+    XCTAssertEqualObjects(resultObj, expectedObj);
 }
 
 - (void) testAlternateIdIsSerialized
@@ -473,6 +592,8 @@
                         sdkInfo:mockSDKInfo
               withCustomerEmail:nil
                     accountName:@"com.criteo.sdktestapp.custom"
+                        country:nil
+                       language:nil
               andExpectedResult:expected
              returningResultObj:&resultObj
                  andExpectedObj:&expectedObj];
