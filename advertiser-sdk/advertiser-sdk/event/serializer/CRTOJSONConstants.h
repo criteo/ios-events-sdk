@@ -141,6 +141,7 @@ FOUNDATION_EXPORT NSString* const kCRTOJSONAlternateIdHashKey;
 
 FOUNDATION_EXPORT NSString* const kCRTOJSONAlternateIdEmailValue;
 FOUNDATION_EXPORT NSString* const kCRTOJSONAlternateIdNoneValue;
+FOUNDATION_EXPORT NSString* const kCRTOJSONAlternateIdMd5Value;
 
 FOUNDATION_EXPORT NSString* const kCRTOJSONExtraDataValueKey;
 FOUNDATION_EXPORT NSString* const kCRTOJSONExtraDataTypeKey;

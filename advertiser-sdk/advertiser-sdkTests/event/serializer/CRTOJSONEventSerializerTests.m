@@ -313,7 +313,7 @@
                           "    {"
                           "      \"type\" : \"email\","
                           "      \"value\" : \"NotAReal Email\","
-                          "      \"hash_method\" : \"none\""
+                          "      \"hash_method\" : \"md5\""
                           "    }"
                           "  ]"
                           "}";
@@ -667,7 +667,7 @@
                           "    {"
                           "      \"type\" : \"email\","
                           "      \"value\" : \"NotAReal Email\","
-                          "      \"hash_method\" : \"none\""
+                          "      \"hash_method\" : \"md5\""
                           "    }"
                           "  ]"
                           "}";
@@ -756,7 +756,7 @@
                           "    {"
                           "      \"type\" : \"email\","
                           "      \"value\" : \"NotAReal Email\","
-                          "      \"hash_method\" : \"none\""
+                          "      \"hash_method\" : \"md5\""
                           "    }"
                           "  ]"
                           "}";
@@ -813,7 +813,7 @@
                           "    {"
                           "      \"type\" : \"email\","
                           "      \"value\" : \"NotAReal Email\","
-                          "      \"hash_method\" : \"none\""
+                          "      \"hash_method\" : \"md5\""
                           "    }"
                           "  ]"
                           "}";
@@ -890,7 +890,7 @@
                           "    {"
                           "      \"type\" : \"email\","
                           "      \"value\" : \"NotAReal Email\","
-                          "      \"hash_method\" : \"none\""
+                          "      \"hash_method\" : \"md5\""
                           "    }"
                           "  ]"
                           "}";
@@ -947,7 +947,7 @@
                           "    {"
                           "      \"type\" : \"email\","
                           "      \"value\" : \"NotAReal Email\","
-                          "      \"hash_method\" : \"none\""
+                          "      \"hash_method\" : \"md5\""
                           "    }"
                           "  ]"
                           "}";
@@ -1057,7 +1057,7 @@
                           "    {"
                           "      \"type\" : \"email\","
                           "      \"value\" : \"test@foobar.com\","
-                          "      \"hash_method\" : \"none\""
+                          "      \"hash_method\" : \"md5\""
                           "    }"
                           "  ]"
                           "}";
@@ -1320,7 +1320,7 @@
                           "    {"
                           "      \"type\" : \"email\","
                           "      \"value\" : \"NotAReal Email\","
-                          "      \"hash_method\" : \"none\""
+                          "      \"hash_method\" : \"md5\""
                           "    }"
                           "  ]"
                           "}";
@@ -1389,7 +1389,7 @@
                           "    {"
                           "      \"type\" : \"email\","
                           "      \"value\" : \"NotAReal Email\","
-                          "      \"hash_method\" : \"none\""
+                          "      \"hash_method\" : \"md5\""
                           "    }"
                           "  ]"
                           "}";
@@ -1445,7 +1445,7 @@
                           "    {"
                           "      \"type\" : \"email\","
                           "      \"value\" : \"NotAReal Email\","
-                          "      \"hash_method\" : \"none\""
+                          "      \"hash_method\" : \"md5\""
                           "    }"
                           "  ]"
                           "}";
@@ -1504,7 +1504,7 @@
                           "    {"
                           "      \"type\" : \"email\","
                           "      \"value\" : \"NotAReal Email\","
-                          "      \"hash_method\" : \"none\""
+                          "      \"hash_method\" : \"md5\""
                           "    }"
                           "  ]"
                           "}";
@@ -1578,7 +1578,7 @@
                           "    {"
                           "      \"type\" : \"email\","
                           "      \"value\" : \"NotAReal Email\","
-                          "      \"hash_method\" : \"none\""
+                          "      \"hash_method\" : \"md5\""
                           "    }"
                           "  ]"
                           "}";
@@ -1663,7 +1663,7 @@
                           "    {"
                           "      \"type\" : \"email\","
                           "      \"value\" : \"NotAReal Email\","
-                          "      \"hash_method\" : \"none\""
+                          "      \"hash_method\" : \"md5\""
                           "    }"
                           "  ]"
                           "}";
@@ -1720,7 +1720,7 @@
                           "    {"
                           "      \"type\" : \"email\","
                           "      \"value\" : \"NotAReal Email\","
-                          "      \"hash_method\" : \"none\""
+                          "      \"hash_method\" : \"md5\""
                           "    }"
                           "  ]"
                           "}";
@@ -1794,7 +1794,7 @@
                           "    {"
                           "      \"type\" : \"email\","
                           "      \"value\" : \"NotAReal Email\","
-                          "      \"hash_method\" : \"none\""
+                          "      \"hash_method\" : \"md5\""
                           "    }"
                           "  ]"
                           "}";
@@ -1851,7 +1851,7 @@
                           "    {"
                           "      \"type\" : \"email\","
                           "      \"value\" : \"NotAReal Email\","
-                          "      \"hash_method\" : \"none\""
+                          "      \"hash_method\" : \"md5\""
                           "    }"
                           "  ]"
                           "}";
@@ -1932,7 +1932,7 @@
                           "    {"
                           "      \"type\" : \"email\","
                           "      \"value\" : \"NotAReal Email\","
-                          "      \"hash_method\" : \"none\""
+                          "      \"hash_method\" : \"md5\""
                           "    }"
                           "  ]"
                           "}";
@@ -2018,7 +2018,7 @@
     "    {"
     "      \"type\" : \"email\","
     "      \"value\" : \"NotAReal Email\","
-    "      \"hash_method\" : \"none\""
+    "      \"hash_method\" : \"md5\""
     "    }"
     "  ]"
     "}";
@@ -2104,7 +2104,7 @@
     "    {"
     "      \"type\" : \"email\","
     "      \"value\" : \"NotAReal Email\","
-    "      \"hash_method\" : \"none\""
+    "      \"hash_method\" : \"md5\""
     "    }"
     "  ]"
     "}";
@@ -2195,7 +2195,7 @@
                           "    {"
                           "      \"type\" : \"email\","
                           "      \"value\" : \"NotAReal Email\","
-                          "      \"hash_method\" : \"none\""
+                          "      \"hash_method\" : \"md5\""
                           "    }"
                           "  ]"
                           "}";
@@ -2256,7 +2256,7 @@
                           "    {"
                           "      \"type\" : \"email\","
                           "      \"value\" : \"NotAReal Email\","
-                          "      \"hash_method\" : \"none\""
+                          "      \"hash_method\" : \"md5\""
                           "    }"
                           "  ]"
                           "}";
@@ -2337,7 +2337,7 @@
                           "    {"
                           "      \"type\" : \"email\","
                           "      \"value\" : \"NotAReal Email\","
-                          "      \"hash_method\" : \"none\""
+                          "      \"hash_method\" : \"md5\""
                           "    }"
                           "  ]"
                           "}";
@@ -2398,7 +2398,7 @@
                           "    {"
                           "      \"type\" : \"email\","
                           "      \"value\" : \"NotAReal Email\","
-                          "      \"hash_method\" : \"none\""
+                          "      \"hash_method\" : \"md5\""
                           "    }"
                           "  ]"
                           "}";

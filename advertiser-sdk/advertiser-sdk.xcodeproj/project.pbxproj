@@ -106,6 +106,12 @@
 		25783FB51B5D5B62004F940C /* CRTODeeplinkEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A1A10A1B3D8559008841EA /* CRTODeeplinkEventTests.m */; };
 		25783FB61B5D5B62004F940C /* CRTOBasketViewEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 250E7F961B46D3210027659C /* CRTOBasketViewEventTests.m */; };
 		25783FB81B5D5B62004F940C /* CriteoAdvertiser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 258CDC0A1AF757D0009E678E /* CriteoAdvertiser.framework */; };
+		257D24541CDA41FA007C32D7 /* CRTOMd5Hasher.h in Headers */ = {isa = PBXBuildFile; fileRef = 257D24521CDA41FA007C32D7 /* CRTOMd5Hasher.h */; };
+		257D24551CDA41FA007C32D7 /* CRTOMd5Hasher.h in Headers */ = {isa = PBXBuildFile; fileRef = 257D24521CDA41FA007C32D7 /* CRTOMd5Hasher.h */; };
+		257D24561CDA41FA007C32D7 /* CRTOMd5Hasher.m in Sources */ = {isa = PBXBuildFile; fileRef = 257D24531CDA41FA007C32D7 /* CRTOMd5Hasher.m */; };
+		257D24571CDA41FA007C32D7 /* CRTOMd5Hasher.m in Sources */ = {isa = PBXBuildFile; fileRef = 257D24531CDA41FA007C32D7 /* CRTOMd5Hasher.m */; };
+		257D24591CDA53F5007C32D7 /* CRTOMd5HasherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 257D24581CDA53F5007C32D7 /* CRTOMd5HasherTests.m */; };
+		257D245A1CDA53F5007C32D7 /* CRTOMd5HasherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 257D24581CDA53F5007C32D7 /* CRTOMd5HasherTests.m */; };
 		258CDC161AF757D0009E678E /* CriteoAdvertiser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 258CDC0A1AF757D0009E678E /* CriteoAdvertiser.framework */; };
 		258CDC291AF76EA5009E678E /* CRTOEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 258CDC271AF76EA5009E678E /* CRTOEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		258CDC2A1AF76EA5009E678E /* CRTOEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 258CDC281AF76EA5009E678E /* CRTOEvent.m */; };
@@ -205,6 +211,9 @@
 		25783F9D1B5D5AFE004F940C /* CriteoAdvertiser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CriteoAdvertiser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		25783FBF1B5D5B62004F940C /* advertiser-sdkTests-static.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "advertiser-sdkTests-static.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		25786D731B57C9A900731ADE /* CRTONetworkDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CRTONetworkDefines.h; sourceTree = "<group>"; };
+		257D24521CDA41FA007C32D7 /* CRTOMd5Hasher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTOMd5Hasher.h; sourceTree = "<group>"; };
+		257D24531CDA41FA007C32D7 /* CRTOMd5Hasher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOMd5Hasher.m; sourceTree = "<group>"; };
+		257D24581CDA53F5007C32D7 /* CRTOMd5HasherTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOMd5HasherTests.m; sourceTree = "<group>"; };
 		258CDC0A1AF757D0009E678E /* CriteoAdvertiser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CriteoAdvertiser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		258CDC0E1AF757D0009E678E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		258CDC151AF757D0009E678E /* advertiser-sdkTests-dynamic.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "advertiser-sdkTests-dynamic.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -318,6 +327,7 @@
 				2506B7571B0DDF050091D5F8 /* CRTOAppInfoTests.m */,
 				25760CB31B592EA70008FD12 /* CRTODateConverterTests.m */,
 				25CF73FF1B0DFEE1001A023A /* CRTODeviceInfoTests.m */,
+				257D24581CDA53F5007C32D7 /* CRTOMd5HasherTests.m */,
 				25CF74011B0E00FD001A023A /* CRTOSDKInfoTests.m */,
 			);
 			path = util;
@@ -362,6 +372,8 @@
 				25760CB01B5907890008FD12 /* CRTODateConverter.m */,
 				255A94EB1B0CCB31009F5C06 /* CRTODeviceInfo.h */,
 				255A94EC1B0CCB31009F5C06 /* CRTODeviceInfo.m */,
+				257D24521CDA41FA007C32D7 /* CRTOMd5Hasher.h */,
+				257D24531CDA41FA007C32D7 /* CRTOMd5Hasher.m */,
 				255A94F51B0CE88E009F5C06 /* CRTOSDKInfo.h */,
 				255A94F61B0CE88E009F5C06 /* CRTOSDKInfo.m */,
 			);
@@ -536,6 +548,7 @@
 				25783F851B5D5AFE004F940C /* CRTOEvent.h in Headers */,
 				25783F861B5D5AFE004F940C /* CRTODateConverter.h in Headers */,
 				25783F871B5D5AFE004F940C /* CRTOAppLaunchEvent.h in Headers */,
+				257D24551CDA41FA007C32D7 /* CRTOMd5Hasher.h in Headers */,
 				25783F881B5D5AFE004F940C /* CRTOEventQueueItem.h in Headers */,
 				25783F891B5D5AFE004F940C /* CRTOBasketViewEvent.h in Headers */,
 				25783F8A1B5D5AFE004F940C /* CRTODataEvent.h in Headers */,
@@ -566,6 +579,7 @@
 				258CDC291AF76EA5009E678E /* CRTOEvent.h in Headers */,
 				25760CB11B5907890008FD12 /* CRTODateConverter.h in Headers */,
 				259AA5FD1AF7C8F9006743A5 /* CRTOAppLaunchEvent.h in Headers */,
+				257D24541CDA41FA007C32D7 /* CRTOMd5Hasher.h in Headers */,
 				253BA72B1B13804100113FBF /* CRTOEventQueueItem.h in Headers */,
 				259AA6261AF8A5CB006743A5 /* CRTOBasketViewEvent.h in Headers */,
 				251004971AF9216D00701F7F /* CRTODataEvent.h in Headers */,
@@ -819,6 +833,7 @@
 				25783F791B5D5AFE004F940C /* CRTOExtraData.m in Sources */,
 				25783F7A1B5D5AFE004F940C /* CRTODateConverter.m in Sources */,
 				25783F7B1B5D5AFE004F940C /* CRTOJSONEventSerializer.m in Sources */,
+				257D24571CDA41FA007C32D7 /* CRTOMd5Hasher.m in Sources */,
 				25783F7C1B5D5AFE004F940C /* CRTOProduct.m in Sources */,
 				25783F7D1B5D5AFE004F940C /* CRTOSDKInfo.m in Sources */,
 				25783F7E1B5D5AFE004F940C /* CRTOJSONConstants.m in Sources */,
@@ -845,6 +860,7 @@
 				25783FB01B5D5B62004F940C /* CRTOProductViewEventTests.m in Sources */,
 				25783FB11B5D5B62004F940C /* CRTOProductTests.m in Sources */,
 				25783FB21B5D5B62004F940C /* CRTODataEventTests.m in Sources */,
+				257D245A1CDA53F5007C32D7 /* CRTOMd5HasherTests.m in Sources */,
 				25783FB31B5D5B62004F940C /* CRTOHomeViewEventTests.m in Sources */,
 				25783FB41B5D5B62004F940C /* CRTODateConverterTests.m in Sources */,
 				25783FB51B5D5B62004F940C /* CRTODeeplinkEventTests.m in Sources */,
@@ -874,6 +890,7 @@
 				252D17951B0E5FF000DB6D91 /* CRTOExtraData.m in Sources */,
 				25760CB21B5907890008FD12 /* CRTODateConverter.m in Sources */,
 				250560801AF9156F006804AA /* CRTOJSONEventSerializer.m in Sources */,
+				257D24561CDA41FA007C32D7 /* CRTOMd5Hasher.m in Sources */,
 				259AA61D1AF7E06A006743A5 /* CRTOProduct.m in Sources */,
 				255A94F81B0CE88E009F5C06 /* CRTOSDKInfo.m in Sources */,
 				25CF74101B0E19E4001A023A /* CRTOJSONConstants.m in Sources */,
@@ -900,6 +917,7 @@
 				25FC30961B45689B00C379B7 /* CRTOProductViewEventTests.m in Sources */,
 				250E7F951B46D2FF0027659C /* CRTOProductTests.m in Sources */,
 				250E7F991B46D33E0027659C /* CRTODataEventTests.m in Sources */,
+				257D24591CDA53F5007C32D7 /* CRTOMd5HasherTests.m in Sources */,
 				250E7F9B1B46D3620027659C /* CRTOHomeViewEventTests.m in Sources */,
 				25760CB41B592EA70008FD12 /* CRTODateConverterTests.m in Sources */,
 				25A1A10B1B3D855A008841EA /* CRTODeeplinkEventTests.m in Sources */,

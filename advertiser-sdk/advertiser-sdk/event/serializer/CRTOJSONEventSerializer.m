@@ -170,7 +170,7 @@ static NSString* jsonProtocolVersion = nil;
     if ( customerEmail.length > 0 ) {
         NSDictionary* nonHashedId = @{ kCRTOJSONAlternateIdTypeKey  : kCRTOJSONAlternateIdEmailValue,
                                        kCRTOJSONAlternateIdValueKey : customerEmail,
-                                       kCRTOJSONAlternateIdHashKey  : kCRTOJSONAlternateIdNoneValue };
+                                       kCRTOJSONAlternateIdHashKey  : kCRTOJSONAlternateIdMd5Value };
 
         [alternateIds addObject:nonHashedId];
     }

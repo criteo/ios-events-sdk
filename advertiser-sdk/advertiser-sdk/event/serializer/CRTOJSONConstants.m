@@ -142,6 +142,7 @@ NSString* const kCRTOJSONAlternateIdHashKey  = @"hash_method";
 
 NSString* const kCRTOJSONAlternateIdEmailValue = @"email";
 NSString* const kCRTOJSONAlternateIdNoneValue  = @"none";
+NSString* const kCRTOJSONAlternateIdMd5Value   = @"md5";
 
 NSString* const kCRTOJSONExtraDataValueKey         = @"value";
 NSString* const kCRTOJSONExtraDataTypeKey          = @"type";

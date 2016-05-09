@@ -7,6 +7,14 @@
 
 #import <CriteoAdvertiser/CRTOEvent.h>
 
+/** Indicates the type of email values you will assign to the @c CRTOEventService.customerEmail property. */
+typedef NS_ENUM(NSInteger, CRTOEventServiceEmailType) {
+    /** Emails stored to the @c customerEmail property are cleartext values. */
+    CRTOEventServiceEmailTypeCleartext,
+    /** Emails stored to the @c customerEmail property are md5 hashes. */
+    CRTOEventServiceEmailTypeHashedMd5
+};
+
 /**
  *  @c CRTOEventService is used to submit event objects to Criteo. You may set customized country, language, or CRM identifier values that will be sent with every event submitted through the event service.
  *
@@ -24,11 +32,20 @@
 @property (atomic, copy) NSString* accountName;
 
 /**
- *  The cleartext customer email address associated with events sent via this event service.
+ *  The customer email address associated with events sent via this event service.
  *
- *  @warning You should not store hashed customer emails to this property.
+ *  You may choose to store either a cleartext or a prehashed value to this property. Before assigning this property a value, you must set the @c customerEmailType property to indicate the format of your email value.
+ *
+ *  If you store a cleartext value to this property, the SDK will convert it to lowercase, trim all whitespace, and compute the md5 hash of the resulting string. Only this hash will be stored and forwared to Criteo. You can verify the hash operation by retrieving the value of this property after assigning it a cleartext value.
  */
 @property (atomic,copy) NSString* customerEmail;
+
+/**
+ *  The type of email value stored in the @c customerEmail property. Defaults to @c CRTOEventServiceEmailTypeCleartext.
+ *
+ *  Changing the value of this property will automatically reset the value of the @c customerEmail property to @a nil.
+ */
+@property (atomic) CRTOEventServiceEmailType customerEmailType;
 
 /** The customer identifier associated with events sent via this event service. */
 @property (atomic,copy) NSString* customerId;

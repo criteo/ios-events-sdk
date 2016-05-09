@@ -165,20 +165,86 @@
     XCTAssertNoThrow(service.customerEmail = nil);
 }
 
-- (void) testCustomerEmailSetter
+- (void) testCustomerEmailSetterCleartext
 {
     NSMutableString* custEmail = [NSMutableString stringWithString:@"foo@bar.com"];
+    NSString* expected = @"f3ada405ce890b6f8204094deb12d8a8";
 
     CRTOEventService* service = [[CRTOEventService alloc] init];
 
     XCTAssertNil(service.customerEmail);
+    XCTAssertEqual(CRTOEventServiceEmailTypeCleartext, service.customerEmailType);
 
     service.customerEmail = custEmail;
 
     XCTAssertNotNil(service.customerEmail);
 
     XCTAssertNotEqual(custEmail, service.customerEmail);
-    XCTAssertEqualObjects(custEmail, service.customerEmail);
+    XCTAssertEqualObjects(expected, service.customerEmail);
+}
+
+- (void) testCustomerEmailSetterCleartextNil
+{
+    CRTOEventService* service = [[CRTOEventService alloc] init];
+
+    XCTAssertNil(service.customerEmail);
+    XCTAssertEqual(CRTOEventServiceEmailTypeCleartext, service.customerEmailType);
+
+    XCTAssertNoThrow( service.customerEmail = nil );
+
+    XCTAssertNil(service.customerEmail);
+}
+
+- (void) testCustomerEmailSetterMd5
+{
+    NSMutableString* hashedCustEmail = [NSMutableString stringWithString:@"f3ada405ce890b6f8204094deb12d8a8"];
+
+    CRTOEventService* service = [[CRTOEventService alloc] init];
+    service.customerEmailType = CRTOEventServiceEmailTypeHashedMd5;
+
+    XCTAssertNil(service.customerEmail);
+
+    service.customerEmail = hashedCustEmail;
+
+    XCTAssertNotNil(service.customerEmail);
+
+    XCTAssertNotEqual(hashedCustEmail, service.customerEmail);
+    XCTAssertEqualObjects(hashedCustEmail, service.customerEmail);
+}
+
+- (void) testCustomerEmailSetterMd5Nil
+{
+    CRTOEventService* service = [[CRTOEventService alloc] init];
+    service.customerEmailType = CRTOEventServiceEmailTypeHashedMd5;
+
+    XCTAssertNil(service.customerEmail);
+    XCTAssertEqual(CRTOEventServiceEmailTypeHashedMd5, service.customerEmailType);
+
+    XCTAssertNoThrow( service.customerEmail = nil );
+
+    XCTAssertNil(service.customerEmail);
+}
+
+- (void) testCustomerEmailTypeSetter
+{
+    CRTOEventService* service = [[CRTOEventService alloc] init];
+
+    XCTAssertEqual(service.customerEmailType, CRTOEventServiceEmailTypeCleartext);
+    XCTAssertNil(service.customerEmail);
+
+    service.customerEmail = @"blah@blah.com";
+
+    XCTAssertNotNil(service.customerEmail);
+
+    service.customerEmailType = CRTOEventServiceEmailTypeCleartext;
+
+    XCTAssertEqual(service.customerEmailType, CRTOEventServiceEmailTypeCleartext);
+    XCTAssertNotNil(service.customerEmail);
+
+    service.customerEmailType = CRTOEventServiceEmailTypeHashedMd5;
+
+    XCTAssertEqual(service.customerEmailType, CRTOEventServiceEmailTypeHashedMd5);
+    XCTAssertNil(service.customerEmail);
 }
 
 - (void) testCustomerIdSetter
@@ -218,7 +284,7 @@
 
     OCMVerify(serializerMock.countryCode = @"US");
     OCMVerify(serializerMock.languageCode = @"en");
-    OCMVerify(serializerMock.customerEmail = @"foo@bar.com");
+    OCMVerify(serializerMock.customerEmail = @"f3ada405ce890b6f8204094deb12d8a8");
     OCMVerify(serializerMock.accountName = @"com.account.super.my");
 
     // [OCMArg isKindOfClass:...] causes this test to randomly fail
