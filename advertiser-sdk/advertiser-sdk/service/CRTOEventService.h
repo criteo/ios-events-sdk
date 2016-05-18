@@ -28,7 +28,11 @@ typedef NS_ENUM(NSInteger, CRTOEventServiceEmailType) {
 /** The two letter ISO-639-1 language code representing the language associated with events sent via this event service. */
 @property (atomic,copy) NSString* language;
 
-/** The account name associated with events sent via this event service. */
+/**
+ *  The account name associated with events sent via this event service.
+ *
+ *  If you do not assign a value to this property, the app's bundle id will be sent to Criteo, instead.
+ */
 @property (atomic, copy) NSString* accountName;
 
 /**
