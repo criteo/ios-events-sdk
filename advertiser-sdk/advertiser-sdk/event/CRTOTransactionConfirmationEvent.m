@@ -45,6 +45,28 @@
     [self setIntegerExtraData:deduplication ForKey:kCRTOJSONUniversalTagParametersHelperDeduplicationKey];
 }
 
+- (BOOL) newCustomer
+{
+    CRTOExtraData* newCustomer = [self getExtraDataForKey:kCRTOJSONUniversalTagParametersHelperNew_CustomerKey];
+
+    if (newCustomer == nil) {
+        return false;
+    }
+
+    if (newCustomer.type != CRTOExtraDataTypeInteger) {
+        return false;
+    }
+
+    NSNumber* newCustomerValue = newCustomer.value;
+
+    return newCustomerValue.boolValue;
+}
+
+- (void) setNewCustomer:(BOOL)newCustomer
+{
+    [self setIntegerExtraData:newCustomer ForKey:kCRTOJSONUniversalTagParametersHelperNew_CustomerKey];
+}
+
 #pragma mark - Initializers
 
 - (instancetype) init

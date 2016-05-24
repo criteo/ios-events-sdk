@@ -18,6 +18,14 @@
 /** The 3 letter ISO-4217 code representing the currency in which this transaction was made. */
 @property (nonatomic,copy) NSString* currency;
 
+/**
+ *  An optional @c BOOL indicating whether or not this is the first sale recorded for the user associated with this transaction event. The default value for this property is @c false.
+ *  This property will not be sent to the backend if you do not explicitly set it.
+ *
+ *  @since 1.1
+ */
+@property (nonatomic) BOOL newCustomer;
+
 /** A string containing your organization's unique identifier for this transaction. */
 @property (nonatomic,copy) NSString* transactionId;
 
