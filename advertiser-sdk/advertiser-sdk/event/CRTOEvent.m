@@ -12,6 +12,8 @@
 #import "CRTOExtraData.h"
 #import "CRTOJSONConstants.h"
 
+#define CRTO_USERSEGMENT_NONE (0);
+
 @implementation CRTOEvent
 {
     NSMutableDictionary* extraData;
@@ -96,6 +98,24 @@
     if ( startDate != nil ) {
         [self addExtraData:startDate forKey:kCRTOJSONPropertyNameCheckin_DateKey withType:CRTOExtraDataTypeDate];
     }
+}
+
+- (int) userSegment
+{
+    CRTOExtraData* segmentED = [self getExtraDataForKey:kCRTOJSONUniversalTagParametersHelperUser_SegmentKey];
+
+    if ( segmentED.type == CRTOExtraDataTypeInteger ) {
+        NSNumber* segmentValue = segmentED.value;
+
+        return segmentValue.intValue;
+    }
+
+    return CRTO_USERSEGMENT_NONE;
+}
+
+- (void) setUserSegment:(int)userSegment
+{
+    [self setIntegerExtraData:userSegment ForKey:kCRTOJSONUniversalTagParametersHelperUser_SegmentKey];
 }
 
 #pragma mark - Class Extension Properties

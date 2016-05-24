@@ -95,6 +95,17 @@
 @property (nonatomic,strong) NSDateComponents* endDate;
 
 /**
+ *  The custom user segment associated with this event.
+ *
+ *  @discussion
+ *  The default value of this property is @c 0. This property is optional. If
+ *  you do not assign a value to this property, it will not be sent to Criteo.
+ *
+ *  @since 1.1
+ */
+@property (nonatomic) int userSegment;
+
+/**
  *  Returns an initialized @c CRTOEvent object that contains no data.
  *
  *  @return An initialized @c CRTOEvent object that contains no data.
