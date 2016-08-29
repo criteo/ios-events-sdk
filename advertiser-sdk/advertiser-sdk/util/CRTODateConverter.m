@@ -19,7 +19,7 @@
 
 + (NSDateComponents*) convertUTCDate:(NSDate*)date toComponents:(NSCalendarUnit)unitFlags
 {
-    NSCalendar* gregorian = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+    NSCalendar* gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     gregorian.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
 
     NSDateComponents* components = [gregorian components:unitFlags
@@ -68,7 +68,7 @@
     copy.day      = components.day;
     copy.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
 
-    NSCalendar* gregorian = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+    NSCalendar* gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
 
     NSDate* result = [gregorian dateFromComponents:copy];
 
@@ -91,7 +91,7 @@
     copy.second   = components.second;
     copy.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
 
-    NSCalendar* gregorian = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
+    NSCalendar* gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
 
     NSDate* result = [gregorian dateFromComponents:copy];
 
