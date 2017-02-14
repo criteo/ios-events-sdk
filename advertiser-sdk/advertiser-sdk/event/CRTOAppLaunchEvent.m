@@ -5,7 +5,7 @@
 //  Copyright (c) 2015 Criteo. All rights reserved.
 //
 
-#import <CriteoAdvertiser/CRTOAppLaunchEvent.h>
+#import "CRTOAppLaunchEvent.h"
 #import "CRTOAppLaunchEvent+Internal.h"
 #import "CRTOEvent+Internal.h"
 

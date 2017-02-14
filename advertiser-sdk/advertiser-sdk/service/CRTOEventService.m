@@ -5,7 +5,7 @@
 //  Copyright (c) 2015 Criteo. All rights reserved.
 //
 
-#import <CriteoAdvertiser/CRTOEventService.h>
+#import "CRTOEventService.h"
 #import "CRTODeviceInfo.h"
 #import "CRTOEventService+Internal.h"
 #import "CRTOEvent+Internal.h"

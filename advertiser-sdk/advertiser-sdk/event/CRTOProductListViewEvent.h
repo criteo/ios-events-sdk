@@ -5,8 +5,8 @@
 //  Copyright (c) 2015 Criteo. All rights reserved.
 //
 
-#import <CriteoAdvertiser/CRTOEvent.h>
-#import <CriteoAdvertiser/CRTOProduct.h>
+#import "CRTOEvent.h"
+#import "CRTOProduct.h"
 
 /**
  *  @c CRTOProductListViewEvent is a concrete subclass of @c CRTOEvent used to describe a product list view event.

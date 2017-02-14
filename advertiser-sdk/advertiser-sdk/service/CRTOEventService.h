@@ -5,7 +5,7 @@
 //  Copyright (c) 2015 Criteo. All rights reserved.
 //
 
-#import <CriteoAdvertiser/CRTOEvent.h>
+#import "CRTOEvent.h"
 
 /** Indicates the type of email values you will assign to the @c CRTOEventService.customerEmail property. */
 typedef NS_ENUM(NSInteger, CRTOEventServiceEmailType) {

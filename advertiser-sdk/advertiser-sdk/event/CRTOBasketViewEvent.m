@@ -5,8 +5,8 @@
 //  Copyright (c) 2015 Criteo. All rights reserved.
 //
 
-#import <CriteoAdvertiser/CRTOBasketViewEvent.h>
-#import <CriteoAdvertiser/CRTOBasketProduct.h>
+#import "CRTOBasketViewEvent.h"
+#import "CRTOBasketProduct.h"
 #import "CRTOBasketViewEvent+Internal.h"
 #import "CRTOEvent+Internal.h"
 

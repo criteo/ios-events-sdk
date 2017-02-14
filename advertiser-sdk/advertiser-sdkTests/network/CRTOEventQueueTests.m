@@ -7,7 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
-#import "Nocilla.h"
+#import <Nocilla.h>
 
 #import "CRTOEvent.h"
 #import "CRTOEvent+Internal.h"

@@ -13,17 +13,17 @@
 //! Project version number for Criteo Advertiser SDK
 FOUNDATION_EXPORT double CriteoAdvertiserVersionNumber;
 
-#import <CriteoAdvertiser/CRTOProduct.h>
-#import <CriteoAdvertiser/CRTOBasketProduct.h>
+#import "CRTOProduct.h"
+#import "CRTOBasketProduct.h"
 
-#import <CriteoAdvertiser/CRTOEvent.h>
-#import <CriteoAdvertiser/CRTOAppLaunchEvent.h>
-#import <CriteoAdvertiser/CRTOBasketViewEvent.h>
-#import <CriteoAdvertiser/CRTODataEvent.h>
-#import <CriteoAdvertiser/CRTODeeplinkEvent.h>
-#import <CriteoAdvertiser/CRTOHomeViewEvent.h>
-#import <CriteoAdvertiser/CRTOProductListViewEvent.h>
-#import <CriteoAdvertiser/CRTOProductViewEvent.h>
-#import <CriteoAdvertiser/CRTOTransactionConfirmationEvent.h>
+#import "CRTOEvent.h"
+#import "CRTOAppLaunchEvent.h"
+#import "CRTOBasketViewEvent.h"
+#import "CRTODataEvent.h"
+#import "CRTODeeplinkEvent.h"
+#import "CRTOHomeViewEvent.h"
+#import "CRTOProductListViewEvent.h"
+#import "CRTOProductViewEvent.h"
+#import "CRTOTransactionConfirmationEvent.h"
 
-#import <CriteoAdvertiser/CRTOEventService.h>
+#import "CRTOEventService.h"

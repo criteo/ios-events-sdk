@@ -5,8 +5,8 @@
 //  Copyright (c) 2015 Criteo. All rights reserved.
 //
 
-#import <CriteoAdvertiser/CRTOTransactionConfirmationEvent.h>
-#import <CriteoAdvertiser/CRTOBasketProduct.h>
+#import "CRTOTransactionConfirmationEvent.h"
+#import "CRTOBasketProduct.h"
 #import "CRTOTransactionConfirmationEvent+Internal.h"
 #import "CRTOEvent+Internal.h"
 #import "CRTOJSONConstants.h"

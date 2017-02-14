@@ -5,7 +5,7 @@
 //  Copyright (c) 2015 Criteo. All rights reserved.
 //
 
-#import <CriteoAdvertiser/CRTOEvent.h>
+#import "CRTOEvent.h"
 #import "CRTOEvent+Internal.h"
 
 #import "CRTODateConverter.h"

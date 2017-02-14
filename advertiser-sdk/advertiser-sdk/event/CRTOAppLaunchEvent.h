@@ -5,7 +5,7 @@
 //  Copyright (c) 2015 Criteo. All rights reserved.
 //
 
-#import <CriteoAdvertiser/CRTOEvent.h>
+#import "CRTOEvent.h"
 
 /**
  *  Key used to store the app's initial launch state in @c [NSUserDefaults standardUserDefaults].
