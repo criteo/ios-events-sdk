@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0630"
-   version = "1.7">
+   LastUpgradeVersion = "0820"
+   version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
@@ -14,92 +14,78 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "258CDC091AF757D0009E678E"
+               BlueprintIdentifier = "25783F681B5D5AFE004F940C"
                BuildableName = "CriteoAdvertiser.framework"
-               BlueprintName = "advertiser-sdk-dynamic"
-               ReferencedContainer = "container:advertiser-sdk.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "258CDC141AF757D0009E678E"
-               BuildableName = "advertiser-sdkTests-dynamic.xctest"
-               BlueprintName = "advertiser-sdkTests-dynamic"
-               ReferencedContainer = "container:advertiser-sdk.xcodeproj">
+               BlueprintName = "events-sdk-static"
+               ReferencedContainer = "container:events-sdk.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      buildConfiguration = "Debug">
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "258CDC141AF757D0009E678E"
-               BuildableName = "advertiser-sdkTests-dynamic.xctest"
-               BlueprintName = "advertiser-sdkTests-dynamic"
-               ReferencedContainer = "container:advertiser-sdk.xcodeproj">
+               BlueprintIdentifier = "25783F9F1B5D5B62004F940C"
+               BuildableName = "events-sdkTests-static.xctest"
+               BlueprintName = "events-sdkTests-static"
+               ReferencedContainer = "container:events-sdk.xcodeproj">
             </BuildableReference>
-            <DeviceAppData
-               resolvedPath = "../advertiser-sdk/advertiser-sdkTests/TestData.xcappdata">
-            </DeviceAppData>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "258CDC091AF757D0009E678E"
+            BlueprintIdentifier = "25783F681B5D5AFE004F940C"
             BuildableName = "CriteoAdvertiser.framework"
-            BlueprintName = "advertiser-sdk-dynamic"
-            ReferencedContainer = "container:advertiser-sdk.xcodeproj">
+            BlueprintName = "events-sdk-static"
+            ReferencedContainer = "container:events-sdk.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
+      <AdditionalOptions>
+      </AdditionalOptions>
    </TestAction>
    <LaunchAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "258CDC091AF757D0009E678E"
+            BlueprintIdentifier = "25783F681B5D5AFE004F940C"
             BuildableName = "CriteoAdvertiser.framework"
-            BlueprintName = "advertiser-sdk-dynamic"
-            ReferencedContainer = "container:advertiser-sdk.xcodeproj">
+            BlueprintName = "events-sdk-static"
+            ReferencedContainer = "container:events-sdk.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
+      buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "258CDC091AF757D0009E678E"
+            BlueprintIdentifier = "25783F681B5D5AFE004F940C"
             BuildableName = "CriteoAdvertiser.framework"
-            BlueprintName = "advertiser-sdk-dynamic"
-            ReferencedContainer = "container:advertiser-sdk.xcodeproj">
+            BlueprintName = "events-sdk-static"
+            ReferencedContainer = "container:events-sdk.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
@@ -108,7 +94,6 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
-      customArchiveName = "CriteoAdvertiser"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
