@@ -1,0 +1,885 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		25783F6A1B5D5AFE004F940C /* CRTODeeplinkEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A1A1061B3D7954008841EA /* CRTODeeplinkEvent.m */; };
+		25783F6B1B5D5AFE004F940C /* CRTOProductListViewEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 259AA6061AF7DEED006743A5 /* CRTOProductListViewEvent.m */; };
+		25783F6C1B5D5AFE004F940C /* CRTOEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 258CDC281AF76EA5009E678E /* CRTOEvent.m */; };
+		25783F6D1B5D5AFE004F940C /* CRTOAppInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A94F11B0CE5AE009F5C06 /* CRTOAppInfo.m */; };
+		25783F6E1B5D5AFE004F940C /* CRTOBasketProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 259AA6201AF7E081006743A5 /* CRTOBasketProduct.m */; };
+		25783F6F1B5D5AFE004F940C /* CRTODateFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 25103EF11B1F5256009B5D24 /* CRTODateFormatter.m */; };
+		25783F701B5D5AFE004F940C /* CRTOEventQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 253BA7251B13803300113FBF /* CRTOEventQueue.m */; };
+		25783F711B5D5AFE004F940C /* CRTODataEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 251004961AF9216D00701F7F /* CRTODataEvent.m */; };
+		25783F721B5D5AFE004F940C /* CRTOBasketViewEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 259AA6251AF8A5CB006743A5 /* CRTOBasketViewEvent.m */; };
+		25783F731B5D5AFE004F940C /* CRTODeviceInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A94EC1B0CCB31009F5C06 /* CRTODeviceInfo.m */; };
+		25783F741B5D5AFE004F940C /* CRTOEventQueueItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 253BA72A1B13804100113FBF /* CRTOEventQueueItem.m */; };
+		25783F751B5D5AFE004F940C /* CRTOTransactionConfirmationEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 259AA6101AF7DF48006743A5 /* CRTOTransactionConfirmationEvent.m */; };
+		25783F761B5D5AFE004F940C /* CRTOProductViewEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 259AA60B1AF7DF11006743A5 /* CRTOProductViewEvent.m */; };
+		25783F771B5D5AFE004F940C /* CRTOEventService.m in Sources */ = {isa = PBXBuildFile; fileRef = 250560781AF8F96D006804AA /* CRTOEventService.m */; };
+		25783F781B5D5AFE004F940C /* CRTOAppLaunchEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 259AA5FC1AF7C8F9006743A5 /* CRTOAppLaunchEvent.m */; };
+		25783F791B5D5AFE004F940C /* CRTOExtraData.m in Sources */ = {isa = PBXBuildFile; fileRef = 252D17931B0E5FF000DB6D91 /* CRTOExtraData.m */; };
+		25783F7A1B5D5AFE004F940C /* CRTODateConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = 25760CB01B5907890008FD12 /* CRTODateConverter.m */; };
+		25783F7B1B5D5AFE004F940C /* CRTOJSONEventSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = 2505607E1AF9156F006804AA /* CRTOJSONEventSerializer.m */; };
+		25783F7C1B5D5AFE004F940C /* CRTOProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 259AA61B1AF7E06A006743A5 /* CRTOProduct.m */; };
+		25783F7D1B5D5AFE004F940C /* CRTOSDKInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 255A94F61B0CE88E009F5C06 /* CRTOSDKInfo.m */; };
+		25783F7E1B5D5AFE004F940C /* CRTOJSONConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 25CF740E1B0E19E4001A023A /* CRTOJSONConstants.m */; };
+		25783F7F1B5D5AFE004F940C /* CRTOHomeViewEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 259AA6011AF7CBB5006743A5 /* CRTOHomeViewEvent.m */; };
+		25783F821B5D5AFE004F940C /* CriteoAdvertiser.h in Headers */ = {isa = PBXBuildFile; fileRef = 255D0C2F1B171C98001634BE /* CriteoAdvertiser.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		25783F831B5D5AFE004F940C /* CRTOProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = 259AA61A1AF7E06A006743A5 /* CRTOProduct.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		25783F841B5D5AFE004F940C /* CRTOBasketProduct.h in Headers */ = {isa = PBXBuildFile; fileRef = 259AA61F1AF7E081006743A5 /* CRTOBasketProduct.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		25783F851B5D5AFE004F940C /* CRTOEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 258CDC271AF76EA5009E678E /* CRTOEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		25783F861B5D5AFE004F940C /* CRTODateConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = 25760CAF1B5907890008FD12 /* CRTODateConverter.h */; };
+		25783F871B5D5AFE004F940C /* CRTOAppLaunchEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 259AA5FB1AF7C8F9006743A5 /* CRTOAppLaunchEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		25783F881B5D5AFE004F940C /* CRTOEventQueueItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 253BA7291B13804100113FBF /* CRTOEventQueueItem.h */; };
+		25783F891B5D5AFE004F940C /* CRTOBasketViewEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 259AA6241AF8A5CB006743A5 /* CRTOBasketViewEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		25783F8A1B5D5AFE004F940C /* CRTODataEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 251004951AF9216D00701F7F /* CRTODataEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		25783F8B1B5D5AFE004F940C /* CRTOHomeViewEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 259AA6001AF7CBB5006743A5 /* CRTOHomeViewEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		25783F8C1B5D5AFE004F940C /* CRTOProductListViewEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 259AA6051AF7DEED006743A5 /* CRTOProductListViewEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		25783F8D1B5D5AFE004F940C /* CRTOProductViewEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 259AA60A1AF7DF11006743A5 /* CRTOProductViewEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		25783F8E1B5D5AFE004F940C /* CRTODeeplinkEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 25A1A1051B3D7954008841EA /* CRTODeeplinkEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		25783F8F1B5D5AFE004F940C /* CRTODateFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 25103EF01B1F5256009B5D24 /* CRTODateFormatter.h */; };
+		25783F901B5D5AFE004F940C /* CRTOTransactionConfirmationEvent.h in Headers */ = {isa = PBXBuildFile; fileRef = 259AA60F1AF7DF48006743A5 /* CRTOTransactionConfirmationEvent.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		25783F911B5D5AFE004F940C /* CRTOEventService.h in Headers */ = {isa = PBXBuildFile; fileRef = 250560771AF8F96D006804AA /* CRTOEventService.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		25783F921B5D5AFE004F940C /* CRTOJSONConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = 25CF740D1B0E19E4001A023A /* CRTOJSONConstants.h */; };
+		25783F931B5D5AFE004F940C /* CRTOAppInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 255A94F01B0CE5AE009F5C06 /* CRTOAppInfo.h */; };
+		25783F941B5D5AFE004F940C /* CRTOEventQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 253BA7241B13803300113FBF /* CRTOEventQueue.h */; };
+		25783F951B5D5AFE004F940C /* CRTOJSONEventSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = 2505607D1AF9156F006804AA /* CRTOJSONEventSerializer.h */; };
+		25783F961B5D5AFE004F940C /* CRTOSDKInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 255A94F51B0CE88E009F5C06 /* CRTOSDKInfo.h */; };
+		25783F971B5D5AFE004F940C /* CRTOExtraData.h in Headers */ = {isa = PBXBuildFile; fileRef = 252D17921B0E5FF000DB6D91 /* CRTOExtraData.h */; };
+		25783F981B5D5AFE004F940C /* CRTODeviceInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 255A94EB1B0CCB31009F5C06 /* CRTODeviceInfo.h */; };
+		257D24551CDA41FA007C32D7 /* CRTOMd5Hasher.h in Headers */ = {isa = PBXBuildFile; fileRef = 257D24521CDA41FA007C32D7 /* CRTOMd5Hasher.h */; };
+		257D24571CDA41FA007C32D7 /* CRTOMd5Hasher.m in Sources */ = {isa = PBXBuildFile; fileRef = 257D24531CDA41FA007C32D7 /* CRTOMd5Hasher.m */; };
+		A602CA9A3B4AA142D0DD04D4 /* libPods-events-sdkTests-static.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 61FF6BCEE1D6C2A253DA2259 /* libPods-events-sdkTests-static.a */; };
+		A9960F031E55DCF300E8EB70 /* CRTOAppLaunchEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A98975F41E5489B200D5AC6F /* CRTOAppLaunchEventTests.m */; };
+		A9960F041E55DCF300E8EB70 /* CRTOBasketViewEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A98975F51E5489B200D5AC6F /* CRTOBasketViewEventTests.m */; };
+		A9960F051E55DCF300E8EB70 /* CRTODataEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A98975F61E5489B200D5AC6F /* CRTODataEventTests.m */; };
+		A9960F061E55DCF300E8EB70 /* CRTODeeplinkEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A98975F71E5489B200D5AC6F /* CRTODeeplinkEventTests.m */; };
+		A9960F071E55DCF300E8EB70 /* CRTOEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A98975F81E5489B200D5AC6F /* CRTOEventTests.m */; };
+		A9960F081E55DCF300E8EB70 /* CRTOHomeViewEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A98975F91E5489B200D5AC6F /* CRTOHomeViewEventTests.m */; };
+		A9960F091E55DCF300E8EB70 /* CRTOProductListViewEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A98975FA1E5489B200D5AC6F /* CRTOProductListViewEventTests.m */; };
+		A9960F0A1E55DCF300E8EB70 /* CRTOProductViewEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A98975FB1E5489B200D5AC6F /* CRTOProductViewEventTests.m */; };
+		A9960F0B1E55DCF300E8EB70 /* CRTOTransactionConfirmationEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A98975FC1E5489B200D5AC6F /* CRTOTransactionConfirmationEventTests.m */; };
+		A9960F0C1E55DCF300E8EB70 /* CRTODateFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A98975F01E54899100D5AC6F /* CRTODateFormatterTests.m */; };
+		A9960F0D1E55DCF300E8EB70 /* CRTOJSONEventSerializerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A98975F11E54899100D5AC6F /* CRTOJSONEventSerializerTests.m */; };
+		A9960F0E1E55DCF300E8EB70 /* CRTOEventQueueItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A98976081E5489D000D5AC6F /* CRTOEventQueueItemTests.m */; };
+		A9960F0F1E55DCF300E8EB70 /* CRTOEventQueueTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A98976091E5489D000D5AC6F /* CRTOEventQueueTests.m */; };
+		A9960F101E55DCF300E8EB70 /* CRTOBasketProductTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A989760C1E5489EF00D5AC6F /* CRTOBasketProductTests.m */; };
+		A9960F111E55DCF300E8EB70 /* CRTOProductTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A989760D1E5489EF00D5AC6F /* CRTOProductTests.m */; };
+		A9960F121E55DCF300E8EB70 /* CRTOEventServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A98976061E5489C200D5AC6F /* CRTOEventServiceTests.m */; };
+		A9960F131E55DCF300E8EB70 /* CRTOAppInfoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A98976101E548A0400D5AC6F /* CRTOAppInfoTests.m */; };
+		A9960F141E55DCF300E8EB70 /* CRTODateConverterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A98976111E548A0400D5AC6F /* CRTODateConverterTests.m */; };
+		A9960F151E55DCF300E8EB70 /* CRTODeviceInfoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A98976121E548A0400D5AC6F /* CRTODeviceInfoTests.m */; };
+		A9960F161E55DCF300E8EB70 /* CRTOMd5HasherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A98976131E548A0400D5AC6F /* CRTOMd5HasherTests.m */; };
+		A9960F171E55DCF300E8EB70 /* CRTOSDKInfoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A98976141E548A0400D5AC6F /* CRTOSDKInfoTests.m */; };
+		A9960F181E55DEA400E8EB70 /* CriteoAdvertiser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25783F9D1B5D5AFE004F940C /* CriteoAdvertiser.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		25783FC11B5D5BC5004F940C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 258CDC011AF757D0009E678E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 25783F681B5D5AFE004F940C;
+			remoteInfo = "advertiser-sdk-static";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		16CEF5D47248F3D57E26B47E /* Pods-events-sdkTests-static.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-events-sdkTests-static.release.xcconfig"; path = "Pods/Target Support Files/Pods-events-sdkTests-static/Pods-events-sdkTests-static.release.xcconfig"; sourceTree = "<group>"; };
+		250240731B06512100002E27 /* CRTOEvent+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CRTOEvent+Internal.h"; sourceTree = "<group>"; };
+		250240741B065C7200002E27 /* CRTOTransactionConfirmationEvent+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CRTOTransactionConfirmationEvent+Internal.h"; sourceTree = "<group>"; };
+		250240751B065CE000002E27 /* CRTOProductViewEvent+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CRTOProductViewEvent+Internal.h"; sourceTree = "<group>"; };
+		250240761B065D4C00002E27 /* CRTOProductListViewEvent+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CRTOProductListViewEvent+Internal.h"; sourceTree = "<group>"; };
+		250240771B065DBA00002E27 /* CRTOBasketViewEvent+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CRTOBasketViewEvent+Internal.h"; sourceTree = "<group>"; };
+		250240781B065DF400002E27 /* CRTODataEvent+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CRTODataEvent+Internal.h"; sourceTree = "<group>"; };
+		250240791B065E4F00002E27 /* CRTOHomeViewEvent+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CRTOHomeViewEvent+Internal.h"; sourceTree = "<group>"; };
+		2502407A1B065EEF00002E27 /* CRTOAppLaunchEvent+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CRTOAppLaunchEvent+Internal.h"; sourceTree = "<group>"; };
+		250560771AF8F96D006804AA /* CRTOEventService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTOEventService.h; sourceTree = "<group>"; };
+		250560781AF8F96D006804AA /* CRTOEventService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOEventService.m; sourceTree = "<group>"; };
+		2505607D1AF9156F006804AA /* CRTOJSONEventSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTOJSONEventSerializer.h; sourceTree = "<group>"; };
+		2505607E1AF9156F006804AA /* CRTOJSONEventSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOJSONEventSerializer.m; sourceTree = "<group>"; };
+		251004951AF9216D00701F7F /* CRTODataEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTODataEvent.h; sourceTree = "<group>"; };
+		251004961AF9216D00701F7F /* CRTODataEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTODataEvent.m; sourceTree = "<group>"; };
+		25103EF01B1F5256009B5D24 /* CRTODateFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTODateFormatter.h; sourceTree = "<group>"; };
+		25103EF11B1F5256009B5D24 /* CRTODateFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTODateFormatter.m; sourceTree = "<group>"; };
+		252D17921B0E5FF000DB6D91 /* CRTOExtraData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTOExtraData.h; sourceTree = "<group>"; };
+		252D17931B0E5FF000DB6D91 /* CRTOExtraData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOExtraData.m; sourceTree = "<group>"; };
+		253BA7241B13803300113FBF /* CRTOEventQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTOEventQueue.h; sourceTree = "<group>"; };
+		253BA7251B13803300113FBF /* CRTOEventQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOEventQueue.m; sourceTree = "<group>"; };
+		253BA7291B13804100113FBF /* CRTOEventQueueItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTOEventQueueItem.h; sourceTree = "<group>"; };
+		253BA72A1B13804100113FBF /* CRTOEventQueueItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOEventQueueItem.m; sourceTree = "<group>"; };
+		255A94EB1B0CCB31009F5C06 /* CRTODeviceInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTODeviceInfo.h; sourceTree = "<group>"; };
+		255A94EC1B0CCB31009F5C06 /* CRTODeviceInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTODeviceInfo.m; sourceTree = "<group>"; };
+		255A94F01B0CE5AE009F5C06 /* CRTOAppInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTOAppInfo.h; sourceTree = "<group>"; };
+		255A94F11B0CE5AE009F5C06 /* CRTOAppInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOAppInfo.m; sourceTree = "<group>"; };
+		255A94F51B0CE88E009F5C06 /* CRTOSDKInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTOSDKInfo.h; sourceTree = "<group>"; };
+		255A94F61B0CE88E009F5C06 /* CRTOSDKInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOSDKInfo.m; sourceTree = "<group>"; };
+		255B925A1B0A040200F46E8F /* CRTOEventService+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CRTOEventService+Internal.h"; sourceTree = "<group>"; };
+		255D0C2F1B171C98001634BE /* CriteoAdvertiser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CriteoAdvertiser.h; sourceTree = "<group>"; };
+		25760CAF1B5907890008FD12 /* CRTODateConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTODateConverter.h; sourceTree = "<group>"; };
+		25760CB01B5907890008FD12 /* CRTODateConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTODateConverter.m; sourceTree = "<group>"; };
+		25783F9D1B5D5AFE004F940C /* CriteoAdvertiser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CriteoAdvertiser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		25783FBF1B5D5B62004F940C /* events-sdkTests-static.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "events-sdkTests-static.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		25786D731B57C9A900731ADE /* CRTONetworkDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CRTONetworkDefines.h; sourceTree = "<group>"; };
+		257D24521CDA41FA007C32D7 /* CRTOMd5Hasher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTOMd5Hasher.h; sourceTree = "<group>"; };
+		257D24531CDA41FA007C32D7 /* CRTOMd5Hasher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOMd5Hasher.m; sourceTree = "<group>"; };
+		258CDC0E1AF757D0009E678E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		258CDC1B1AF757D0009E678E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = "events-sdkTests/Info.plist"; sourceTree = "<group>"; };
+		258CDC271AF76EA5009E678E /* CRTOEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTOEvent.h; sourceTree = "<group>"; };
+		258CDC281AF76EA5009E678E /* CRTOEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOEvent.m; sourceTree = "<group>"; };
+		259AA5FB1AF7C8F9006743A5 /* CRTOAppLaunchEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTOAppLaunchEvent.h; sourceTree = "<group>"; };
+		259AA5FC1AF7C8F9006743A5 /* CRTOAppLaunchEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOAppLaunchEvent.m; sourceTree = "<group>"; };
+		259AA6001AF7CBB5006743A5 /* CRTOHomeViewEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTOHomeViewEvent.h; sourceTree = "<group>"; };
+		259AA6011AF7CBB5006743A5 /* CRTOHomeViewEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOHomeViewEvent.m; sourceTree = "<group>"; };
+		259AA6051AF7DEED006743A5 /* CRTOProductListViewEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTOProductListViewEvent.h; sourceTree = "<group>"; };
+		259AA6061AF7DEED006743A5 /* CRTOProductListViewEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOProductListViewEvent.m; sourceTree = "<group>"; };
+		259AA60A1AF7DF11006743A5 /* CRTOProductViewEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTOProductViewEvent.h; sourceTree = "<group>"; };
+		259AA60B1AF7DF11006743A5 /* CRTOProductViewEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOProductViewEvent.m; sourceTree = "<group>"; };
+		259AA60F1AF7DF48006743A5 /* CRTOTransactionConfirmationEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTOTransactionConfirmationEvent.h; sourceTree = "<group>"; };
+		259AA6101AF7DF48006743A5 /* CRTOTransactionConfirmationEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOTransactionConfirmationEvent.m; sourceTree = "<group>"; };
+		259AA61A1AF7E06A006743A5 /* CRTOProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTOProduct.h; sourceTree = "<group>"; };
+		259AA61B1AF7E06A006743A5 /* CRTOProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOProduct.m; sourceTree = "<group>"; };
+		259AA61F1AF7E081006743A5 /* CRTOBasketProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTOBasketProduct.h; sourceTree = "<group>"; };
+		259AA6201AF7E081006743A5 /* CRTOBasketProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOBasketProduct.m; sourceTree = "<group>"; };
+		259AA6241AF8A5CB006743A5 /* CRTOBasketViewEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTOBasketViewEvent.h; sourceTree = "<group>"; };
+		259AA6251AF8A5CB006743A5 /* CRTOBasketViewEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOBasketViewEvent.m; sourceTree = "<group>"; };
+		25A1A1051B3D7954008841EA /* CRTODeeplinkEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTODeeplinkEvent.h; sourceTree = "<group>"; };
+		25A1A1061B3D7954008841EA /* CRTODeeplinkEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTODeeplinkEvent.m; sourceTree = "<group>"; };
+		25A1A1091B3D7996008841EA /* CRTODeeplinkEvent+Internal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CRTODeeplinkEvent+Internal.h"; sourceTree = "<group>"; };
+		25CF740D1B0E19E4001A023A /* CRTOJSONConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CRTOJSONConstants.h; sourceTree = "<group>"; };
+		25CF740E1B0E19E4001A023A /* CRTOJSONConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOJSONConstants.m; sourceTree = "<group>"; };
+		2F592916C74B18F2B57FAD64 /* Pods-events-sdkTests-static.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-events-sdkTests-static.debug.xcconfig"; path = "Pods/Target Support Files/Pods-events-sdkTests-static/Pods-events-sdkTests-static.debug.xcconfig"; sourceTree = "<group>"; };
+		61FF6BCEE1D6C2A253DA2259 /* libPods-events-sdkTests-static.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-events-sdkTests-static.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A98975F01E54899100D5AC6F /* CRTODateFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRTODateFormatterTests.m; path = "events-sdkTests/event/serializer/CRTODateFormatterTests.m"; sourceTree = SOURCE_ROOT; };
+		A98975F11E54899100D5AC6F /* CRTOJSONEventSerializerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRTOJSONEventSerializerTests.m; path = "events-sdkTests/event/serializer/CRTOJSONEventSerializerTests.m"; sourceTree = SOURCE_ROOT; };
+		A98975F41E5489B200D5AC6F /* CRTOAppLaunchEventTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRTOAppLaunchEventTests.m; path = "events-sdkTests/event/CRTOAppLaunchEventTests.m"; sourceTree = SOURCE_ROOT; };
+		A98975F51E5489B200D5AC6F /* CRTOBasketViewEventTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRTOBasketViewEventTests.m; path = "events-sdkTests/event/CRTOBasketViewEventTests.m"; sourceTree = SOURCE_ROOT; };
+		A98975F61E5489B200D5AC6F /* CRTODataEventTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRTODataEventTests.m; path = "events-sdkTests/event/CRTODataEventTests.m"; sourceTree = SOURCE_ROOT; };
+		A98975F71E5489B200D5AC6F /* CRTODeeplinkEventTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRTODeeplinkEventTests.m; path = "events-sdkTests/event/CRTODeeplinkEventTests.m"; sourceTree = SOURCE_ROOT; };
+		A98975F81E5489B200D5AC6F /* CRTOEventTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRTOEventTests.m; path = "events-sdkTests/event/CRTOEventTests.m"; sourceTree = SOURCE_ROOT; };
+		A98975F91E5489B200D5AC6F /* CRTOHomeViewEventTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRTOHomeViewEventTests.m; path = "events-sdkTests/event/CRTOHomeViewEventTests.m"; sourceTree = SOURCE_ROOT; };
+		A98975FA1E5489B200D5AC6F /* CRTOProductListViewEventTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRTOProductListViewEventTests.m; path = "events-sdkTests/event/CRTOProductListViewEventTests.m"; sourceTree = SOURCE_ROOT; };
+		A98975FB1E5489B200D5AC6F /* CRTOProductViewEventTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRTOProductViewEventTests.m; path = "events-sdkTests/event/CRTOProductViewEventTests.m"; sourceTree = SOURCE_ROOT; };
+		A98975FC1E5489B200D5AC6F /* CRTOTransactionConfirmationEventTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRTOTransactionConfirmationEventTests.m; path = "events-sdkTests/event/CRTOTransactionConfirmationEventTests.m"; sourceTree = SOURCE_ROOT; };
+		A98976061E5489C200D5AC6F /* CRTOEventServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRTOEventServiceTests.m; path = "events-sdkTests/service/CRTOEventServiceTests.m"; sourceTree = SOURCE_ROOT; };
+		A98976081E5489D000D5AC6F /* CRTOEventQueueItemTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRTOEventQueueItemTests.m; path = "events-sdkTests/network/CRTOEventQueueItemTests.m"; sourceTree = SOURCE_ROOT; };
+		A98976091E5489D000D5AC6F /* CRTOEventQueueTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRTOEventQueueTests.m; path = "events-sdkTests/network/CRTOEventQueueTests.m"; sourceTree = SOURCE_ROOT; };
+		A989760C1E5489EF00D5AC6F /* CRTOBasketProductTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRTOBasketProductTests.m; path = "events-sdkTests/product/CRTOBasketProductTests.m"; sourceTree = SOURCE_ROOT; };
+		A989760D1E5489EF00D5AC6F /* CRTOProductTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRTOProductTests.m; path = "events-sdkTests/product/CRTOProductTests.m"; sourceTree = SOURCE_ROOT; };
+		A98976101E548A0400D5AC6F /* CRTOAppInfoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRTOAppInfoTests.m; path = "events-sdkTests/util/CRTOAppInfoTests.m"; sourceTree = SOURCE_ROOT; };
+		A98976111E548A0400D5AC6F /* CRTODateConverterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRTODateConverterTests.m; path = "events-sdkTests/util/CRTODateConverterTests.m"; sourceTree = SOURCE_ROOT; };
+		A98976121E548A0400D5AC6F /* CRTODeviceInfoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRTODeviceInfoTests.m; path = "events-sdkTests/util/CRTODeviceInfoTests.m"; sourceTree = SOURCE_ROOT; };
+		A98976131E548A0400D5AC6F /* CRTOMd5HasherTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRTOMd5HasherTests.m; path = "events-sdkTests/util/CRTOMd5HasherTests.m"; sourceTree = SOURCE_ROOT; };
+		A98976141E548A0400D5AC6F /* CRTOSDKInfoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CRTOSDKInfoTests.m; path = "events-sdkTests/util/CRTOSDKInfoTests.m"; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		25783F801B5D5AFE004F940C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25783FB71B5D5B62004F940C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9960F181E55DEA400E8EB70 /* CriteoAdvertiser.framework in Frameworks */,
+				A602CA9A3B4AA142D0DD04D4 /* libPods-events-sdkTests-static.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		250560761AF8F952006804AA /* service */ = {
+			isa = PBXGroup;
+			children = (
+				250560771AF8F96D006804AA /* CRTOEventService.h */,
+				255B925A1B0A040200F46E8F /* CRTOEventService+Internal.h */,
+				250560781AF8F96D006804AA /* CRTOEventService.m */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
+		2505607C1AF91550006804AA /* serializer */ = {
+			isa = PBXGroup;
+			children = (
+				25103EF01B1F5256009B5D24 /* CRTODateFormatter.h */,
+				25103EF11B1F5256009B5D24 /* CRTODateFormatter.m */,
+				25CF740D1B0E19E4001A023A /* CRTOJSONConstants.h */,
+				25CF740E1B0E19E4001A023A /* CRTOJSONConstants.m */,
+				2505607D1AF9156F006804AA /* CRTOJSONEventSerializer.h */,
+				2505607E1AF9156F006804AA /* CRTOJSONEventSerializer.m */,
+			);
+			path = serializer;
+			sourceTree = "<group>";
+		};
+		2506B7561B0DDEC60091D5F8 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				A98976101E548A0400D5AC6F /* CRTOAppInfoTests.m */,
+				A98976111E548A0400D5AC6F /* CRTODateConverterTests.m */,
+				A98976121E548A0400D5AC6F /* CRTODeviceInfoTests.m */,
+				A98976131E548A0400D5AC6F /* CRTOMd5HasherTests.m */,
+				A98976141E548A0400D5AC6F /* CRTOSDKInfoTests.m */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
+		250E7F911B46D2C80027659C /* product */ = {
+			isa = PBXGroup;
+			children = (
+				A989760C1E5489EF00D5AC6F /* CRTOBasketProductTests.m */,
+				A989760D1E5489EF00D5AC6F /* CRTOProductTests.m */,
+			);
+			path = product;
+			sourceTree = "<group>";
+		};
+		25103EF41B1F589A009B5D24 /* serializer */ = {
+			isa = PBXGroup;
+			children = (
+				A98975F01E54899100D5AC6F /* CRTODateFormatterTests.m */,
+				A98975F11E54899100D5AC6F /* CRTOJSONEventSerializerTests.m */,
+			);
+			path = serializer;
+			sourceTree = "<group>";
+		};
+		253BA7231B13801600113FBF /* network */ = {
+			isa = PBXGroup;
+			children = (
+				253BA7241B13803300113FBF /* CRTOEventQueue.h */,
+				253BA7251B13803300113FBF /* CRTOEventQueue.m */,
+				253BA7291B13804100113FBF /* CRTOEventQueueItem.h */,
+				253BA72A1B13804100113FBF /* CRTOEventQueueItem.m */,
+				25786D731B57C9A900731ADE /* CRTONetworkDefines.h */,
+			);
+			path = network;
+			sourceTree = "<group>";
+		};
+		255A94EA1B0CCB04009F5C06 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				255A94F01B0CE5AE009F5C06 /* CRTOAppInfo.h */,
+				255A94F11B0CE5AE009F5C06 /* CRTOAppInfo.m */,
+				25760CAF1B5907890008FD12 /* CRTODateConverter.h */,
+				25760CB01B5907890008FD12 /* CRTODateConverter.m */,
+				255A94EB1B0CCB31009F5C06 /* CRTODeviceInfo.h */,
+				255A94EC1B0CCB31009F5C06 /* CRTODeviceInfo.m */,
+				257D24521CDA41FA007C32D7 /* CRTOMd5Hasher.h */,
+				257D24531CDA41FA007C32D7 /* CRTOMd5Hasher.m */,
+				255A94F51B0CE88E009F5C06 /* CRTOSDKInfo.h */,
+				255A94F61B0CE88E009F5C06 /* CRTOSDKInfo.m */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
+		258CDC001AF757D0009E678E = {
+			isa = PBXGroup;
+			children = (
+				258CDC0C1AF757D0009E678E /* events-sdk */,
+				258CDC191AF757D0009E678E /* events-sdkTests */,
+				258CDC0B1AF757D0009E678E /* Products */,
+				642666EA874CDA36611E10F1 /* Pods */,
+				FAA910706ABB85426C20894D /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		258CDC0B1AF757D0009E678E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				25783F9D1B5D5AFE004F940C /* CriteoAdvertiser.framework */,
+				25783FBF1B5D5B62004F940C /* events-sdkTests-static.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		258CDC0C1AF757D0009E678E /* events-sdk */ = {
+			isa = PBXGroup;
+			children = (
+				258CDC261AF76E34009E678E /* event */,
+				253BA7231B13801600113FBF /* network */,
+				259AA6191AF7E00B006743A5 /* product */,
+				250560761AF8F952006804AA /* service */,
+				255A94EA1B0CCB04009F5C06 /* util */,
+				255D0C2F1B171C98001634BE /* CriteoAdvertiser.h */,
+				258CDC0D1AF757D0009E678E /* Supporting Files */,
+			);
+			path = "events-sdk";
+			sourceTree = "<group>";
+		};
+		258CDC0D1AF757D0009E678E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				258CDC0E1AF757D0009E678E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		258CDC191AF757D0009E678E /* events-sdkTests */ = {
+			isa = PBXGroup;
+			children = (
+				25A1ABAA1B1CAE830086EA4F /* event */,
+				2592021D1B3AF18200BC8125 /* network */,
+				250E7F911B46D2C80027659C /* product */,
+				2592021E1B3AF19300BC8125 /* service */,
+				2506B7561B0DDEC60091D5F8 /* util */,
+				258CDC1A1AF757D0009E678E /* Supporting Files */,
+			);
+			name = "events-sdkTests";
+			path = "events-sdkTest";
+			sourceTree = "<group>";
+		};
+		258CDC1A1AF757D0009E678E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				258CDC1B1AF757D0009E678E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		258CDC261AF76E34009E678E /* event */ = {
+			isa = PBXGroup;
+			children = (
+				2505607C1AF91550006804AA /* serializer */,
+				258CDC271AF76EA5009E678E /* CRTOEvent.h */,
+				250240731B06512100002E27 /* CRTOEvent+Internal.h */,
+				258CDC281AF76EA5009E678E /* CRTOEvent.m */,
+				252D17921B0E5FF000DB6D91 /* CRTOExtraData.h */,
+				252D17931B0E5FF000DB6D91 /* CRTOExtraData.m */,
+				259AA5FB1AF7C8F9006743A5 /* CRTOAppLaunchEvent.h */,
+				2502407A1B065EEF00002E27 /* CRTOAppLaunchEvent+Internal.h */,
+				259AA5FC1AF7C8F9006743A5 /* CRTOAppLaunchEvent.m */,
+				259AA6241AF8A5CB006743A5 /* CRTOBasketViewEvent.h */,
+				250240771B065DBA00002E27 /* CRTOBasketViewEvent+Internal.h */,
+				259AA6251AF8A5CB006743A5 /* CRTOBasketViewEvent.m */,
+				251004951AF9216D00701F7F /* CRTODataEvent.h */,
+				250240781B065DF400002E27 /* CRTODataEvent+Internal.h */,
+				251004961AF9216D00701F7F /* CRTODataEvent.m */,
+				25A1A1051B3D7954008841EA /* CRTODeeplinkEvent.h */,
+				25A1A1091B3D7996008841EA /* CRTODeeplinkEvent+Internal.h */,
+				25A1A1061B3D7954008841EA /* CRTODeeplinkEvent.m */,
+				259AA6001AF7CBB5006743A5 /* CRTOHomeViewEvent.h */,
+				250240791B065E4F00002E27 /* CRTOHomeViewEvent+Internal.h */,
+				259AA6011AF7CBB5006743A5 /* CRTOHomeViewEvent.m */,
+				259AA6051AF7DEED006743A5 /* CRTOProductListViewEvent.h */,
+				250240761B065D4C00002E27 /* CRTOProductListViewEvent+Internal.h */,
+				259AA6061AF7DEED006743A5 /* CRTOProductListViewEvent.m */,
+				259AA60A1AF7DF11006743A5 /* CRTOProductViewEvent.h */,
+				250240751B065CE000002E27 /* CRTOProductViewEvent+Internal.h */,
+				259AA60B1AF7DF11006743A5 /* CRTOProductViewEvent.m */,
+				259AA60F1AF7DF48006743A5 /* CRTOTransactionConfirmationEvent.h */,
+				250240741B065C7200002E27 /* CRTOTransactionConfirmationEvent+Internal.h */,
+				259AA6101AF7DF48006743A5 /* CRTOTransactionConfirmationEvent.m */,
+			);
+			path = event;
+			sourceTree = "<group>";
+		};
+		2592021D1B3AF18200BC8125 /* network */ = {
+			isa = PBXGroup;
+			children = (
+				A98976081E5489D000D5AC6F /* CRTOEventQueueItemTests.m */,
+				A98976091E5489D000D5AC6F /* CRTOEventQueueTests.m */,
+			);
+			path = network;
+			sourceTree = "<group>";
+		};
+		2592021E1B3AF19300BC8125 /* service */ = {
+			isa = PBXGroup;
+			children = (
+				A98976061E5489C200D5AC6F /* CRTOEventServiceTests.m */,
+			);
+			path = service;
+			sourceTree = "<group>";
+		};
+		259AA6191AF7E00B006743A5 /* product */ = {
+			isa = PBXGroup;
+			children = (
+				259AA61F1AF7E081006743A5 /* CRTOBasketProduct.h */,
+				259AA6201AF7E081006743A5 /* CRTOBasketProduct.m */,
+				259AA61A1AF7E06A006743A5 /* CRTOProduct.h */,
+				259AA61B1AF7E06A006743A5 /* CRTOProduct.m */,
+			);
+			path = product;
+			sourceTree = "<group>";
+		};
+		25A1ABAA1B1CAE830086EA4F /* event */ = {
+			isa = PBXGroup;
+			children = (
+				A98975F41E5489B200D5AC6F /* CRTOAppLaunchEventTests.m */,
+				A98975F51E5489B200D5AC6F /* CRTOBasketViewEventTests.m */,
+				A98975F61E5489B200D5AC6F /* CRTODataEventTests.m */,
+				A98975F71E5489B200D5AC6F /* CRTODeeplinkEventTests.m */,
+				A98975F81E5489B200D5AC6F /* CRTOEventTests.m */,
+				A98975F91E5489B200D5AC6F /* CRTOHomeViewEventTests.m */,
+				A98975FA1E5489B200D5AC6F /* CRTOProductListViewEventTests.m */,
+				A98975FB1E5489B200D5AC6F /* CRTOProductViewEventTests.m */,
+				A98975FC1E5489B200D5AC6F /* CRTOTransactionConfirmationEventTests.m */,
+				25103EF41B1F589A009B5D24 /* serializer */,
+			);
+			path = event;
+			sourceTree = "<group>";
+		};
+		642666EA874CDA36611E10F1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2F592916C74B18F2B57FAD64 /* Pods-events-sdkTests-static.debug.xcconfig */,
+				16CEF5D47248F3D57E26B47E /* Pods-events-sdkTests-static.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FAA910706ABB85426C20894D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				61FF6BCEE1D6C2A253DA2259 /* libPods-events-sdkTests-static.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		25783F811B5D5AFE004F940C /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25783F821B5D5AFE004F940C /* CriteoAdvertiser.h in Headers */,
+				25783F831B5D5AFE004F940C /* CRTOProduct.h in Headers */,
+				25783F841B5D5AFE004F940C /* CRTOBasketProduct.h in Headers */,
+				25783F851B5D5AFE004F940C /* CRTOEvent.h in Headers */,
+				25783F861B5D5AFE004F940C /* CRTODateConverter.h in Headers */,
+				25783F871B5D5AFE004F940C /* CRTOAppLaunchEvent.h in Headers */,
+				257D24551CDA41FA007C32D7 /* CRTOMd5Hasher.h in Headers */,
+				25783F881B5D5AFE004F940C /* CRTOEventQueueItem.h in Headers */,
+				25783F891B5D5AFE004F940C /* CRTOBasketViewEvent.h in Headers */,
+				25783F8A1B5D5AFE004F940C /* CRTODataEvent.h in Headers */,
+				25783F8B1B5D5AFE004F940C /* CRTOHomeViewEvent.h in Headers */,
+				25783F8C1B5D5AFE004F940C /* CRTOProductListViewEvent.h in Headers */,
+				25783F8D1B5D5AFE004F940C /* CRTOProductViewEvent.h in Headers */,
+				25783F8E1B5D5AFE004F940C /* CRTODeeplinkEvent.h in Headers */,
+				25783F8F1B5D5AFE004F940C /* CRTODateFormatter.h in Headers */,
+				25783F901B5D5AFE004F940C /* CRTOTransactionConfirmationEvent.h in Headers */,
+				25783F911B5D5AFE004F940C /* CRTOEventService.h in Headers */,
+				25783F921B5D5AFE004F940C /* CRTOJSONConstants.h in Headers */,
+				25783F931B5D5AFE004F940C /* CRTOAppInfo.h in Headers */,
+				25783F941B5D5AFE004F940C /* CRTOEventQueue.h in Headers */,
+				25783F951B5D5AFE004F940C /* CRTOJSONEventSerializer.h in Headers */,
+				25783F961B5D5AFE004F940C /* CRTOSDKInfo.h in Headers */,
+				25783F971B5D5AFE004F940C /* CRTOExtraData.h in Headers */,
+				25783F981B5D5AFE004F940C /* CRTODeviceInfo.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		25783F681B5D5AFE004F940C /* events-sdk-static */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 25783F9A1B5D5AFE004F940C /* Build configuration list for PBXNativeTarget "events-sdk-static" */;
+			buildPhases = (
+				25783F691B5D5AFE004F940C /* Sources */,
+				25783F801B5D5AFE004F940C /* Frameworks */,
+				25783F811B5D5AFE004F940C /* Headers */,
+				25783F991B5D5AFE004F940C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "events-sdk-static";
+			productName = "advertiser-sdk";
+			productReference = 25783F9D1B5D5AFE004F940C /* CriteoAdvertiser.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		25783F9F1B5D5B62004F940C /* events-sdkTests-static */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 25783FBC1B5D5B62004F940C /* Build configuration list for PBXNativeTarget "events-sdkTests-static" */;
+			buildPhases = (
+				EF664E81FD847B92598B658E /* [CP] Check Pods Manifest.lock */,
+				25783FA31B5D5B62004F940C /* Sources */,
+				25783FB71B5D5B62004F940C /* Frameworks */,
+				25783FBA1B5D5B62004F940C /* Resources */,
+				8ADF740CD0F556B82FB89212 /* [CP] Embed Pods Frameworks */,
+				C4BB55F36F3B46FD7A968832 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				25783FC21B5D5BC5004F940C /* PBXTargetDependency */,
+			);
+			name = "events-sdkTests-static";
+			productName = "advertiser-sdkTests";
+			productReference = 25783FBF1B5D5B62004F940C /* events-sdkTests-static.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		258CDC011AF757D0009E678E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = Criteo;
+			};
+			buildConfigurationList = 258CDC041AF757D0009E678E /* Build configuration list for PBXProject "events-sdk" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 258CDC001AF757D0009E678E;
+			productRefGroup = 258CDC0B1AF757D0009E678E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				25783F681B5D5AFE004F940C /* events-sdk-static */,
+				25783F9F1B5D5B62004F940C /* events-sdkTests-static */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		25783F991B5D5AFE004F940C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25783FBA1B5D5B62004F940C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8ADF740CD0F556B82FB89212 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-events-sdkTests-static/Pods-events-sdkTests-static-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C4BB55F36F3B46FD7A968832 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-events-sdkTests-static/Pods-events-sdkTests-static-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EF664E81FD847B92598B658E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		25783F691B5D5AFE004F940C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				25783F6A1B5D5AFE004F940C /* CRTODeeplinkEvent.m in Sources */,
+				25783F6B1B5D5AFE004F940C /* CRTOProductListViewEvent.m in Sources */,
+				25783F6C1B5D5AFE004F940C /* CRTOEvent.m in Sources */,
+				25783F6D1B5D5AFE004F940C /* CRTOAppInfo.m in Sources */,
+				25783F6E1B5D5AFE004F940C /* CRTOBasketProduct.m in Sources */,
+				25783F6F1B5D5AFE004F940C /* CRTODateFormatter.m in Sources */,
+				25783F701B5D5AFE004F940C /* CRTOEventQueue.m in Sources */,
+				25783F711B5D5AFE004F940C /* CRTODataEvent.m in Sources */,
+				25783F721B5D5AFE004F940C /* CRTOBasketViewEvent.m in Sources */,
+				25783F731B5D5AFE004F940C /* CRTODeviceInfo.m in Sources */,
+				25783F741B5D5AFE004F940C /* CRTOEventQueueItem.m in Sources */,
+				25783F751B5D5AFE004F940C /* CRTOTransactionConfirmationEvent.m in Sources */,
+				25783F761B5D5AFE004F940C /* CRTOProductViewEvent.m in Sources */,
+				25783F771B5D5AFE004F940C /* CRTOEventService.m in Sources */,
+				25783F781B5D5AFE004F940C /* CRTOAppLaunchEvent.m in Sources */,
+				25783F791B5D5AFE004F940C /* CRTOExtraData.m in Sources */,
+				25783F7A1B5D5AFE004F940C /* CRTODateConverter.m in Sources */,
+				25783F7B1B5D5AFE004F940C /* CRTOJSONEventSerializer.m in Sources */,
+				257D24571CDA41FA007C32D7 /* CRTOMd5Hasher.m in Sources */,
+				25783F7C1B5D5AFE004F940C /* CRTOProduct.m in Sources */,
+				25783F7D1B5D5AFE004F940C /* CRTOSDKInfo.m in Sources */,
+				25783F7E1B5D5AFE004F940C /* CRTOJSONConstants.m in Sources */,
+				25783F7F1B5D5AFE004F940C /* CRTOHomeViewEvent.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		25783FA31B5D5B62004F940C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9960F031E55DCF300E8EB70 /* CRTOAppLaunchEventTests.m in Sources */,
+				A9960F041E55DCF300E8EB70 /* CRTOBasketViewEventTests.m in Sources */,
+				A9960F051E55DCF300E8EB70 /* CRTODataEventTests.m in Sources */,
+				A9960F061E55DCF300E8EB70 /* CRTODeeplinkEventTests.m in Sources */,
+				A9960F071E55DCF300E8EB70 /* CRTOEventTests.m in Sources */,
+				A9960F081E55DCF300E8EB70 /* CRTOHomeViewEventTests.m in Sources */,
+				A9960F091E55DCF300E8EB70 /* CRTOProductListViewEventTests.m in Sources */,
+				A9960F0A1E55DCF300E8EB70 /* CRTOProductViewEventTests.m in Sources */,
+				A9960F0B1E55DCF300E8EB70 /* CRTOTransactionConfirmationEventTests.m in Sources */,
+				A9960F0C1E55DCF300E8EB70 /* CRTODateFormatterTests.m in Sources */,
+				A9960F0D1E55DCF300E8EB70 /* CRTOJSONEventSerializerTests.m in Sources */,
+				A9960F0E1E55DCF300E8EB70 /* CRTOEventQueueItemTests.m in Sources */,
+				A9960F0F1E55DCF300E8EB70 /* CRTOEventQueueTests.m in Sources */,
+				A9960F101E55DCF300E8EB70 /* CRTOBasketProductTests.m in Sources */,
+				A9960F111E55DCF300E8EB70 /* CRTOProductTests.m in Sources */,
+				A9960F121E55DCF300E8EB70 /* CRTOEventServiceTests.m in Sources */,
+				A9960F131E55DCF300E8EB70 /* CRTOAppInfoTests.m in Sources */,
+				A9960F141E55DCF300E8EB70 /* CRTODateConverterTests.m in Sources */,
+				A9960F151E55DCF300E8EB70 /* CRTODeviceInfoTests.m in Sources */,
+				A9960F161E55DCF300E8EB70 /* CRTOMd5HasherTests.m in Sources */,
+				A9960F171E55DCF300E8EB70 /* CRTOSDKInfoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		25783FC21B5D5BC5004F940C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 25783F681B5D5AFE004F940C /* events-sdk-static */;
+			targetProxy = 25783FC11B5D5BC5004F940C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		25783F9B1B5D5AFE004F940C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/events-sdk/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				PRODUCT_NAME = CriteoAdvertiser;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		25783F9C1B5D5AFE004F940C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEFINES_MODULE = YES;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "$(SRCROOT)/events-sdk/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				PRODUCT_NAME = CriteoAdvertiser;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		25783FBD1B5D5B62004F940C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F592916C74B18F2B57FAD64 /* Pods-events-sdkTests-static.debug.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "events-sdkTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = "$(inherited)";
+				PODS_ROOT = "${SRCROOT}/Pods";
+				PRODUCT_NAME = "events-sdkTests-static";
+			};
+			name = Debug;
+		};
+		25783FBE1B5D5B62004F940C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16CEF5D47248F3D57E26B47E /* Pods-events-sdkTests-static.release.xcconfig */;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "events-sdkTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = "$(inherited)";
+				PODS_ROOT = "${SRCROOT}/Pods";
+				PRODUCT_NAME = "events-sdkTests-static";
+			};
+			name = Release;
+		};
+		258CDC1E1AF757D0009E678E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					armv7s,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		258CDC1F1AF757D0009E678E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					armv7s,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = "$(CURRENT_PROJECT_VERSION)";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		25783F9A1B5D5AFE004F940C /* Build configuration list for PBXNativeTarget "events-sdk-static" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25783F9B1B5D5AFE004F940C /* Debug */,
+				25783F9C1B5D5AFE004F940C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		25783FBC1B5D5B62004F940C /* Build configuration list for PBXNativeTarget "events-sdkTests-static" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25783FBD1B5D5B62004F940C /* Debug */,
+				25783FBE1B5D5B62004F940C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		258CDC041AF757D0009E678E /* Build configuration list for PBXProject "events-sdk" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				258CDC1E1AF757D0009E678E /* Debug */,
+				258CDC1F1AF757D0009E678E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 258CDC011AF757D0009E678E /* Project object */;
+}

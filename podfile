@@ -1,0 +1,10 @@
+workspace 'events-sdk'
+project 'events-sdk'
+
+target 'events-sdkTests-static' do
+    pod 'Nocilla'
+    pod 'OCMock'
+end
+
+
+
