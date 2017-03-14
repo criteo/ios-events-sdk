@@ -35,4 +35,4 @@ Copyright (C) 2017 - Criteo
 Licensed under the Apache License, Version 2.0  
 [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
 
-*Please note: We do not currently accept GitHub Issues.*
+*Please note: This is an open source read-only mirror, and we do not currently accept external contributions.*
