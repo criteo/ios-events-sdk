@@ -715,10 +715,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2F592916C74B18F2B57FAD64 /* Pods-events-sdkTests-static.debug.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -736,10 +732,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 16CEF5D47248F3D57E26B47E /* Pods-events-sdkTests-static.release.xcconfig */;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
 				INFOPLIST_FILE = "events-sdkTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
