@@ -85,7 +85,6 @@
     int offset = 0;
     NSString *replacementString = @"__REDACTED_ACCESS_TOKEN__";
     for (NSTextCheckingResult *match in matches) {
-        NSLog(@"-----------------------");
         NSRange firstRange = [match rangeAtIndex:0];
         NSRange secondRange = [match rangeAtIndex:1];
 
