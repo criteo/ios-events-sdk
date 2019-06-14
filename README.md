@@ -27,7 +27,7 @@ You can obtain the Event SDK source by cloning the git repository and including 
 
 ## Requirements
 
-- iOS 6.0 or higher
+- iOS 10.0 or higher
 
 ## We are Hiring!
 
