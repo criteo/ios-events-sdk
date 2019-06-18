@@ -29,10 +29,15 @@ You can obtain the Event SDK source by cloning the git repository and including 
 
 - iOS 6.0 or higher
 
+## We are Hiring!
+
+Criteo is looking for Software Engineers! It's not really important what technology
+you've used before (Java, C++, C#, Scala, Erlang) we're looking for open minded people who can adapt
+very quickly. We believe coding is a talent and a passion, not just a skill. Check us out at: [http://labs.criteo.com/](http://labs.criteo.com/)
+
 ## License
 
 Copyright (C) 2017 - Criteo  
 Licensed under the Apache License, Version 2.0  
 [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
-
-*Please note: We do not currently accept GitHub Issues.*
+*Please note: This is an open source read-only mirror, and we do not currently accept external contributions.*

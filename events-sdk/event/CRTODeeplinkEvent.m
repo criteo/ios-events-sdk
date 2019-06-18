@@ -34,7 +34,7 @@
     self = [super init];
     if ( self ) {
         if ( url ) {
-            _deeplinkLaunchUrl = [NSString stringWithString:url];
+            _deeplinkLaunchUrl = [CRTODeeplinkEvent deeplinkWithoutFacebookAccessToken:[NSString stringWithString:url]];
         }
     }
     return self;
@@ -60,6 +60,41 @@
     valid = valid && [super isValid];
 
     return valid;
+}
+
+#pragma mark - Facebook Access Token Filtering
+
+- (void) setDeeplinkLaunchUrl:(NSString *)deeplinkLaunchUrl {
+    _deeplinkLaunchUrl = [CRTODeeplinkEvent deeplinkWithoutFacebookAccessToken:deeplinkLaunchUrl];
+}
+
++ (NSString *) deeplinkWithoutFacebookAccessToken:(NSString *)originalDeeplink {
+    // Create regex just once to save compilation
+    static dispatch_once_t onceToken;
+    static NSRegularExpression *accessTokenRemoval;
+    dispatch_once(&onceToken, ^{
+        accessTokenRemoval = [NSRegularExpression regularExpressionWithPattern:@"((?<![A-Za-z])access_token=)[^&]*" options:0 error:nil];
+    });
+
+    NSArray *matches = [accessTokenRemoval matchesInString:originalDeeplink
+                                               options:0
+                                                 range:NSMakeRange(0, [originalDeeplink length])];
+
+
+    NSString *result = originalDeeplink;
+    int offset = 0;
+    NSString *replacementString = @"__REDACTED_ACCESS_TOKEN__";
+    for (NSTextCheckingResult *match in matches) {
+        NSRange firstRange = [match rangeAtIndex:0];
+        NSRange secondRange = [match rangeAtIndex:1];
+
+        NSRange replacementRange = NSMakeRange(secondRange.location + secondRange.length + offset, firstRange.length - secondRange.length);
+
+        result = [result stringByReplacingCharactersInRange:replacementRange withString:replacementString];
+        offset += replacementString.length - replacementRange.length;
+    }
+
+    return result;
 }
 
 @end

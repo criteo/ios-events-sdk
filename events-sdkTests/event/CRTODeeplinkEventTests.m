@@ -37,8 +37,35 @@
 
 - (void) tearDown
 {
-
     [super tearDown];
+}
+
+- (void) testFacebookAccessTokenRemoval {
+
+    NSArray *testCases = @[
+                           @[@"",                                                                    @""],
+                           @[@"bestapp://deeplinks-are-cool",                                        @"bestapp://deeplinks-are-cool"],
+                           @[@"bestapp://deeplinks-are-cool&access_token=EAAZDGZIUD153Z",            @"bestapp://deeplinks-are-cool&access_token=__REDACTED_ACCESS_TOKEN__"],
+                           @[@"bestapp://access_token=EAAZDGZIUD153Z&deeplinks-are-cool",            @"bestapp://access_token=__REDACTED_ACCESS_TOKEN__&deeplinks-are-cool"],
+                           @[@"bestapp://blabla=42&access_token=EAAZDGZIUD153Z&deeplinks-are-cool",  @"bestapp://blabla=42&access_token=__REDACTED_ACCESS_TOKEN__&deeplinks-are-cool"],
+                           @[@"bestapp://deeplinks-are-cool&paccess_token=EAAZDGZIUD153Z",           @"bestapp://deeplinks-are-cool&paccess_token=EAAZDGZIUD153Z"],
+                           @[@"bestapp://paccess_token=EAAZDGZIUD153Z&deeplinks-are-cool",           @"bestapp://paccess_token=EAAZDGZIUD153Z&deeplinks-are-cool"],
+                           @[@"bestapp://blabla=42&paccess_token=EAAZDGZIUD153Z&deeplinks-are-cool", @"bestapp://blabla=42&paccess_token=EAAZDGZIUD153Z&deeplinks-are-cool"],
+                           @[@"bestapp://access_token=EAAZDGZIUD153Z",                               @"bestapp://access_token=__REDACTED_ACCESS_TOKEN__"],
+                           @[@"access_token=EAAZDGZIUD153Z",                                         @"access_token=__REDACTED_ACCESS_TOKEN__"],
+                           @[@"access_token=EAAZDGZIUD153Z&access_token=EAAZDGZIUD153Z",             @"access_token=__REDACTED_ACCESS_TOKEN__&access_token=__REDACTED_ACCESS_TOKEN__"],
+
+                        @[@"access_token=EAAZDGZIUD153Z&access_token=EAAZDGZIUD153Z&access_token=EAAZDGZIUD153Z",             @"access_token=__REDACTED_ACCESS_TOKEN__&access_token=__REDACTED_ACCESS_TOKEN__&access_token=__REDACTED_ACCESS_TOKEN__"]
+                           ];
+
+    for (NSArray *testCase in testCases) {
+        NSString *input = [testCase objectAtIndex:0];
+        NSString *expected = [testCase objectAtIndex:1];
+
+        CRTODeeplinkEvent* event = [[CRTODeeplinkEvent alloc] initWithDeeplinkLaunchUrl:input];
+
+        XCTAssertEqualObjects(expected, event.deeplinkLaunchUrl);
+    }
 }
 
 - (void) testDeeplinkInit

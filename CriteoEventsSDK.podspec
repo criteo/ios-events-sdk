@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                    = 'CriteoEventsSDK'
-  s.version                 = '1.1.2'
+  s.version                 = '1.1.3'
   s.summary                 = 'Power your Criteo targeted campaigns by using the Criteo events sdk.'
   s.homepage                = 'https://github.com/criteo/ios-events-sdk'
   s.license                 = { :type => 'Apache 2.0', :file => 'LICENSE' }
