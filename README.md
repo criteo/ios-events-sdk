@@ -22,7 +22,7 @@ Then run 'pod install' in your project directory and open your MyApp.xcworkspace
 
 ### 2. Cloned GitHub repository
 
-You can obtain the Event SDK source by cloning the git repository and including it into your project manually.
+You can obtain the Event SDK source by cloning the git repository and including it into your project manually.  
 `git clone git://github.com/criteo/ios-events-sdk.git`
 
 ## Requirements
@@ -37,8 +37,7 @@ very quickly. We believe coding is a talent and a passion, not just a skill. Che
 
 ## License
 
-Copyright (C) 2017 - Criteo
-Licensed under the Apache License, Version 2.0
+Copyright (C) 2017 - Criteo  
+Licensed under the Apache License, Version 2.0  
 [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
-
 *Please note: This is an open source read-only mirror, and we do not currently accept external contributions.*
