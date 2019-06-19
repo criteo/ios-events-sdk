@@ -42,6 +42,12 @@
 
 @end
 
+@interface NSDictionary (JSON)
+
+- (NSString *)JSON_jsonString;
+
+@end
+
 @implementation CRTOJSONEventSerializerTests
 {
     CRTOAppInfo* mockAppInfo;
@@ -180,6 +186,18 @@
     return deviceInfo;
 }
 
+- (void) runSerializerForEvent:(CRTOEvent*)event
+   andExpectedJsonObjectResult:(NSDictionary *)expected
+            returningResultObj:(id*)resultObj
+                andExpectedObj:(id*)expectedObj
+{
+    NSString *expectedStr = expected.JSON_jsonString;
+    [self runSerializerForEvent:event
+              andExpectedResult:expectedStr
+             returningResultObj:resultObj
+                 andExpectedObj:expectedObj];
+}
+
 // Why do we bother returning resultObj and expectedObj via out paramaters?
 // Why don't we just run an XCTAssertEqualObjects test in this method?
 //
@@ -227,6 +245,20 @@
                         country:nil
                        language:nil
               andExpectedResult:expected
+             returningResultObj:resultObj
+                 andExpectedObj:expectedObj];
+}
+
+- (void) runSerializerForEvent:(CRTOEvent*)event
+             withCustomerEmail:(NSString*)email
+   andExpectedJsonObjectResult:(NSDictionary *)expected
+            returningResultObj:(id*)resultObj
+                andExpectedObj:(id*)expectedObj
+{
+    NSString *expectedStr = expected.JSON_jsonString;
+    [self runSerializerForEvent:event
+              withCustomerEmail:email
+              andExpectedResult:expectedStr
              returningResultObj:resultObj
                  andExpectedObj:expectedObj];
 }
@@ -628,60 +660,60 @@
     NSString* extraString = @"some Sample string";
     [appLaunch setStringExtraData:extraString ForKey:@"myStringData"];
 
-
-    NSString* expected = @"{"
-                          "  \"account\" : {"
-                          "    \"app_name\" : \"com.criteo.sdktestapp\""
-                          "  },"
-                          "  \"events\" : ["
-                          "    {"
-                          "      \"event\" : \"appLaunch\","
-                          "      \"my_date_extra_data\" : {"
-                          "         \"value\" : \"2001-09-09T01:46:40Z\","
-                          "         \"type\" : \"date\""
-                          "      },"
-                          "      \"FLOATDATA\" : {"
-                          "         \"value\" : 0.1,"
-                          "         \"type\" : \"float\""
-                          "      },"
-                          "      \"The biggest number there is\" : {"
-                          "         \"value\" : -2000000000,"
-                          "         \"type\" : \"integer\""
-                          "      },"
-                          "      \"myStringData\" : {"
-                          "         \"value\" : \"some Sample string\","
-                          "         \"type\" : \"string\""
-                          "      },"
-                          "      \"timestamp\" : \"2015-06-26T14:57:25Z\""
-                          "    }"
-                          "  ],"
-                          "  \"id\" : {"
-                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
-                          "    \"limit_ad_tracking\" : false"
-                          "  },"
-                          "  \"device_info\" : {"
-                          "    \"os_name\" : \"iPhone OS\","
-                          "    \"device_model\" : \"iPhone3,2\","
-                          "    \"device_manufacturer\" : \"apple\","
-                          "    \"os_version\" : \"4.9.1\","
-                          "    \"platform\" : \"ios\""
-                          "  },"
-                          "  \"app_info\" : {"
-                          "    \"app_version\" : \"43.0.2357.61\","
-                          "    \"app_name\" : \"Criteo Test App\","
-                          "    \"sdk_version\" : \"1.0.0\","
-                          "    \"app_language\" : \"en\","
-                          "    \"app_id\" : \"com.criteo.sdktestapp\","
-                          "    \"app_country\" : \"US\""
-                          "  },"
-                          "  \"version\" : \"sdk_1.0.0\""
-                          "}";
+    // We use JSON object instead of String to avoid issues with float approximation.
+    NSDictionary *expected =
+    @{
+      @"account" : @{
+              @"app_name" : @"com.criteo.sdktestapp"
+              },
+      @"events" : @[
+              @{
+                  @"event" : @"appLaunch",
+                  @"my_date_extra_data" : @{
+                          @"value" : @"2001-09-09T01:46:40Z",
+                          @"type" : @"date"
+                          },
+                  @"FLOATDATA" : @{
+                          @"value" : @(extraFloat),
+                          @"type" : @"float"
+                          },
+                  @"The biggest number there is" : @{
+                          @"value" : @-2000000000,
+                          @"type" : @"integer"
+                          },
+                  @"myStringData" : @{
+                          @"value" : @"some Sample string",
+                          @"type" : @"string"
+                          },
+                  @"timestamp" : @"2015-06-26T14:57:25Z"
+                  }],
+      @"id" : @{
+              @"idfa" : @"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6",
+              @"limit_ad_tracking" : @false
+              },
+      @"device_info" : @{
+              @"os_name" : @"iPhone OS",
+              @"device_model" : @"iPhone3,2",
+              @"device_manufacturer" : @"apple",
+              @"os_version" : @"4.9.1",
+              @"platform" : @"ios"
+              },
+      @"app_info" : @{
+              @"app_version" : @"43.0.2357.61",
+              @"app_name" : @"Criteo Test App",
+              @"sdk_version" : @"1.0.0",
+              @"app_language" : @"en",
+              @"app_id" : @"com.criteo.sdktestapp",
+              @"app_country" : @"US"
+              },
+      @"version" : @"sdk_1.0.0"
+      };
 
     id resultObj = nil;
     id expectedObj = nil;
 
     [self runSerializerForEvent:appLaunch
-              andExpectedResult:expected
+    andExpectedJsonObjectResult:expected
              returningResultObj:&resultObj
                  andExpectedObj:&expectedObj];
 
@@ -1123,83 +1155,84 @@
     NSString* extraString2 = @"some Sample string2";
     [dataEvent setStringExtraData:extraString2 ForKey:@"myStringData2"];
 
-    NSString* expected = @"{"
-                          "  \"account\" : {"
-                          "    \"app_name\" : \"com.criteo.sdktestapp\""
-                          "  },"
-                          "  \"events\" : ["
-                          "    {"
-                          "      \"event\" : \"setData\","
-                          "      \"my_date_extra_data\" : {"
-                          "         \"value\" : \"2001-09-09T01:46:40Z\","
-                          "         \"type\" : \"date\""
-                          "      },"
-                          "      \"FLOATDATA\" : {"
-                          "         \"value\" : 0.1,"
-                          "         \"type\" : \"float\""
-                          "      },"
-                          "      \"The biggest number there is\" : {"
-                          "         \"value\" : -2000000000,"
-                          "         \"type\" : \"integer\""
-                          "      },"
-                          "      \"myStringData\" : {"
-                          "         \"value\" : \"some Sample string\","
-                          "         \"type\" : \"string\""
-                          "      },"
-                          "      \"my_date_extra_data2\" : {"
-                          "         \"value\" : \"2001-09-09T01:46:41Z\","
-                          "         \"type\" : \"date\""
-                          "      },"
-                          "      \"FLOATDATA2\" : {"
-                          "         \"value\" : 0.2,"
-                          "         \"type\" : \"float\""
-                          "      },"
-                          "      \"The biggest number there is2\" : {"
-                          "         \"value\" : 2000000000,"
-                          "         \"type\" : \"integer\""
-                          "      },"
-                          "      \"myStringData2\" : {"
-                          "         \"value\" : \"some Sample string2\","
-                          "         \"type\" : \"string\""
-                          "      },"
-                          "      \"timestamp\" : \"2015-06-26T14:57:25Z\""
-                          "    }"
-                          "  ],"
-                          "  \"id\" : {"
-                          "    \"idfa\" : \"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6\","
-                          "    \"limit_ad_tracking\" : false"
-                          "  },"
-                          "  \"device_info\" : {"
-                          "    \"os_name\" : \"iPhone OS\","
-                          "    \"device_model\" : \"iPhone3,2\","
-                          "    \"device_manufacturer\" : \"apple\","
-                          "    \"os_version\" : \"4.9.1\","
-                          "    \"platform\" : \"ios\""
-                          "  },"
-                          "  \"app_info\" : {"
-                          "    \"app_version\" : \"43.0.2357.61\","
-                          "    \"app_name\" : \"Criteo Test App\","
-                          "    \"sdk_version\" : \"1.0.0\","
-                          "    \"app_language\" : \"en\","
-                          "    \"app_id\" : \"com.criteo.sdktestapp\","
-                          "    \"app_country\" : \"US\""
-                          "  },"
-                          "  \"version\" : \"sdk_1.0.0\","
-                          "  \"alternate_ids\" : ["
-                          "    {"
-                          "      \"type\" : \"email\","
-                          "      \"value\" : \"test@foobar.com\","
-                          "      \"hash_method\" : \"md5\""
-                          "    }"
-                          "  ]"
-                          "}";
+    // We use JSON object instead of String to avoid issues with float approximation.
+    NSDictionary *expected =
+    @{
+      @"account" : @{
+              @"app_name" : @"com.criteo.sdktestapp"
+              },
+      @"events" : @[
+              @{
+                  @"event" : @"setData",
+                  @"my_date_extra_data" : @{
+                          @"value" : @"2001-09-09T01:46:40Z",
+                          @"type" : @"date"
+                          },
+                  @"FLOATDATA" : @{
+                          @"value" : @(extraFloat),
+                          @"type" : @"float"
+                          },
+                  @"The biggest number there is" : @{
+                          @"value" : @-2000000000,
+                          @"type" : @"integer"
+                          },
+                  @"myStringData" : @{
+                          @"value" : @"some Sample string",
+                          @"type" : @"string"
+                          },
+                  @"my_date_extra_data2" : @{
+                          @"value" : @"2001-09-09T01:46:41Z",
+                          @"type" : @"date"
+                          },
+                  @"FLOATDATA2" : @{
+                          @"value" : @(extraFloat2),
+                          @"type" : @"float"
+                          },
+                  @"The biggest number there is2" : @{
+                          @"value" : @2000000000,
+                          @"type" : @"integer"
+                          },
+                  @"myStringData2" : @{
+                          @"value" : @"some Sample string2",
+                          @"type" : @"string"
+                          },
+                  @"timestamp" : @"2015-06-26T14:57:25Z"
+                  }],
+      @"id" : @{
+              @"idfa" : @"fcccfb5f-4cf1-489f-ac16-8e2fb2292ef6",
+              @"limit_ad_tracking" : @false
+              },
+      @"device_info" : @{
+              @"os_name" : @"iPhone OS",
+              @"device_model" : @"iPhone3,2",
+              @"device_manufacturer" : @"apple",
+              @"os_version" : @"4.9.1",
+              @"platform" : @"ios"
+              },
+      @"app_info" : @{
+              @"app_version" : @"43.0.2357.61",
+              @"app_name" : @"Criteo Test App",
+              @"sdk_version" : @"1.0.0",
+              @"app_language" : @"en",
+              @"app_id" : @"com.criteo.sdktestapp",
+              @"app_country" : @"US"
+              },
+      @"version": @"sdk_1.0.0",
+      @"alternate_ids": @[
+              @{
+                  @"type" : @"email",
+                  @"value" : @"test@foobar.com",
+                  @"hash_method" : @"md5"
+                  }
+              ]
+      };
 
     id resultObj = nil;
     id expectedObj = nil;
 
     [self runSerializerForEvent:dataEvent
               withCustomerEmail:@"test@foobar.com"
-              andExpectedResult:expected
+    andExpectedJsonObjectResult:expected
              returningResultObj:&resultObj
                  andExpectedObj:&expectedObj];
 
@@ -2785,6 +2818,22 @@
         NSString* result = [serializer serializeEventToJSONString:deeplinkEvent];
         result = nil;
     }];
+}
+
+@end
+
+@implementation NSDictionary (JSON)
+
+- (NSString *)JSON_jsonString
+{
+    NSError *error = NULL;
+    NSData *data = [NSJSONSerialization dataWithJSONObject:self
+                                                   options:0
+                                                     error:&error];
+    NSAssert(error == NULL, @"Given dictionary cannot be converted: %@", error);
+    NSString *string = [[NSString alloc] initWithData:data
+                                               encoding:NSUTF8StringEncoding];
+    return string;
 }
 
 @end
