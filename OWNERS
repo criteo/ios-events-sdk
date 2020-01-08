@@ -1,3 +1,4 @@
 inherited: true
 owners:
 - trackers-team@criteo.com
+- group/platform_pre
