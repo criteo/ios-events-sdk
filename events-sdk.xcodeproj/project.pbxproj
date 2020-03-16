@@ -663,6 +663,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
+				MARKETING_VERSION = 1.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.criteo.CriteoAdvertiser;
 				PRODUCT_NAME = CriteoAdvertiser;
 				SKIP_INSTALL = YES;
@@ -679,6 +680,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
+				MARKETING_VERSION = 1.1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.criteo.CriteoAdvertiser;
 				PRODUCT_NAME = CriteoAdvertiser;
 				SKIP_INSTALL = YES;
