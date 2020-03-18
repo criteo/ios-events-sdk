@@ -2,9 +2,8 @@ workspace 'events-sdk'
 project 'events-sdk'
 
 target 'events-sdkTests-static' do
+    platform :ios, '8.0'
     pod 'Nocilla'
     pod 'OCMock'
 end
-
-
 

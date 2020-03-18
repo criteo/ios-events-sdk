@@ -24,9 +24,10 @@
 #define CRTOSDKVersionString_1_1_1   (@"1.1.1")
 #define CRTOSDKVersionString_1_1_2   (@"1.1.2")
 #define CRTOSDKVersionString_1_1_3   (@"1.1.3")
+#define CRTOSDKVersionString_1_1_4   (@"1.1.4")
 //#define CRTOSDKVersionString_1_0_0   (@"YourSDK.VersionString.Here")
 
-#define CRTOSDKVersionString_Current CRTOSDKVersionString_1_1_3
+#define CRTOSDKVersionString_Current CRTOSDKVersionString_1_1_4
 
 @interface CRTOSDKInfo ()
 
