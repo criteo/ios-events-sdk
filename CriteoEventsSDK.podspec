@@ -7,6 +7,6 @@ Pod::Spec.new do |s|
   s.author                  = { 'Criteo' => 'opensource@criteo.com' }
   s.source                  = { :git => 'https://github.com/criteo/ios-events-sdk.git', :tag => s.version.to_s }
   s.ios.deployment_target   = '8.0'
-  s.source_files            = 'events-sdk/**/*.{h,m}'
+  s.source_files            = 'Sources/**/*.{h,m}'
   s.requires_arc            = true
 end
