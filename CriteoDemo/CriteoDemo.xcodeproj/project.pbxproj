@@ -1,0 +1,732 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		17C4AEB50C1FD15607B2D66A /* Pods_CriteoDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A855B227D38D1D2867B8FCA4 /* Pods_CriteoDemo.framework */; };
+		3CFD69D30BB1EC44151FE2F1 /* Pods_CriteoDemoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA294EF8C2D26B6812CBA295 /* Pods_CriteoDemoTests.framework */; };
+		64C7864B25331CBF0053DCB2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C7864A25331CBF0053DCB2 /* AppDelegate.m */; };
+		64C7864E25331CBF0053DCB2 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C7864D25331CBF0053DCB2 /* SceneDelegate.m */; };
+		64C7865125331CBF0053DCB2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C7865025331CBF0053DCB2 /* ViewController.m */; };
+		64C7865425331CBF0053DCB2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64C7865225331CBF0053DCB2 /* Main.storyboard */; };
+		64C7865625331CC00053DCB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64C7865525331CC00053DCB2 /* Assets.xcassets */; };
+		64C7865925331CC00053DCB2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 64C7865725331CC00053DCB2 /* LaunchScreen.storyboard */; };
+		64C7865C25331CC00053DCB2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C7865B25331CC00053DCB2 /* main.m */; };
+		64C7866A25331CD00053DCB2 /* CriteoDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C7866925331CD00053DCB2 /* CriteoDemoTests.m */; };
+		64C7869525331D200053DCB2 /* CRTODateFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C7867C25331D200053DCB2 /* CRTODateFormatterTests.m */; };
+		64C7869625331D200053DCB2 /* CRTOJSONEventSerializerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C7867D25331D200053DCB2 /* CRTOJSONEventSerializerTests.m */; };
+		64C7869725331D200053DCB2 /* CRTOProductViewEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C7867E25331D200053DCB2 /* CRTOProductViewEventTests.m */; };
+		64C7869825331D200053DCB2 /* CRTOProductListViewEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C7867F25331D200053DCB2 /* CRTOProductListViewEventTests.m */; };
+		64C7869925331D200053DCB2 /* CRTOBasketViewEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C7868025331D200053DCB2 /* CRTOBasketViewEventTests.m */; };
+		64C7869A25331D200053DCB2 /* CRTODeeplinkEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C7868125331D200053DCB2 /* CRTODeeplinkEventTests.m */; };
+		64C7869B25331D200053DCB2 /* CRTODataEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C7868225331D200053DCB2 /* CRTODataEventTests.m */; };
+		64C7869C25331D200053DCB2 /* CRTOTransactionConfirmationEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C7868325331D200053DCB2 /* CRTOTransactionConfirmationEventTests.m */; };
+		64C7869D25331D200053DCB2 /* CRTOAppLaunchEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C7868425331D200053DCB2 /* CRTOAppLaunchEventTests.m */; };
+		64C7869E25331D200053DCB2 /* CRTOHomeViewEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C7868525331D200053DCB2 /* CRTOHomeViewEventTests.m */; };
+		64C7869F25331D200053DCB2 /* CRTOEventTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C7868625331D200053DCB2 /* CRTOEventTests.m */; };
+		64C786A025331D200053DCB2 /* CRTOSDKInfoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C7868825331D200053DCB2 /* CRTOSDKInfoTests.m */; };
+		64C786A125331D200053DCB2 /* CRTODateConverterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C7868925331D200053DCB2 /* CRTODateConverterTests.m */; };
+		64C786A225331D200053DCB2 /* CRTODeviceInfoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C7868A25331D200053DCB2 /* CRTODeviceInfoTests.m */; };
+		64C786A325331D200053DCB2 /* CRTOAppInfoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C7868B25331D200053DCB2 /* CRTOAppInfoTests.m */; };
+		64C786A425331D200053DCB2 /* CRTOMd5HasherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C7868C25331D200053DCB2 /* CRTOMd5HasherTests.m */; };
+		64C786A525331D200053DCB2 /* CRTOProductTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C7868E25331D200053DCB2 /* CRTOProductTests.m */; };
+		64C786A625331D200053DCB2 /* CRTOBasketProductTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C7868F25331D200053DCB2 /* CRTOBasketProductTests.m */; };
+		64C786A725331D200053DCB2 /* CRTOEventQueueItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C7869125331D200053DCB2 /* CRTOEventQueueItemTests.m */; };
+		64C786A825331D200053DCB2 /* CRTOEventQueueTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C7869225331D200053DCB2 /* CRTOEventQueueTests.m */; };
+		64C786A925331D200053DCB2 /* CRTOEventServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C7869425331D200053DCB2 /* CRTOEventServiceTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		64C7866C25331CD00053DCB2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 64C7863E25331CBF0053DCB2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 64C7864525331CBF0053DCB2;
+			remoteInfo = CriteoDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		43C755D869C0FBBAB6A29B7B /* Pods-CriteoDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CriteoDemoTests.release.xcconfig"; path = "Target Support Files/Pods-CriteoDemoTests/Pods-CriteoDemoTests.release.xcconfig"; sourceTree = "<group>"; };
+		64C7864625331CBF0053DCB2 /* CriteoDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CriteoDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		64C7864925331CBF0053DCB2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		64C7864A25331CBF0053DCB2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		64C7864C25331CBF0053DCB2 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
+		64C7864D25331CBF0053DCB2 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
+		64C7864F25331CBF0053DCB2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		64C7865025331CBF0053DCB2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		64C7865325331CBF0053DCB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		64C7865525331CC00053DCB2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		64C7865825331CC00053DCB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		64C7865A25331CC00053DCB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64C7865B25331CC00053DCB2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		64C7866725331CD00053DCB2 /* CriteoDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CriteoDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		64C7866925331CD00053DCB2 /* CriteoDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CriteoDemoTests.m; sourceTree = "<group>"; };
+		64C7866B25331CD00053DCB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64C7867C25331D200053DCB2 /* CRTODateFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTODateFormatterTests.m; sourceTree = "<group>"; };
+		64C7867D25331D200053DCB2 /* CRTOJSONEventSerializerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOJSONEventSerializerTests.m; sourceTree = "<group>"; };
+		64C7867E25331D200053DCB2 /* CRTOProductViewEventTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOProductViewEventTests.m; sourceTree = "<group>"; };
+		64C7867F25331D200053DCB2 /* CRTOProductListViewEventTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOProductListViewEventTests.m; sourceTree = "<group>"; };
+		64C7868025331D200053DCB2 /* CRTOBasketViewEventTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOBasketViewEventTests.m; sourceTree = "<group>"; };
+		64C7868125331D200053DCB2 /* CRTODeeplinkEventTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTODeeplinkEventTests.m; sourceTree = "<group>"; };
+		64C7868225331D200053DCB2 /* CRTODataEventTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTODataEventTests.m; sourceTree = "<group>"; };
+		64C7868325331D200053DCB2 /* CRTOTransactionConfirmationEventTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOTransactionConfirmationEventTests.m; sourceTree = "<group>"; };
+		64C7868425331D200053DCB2 /* CRTOAppLaunchEventTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOAppLaunchEventTests.m; sourceTree = "<group>"; };
+		64C7868525331D200053DCB2 /* CRTOHomeViewEventTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOHomeViewEventTests.m; sourceTree = "<group>"; };
+		64C7868625331D200053DCB2 /* CRTOEventTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOEventTests.m; sourceTree = "<group>"; };
+		64C7868825331D200053DCB2 /* CRTOSDKInfoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOSDKInfoTests.m; sourceTree = "<group>"; };
+		64C7868925331D200053DCB2 /* CRTODateConverterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTODateConverterTests.m; sourceTree = "<group>"; };
+		64C7868A25331D200053DCB2 /* CRTODeviceInfoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTODeviceInfoTests.m; sourceTree = "<group>"; };
+		64C7868B25331D200053DCB2 /* CRTOAppInfoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOAppInfoTests.m; sourceTree = "<group>"; };
+		64C7868C25331D200053DCB2 /* CRTOMd5HasherTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOMd5HasherTests.m; sourceTree = "<group>"; };
+		64C7868E25331D200053DCB2 /* CRTOProductTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOProductTests.m; sourceTree = "<group>"; };
+		64C7868F25331D200053DCB2 /* CRTOBasketProductTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOBasketProductTests.m; sourceTree = "<group>"; };
+		64C7869125331D200053DCB2 /* CRTOEventQueueItemTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOEventQueueItemTests.m; sourceTree = "<group>"; };
+		64C7869225331D200053DCB2 /* CRTOEventQueueTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOEventQueueTests.m; sourceTree = "<group>"; };
+		64C7869425331D200053DCB2 /* CRTOEventServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CRTOEventServiceTests.m; sourceTree = "<group>"; };
+		7D75F20C721E9BD5E79F062A /* Pods-CriteoDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CriteoDemoTests.debug.xcconfig"; path = "Target Support Files/Pods-CriteoDemoTests/Pods-CriteoDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A855B227D38D1D2867B8FCA4 /* Pods_CriteoDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CriteoDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA294EF8C2D26B6812CBA295 /* Pods_CriteoDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CriteoDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAB544CF843509FF28AFC33A /* Pods-CriteoDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CriteoDemo.debug.xcconfig"; path = "Target Support Files/Pods-CriteoDemo/Pods-CriteoDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		D04FD1C1879AEF637AF7BBCE /* Pods-CriteoDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CriteoDemo.release.xcconfig"; path = "Target Support Files/Pods-CriteoDemo/Pods-CriteoDemo.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		64C7864325331CBF0053DCB2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17C4AEB50C1FD15607B2D66A /* Pods_CriteoDemo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64C7866425331CD00053DCB2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CFD69D30BB1EC44151FE2F1 /* Pods_CriteoDemoTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		64C7863D25331CBF0053DCB2 = {
+			isa = PBXGroup;
+			children = (
+				64C7864825331CBF0053DCB2 /* CriteoDemo */,
+				64C7866825331CD00053DCB2 /* CriteoDemoTests */,
+				64C7864725331CBF0053DCB2 /* Products */,
+				B39E463F0799F85B9DC9F8EB /* Pods */,
+				851B2A5E363C8D956E557950 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		64C7864725331CBF0053DCB2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				64C7864625331CBF0053DCB2 /* CriteoDemo.app */,
+				64C7866725331CD00053DCB2 /* CriteoDemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		64C7864825331CBF0053DCB2 /* CriteoDemo */ = {
+			isa = PBXGroup;
+			children = (
+				64C7864925331CBF0053DCB2 /* AppDelegate.h */,
+				64C7864A25331CBF0053DCB2 /* AppDelegate.m */,
+				64C7864C25331CBF0053DCB2 /* SceneDelegate.h */,
+				64C7864D25331CBF0053DCB2 /* SceneDelegate.m */,
+				64C7864F25331CBF0053DCB2 /* ViewController.h */,
+				64C7865025331CBF0053DCB2 /* ViewController.m */,
+				64C7865225331CBF0053DCB2 /* Main.storyboard */,
+				64C7865525331CC00053DCB2 /* Assets.xcassets */,
+				64C7865725331CC00053DCB2 /* LaunchScreen.storyboard */,
+				64C7865A25331CC00053DCB2 /* Info.plist */,
+				64C7865B25331CC00053DCB2 /* main.m */,
+			);
+			path = CriteoDemo;
+			sourceTree = "<group>";
+		};
+		64C7866825331CD00053DCB2 /* CriteoDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				64C7866925331CD00053DCB2 /* CriteoDemoTests.m */,
+				64C7866B25331CD00053DCB2 /* Info.plist */,
+				64C7867A25331D200053DCB2 /* event */,
+				64C7869025331D200053DCB2 /* network */,
+				64C7868D25331D200053DCB2 /* product */,
+				64C7869325331D200053DCB2 /* service */,
+				64C7868725331D200053DCB2 /* util */,
+			);
+			path = CriteoDemoTests;
+			sourceTree = "<group>";
+		};
+		64C7867A25331D200053DCB2 /* event */ = {
+			isa = PBXGroup;
+			children = (
+				64C7867B25331D200053DCB2 /* serializer */,
+				64C7867E25331D200053DCB2 /* CRTOProductViewEventTests.m */,
+				64C7867F25331D200053DCB2 /* CRTOProductListViewEventTests.m */,
+				64C7868025331D200053DCB2 /* CRTOBasketViewEventTests.m */,
+				64C7868125331D200053DCB2 /* CRTODeeplinkEventTests.m */,
+				64C7868225331D200053DCB2 /* CRTODataEventTests.m */,
+				64C7868325331D200053DCB2 /* CRTOTransactionConfirmationEventTests.m */,
+				64C7868425331D200053DCB2 /* CRTOAppLaunchEventTests.m */,
+				64C7868525331D200053DCB2 /* CRTOHomeViewEventTests.m */,
+				64C7868625331D200053DCB2 /* CRTOEventTests.m */,
+			);
+			name = event;
+			path = ../../Tests/CriteoTests/event;
+			sourceTree = "<group>";
+		};
+		64C7867B25331D200053DCB2 /* serializer */ = {
+			isa = PBXGroup;
+			children = (
+				64C7867C25331D200053DCB2 /* CRTODateFormatterTests.m */,
+				64C7867D25331D200053DCB2 /* CRTOJSONEventSerializerTests.m */,
+			);
+			path = serializer;
+			sourceTree = "<group>";
+		};
+		64C7868725331D200053DCB2 /* util */ = {
+			isa = PBXGroup;
+			children = (
+				64C7868825331D200053DCB2 /* CRTOSDKInfoTests.m */,
+				64C7868925331D200053DCB2 /* CRTODateConverterTests.m */,
+				64C7868A25331D200053DCB2 /* CRTODeviceInfoTests.m */,
+				64C7868B25331D200053DCB2 /* CRTOAppInfoTests.m */,
+				64C7868C25331D200053DCB2 /* CRTOMd5HasherTests.m */,
+			);
+			name = util;
+			path = ../../Tests/CriteoTests/util;
+			sourceTree = "<group>";
+		};
+		64C7868D25331D200053DCB2 /* product */ = {
+			isa = PBXGroup;
+			children = (
+				64C7868E25331D200053DCB2 /* CRTOProductTests.m */,
+				64C7868F25331D200053DCB2 /* CRTOBasketProductTests.m */,
+			);
+			name = product;
+			path = ../../Tests/CriteoTests/product;
+			sourceTree = "<group>";
+		};
+		64C7869025331D200053DCB2 /* network */ = {
+			isa = PBXGroup;
+			children = (
+				64C7869125331D200053DCB2 /* CRTOEventQueueItemTests.m */,
+				64C7869225331D200053DCB2 /* CRTOEventQueueTests.m */,
+			);
+			name = network;
+			path = ../../Tests/CriteoTests/network;
+			sourceTree = "<group>";
+		};
+		64C7869325331D200053DCB2 /* service */ = {
+			isa = PBXGroup;
+			children = (
+				64C7869425331D200053DCB2 /* CRTOEventServiceTests.m */,
+			);
+			name = service;
+			path = ../../Tests/CriteoTests/service;
+			sourceTree = "<group>";
+		};
+		851B2A5E363C8D956E557950 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A855B227D38D1D2867B8FCA4 /* Pods_CriteoDemo.framework */,
+				CA294EF8C2D26B6812CBA295 /* Pods_CriteoDemoTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B39E463F0799F85B9DC9F8EB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CAB544CF843509FF28AFC33A /* Pods-CriteoDemo.debug.xcconfig */,
+				D04FD1C1879AEF637AF7BBCE /* Pods-CriteoDemo.release.xcconfig */,
+				7D75F20C721E9BD5E79F062A /* Pods-CriteoDemoTests.debug.xcconfig */,
+				43C755D869C0FBBAB6A29B7B /* Pods-CriteoDemoTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		64C7864525331CBF0053DCB2 /* CriteoDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64C7865F25331CC00053DCB2 /* Build configuration list for PBXNativeTarget "CriteoDemo" */;
+			buildPhases = (
+				EFD1CAC1B0BC15574EA2B8C9 /* [CP] Check Pods Manifest.lock */,
+				64C7864225331CBF0053DCB2 /* Sources */,
+				64C7864325331CBF0053DCB2 /* Frameworks */,
+				64C7864425331CBF0053DCB2 /* Resources */,
+				E7AEAC9B2A342CD6EBB0AD0B /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CriteoDemo;
+			productName = CriteoDemo;
+			productReference = 64C7864625331CBF0053DCB2 /* CriteoDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		64C7866625331CD00053DCB2 /* CriteoDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64C7867025331CD00053DCB2 /* Build configuration list for PBXNativeTarget "CriteoDemoTests" */;
+			buildPhases = (
+				6CC4C9A13F5C89FEA481B4E7 /* [CP] Check Pods Manifest.lock */,
+				64C7866325331CD00053DCB2 /* Sources */,
+				64C7866425331CD00053DCB2 /* Frameworks */,
+				64C7866525331CD00053DCB2 /* Resources */,
+				80C39D7F443B1762FB699872 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				64C7866D25331CD00053DCB2 /* PBXTargetDependency */,
+			);
+			name = CriteoDemoTests;
+			productName = CriteoDemoTests;
+			productReference = 64C7866725331CD00053DCB2 /* CriteoDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		64C7863E25331CBF0053DCB2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1200;
+				TargetAttributes = {
+					64C7864525331CBF0053DCB2 = {
+						CreatedOnToolsVersion = 12.0;
+					};
+					64C7866625331CD00053DCB2 = {
+						CreatedOnToolsVersion = 12.0;
+						TestTargetID = 64C7864525331CBF0053DCB2;
+					};
+				};
+			};
+			buildConfigurationList = 64C7864125331CBF0053DCB2 /* Build configuration list for PBXProject "CriteoDemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 64C7863D25331CBF0053DCB2;
+			productRefGroup = 64C7864725331CBF0053DCB2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				64C7864525331CBF0053DCB2 /* CriteoDemo */,
+				64C7866625331CD00053DCB2 /* CriteoDemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		64C7864425331CBF0053DCB2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64C7865925331CC00053DCB2 /* LaunchScreen.storyboard in Resources */,
+				64C7865625331CC00053DCB2 /* Assets.xcassets in Resources */,
+				64C7865425331CBF0053DCB2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64C7866525331CD00053DCB2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6CC4C9A13F5C89FEA481B4E7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CriteoDemoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		80C39D7F443B1762FB699872 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CriteoDemoTests/Pods-CriteoDemoTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CriteoDemoTests/Pods-CriteoDemoTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CriteoDemoTests/Pods-CriteoDemoTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E7AEAC9B2A342CD6EBB0AD0B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CriteoDemo/Pods-CriteoDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CriteoDemo/Pods-CriteoDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CriteoDemo/Pods-CriteoDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EFD1CAC1B0BC15574EA2B8C9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CriteoDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		64C7864225331CBF0053DCB2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64C7865125331CBF0053DCB2 /* ViewController.m in Sources */,
+				64C7864B25331CBF0053DCB2 /* AppDelegate.m in Sources */,
+				64C7865C25331CC00053DCB2 /* main.m in Sources */,
+				64C7864E25331CBF0053DCB2 /* SceneDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64C7866325331CD00053DCB2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64C786A125331D200053DCB2 /* CRTODateConverterTests.m in Sources */,
+				64C7869625331D200053DCB2 /* CRTOJSONEventSerializerTests.m in Sources */,
+				64C786A925331D200053DCB2 /* CRTOEventServiceTests.m in Sources */,
+				64C786A025331D200053DCB2 /* CRTOSDKInfoTests.m in Sources */,
+				64C786A225331D200053DCB2 /* CRTODeviceInfoTests.m in Sources */,
+				64C7869525331D200053DCB2 /* CRTODateFormatterTests.m in Sources */,
+				64C786A525331D200053DCB2 /* CRTOProductTests.m in Sources */,
+				64C786A325331D200053DCB2 /* CRTOAppInfoTests.m in Sources */,
+				64C7869825331D200053DCB2 /* CRTOProductListViewEventTests.m in Sources */,
+				64C786A425331D200053DCB2 /* CRTOMd5HasherTests.m in Sources */,
+				64C7869A25331D200053DCB2 /* CRTODeeplinkEventTests.m in Sources */,
+				64C7869F25331D200053DCB2 /* CRTOEventTests.m in Sources */,
+				64C786A825331D200053DCB2 /* CRTOEventQueueTests.m in Sources */,
+				64C7869925331D200053DCB2 /* CRTOBasketViewEventTests.m in Sources */,
+				64C7866A25331CD00053DCB2 /* CriteoDemoTests.m in Sources */,
+				64C786A725331D200053DCB2 /* CRTOEventQueueItemTests.m in Sources */,
+				64C7869B25331D200053DCB2 /* CRTODataEventTests.m in Sources */,
+				64C7869C25331D200053DCB2 /* CRTOTransactionConfirmationEventTests.m in Sources */,
+				64C7869725331D200053DCB2 /* CRTOProductViewEventTests.m in Sources */,
+				64C7869D25331D200053DCB2 /* CRTOAppLaunchEventTests.m in Sources */,
+				64C786A625331D200053DCB2 /* CRTOBasketProductTests.m in Sources */,
+				64C7869E25331D200053DCB2 /* CRTOHomeViewEventTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		64C7866D25331CD00053DCB2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 64C7864525331CBF0053DCB2 /* CriteoDemo */;
+			targetProxy = 64C7866C25331CD00053DCB2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		64C7865225331CBF0053DCB2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				64C7865325331CBF0053DCB2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		64C7865725331CC00053DCB2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				64C7865825331CC00053DCB2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		64C7865D25331CC00053DCB2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		64C7865E25331CC00053DCB2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		64C7866025331CC00053DCB2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAB544CF843509FF28AFC33A /* Pods-CriteoDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = E5DU3FA699;
+				INFOPLIST_FILE = CriteoDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.criteo.CriteoDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		64C7866125331CC00053DCB2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D04FD1C1879AEF637AF7BBCE /* Pods-CriteoDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = E5DU3FA699;
+				INFOPLIST_FILE = CriteoDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.criteo.CriteoDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		64C7866E25331CD00053DCB2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D75F20C721E9BD5E79F062A /* Pods-CriteoDemoTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = E5DU3FA699;
+				INFOPLIST_FILE = CriteoDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.criteo.CriteoDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CriteoDemo.app/CriteoDemo";
+			};
+			name = Debug;
+		};
+		64C7866F25331CD00053DCB2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43C755D869C0FBBAB6A29B7B /* Pods-CriteoDemoTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = E5DU3FA699;
+				INFOPLIST_FILE = CriteoDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.criteo.CriteoDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CriteoDemo.app/CriteoDemo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		64C7864125331CBF0053DCB2 /* Build configuration list for PBXProject "CriteoDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64C7865D25331CC00053DCB2 /* Debug */,
+				64C7865E25331CC00053DCB2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		64C7865F25331CC00053DCB2 /* Build configuration list for PBXNativeTarget "CriteoDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64C7866025331CC00053DCB2 /* Debug */,
+				64C7866125331CC00053DCB2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		64C7867025331CD00053DCB2 /* Build configuration list for PBXNativeTarget "CriteoDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64C7866E25331CD00053DCB2 /* Debug */,
+				64C7866F25331CD00053DCB2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 64C7863E25331CBF0053DCB2 /* Project object */;
+}

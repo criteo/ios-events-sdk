@@ -9,4 +9,9 @@ Pod::Spec.new do |s|
   s.ios.deployment_target   = '8.0'
   s.source_files            = 'Sources/**/*.{h,m}'
   s.requires_arc            = true
+  
+  # These folders are used as umbrella to make headers visible to SwiftPM users
+  # but we need to exclude them from Cocoapods otherwise we'll get the
+  # duplicate symbols warning during build.
+  s.exclude_files           = 'Sources/Criteo/include/**/*.h'
 end

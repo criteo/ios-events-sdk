@@ -23,8 +23,7 @@ let package = Package(
             name: "Criteo",
             dependencies: [],
             path: "Sources/Criteo",
-            exclude: ["Criteo/Info.plist"],
-            //publicHeadersPath: ".",
+            // exclude: ["Criteo/Info.plist"],
             cSettings: [
                 .headerSearchPath("event"),
                 .headerSearchPath("event/serializer"),
@@ -32,10 +31,12 @@ let package = Package(
                 .headerSearchPath("product"),
                 .headerSearchPath("service"),
                 .headerSearchPath("util"),
-            ])
-        //testTarget(
-          //  name: "CriteoTests",
-           // dependencies: ["Criteo"],
-           // exclude: ["Criteo/Tests/CriteoTests/Info.plist"])
+            ]),
+        // We can't import tests because both Nocilla (https://github.com/luisobo/Nocilla) and
+        // OCMock (https://github.com/erikdoe/ocmock) does not supports Swift Package Manager.
+        // .testTarget(
+        //    name: "CriteoTests",
+        //    dependencies: ["Criteo"],
+        //    exclude: ["Tests/CriteoTests/Info.plist"])
     ]
 )
