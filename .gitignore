@@ -6,3 +6,5 @@ xcuserdata
 *.pbxuser
 *.xccheckout
 *.xcuserstate
+Pods/
+Podfile.lock
