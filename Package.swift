@@ -22,12 +22,20 @@ let package = Package(
         .target(
             name: "Criteo",
             dependencies: [],
-            path: "Sources",
+            path: "Sources/Criteo",
             exclude: ["Criteo/Info.plist"],
-            publicHeadersPath: ["","event","network","product","service","util"]),
-        .testTarget(
-            name: "CriteoTests",
-            dependencies: ["Criteo"],
-            exclude: ["Criteo/Tests/CriteoTests/Info.plist"])
+            //publicHeadersPath: ".",
+            cSettings: [
+                .headerSearchPath("event"),
+                .headerSearchPath("event/serializer"),
+                .headerSearchPath("network"),
+                .headerSearchPath("product"),
+                .headerSearchPath("service"),
+                .headerSearchPath("util"),
+            ])
+        //testTarget(
+          //  name: "CriteoTests",
+           // dependencies: ["Criteo"],
+           // exclude: ["Criteo/Tests/CriteoTests/Info.plist"])
     ]
 )
