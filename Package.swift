@@ -19,7 +19,7 @@ let package = Package(
             path: "Sources",
             cSettings: [
                  .headerSearchPath("Criteo/event"),
-                 .headerSearchPath("eCriteo/vent/serializer"),
+                 .headerSearchPath("Criteo/event/serializer"),
                  .headerSearchPath("Criteo/network"),
                  .headerSearchPath("Criteo/product"),
                  .headerSearchPath("Criteo/service"),
