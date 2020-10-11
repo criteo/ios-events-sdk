@@ -25,6 +25,15 @@ Then run 'pod install' in your project directory and open your MyApp.xcworkspace
 You can obtain the Event SDK source by cloning the git repository and including it into your project manually.  
 `git clone git://github.com/criteo/ios-events-sdk.git`
 
+
+### 3. Swift Package Manager
+
+Just add the dependency to Package.swift:
+
+```swift
+.package(url: "https://github.com/criteo/ios-events-sdk.git", branch: "master"), // or "1.1.5"+
+```
+
 ## Requirements
 
 - iOS 8.0 or higher
