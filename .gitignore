@@ -27,3 +27,6 @@ xcodebuild.log
 # AppCode
 .idea/
 
+# Bundler
+vendor
+
